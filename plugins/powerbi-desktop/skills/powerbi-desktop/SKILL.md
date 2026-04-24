@@ -28,7 +28,8 @@ Use this skill when the user asks Codex to inspect, document, generate, or refac
 10. Generate a refactoring plan with `scripts/New-PowerBIRefactorPlan.ps1` when findings exist.
 11. Generate a report blueprint with `scripts/New-PowerBIReportBlueprint.ps1` when measures exist.
 12. If text-based model files exist, summarize them with `scripts/New-PowerBIModelSummary.ps1`.
-13. Look for these editable artifacts:
+13. For advanced remediation, run `scripts/Invoke-PowerBIInnovationReview.ps1`.
+14. Look for these editable artifacts:
    - `*.pbip`
    - `*.SemanticModel`, `*.Report`
    - `definition.pbism`, `model.bim`
@@ -80,7 +81,17 @@ Run:
 .\plugins\powerbi-desktop\scripts\Invoke-PowerBIAutoReview.ps1 -Path . -OutputDirectory .\powerbi-auto-review
 ```
 
-Use this as the fastest end-to-end path. It produces inventory, PBIP readiness, scan, metric catalog, dependency graph, refactor plan, report blueprint, model summary, executive narrative, and AI prompt pack.
+Use this as the fastest end-to-end path. It produces inventory, PBIP readiness, scan, metric catalog, dependency graph, refactor plan, report blueprint, model summary, executive narrative, AI prompt pack, and innovation review artifacts.
+
+### Run the innovation review package
+
+Run:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBIInnovationReview.ps1 -Path . -OutputDirectory .\powerbi-innovation-review
+```
+
+Use this when the user wants actionable next-generation review artifacts. It produces a guided fix plan, semantic remediation guidance, measure lineage impact, generated DAX test plan, performance advisor, report UX critique, executive explainability pack, governance scorecard, Copilot readiness check, and release checklist.
 
 ### Inspect the open Desktop model
 
@@ -213,3 +224,14 @@ When tools are available, prefer:
 - `scripts/New-PowerBILiveRefactorSuggestions.ps1` creates DAX refactoring suggestions for risky live measures.
 - `rules/powerbi-governance-rules.json` contains configurable DAX and Power Query governance rules.
 - `scripts/Test-PowerBIPlugin.ps1` runs smoke tests against the bundled sample model.
+- `scripts/Invoke-PowerBIInnovationReview.ps1` creates guided fix, lineage, test, performance, UX, explainability, governance, Copilot, and release-readiness artifacts.
+- `scripts/New-PowerBIGuidedFixPlan.ps1` converts findings and metric risks into a prioritized guided remediation workflow.
+- `scripts/Compare-PowerBISemanticModel.ps1` compares two text-based model folders for added, removed, or changed measures.
+- `scripts/New-PowerBIMeasureLineageImpact.ps1` scores upstream/downstream measure impact.
+- `scripts/New-PowerBIMeasureTestPlan.ps1` generates DAX validation queries for key measures.
+- `scripts/New-PowerBIPerformanceAdvisor.ps1` flags expensive DAX patterns and remediation advice.
+- `scripts/New-PowerBIReportUXCritic.ps1` reviews PBIP report metadata when available.
+- `scripts/New-PowerBIExecutiveExplainabilityPack.ps1` creates stakeholder-facing metric trust guidance.
+- `scripts/New-PowerBIModelGovernanceScorecard.ps1` creates repeatable governance scoring.
+- `scripts/Test-PowerBICopilotReadiness.ps1` checks semantic readiness for Copilot/Q&A scenarios.
+- `scripts/New-PowerBIReleaseChecklist.ps1` creates a publish-readiness checklist.

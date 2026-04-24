@@ -25,6 +25,7 @@ Generated review outputs are intentionally ignored by Git; rerun the scripts bel
 - A one-command auto-review orchestrator.
 - Live read-only access helpers for the currently open Power BI Desktop model via the local XMLA/ADOMD endpoint.
 - Live DAX query validation, metadata governance checks, fix backlogs, DAX fix drafts, and refactor suggestions.
+- Innovation review package with guided fixes, semantic diff support, measure lineage impact, generated DAX test plans, performance advice, report UX critique, executive explainability, governance scorecards, Copilot readiness, and release checklists.
 - A theme generator for governed report styling.
 - A review prompt template for high-signal Codex report reviews.
 - Marketplace metadata for installing the plugin from this repo.
@@ -35,6 +36,7 @@ Generated review outputs are intentionally ignored by Git; rerun the scripts bel
 .\plugins\powerbi-desktop\scripts\Test-PowerBIEnvironment.ps1
 .\plugins\powerbi-desktop\scripts\Get-PowerBIDesktopLiveConnection.ps1
 .\plugins\powerbi-desktop\scripts\Invoke-PowerBILiveAutoReview.ps1 -OutputDirectory .\powerbi-live-auto-review
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBIInnovationReview.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-innovation-review
 .\plugins\powerbi-desktop\scripts\Get-PowerBIInventory.ps1 -Path .
 .\plugins\powerbi-desktop\scripts\Get-PowerBIPBIPStructure.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-pbip-structure.md
 .\plugins\powerbi-desktop\scripts\Invoke-PowerBIAutoReview.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-auto-review

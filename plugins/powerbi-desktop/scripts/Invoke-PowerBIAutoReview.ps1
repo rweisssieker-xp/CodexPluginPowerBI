@@ -22,6 +22,7 @@ $outputs.ReportBlueprintPath = Join-Path $resolvedOut 'report-blueprint.md'
 $outputs.ModelSummaryPath = Join-Path $resolvedOut 'model-summary.md'
 $outputs.ExecutiveNarrativePath = Join-Path $resolvedOut 'executive-narrative.md'
 $outputs.AIPackDirectory = Join-Path $resolvedOut 'ai-pack'
+$outputs.InnovationReviewDirectory = Join-Path $resolvedOut 'innovation-review'
 
 & (Join-Path $scriptRoot 'Get-PowerBIInventory.ps1') -Path $Path -Json | Set-Content -LiteralPath $outputs.InventoryPath -Encoding UTF8
 & (Join-Path $scriptRoot 'Get-PowerBIPBIPStructure.ps1') -Path $Path -OutputPath $outputs.PbipStructurePath | Out-Null
@@ -34,6 +35,7 @@ $outputs.AIPackDirectory = Join-Path $resolvedOut 'ai-pack'
 & (Join-Path $scriptRoot 'New-PowerBIModelSummary.ps1') -Path $Path -OutputPath $outputs.ModelSummaryPath | Out-Null
 & (Join-Path $scriptRoot 'New-PowerBIExecutiveNarrative.ps1') -Path $Path -OutputPath $outputs.ExecutiveNarrativePath | Out-Null
 & (Join-Path $scriptRoot 'New-PowerBIAIPromptPack.ps1') -Path $Path -OutputDirectory $outputs.AIPackDirectory | Out-Null
+& (Join-Path $scriptRoot 'Invoke-PowerBIInnovationReview.ps1') -Path $Path -OutputDirectory $outputs.InnovationReviewDirectory | Out-Null
 
 $index = New-Object System.Collections.Generic.List[string]
 $index.Add('# Power BI Auto Review')
