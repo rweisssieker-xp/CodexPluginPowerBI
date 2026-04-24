@@ -33,8 +33,9 @@ Use this skill when the user asks Codex to inspect, document, generate, or refac
 15. For report authoring, create PBIP page/visual drafts with `scripts/Add-PowerBIPBIPReportPage.ps1`.
 16. For native external-tool-style capabilities, run `scripts/Invoke-PowerBINativeToolParityReview.ps1`.
 17. For real feature coverage, run `scripts/Invoke-PowerBIRealFeatureReview.ps1`.
-18. For optional external tool validation workflows, run `scripts/Invoke-PowerBIExternalToolsReview.ps1`.
-19. Look for these editable artifacts:
+18. For applying PBIP-safe drafts, use `scripts/Apply-PowerBIPBIPMeasureDraft.ps1`, `scripts/Apply-PowerBIPBIPCalculatedColumnDraft.ps1`, `scripts/Apply-PowerBIPBIPPowerQueryDraft.ps1`, or `scripts/Apply-PowerBIPBIPTmdlDraft.ps1`.
+19. For optional external tool validation workflows, run `scripts/Invoke-PowerBIExternalToolsReview.ps1`.
+20. Look for these editable artifacts:
    - `*.pbip`
    - `*.SemanticModel`, `*.Report`
    - `definition.pbism`, `model.bim`
@@ -160,6 +161,18 @@ Run:
 ```
 
 Use this for the real Power BI feature layer: visual schema checks, render-readiness, live DAX benchmark timing, live DMV/VertiPaq-style analysis, calculation group drafts, relationship drafts, RLS role drafts, Power Query/M drafts, service integration planning, incremental refresh drafts, aggregation drafts, and schema-aware visual planning.
+
+### Apply PBIP-safe drafts
+
+Run:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Apply-PowerBIPBIPMeasureDraft.ps1 -PbipPath .\MyReport -TableName Sales -MeasureName "Average Sales" -Expression "DIVIDE([Total Sales], COUNTROWS('Sales'))" -Apply
+.\plugins\powerbi-desktop\scripts\Apply-PowerBIPBIPPowerQueryDraft.ps1 -PbipPath .\MyReport -QueryName DimDate -SourceKind DateTable -Apply
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBIPBIPApplyPlan.ps1 -PbipPath .\MyReport
+```
+
+These scripts write draft artifacts under PBIP folders, maintain a draft manifest where applicable, and include rollback guidance. Validate in Power BI Desktop before saving back to PBIX.
 
 ### Use optional external Power BI validation tools
 
@@ -357,3 +370,8 @@ When tools are available, prefer:
 - `scripts/New-PowerBIIncrementalRefreshDraft.ps1` creates incremental refresh policy drafts.
 - `scripts/New-PowerBIAggregationDraft.ps1` creates aggregation mapping drafts.
 - `scripts/New-PowerBISchemaAwareVisualPlan.ps1` recommends visuals from metric/schema signals.
+- `scripts/Apply-PowerBIPBIPTmdlDraft.ps1` writes generic TMDL drafts with backup and manifest handling.
+- `scripts/Apply-PowerBIPBIPMeasureDraft.ps1` applies a measure draft into a PBIP draft folder.
+- `scripts/Apply-PowerBIPBIPCalculatedColumnDraft.ps1` applies a calculated column draft into a PBIP draft folder.
+- `scripts/Apply-PowerBIPBIPPowerQueryDraft.ps1` applies a Power Query draft into a PBIP query folder.
+- `scripts/Invoke-PowerBIPBIPApplyPlan.ps1` summarizes applied draft artifacts and validation steps.

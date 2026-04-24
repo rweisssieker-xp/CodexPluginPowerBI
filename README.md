@@ -34,6 +34,7 @@ Start with [docs/getting-started.md](docs/getting-started.md). Privacy details a
 - Model best-practice checks driven by configurable trust rules.
 - Native tool-parity layer for BPA rules, model compare, model documentation, DAX performance heuristics, report layout checks, theme audit, and PBIP source-control planning.
 - Real-feature layer for visual schema checks, render-readiness, live DAX benchmarks, live DMV/VertiPaq-style analysis, calculation groups, relationships, RLS roles, Power Query drafts, service planning, incremental refresh, aggregations, and schema-aware visual planning.
+- PBIP Apply Engine for measure, calculated column, Power Query, generic TMDL, and report-page drafts with manifests and rollback guidance.
 - Optional external-tool awareness for Tabular Editor, DAX Studio, ALM Toolkit, Power BI Helper, Model Documenter, PBI.tips tools, and pbi-tools validation workflows.
 - A theme generator for governed report styling.
 - A review prompt template for high-signal Codex report reviews.
@@ -52,6 +53,8 @@ Start with [docs/getting-started.md](docs/getting-started.md). Privacy details a
 .\plugins\powerbi-desktop\scripts\Invoke-PowerBIInnovationReview.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-innovation-review
 .\plugins\powerbi-desktop\scripts\New-PowerBITrustReleaseGate.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-trust-release-gate.md
 .\plugins\powerbi-desktop\scripts\New-PowerBIMeasureDraft.ps1 -TableName Sales -MeasureName "Average Sales" -Expression "DIVIDE([Total Sales], COUNTROWS('Sales'))"
+.\plugins\powerbi-desktop\scripts\Apply-PowerBIPBIPMeasureDraft.ps1 -PbipPath .\MyReport -TableName Sales -MeasureName "Average Sales" -Expression "DIVIDE([Total Sales], COUNTROWS('Sales'))" -Apply
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBIPBIPApplyPlan.ps1 -PbipPath .\MyReport -OutputPath .\powerbi-apply-plan\apply-plan.json
 .\plugins\powerbi-desktop\scripts\Add-PowerBIPBIPReportPage.ps1 -PbipPath .\MyReport -PageName "Executive Overview" -Measures "Total Sales","Sales YoY %" -Apply
 .\plugins\powerbi-desktop\scripts\New-PowerBIPBIXCompileWorkflow.ps1 -PbipPath .\MyReport -OutputPbix .\MyReport.pbix
 .\plugins\powerbi-desktop\scripts\Test-PowerBIModelBestPractices.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-model-best-practices.md

@@ -1,7 +1,7 @@
 {
   "name": "powerbi-desktop",
-  "version": "1.4.0",
-  "description": "AI-assisted local Power BI Desktop workbench with native BPA, model compare, model documentation, DAX performance heuristics, live DMV analysis, calculation group/relationship/RLS/Power Query drafts, service planning, incremental refresh, aggregations, schema-aware visuals, layout/theme audits, PBIP source-control planning, PBIP page and visual authoring, PBIP-to-PBIX compile workflows, live model review, KPI trust scoring, release gates, DAX validation, guided fixes, dependency graphs, AI prompt packs, and report blueprints.",
+  "version": "1.5.0",
+  "description": "AI-assisted local Power BI Desktop workbench with PBIP Apply Engine, native BPA, model compare, model documentation, DAX performance heuristics, live DMV analysis, calculation group/relationship/RLS/Power Query drafts, service planning, incremental refresh, aggregations, schema-aware visuals, layout/theme audits, PBIP source-control planning, PBIP page and visual authoring, PBIP-to-PBIX compile workflows, live model review, KPI trust scoring, release gates, DAX validation, guided fixes, dependency graphs, AI prompt packs, and report blueprints.",
   "author": {
     "name": "Reiner Weisssieker"
   },
@@ -20,7 +20,7 @@
   "interface": {
     "displayName": "Power BI Desktop",
     "shortDescription": "AI workbench for local Power BI Desktop projects.",
-    "longDescription": "Adds an AI-assisted Power BI Desktop workbench for local projects and open Desktop sessions: native BPA rules, native model compare, native model documentation, DAX performance and VertiPaq-style heuristics, live DMV analysis, report render-readiness checks, calculation group drafts, relationship drafts, RLS role drafts, Power Query/M drafts, service integration planning, incremental refresh drafts, aggregation drafts, schema-aware visual planning, report layout checks, theme audit, PBIP source-control planning, PBIP report page and visual authoring drafts, PBIP-to-PBIX compile workflows, optional external-tool awareness, live XMLA/ADOMD model discovery, PBIX/PBIT/PBIP inventory, PBIP structure analysis, configurable governance rules, dependency graphs, AI prompt packs, business semantic layers, KPI trust scoring, decision-risk analysis, release gates, guided fixes, semantic diffs, measure lineage impact, generated DAX test plans, report narrative and UX critique, executive explainability, governance scorecards, Copilot readiness and optimization, release checklists, semantic metric catalogs, report UX blueprints, and safe PBIP/TMDL refactoring guidance.",
+    "longDescription": "Adds an AI-assisted Power BI Desktop workbench for local projects and open Desktop sessions: PBIP Apply Engine for measures, calculated columns, Power Query, generic TMDL, and report pages; native BPA rules, native model compare, native model documentation, DAX performance and VertiPaq-style heuristics, live DMV analysis, report render-readiness checks, calculation group drafts, relationship drafts, RLS role drafts, Power Query/M drafts, service integration planning, incremental refresh drafts, aggregation drafts, schema-aware visual planning, report layout checks, theme audit, PBIP source-control planning, PBIP report page and visual authoring drafts, PBIP-to-PBIX compile workflows, optional external-tool awareness, live XMLA/ADOMD model discovery, PBIX/PBIT/PBIP inventory, PBIP structure analysis, configurable governance rules, dependency graphs, AI prompt packs, business semantic layers, KPI trust scoring, decision-risk analysis, release gates, guided fixes, semantic diffs, measure lineage impact, generated DAX test plans, report narrative and UX critique, executive explainability, governance scorecards, Copilot readiness and optimization, release checklists, semantic metric catalogs, report UX blueprints, and safe PBIP/TMDL refactoring guidance.",
     "developerName": "Reiner Weisssieker",
     "category": "Productivity",
     "capabilities": [
@@ -85,6 +85,10 @@
       "Aggregations",
       "Service Planning",
       "Schema Aware Visuals"
+      ,
+      "PBIP Apply Engine",
+      "Draft Manifests",
+      "Rollback Guidance"
     ],
     "websiteURL": "https://github.com/rweisssieker-xp/CodexPluginPowerBI",
     "privacyPolicyURL": "https://github.com/rweisssieker-xp/CodexPluginPowerBI/blob/main/docs/privacy.md",
@@ -104,6 +108,7 @@
       "Create a new PBIP report page with visuals and prepare the workflow back to PBIX.",
       "Run native Power BI tool-parity review without relying on external wrappers.",
       "Run real Power BI feature review for live DMVs, authoring drafts, service planning, and schema-aware visuals.",
+      "Apply safe PBIP drafts for measures, columns, Power Query, TMDL, and report pages.",
       "Inspect the currently open Power BI Desktop model."
     ],
     "brandColor": "#F2C811",

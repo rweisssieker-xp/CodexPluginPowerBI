@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.5.0 - 2026-04-24
+
+- Added PBIP Apply Engine for measure, calculated column, Power Query, and generic TMDL drafts.
+- Added draft manifests, backup handling, rollback guidance, and apply-plan summaries.
+
 ## 1.4.0 - 2026-04-24
 
 - Added real-feature expansion scripts for visual schema checks, render-readiness checks, live DAX benchmark timing, live DMV/VertiPaq-style analysis, calculation groups, relationships, RLS roles, Power Query drafts, Power BI Service planning, incremental refresh, aggregations, and schema-aware visual planning.

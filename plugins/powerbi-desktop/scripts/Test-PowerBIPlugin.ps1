@@ -193,6 +193,48 @@ catch {
 }
 
 try {
+    $applyScripts = @(
+        'Apply-PowerBIPBIPMeasureDraft.ps1',
+        'Apply-PowerBIPBIPCalculatedColumnDraft.ps1',
+        'Apply-PowerBIPBIPPowerQueryDraft.ps1',
+        'Apply-PowerBIPBIPTmdlDraft.ps1',
+        'Invoke-PowerBIPBIPApplyPlan.ps1'
+    )
+    $missingApplyScripts = @($applyScripts | Where-Object { -not (Test-Path -LiteralPath (Join-Path $scriptsPath $_)) })
+    Add-TestResult -Name 'PBIP apply engine scripts are present' -Passed ($missingApplyScripts.Count -eq 0) -Detail ("Missing={0}" -f ($missingApplyScripts -join ', '))
+}
+catch {
+    Add-TestResult -Name 'PBIP apply engine scripts are present' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $applyRoot = Join-Path $PluginRoot 'tmp/pbip-apply-engine-test'
+    $measureApply = & (Join-Path $scriptsPath 'Apply-PowerBIPBIPMeasureDraft.ps1') -PbipPath $applyRoot -TableName 'Sales' -MeasureName 'Average Sales' -Expression "DIVIDE([Total Sales], COUNTROWS('Sales'))" -Apply -Json | ConvertFrom-Json
+    Add-TestResult -Name 'PBIP apply engine writes measure draft' -Passed ($measureApply.applied -eq $true -and (Test-Path -LiteralPath $measureApply.targetPath)) -Detail $measureApply.targetPath
+}
+catch {
+    Add-TestResult -Name 'PBIP apply engine writes measure draft' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $applyRoot = Join-Path $PluginRoot 'tmp/pbip-apply-engine-test'
+    $queryApply = & (Join-Path $scriptsPath 'Apply-PowerBIPBIPPowerQueryDraft.ps1') -PbipPath $applyRoot -QueryName 'DimDate' -SourceKind 'DateTable' -Apply -Json | ConvertFrom-Json
+    Add-TestResult -Name 'PBIP apply engine writes Power Query draft' -Passed ($queryApply.applied -eq $true -and (Test-Path -LiteralPath $queryApply.targetPath)) -Detail $queryApply.targetPath
+}
+catch {
+    Add-TestResult -Name 'PBIP apply engine writes Power Query draft' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $applyRoot = Join-Path $PluginRoot 'tmp/pbip-apply-engine-test'
+    $plan = & (Join-Path $scriptsPath 'Invoke-PowerBIPBIPApplyPlan.ps1') -PbipPath $applyRoot -Json | ConvertFrom-Json
+    Add-TestResult -Name 'PBIP apply plan summarizes applied drafts' -Passed ($plan.artifactCount -ge 2 -and @($plan.artifacts).Count -ge 2) -Detail "Artifacts=$($plan.artifactCount)"
+}
+catch {
+    Add-TestResult -Name 'PBIP apply plan summarizes applied drafts' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
     $structure = & (Join-Path $scriptsPath 'Get-PowerBIPBIPStructure.ps1') -Path $samplePath -Json | ConvertFrom-Json
     Add-TestResult -Name 'PBIP structure reports readiness' -Passed ($structure.score -ge 20) -Detail "Readiness=$($structure.readiness), Score=$($structure.score)"
 }
