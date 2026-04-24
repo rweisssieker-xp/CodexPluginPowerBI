@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.4.0 - 2026-04-24
+
+- Added real-feature expansion scripts for visual schema checks, render-readiness checks, live DAX benchmark timing, live DMV/VertiPaq-style analysis, calculation groups, relationships, RLS roles, Power Query drafts, Power BI Service planning, incremental refresh, aggregations, and schema-aware visual planning.
+- Added `Invoke-PowerBIRealFeatureReview.ps1` and integrated it into auto-review and innovation-review outputs.
+
 ## 1.3.0 - 2026-04-24
 
 - Added native tool-parity capabilities for common Power BI external-tool workflows.

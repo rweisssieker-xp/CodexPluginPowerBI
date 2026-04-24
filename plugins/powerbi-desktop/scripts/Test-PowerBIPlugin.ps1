@@ -129,6 +129,70 @@ catch {
 }
 
 try {
+    $realFeatureScripts = @(
+        'Test-PowerBIVisualSchema.ps1',
+        'Test-PowerBIReportRenderReadiness.ps1',
+        'Invoke-PowerBILiveDaxBenchmark.ps1',
+        'Get-PowerBILiveVertiPaqAnalyzer.ps1',
+        'New-PowerBICalculationGroupDraft.ps1',
+        'New-PowerBIRelationshipDraft.ps1',
+        'New-PowerBIRlsRoleDraft.ps1',
+        'New-PowerBIPowerQueryDraft.ps1',
+        'New-PowerBIServiceIntegrationPlan.ps1',
+        'New-PowerBIIncrementalRefreshDraft.ps1',
+        'New-PowerBIAggregationDraft.ps1',
+        'New-PowerBISchemaAwareVisualPlan.ps1',
+        'Invoke-PowerBIRealFeatureReview.ps1'
+    )
+    $missingRealFeatureScripts = @($realFeatureScripts | Where-Object { -not (Test-Path -LiteralPath (Join-Path $scriptsPath $_)) })
+    Add-TestResult -Name 'Real feature scripts are present' -Passed ($missingRealFeatureScripts.Count -eq 0) -Detail ("Missing={0}" -f ($missingRealFeatureScripts -join ', '))
+}
+catch {
+    Add-TestResult -Name 'Real feature scripts are present' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $calcGroup = & (Join-Path $scriptsPath 'New-PowerBICalculationGroupDraft.ps1') -GroupName 'Time Intelligence' -BaseMeasure 'Total Sales' -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Calculation group draft creates items' -Passed ($calcGroup.objectType -eq 'CalculationGroup' -and @($calcGroup.items).Count -ge 3) -Detail "Items=$(@($calcGroup.items).Count)"
+}
+catch {
+    Add-TestResult -Name 'Calculation group draft creates items' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $relationship = & (Join-Path $scriptsPath 'New-PowerBIRelationshipDraft.ps1') -FromTable 'Sales' -FromColumn 'DateKey' -ToTable 'Date' -ToColumn 'DateKey' -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Relationship draft creates TMDL' -Passed ($relationship.objectType -eq 'Relationship' -and $relationship.tmdl -match 'relationship') -Detail $relationship.relationshipName
+}
+catch {
+    Add-TestResult -Name 'Relationship draft creates TMDL' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $mDraft = & (Join-Path $scriptsPath 'New-PowerBIPowerQueryDraft.ps1') -QueryName 'DimDate' -SourceKind 'DateTable' -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Power Query draft creates M script' -Passed ($mDraft.objectType -eq 'PowerQuery' -and $mDraft.mCode -match 'let') -Detail $mDraft.queryName
+}
+catch {
+    Add-TestResult -Name 'Power Query draft creates M script' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $schemaVisual = & (Join-Path $scriptsPath 'New-PowerBISchemaAwareVisualPlan.ps1') -Path $samplePath -Measure 'Total Sales' -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Schema-aware visual planner recommends visual' -Passed ($schemaVisual.recommendation.visualType -and $schemaVisual.measure -eq 'Total Sales') -Detail $schemaVisual.recommendation.visualType
+}
+catch {
+    Add-TestResult -Name 'Schema-aware visual planner recommends visual' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $realReview = & (Join-Path $scriptsPath 'Invoke-PowerBIRealFeatureReview.ps1') -Path $samplePath -OutputDirectory (Join-Path $PluginRoot 'tmp/real-feature-review-test')
+    $passed = (Test-Path -LiteralPath $realReview.Index) -and (Test-Path -LiteralPath (Join-Path $realReview.OutputDirectory 'visual-schema-check.json')) -and (Test-Path -LiteralPath (Join-Path $realReview.OutputDirectory 'service-integration-plan.md'))
+    Add-TestResult -Name 'Real feature review creates package' -Passed $passed -Detail $realReview.OutputDirectory
+}
+catch {
+    Add-TestResult -Name 'Real feature review creates package' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
     $structure = & (Join-Path $scriptsPath 'Get-PowerBIPBIPStructure.ps1') -Path $samplePath -Json | ConvertFrom-Json
     Add-TestResult -Name 'PBIP structure reports readiness' -Passed ($structure.score -ge 20) -Detail "Readiness=$($structure.readiness), Score=$($structure.score)"
 }

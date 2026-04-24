@@ -32,8 +32,9 @@ Use this skill when the user asks Codex to inspect, document, generate, or refac
 14. For safe authoring, generate drafts with `scripts/New-PowerBIMeasureDraft.ps1` or `scripts/New-PowerBICalculatedColumnDraft.ps1`.
 15. For report authoring, create PBIP page/visual drafts with `scripts/Add-PowerBIPBIPReportPage.ps1`.
 16. For native external-tool-style capabilities, run `scripts/Invoke-PowerBINativeToolParityReview.ps1`.
-17. For optional external tool validation workflows, run `scripts/Invoke-PowerBIExternalToolsReview.ps1`.
-18. Look for these editable artifacts:
+17. For real feature coverage, run `scripts/Invoke-PowerBIRealFeatureReview.ps1`.
+18. For optional external tool validation workflows, run `scripts/Invoke-PowerBIExternalToolsReview.ps1`.
+19. Look for these editable artifacts:
    - `*.pbip`
    - `*.SemanticModel`, `*.Report`
    - `definition.pbism`, `model.bim`
@@ -149,6 +150,16 @@ Run:
 ```
 
 Use this before relying on external tools. It implements native BPA, model compare/documentation, DAX performance heuristics, report layout checks, theme audit, and PBIP source-control planning from local text/live metadata where available.
+
+### Run real feature coverage
+
+Run:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBIRealFeatureReview.ps1 -Path . -OutputDirectory .\powerbi-real-feature-review
+```
+
+Use this for the real Power BI feature layer: visual schema checks, render-readiness, live DAX benchmark timing, live DMV/VertiPaq-style analysis, calculation group drafts, relationship drafts, RLS role drafts, Power Query/M drafts, service integration planning, incremental refresh drafts, aggregation drafts, and schema-aware visual planning.
 
 ### Use optional external Power BI validation tools
 
@@ -333,3 +344,16 @@ When tools are available, prefer:
 - `scripts/Test-PowerBIReportLayoutBestPractices.ps1` checks PBIP report JSON layout signals.
 - `scripts/New-PowerBIThemeAudit.ps1` checks theme completeness.
 - `scripts/New-PowerBIPBIPSourceControlPlan.ps1` creates source-control guidance for PBIP projects.
+- `scripts/Invoke-PowerBIRealFeatureReview.ps1` creates the real-feature review package.
+- `scripts/Test-PowerBIVisualSchema.ps1` checks PBIP report JSON validity where available.
+- `scripts/Test-PowerBIReportRenderReadiness.ps1` creates render-readiness checks.
+- `scripts/Invoke-PowerBILiveDaxBenchmark.ps1` measures live XMLA DAX query elapsed time.
+- `scripts/Get-PowerBILiveVertiPaqAnalyzer.ps1` reads live DMVs for model-size/performance follow-up.
+- `scripts/New-PowerBICalculationGroupDraft.ps1` creates calculation group and calculation item drafts.
+- `scripts/New-PowerBIRelationshipDraft.ps1` creates relationship drafts.
+- `scripts/New-PowerBIRlsRoleDraft.ps1` creates RLS role drafts.
+- `scripts/New-PowerBIPowerQueryDraft.ps1` creates Power Query/M drafts with folding and gateway guidance.
+- `scripts/New-PowerBIServiceIntegrationPlan.ps1` creates service workspace/deployment/refresh planning.
+- `scripts/New-PowerBIIncrementalRefreshDraft.ps1` creates incremental refresh policy drafts.
+- `scripts/New-PowerBIAggregationDraft.ps1` creates aggregation mapping drafts.
+- `scripts/New-PowerBISchemaAwareVisualPlan.ps1` recommends visuals from metric/schema signals.

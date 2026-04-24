@@ -33,6 +33,7 @@ Start with [docs/getting-started.md](docs/getting-started.md). Privacy details a
 - Safe PBIP report page and visual drafts, with optional PBIP report-page file generation and PBIP-to-PBIX compile workflow guidance.
 - Model best-practice checks driven by configurable trust rules.
 - Native tool-parity layer for BPA rules, model compare, model documentation, DAX performance heuristics, report layout checks, theme audit, and PBIP source-control planning.
+- Real-feature layer for visual schema checks, render-readiness, live DAX benchmarks, live DMV/VertiPaq-style analysis, calculation groups, relationships, RLS roles, Power Query drafts, service planning, incremental refresh, aggregations, and schema-aware visual planning.
 - Optional external-tool awareness for Tabular Editor, DAX Studio, ALM Toolkit, Power BI Helper, Model Documenter, PBI.tips tools, and pbi-tools validation workflows.
 - A theme generator for governed report styling.
 - A review prompt template for high-signal Codex report reviews.
@@ -44,6 +45,7 @@ Start with [docs/getting-started.md](docs/getting-started.md). Privacy details a
 .\plugins\powerbi-desktop\scripts\Test-PowerBIEnvironment.ps1
 .\plugins\powerbi-desktop\scripts\Get-PowerBIExternalToolInventory.ps1
 .\plugins\powerbi-desktop\scripts\Invoke-PowerBINativeToolParityReview.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-native-tool-parity
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBIRealFeatureReview.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-real-feature-review
 .\plugins\powerbi-desktop\scripts\Invoke-PowerBIExternalToolsReview.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-external-tools-review
 .\plugins\powerbi-desktop\scripts\Get-PowerBIDesktopLiveConnection.ps1
 .\plugins\powerbi-desktop\scripts\Invoke-PowerBILiveAutoReview.ps1 -OutputDirectory .\powerbi-live-auto-review
