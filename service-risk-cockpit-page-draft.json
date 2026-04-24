@@ -1,0 +1,315 @@
+{
+  "schema": "codex.powerbi.reportPageDraft.v1",
+  "pageId": "page_4fd18937664c",
+  "pageName": "Service Risk Cockpit",
+  "displayName": "Service Risk Cockpit",
+  "pageSize": {
+    "width": 1280,
+    "height": 720
+  },
+  "visuals": [
+    {
+      "schema": "codex.powerbi.visualDraft.v1",
+      "visualId": "visual_ae6dcf2db88e",
+      "visualType": "KpiCard",
+      "title": "_SRA_Service Health Score",
+      "measure": "_SRA_Service Health Score",
+      "category": "",
+      "layout": {
+        "x": 32,
+        "y": 32,
+        "width": 598,
+        "height": 205
+      },
+      "pbipDraft": {
+        "name": "visual_ae6dcf2db88e",
+        "displayName": "_SRA_Service Health Score",
+        "visualType": "KpiCard",
+        "projections": {
+          "Values": [
+            "_SRA_Service Health Score"
+          ],
+          "Category": []
+        },
+        "position": {
+          "x": 32,
+          "y": 32,
+          "width": 598,
+          "height": 205
+        }
+      },
+      "safety": "PBIP report JSON draft. Validate in Power BI Desktop before publishing."
+    },
+    {
+      "schema": "codex.powerbi.visualDraft.v1",
+      "visualId": "visual_82dcda92ba76",
+      "visualType": "BarChart",
+      "title": "_SRA_Action Queue Size",
+      "measure": "_SRA_Action Queue Size",
+      "category": "",
+      "layout": {
+        "x": 650,
+        "y": 32,
+        "width": 598,
+        "height": 205
+      },
+      "pbipDraft": {
+        "name": "visual_82dcda92ba76",
+        "displayName": "_SRA_Action Queue Size",
+        "visualType": "BarChart",
+        "projections": {
+          "Values": [
+            "_SRA_Action Queue Size"
+          ],
+          "Category": []
+        },
+        "position": {
+          "x": 650,
+          "y": 32,
+          "width": 598,
+          "height": 205
+        }
+      },
+      "safety": "PBIP report JSON draft. Validate in Power BI Desktop before publishing."
+    },
+    {
+      "schema": "codex.powerbi.visualDraft.v1",
+      "visualId": "visual_90afa69aa627",
+      "visualType": "BarChart",
+      "title": "_SRA_Open Critical Tickets",
+      "measure": "_SRA_Open Critical Tickets",
+      "category": "",
+      "layout": {
+        "x": 32,
+        "y": 257,
+        "width": 598,
+        "height": 205
+      },
+      "pbipDraft": {
+        "name": "visual_90afa69aa627",
+        "displayName": "_SRA_Open Critical Tickets",
+        "visualType": "BarChart",
+        "projections": {
+          "Values": [
+            "_SRA_Open Critical Tickets"
+          ],
+          "Category": []
+        },
+        "position": {
+          "x": 32,
+          "y": 257,
+          "width": 598,
+          "height": 205
+        }
+      },
+      "safety": "PBIP report JSON draft. Validate in Power BI Desktop before publishing."
+    },
+    {
+      "schema": "codex.powerbi.visualDraft.v1",
+      "visualId": "visual_44184808608a",
+      "visualType": "BarChart",
+      "title": "_SRA_SLA Exposure Share",
+      "measure": "_SRA_SLA Exposure Share",
+      "category": "",
+      "layout": {
+        "x": 650,
+        "y": 257,
+        "width": 598,
+        "height": 205
+      },
+      "pbipDraft": {
+        "name": "visual_44184808608a",
+        "displayName": "_SRA_SLA Exposure Share",
+        "visualType": "BarChart",
+        "projections": {
+          "Values": [
+            "_SRA_SLA Exposure Share"
+          ],
+          "Category": []
+        },
+        "position": {
+          "x": 650,
+          "y": 257,
+          "width": 598,
+          "height": 205
+        }
+      },
+      "safety": "PBIP report JSON draft. Validate in Power BI Desktop before publishing."
+    },
+    {
+      "schema": "codex.powerbi.visualDraft.v1",
+      "visualId": "visual_94c9978afc98",
+      "visualType": "BarChart",
+      "title": "_SRA_Top Risk Owner",
+      "measure": "_SRA_Top Risk Owner",
+      "category": "",
+      "layout": {
+        "x": 32,
+        "y": 482,
+        "width": 598,
+        "height": 205
+      },
+      "pbipDraft": {
+        "name": "visual_94c9978afc98",
+        "displayName": "_SRA_Top Risk Owner",
+        "visualType": "BarChart",
+        "projections": {
+          "Values": [
+            "_SRA_Top Risk Owner"
+          ],
+          "Category": []
+        },
+        "position": {
+          "x": 32,
+          "y": 482,
+          "width": 598,
+          "height": 205
+        }
+      },
+      "safety": "PBIP report JSON draft. Validate in Power BI Desktop before publishing."
+    },
+    {
+      "schema": "codex.powerbi.visualDraft.v1",
+      "visualId": "visual_8bade711ee0a",
+      "visualType": "BarChart",
+      "title": "_SRA_Top Risk Customer",
+      "measure": "_SRA_Top Risk Customer",
+      "category": "",
+      "layout": {
+        "x": 650,
+        "y": 482,
+        "width": 598,
+        "height": 205
+      },
+      "pbipDraft": {
+        "name": "visual_8bade711ee0a",
+        "displayName": "_SRA_Top Risk Customer",
+        "visualType": "BarChart",
+        "projections": {
+          "Values": [
+            "_SRA_Top Risk Customer"
+          ],
+          "Category": []
+        },
+        "position": {
+          "x": 650,
+          "y": 482,
+          "width": 598,
+          "height": 205
+        }
+      },
+      "safety": "PBIP report JSON draft. Validate in Power BI Desktop before publishing."
+    }
+  ],
+  "pbipDraft": {
+    "name": "page_4fd18937664c",
+    "displayName": "Service Risk Cockpit",
+    "width": 1280,
+    "height": 720,
+    "visuals": [
+      {
+        "name": "visual_ae6dcf2db88e",
+        "displayName": "_SRA_Service Health Score",
+        "visualType": "KpiCard",
+        "projections": {
+          "Values": [
+            "_SRA_Service Health Score"
+          ],
+          "Category": []
+        },
+        "position": {
+          "x": 32,
+          "y": 32,
+          "width": 598,
+          "height": 205
+        }
+      },
+      {
+        "name": "visual_82dcda92ba76",
+        "displayName": "_SRA_Action Queue Size",
+        "visualType": "BarChart",
+        "projections": {
+          "Values": [
+            "_SRA_Action Queue Size"
+          ],
+          "Category": []
+        },
+        "position": {
+          "x": 650,
+          "y": 32,
+          "width": 598,
+          "height": 205
+        }
+      },
+      {
+        "name": "visual_90afa69aa627",
+        "displayName": "_SRA_Open Critical Tickets",
+        "visualType": "BarChart",
+        "projections": {
+          "Values": [
+            "_SRA_Open Critical Tickets"
+          ],
+          "Category": []
+        },
+        "position": {
+          "x": 32,
+          "y": 257,
+          "width": 598,
+          "height": 205
+        }
+      },
+      {
+        "name": "visual_44184808608a",
+        "displayName": "_SRA_SLA Exposure Share",
+        "visualType": "BarChart",
+        "projections": {
+          "Values": [
+            "_SRA_SLA Exposure Share"
+          ],
+          "Category": []
+        },
+        "position": {
+          "x": 650,
+          "y": 257,
+          "width": 598,
+          "height": 205
+        }
+      },
+      {
+        "name": "visual_94c9978afc98",
+        "displayName": "_SRA_Top Risk Owner",
+        "visualType": "BarChart",
+        "projections": {
+          "Values": [
+            "_SRA_Top Risk Owner"
+          ],
+          "Category": []
+        },
+        "position": {
+          "x": 32,
+          "y": 482,
+          "width": 598,
+          "height": 205
+        }
+      },
+      {
+        "name": "visual_8bade711ee0a",
+        "displayName": "_SRA_Top Risk Customer",
+        "visualType": "BarChart",
+        "projections": {
+          "Values": [
+            "_SRA_Top Risk Customer"
+          ],
+          "Category": []
+        },
+        "position": {
+          "x": 650,
+          "y": 482,
+          "width": 598,
+          "height": 205
+        }
+      }
+    ]
+  },
+  "safety": "Draft only. Apply to PBIP with Add-PowerBIPBIPReportPage.ps1 -Apply, then validate in Power BI Desktop."
+}

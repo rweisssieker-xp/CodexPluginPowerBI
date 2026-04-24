@@ -1,0 +1,14 @@
+{
+  "mapping": {
+    "case_id": ["Fallnummer", "Fall-ID", "case_id"],
+    "patient_id": ["PatNr", "Patientennummer", "patient_id"],
+    "insurance": ["Versicherung", "Kostenträger", "insurance"],
+    "date": ["Leistungsdatum", "Datum", "date"],
+    "diagnoses": ["ICD", "Diagnosen", "Diagnose"],
+    "services": ["GOÄ", "GOAE", "GOP", "Ziffern", "Leistungen"],
+    "provider": ["Behandler", "Arzt"],
+    "eye": ["Auge", "Seite"],
+    "indication": ["Indikation", "Anlass", "Begründung"],
+    "notes": ["Befund", "Notiz", "Text"]
+  }
+}

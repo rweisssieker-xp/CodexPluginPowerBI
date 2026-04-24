@@ -1,0 +1,4 @@
+Fallnummer;PatNr;Versicherung;Leistungsdatum;ICD;GOAE;Behandler;Auge;Indikation;Befund
+F-1001;P-7788;PKV;2026-04-22;H40.1;1256|analog OCT;Dr. Mustermann;beide;Glaukomverlaufskontrolle;Augendruckkontrolle und Papillenbeurteilung dokumentiert
+F-1002;P-7799;GKV;2026-04-23;H25.1;GOP Katarakt präop;Dr. Musterfrau;rechts;Katarakt OP-Vorbereitung;Visusminderung und Linsentrübung dokumentiert
+F-1003;P-7800;BEMA;2026-04-23;H35.3;;Dr. Mustermann;links;;OCT geplant
