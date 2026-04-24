@@ -31,8 +31,9 @@ Use this skill when the user asks Codex to inspect, document, generate, or refac
 13. For advanced remediation, run `scripts/Invoke-PowerBIInnovationReview.ps1`.
 14. For safe authoring, generate drafts with `scripts/New-PowerBIMeasureDraft.ps1` or `scripts/New-PowerBICalculatedColumnDraft.ps1`.
 15. For report authoring, create PBIP page/visual drafts with `scripts/Add-PowerBIPBIPReportPage.ps1`.
-16. For external tool workflows, run `scripts/Invoke-PowerBIExternalToolsReview.ps1`.
-17. Look for these editable artifacts:
+16. For native external-tool-style capabilities, run `scripts/Invoke-PowerBINativeToolParityReview.ps1`.
+17. For optional external tool validation workflows, run `scripts/Invoke-PowerBIExternalToolsReview.ps1`.
+18. Look for these editable artifacts:
    - `*.pbip`
    - `*.SemanticModel`, `*.Report`
    - `definition.pbism`, `model.bim`
@@ -139,7 +140,17 @@ Run:
 
 Use this to evaluate metric ownership, business definitions, PBIP readiness, deterministic DAX, and performance patterns. Trust and best-practice thresholds are configurable in `rules/powerbi-trust-rules.json`.
 
-### Integrate external Power BI tools
+### Run native tool-parity capabilities
+
+Run:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBINativeToolParityReview.ps1 -Path . -OutputDirectory .\powerbi-native-tool-parity
+```
+
+Use this before relying on external tools. It implements native BPA, model compare/documentation, DAX performance heuristics, report layout checks, theme audit, and PBIP source-control planning from local text/live metadata where available.
+
+### Use optional external Power BI validation tools
 
 Run:
 
@@ -148,7 +159,7 @@ Run:
 .\plugins\powerbi-desktop\scripts\Invoke-PowerBIExternalToolsReview.ps1 -Path . -OutputDirectory .\powerbi-external-tools-review
 ```
 
-Use this to detect Tabular Editor, DAX Studio, ALM Toolkit, Power BI Helper, Model Documenter, PBI.tips tools, and pbi-tools. The plugin generates safe workflows, command drafts, and review checklists instead of launching destructive compare/deploy actions automatically.
+Use this to detect Tabular Editor, DAX Studio, ALM Toolkit, Power BI Helper, Model Documenter, PBI.tips tools, and pbi-tools. The plugin's core capabilities are native; external tools are optional validation paths for engine-specific traces, BPA rule packs, or deployment compare scenarios.
 
 ### Inspect the open Desktop model
 
@@ -314,3 +325,11 @@ When tools are available, prefer:
 - `scripts/Get-PowerBIExternalToolInventory.ps1` detects installed Power BI external tools from PATH and known Program Files locations.
 - `scripts/New-PowerBIExternalToolCapabilityMatrix.ps1` maps Codex and external tool capabilities side by side.
 - `scripts/Invoke-PowerBIExternalToolsReview.ps1` generates workflows for Tabular Editor, DAX Studio, ALM Toolkit, Power BI Helper, Model Documenter, PBI.tips tools, and pbi-tools.
+- `scripts/Invoke-PowerBINativeToolParityReview.ps1` runs native BPA, documentation, performance, layout, theme, and source-control artifacts without external wrappers.
+- `scripts/Invoke-PowerBINativeBpa.ps1` applies built-in DAX, Power Query, and metric-governance rules.
+- `scripts/Compare-PowerBINativeModel.ps1` compares semantic and file-level model changes.
+- `scripts/New-PowerBINativeModelDocumentation.ps1` creates local model documentation similar to documentation tools.
+- `scripts/New-PowerBINativePerformanceProfile.ps1` estimates DAX performance risk and VertiPaq-style follow-up needs.
+- `scripts/Test-PowerBIReportLayoutBestPractices.ps1` checks PBIP report JSON layout signals.
+- `scripts/New-PowerBIThemeAudit.ps1` checks theme completeness.
+- `scripts/New-PowerBIPBIPSourceControlPlan.ps1` creates source-control guidance for PBIP projects.

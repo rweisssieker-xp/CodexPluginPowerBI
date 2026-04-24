@@ -23,6 +23,7 @@ $outputs = [ordered]@{
     TrustReleaseGate = Join-Path $resolvedOut 'trust-release-gate.md'
     ModelBestPractices = Join-Path $resolvedOut 'model-best-practices.md'
     ExternalToolsReview = Join-Path $resolvedOut 'external-tools'
+    NativeToolParityReview = Join-Path $resolvedOut 'native-tool-parity'
 }
 & (Join-Path $scriptRoot 'New-PowerBIGuidedFixPlan.ps1') -Path $Path -OutputPath $outputs.GuidedFixPlan | Out-Null
 & (Join-Path $scriptRoot 'New-PowerBIMeasureLineageImpact.ps1') -Path $Path -OutputPath $outputs.MeasureLineageImpact | Out-Null
@@ -43,6 +44,7 @@ $outputs = [ordered]@{
 & (Join-Path $scriptRoot 'New-PowerBITrustReleaseGate.ps1') -Path $Path -OutputPath $outputs.TrustReleaseGate | Out-Null
 & (Join-Path $scriptRoot 'Test-PowerBIModelBestPractices.ps1') -Path $Path -OutputPath $outputs.ModelBestPractices | Out-Null
 & (Join-Path $scriptRoot 'Invoke-PowerBIExternalToolsReview.ps1') -Path $Path -OutputDirectory $outputs.ExternalToolsReview | Out-Null
+& (Join-Path $scriptRoot 'Invoke-PowerBINativeToolParityReview.ps1') -Path $Path -OutputDirectory $outputs.NativeToolParityReview | Out-Null
 $index = @('# Power BI Innovation Review', '', ('Source: `{0}`' -f (Resolve-Path -LiteralPath $Path).Path), ('Generated: {0}' -f (Get-Date).ToString('s')), '', '## Artifacts') + @($outputs.GetEnumerator() | ForEach-Object { '- {0}: `{1}`' -f $_.Key, $_.Value })
 $indexPath = Join-Path $resolvedOut 'README.md'
 Set-Content -LiteralPath $indexPath -Value (($index -join [Environment]::NewLine) + [Environment]::NewLine) -Encoding UTF8

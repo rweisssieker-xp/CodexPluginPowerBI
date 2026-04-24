@@ -87,6 +87,48 @@ catch {
 }
 
 try {
+    $nativeScripts = @(
+        'Invoke-PowerBINativeBpa.ps1',
+        'Compare-PowerBINativeModel.ps1',
+        'New-PowerBINativeModelDocumentation.ps1',
+        'New-PowerBINativePerformanceProfile.ps1',
+        'Test-PowerBIReportLayoutBestPractices.ps1',
+        'New-PowerBIThemeAudit.ps1',
+        'New-PowerBIPBIPSourceControlPlan.ps1',
+        'Invoke-PowerBINativeToolParityReview.ps1'
+    )
+    $missingNativeScripts = @($nativeScripts | Where-Object { -not (Test-Path -LiteralPath (Join-Path $scriptsPath $_)) })
+    Add-TestResult -Name 'Native tool capability scripts are present' -Passed ($missingNativeScripts.Count -eq 0) -Detail ("Missing={0}" -f ($missingNativeScripts -join ', '))
+}
+catch {
+    Add-TestResult -Name 'Native tool capability scripts are present' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $bpa = & (Join-Path $scriptsPath 'Invoke-PowerBINativeBpa.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Native BPA returns rule findings' -Passed ($bpa.ruleCount -ge 5 -and $bpa.findingCount -ge 1) -Detail "Rules=$($bpa.ruleCount), Findings=$($bpa.findingCount)"
+}
+catch {
+    Add-TestResult -Name 'Native BPA returns rule findings' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $doc = & (Join-Path $scriptsPath 'New-PowerBINativeModelDocumentation.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Native model documentation summarizes model' -Passed ($doc.metricCount -eq 5 -and $doc.sectionCount -ge 4) -Detail "Sections=$($doc.sectionCount)"
+}
+catch {
+    Add-TestResult -Name 'Native model documentation summarizes model' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $perf = & (Join-Path $scriptsPath 'New-PowerBINativePerformanceProfile.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Native performance profile estimates risk' -Passed ($perf.profileCount -eq 5 -and $perf.totalEstimatedRisk -ge 0) -Detail "Profiles=$($perf.profileCount)"
+}
+catch {
+    Add-TestResult -Name 'Native performance profile estimates risk' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
     $structure = & (Join-Path $scriptsPath 'Get-PowerBIPBIPStructure.ps1') -Path $samplePath -Json | ConvertFrom-Json
     Add-TestResult -Name 'PBIP structure reports readiness' -Passed ($structure.score -ge 20) -Detail "Readiness=$($structure.readiness), Score=$($structure.score)"
 }

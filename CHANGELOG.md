@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0 - 2026-04-24
+
+- Added native tool-parity capabilities for common Power BI external-tool workflows.
+- Added native BPA, model compare, model documentation, performance/VertiPaq-style heuristics, report layout checks, theme audit, and PBIP source-control planning.
+- Integrated native parity artifacts into auto-review and innovation-review outputs.
+
 ## 1.2.0 - 2026-04-24
 
 - Added PBIP report authoring drafts for pages, visuals, and layout plans.

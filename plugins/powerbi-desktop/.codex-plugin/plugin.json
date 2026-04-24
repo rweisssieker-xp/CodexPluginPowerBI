@@ -1,7 +1,7 @@
 {
   "name": "powerbi-desktop",
-  "version": "1.2.0",
-  "description": "AI-assisted local Power BI Desktop workbench for live model review, PBIP page and visual authoring, PBIP-to-PBIX compile workflows, external-tool workflows, KPI trust scoring, decision-risk analysis, release gates, business semantic layers, DAX validation, guided fixes, semantic diffs, measure lineage impact, generated DAX tests, performance advice, UX critique, Copilot optimization, discovery, documentation, dependency graphs, AI prompt packs, PBIP/TMDL workflows, refactoring plans, and report blueprints.",
+  "version": "1.3.0",
+  "description": "AI-assisted local Power BI Desktop workbench with native BPA, model compare, model documentation, DAX performance heuristics, layout/theme audits, PBIP source-control planning, PBIP page and visual authoring, PBIP-to-PBIX compile workflows, live model review, KPI trust scoring, decision-risk analysis, release gates, DAX validation, guided fixes, dependency graphs, AI prompt packs, and report blueprints.",
   "author": {
     "name": "Reiner Weisssieker"
   },
@@ -20,7 +20,7 @@
   "interface": {
     "displayName": "Power BI Desktop",
     "shortDescription": "AI workbench for local Power BI Desktop projects.",
-    "longDescription": "Adds an AI-assisted Power BI Desktop workbench for local projects and open Desktop sessions: live XMLA/ADOMD model discovery, PBIP report page and visual authoring drafts, PBIP-to-PBIX compile workflows, external tool inventory and workflows for Tabular Editor, DAX Studio, ALM Toolkit, Power BI Helper, Model Documenter, PBI.tips and pbi-tools, environment discovery, PBIX/PBIT/PBIP inventory, PBIP structure analysis, text-model documentation, configurable governance rules, dependency graphs, AI prompt packs, business semantic layers, KPI trust scoring, decision-risk analysis, release gates, flight-recorder history, before/after measure behavior comparison, guided fixes, semantic diffs, measure lineage impact, generated DAX test plans, performance advice, report narrative and UX critique, executive explainability, governance scorecards, Copilot readiness and optimization, release checklists, semantic metric catalogs, report UX blueprints, and safe PBIP/TMDL refactoring guidance.",
+    "longDescription": "Adds an AI-assisted Power BI Desktop workbench for local projects and open Desktop sessions: native BPA rules, native model compare, native model documentation, DAX performance and VertiPaq-style heuristics, report layout checks, theme audit, PBIP source-control planning, PBIP report page and visual authoring drafts, PBIP-to-PBIX compile workflows, optional external-tool awareness, live XMLA/ADOMD model discovery, PBIX/PBIT/PBIP inventory, PBIP structure analysis, configurable governance rules, dependency graphs, AI prompt packs, business semantic layers, KPI trust scoring, decision-risk analysis, release gates, before/after measure behavior comparison, guided fixes, semantic diffs, measure lineage impact, generated DAX test plans, report narrative and UX critique, executive explainability, governance scorecards, Copilot readiness and optimization, release checklists, semantic metric catalogs, report UX blueprints, and safe PBIP/TMDL refactoring guidance.",
     "developerName": "Reiner Weisssieker",
     "category": "Productivity",
     "capabilities": [
@@ -69,6 +69,13 @@
       "PBIP Page Authoring",
       "Visual Drafts",
       "PBIP to PBIX Compile"
+      ,
+      "Native BPA",
+      "Native Model Compare",
+      "Native Model Documentation",
+      "Native Performance Profile",
+      "Native Layout Audit",
+      "Native Theme Audit"
     ],
     "websiteURL": "https://github.com/rweisssieker-xp/CodexPluginPowerBI",
     "privacyPolicyURL": "https://github.com/rweisssieker-xp/CodexPluginPowerBI/blob/main/docs/privacy.md",
@@ -86,6 +93,7 @@
       "Decide whether this report can be trusted and released using the Power BI Trust Release Gate.",
       "Create an external tools review for Tabular Editor, DAX Studio, ALM Toolkit, Power BI Helper, and pbi-tools.",
       "Create a new PBIP report page with visuals and prepare the workflow back to PBIX.",
+      "Run native Power BI tool-parity review without relying on external wrappers.",
       "Inspect the currently open Power BI Desktop model."
     ],
     "brandColor": "#F2C811",

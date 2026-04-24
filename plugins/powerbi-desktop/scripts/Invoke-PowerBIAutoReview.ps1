@@ -24,6 +24,7 @@ $outputs.ExecutiveNarrativePath = Join-Path $resolvedOut 'executive-narrative.md
 $outputs.AIPackDirectory = Join-Path $resolvedOut 'ai-pack'
 $outputs.InnovationReviewDirectory = Join-Path $resolvedOut 'innovation-review'
 $outputs.ExternalToolsReviewDirectory = Join-Path $resolvedOut 'external-tools-review'
+$outputs.NativeToolParityReviewDirectory = Join-Path $resolvedOut 'native-tool-parity-review'
 
 & (Join-Path $scriptRoot 'Get-PowerBIInventory.ps1') -Path $Path -Json | Set-Content -LiteralPath $outputs.InventoryPath -Encoding UTF8
 & (Join-Path $scriptRoot 'Get-PowerBIPBIPStructure.ps1') -Path $Path -OutputPath $outputs.PbipStructurePath | Out-Null
@@ -38,6 +39,7 @@ $outputs.ExternalToolsReviewDirectory = Join-Path $resolvedOut 'external-tools-r
 & (Join-Path $scriptRoot 'New-PowerBIAIPromptPack.ps1') -Path $Path -OutputDirectory $outputs.AIPackDirectory | Out-Null
 & (Join-Path $scriptRoot 'Invoke-PowerBIInnovationReview.ps1') -Path $Path -OutputDirectory $outputs.InnovationReviewDirectory | Out-Null
 & (Join-Path $scriptRoot 'Invoke-PowerBIExternalToolsReview.ps1') -Path $Path -OutputDirectory $outputs.ExternalToolsReviewDirectory | Out-Null
+& (Join-Path $scriptRoot 'Invoke-PowerBINativeToolParityReview.ps1') -Path $Path -OutputDirectory $outputs.NativeToolParityReviewDirectory | Out-Null
 
 $index = New-Object System.Collections.Generic.List[string]
 $index.Add('# Power BI Auto Review')
