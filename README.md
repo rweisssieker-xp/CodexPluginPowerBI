@@ -31,6 +31,7 @@ Start with [docs/getting-started.md](docs/getting-started.md). Privacy details a
 - Trust and release assistant with business semantic layers, KPI trust scores, decision-risk analysis, flight-recorder history, before/after behavior comparison, narrative critique, Copilot optimization, DAX fix simulation, visual-to-measure impact mapping, and Go/Warn/No-Go release gates.
 - Safe PBIP/TMDL authoring drafts for new measures and calculated columns.
 - Model best-practice checks driven by configurable trust rules.
+- External-tools integration layer for Tabular Editor, DAX Studio, ALM Toolkit, Power BI Helper, Model Documenter, PBI.tips tools, and pbi-tools workflows.
 - A theme generator for governed report styling.
 - A review prompt template for high-signal Codex report reviews.
 - Marketplace metadata for installing the plugin from this repo.
@@ -39,6 +40,8 @@ Start with [docs/getting-started.md](docs/getting-started.md). Privacy details a
 
 ```powershell
 .\plugins\powerbi-desktop\scripts\Test-PowerBIEnvironment.ps1
+.\plugins\powerbi-desktop\scripts\Get-PowerBIExternalToolInventory.ps1
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBIExternalToolsReview.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-external-tools-review
 .\plugins\powerbi-desktop\scripts\Get-PowerBIDesktopLiveConnection.ps1
 .\plugins\powerbi-desktop\scripts\Invoke-PowerBILiveAutoReview.ps1 -OutputDirectory .\powerbi-live-auto-review
 .\plugins\powerbi-desktop\scripts\Invoke-PowerBIInnovationReview.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-innovation-review

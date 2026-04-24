@@ -30,7 +30,8 @@ Use this skill when the user asks Codex to inspect, document, generate, or refac
 12. If text-based model files exist, summarize them with `scripts/New-PowerBIModelSummary.ps1`.
 13. For advanced remediation, run `scripts/Invoke-PowerBIInnovationReview.ps1`.
 14. For safe authoring, generate drafts with `scripts/New-PowerBIMeasureDraft.ps1` or `scripts/New-PowerBICalculatedColumnDraft.ps1`.
-15. Look for these editable artifacts:
+15. For external tool workflows, run `scripts/Invoke-PowerBIExternalToolsReview.ps1`.
+16. Look for these editable artifacts:
    - `*.pbip`
    - `*.SemanticModel`, `*.Report`
    - `definition.pbism`, `model.bim`
@@ -124,6 +125,17 @@ Run:
 ```
 
 Use this to evaluate metric ownership, business definitions, PBIP readiness, deterministic DAX, and performance patterns. Trust and best-practice thresholds are configurable in `rules/powerbi-trust-rules.json`.
+
+### Integrate external Power BI tools
+
+Run:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Get-PowerBIExternalToolInventory.ps1
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBIExternalToolsReview.ps1 -Path . -OutputDirectory .\powerbi-external-tools-review
+```
+
+Use this to detect Tabular Editor, DAX Studio, ALM Toolkit, Power BI Helper, Model Documenter, PBI.tips tools, and pbi-tools. The plugin generates safe workflows, command drafts, and review checklists instead of launching destructive compare/deploy actions automatically.
 
 ### Inspect the open Desktop model
 
@@ -281,3 +293,6 @@ When tools are available, prefer:
 - `scripts/New-PowerBICalculatedColumnDraft.ps1` creates a safe TMDL draft for a calculated column and includes the calculated-column best-practice warning.
 - `scripts/Test-PowerBIModelBestPractices.ps1` checks model best practices using `rules/powerbi-trust-rules.json`.
 - `rules/powerbi-trust-rules.json` configures trust score weights, release-gate thresholds, and best-practice switches.
+- `scripts/Get-PowerBIExternalToolInventory.ps1` detects installed Power BI external tools from PATH and known Program Files locations.
+- `scripts/New-PowerBIExternalToolCapabilityMatrix.ps1` maps Codex and external tool capabilities side by side.
+- `scripts/Invoke-PowerBIExternalToolsReview.ps1` generates workflows for Tabular Editor, DAX Studio, ALM Toolkit, Power BI Helper, Model Documenter, PBI.tips tools, and pbi-tools.

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0 - 2026-04-24
+
+- Added an external-tools integration layer for Tabular Editor, DAX Studio, ALM Toolkit, Power BI Helper, Model Documenter, PBI.tips tools, and pbi-tools.
+- Added external tool inventory, capability matrix, and workflow generators for BPA, DAX performance, ALM comparison, documentation, source control, and design tooling.
+- Extended local environment detection to known Program Files install paths, including Tabular Editor 3 and DAX Studio.
+
 ## 1.0.0 - 2026-04-24
 
 - Added v1.0 release polish with documentation, Pester test scaffold, stronger CI, and committed-output guardrails.
