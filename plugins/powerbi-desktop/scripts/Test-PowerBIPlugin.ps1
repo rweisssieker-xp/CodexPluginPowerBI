@@ -53,6 +53,40 @@ catch {
 }
 
 try {
+    $externalScripts = @(
+        'Get-PowerBIExternalToolInventory.ps1',
+        'New-PowerBIExternalToolCapabilityMatrix.ps1',
+        'New-PowerBITabularEditorWorkflow.ps1',
+        'New-PowerBIDaxStudioWorkflow.ps1',
+        'New-PowerBIALMToolkitWorkflow.ps1',
+        'New-PowerBIHelperWorkflow.ps1',
+        'New-PowerBIPbiToolsWorkflow.ps1',
+        'Invoke-PowerBIExternalToolsReview.ps1'
+    )
+    $missingExternalScripts = @($externalScripts | Where-Object { -not (Test-Path -LiteralPath (Join-Path $scriptsPath $_)) })
+    Add-TestResult -Name 'External tool scripts are present' -Passed ($missingExternalScripts.Count -eq 0) -Detail ("Missing={0}" -f ($missingExternalScripts -join ', '))
+}
+catch {
+    Add-TestResult -Name 'External tool scripts are present' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $tools = & (Join-Path $scriptsPath 'Get-PowerBIExternalToolInventory.ps1') -Json | ConvertFrom-Json
+    Add-TestResult -Name 'External tool inventory reports known tools' -Passed (@($tools.tools).Count -ge 7 -and ($tools.tools | Where-Object name -eq 'DAX Studio')) -Detail "Tools=$(@($tools.tools).Count)"
+}
+catch {
+    Add-TestResult -Name 'External tool inventory reports known tools' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $matrix = & (Join-Path $scriptsPath 'New-PowerBIExternalToolCapabilityMatrix.ps1') -Json | ConvertFrom-Json
+    Add-TestResult -Name 'External tool capability matrix maps features' -Passed ($matrix.toolCount -ge 7 -and $matrix.capabilityCount -ge 8) -Detail "Tools=$($matrix.toolCount), Capabilities=$($matrix.capabilityCount)"
+}
+catch {
+    Add-TestResult -Name 'External tool capability matrix maps features' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
     $structure = & (Join-Path $scriptsPath 'Get-PowerBIPBIPStructure.ps1') -Path $samplePath -Json | ConvertFrom-Json
     Add-TestResult -Name 'PBIP structure reports readiness' -Passed ($structure.score -ge 20) -Detail "Readiness=$($structure.readiness), Score=$($structure.score)"
 }
