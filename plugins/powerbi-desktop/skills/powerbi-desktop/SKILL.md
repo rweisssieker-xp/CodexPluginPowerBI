@@ -91,7 +91,17 @@ Run:
 .\plugins\powerbi-desktop\scripts\Invoke-PowerBIInnovationReview.ps1 -Path . -OutputDirectory .\powerbi-innovation-review
 ```
 
-Use this when the user wants actionable next-generation review artifacts. It produces a guided fix plan, semantic remediation guidance, measure lineage impact, generated DAX test plan, performance advisor, report UX critique, executive explainability pack, governance scorecard, Copilot readiness check, and release checklist.
+Use this when the user wants actionable next-generation review artifacts. It produces a guided fix plan, semantic remediation guidance, measure lineage impact, generated DAX test plan, performance advisor, report UX critique, executive explainability pack, governance scorecard, Copilot readiness check, release checklist, business semantic layer, KPI trust score, decision-risk assistant, DAX fix simulation, visual-to-measure impact map, and trust release gate.
+
+### Decide whether a report is release-ready
+
+Run:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\New-PowerBITrustReleaseGate.ps1 -Path . -OutputPath .\powerbi-trust-release-gate.md
+```
+
+Use this for the plugin's differentiating trust workflow. It returns a Go/Warn/No-Go decision based on KPI trust score, unresolved P0 fixes, governance score, Copilot readiness, and low-trust KPI count.
 
 ### Inspect the open Desktop model
 
@@ -235,3 +245,13 @@ When tools are available, prefer:
 - `scripts/New-PowerBIModelGovernanceScorecard.ps1` creates repeatable governance scoring.
 - `scripts/Test-PowerBICopilotReadiness.ps1` checks semantic readiness for Copilot/Q&A scenarios.
 - `scripts/New-PowerBIReleaseChecklist.ps1` creates a publish-readiness checklist.
+- `scripts/New-PowerBIBusinessSemanticLayer.ps1` describes KPI business meaning, allowed use, prohibited use, and required sign-off.
+- `scripts/New-PowerBIKpiTrustScore.ps1` scores every KPI by DAX risk, ownership, definition, dependency impact, and generated test coverage.
+- `scripts/New-PowerBIDecisionRiskAssistant.ps1` maps low-trust KPIs to affected decisions, audiences, and required actions.
+- `scripts/New-PowerBITrustReleaseGate.ps1` produces a Go/Warn/No-Go release decision.
+- `scripts/New-PowerBIFlightRecorder.ps1` records trust and release history snapshots.
+- `scripts/Compare-PowerBIMeasureBehavior.ps1` creates before/after validation guidance for changed measures.
+- `scripts/New-PowerBIReportNarrativeCritic.ps1` critiques report story quality and executive confidence.
+- `scripts/Optimize-PowerBICopilotModel.ps1` proposes names, descriptions, synonyms, and visibility for Copilot/Q&A.
+- `scripts/New-PowerBIDaxFixSimulation.ps1` packages original DAX, simulated DAX, validation queries, and rollback notes.
+- `scripts/New-PowerBIVisualMeasureImpactMap.ps1` maps measures to detected report metadata references when PBIP report JSON is available.

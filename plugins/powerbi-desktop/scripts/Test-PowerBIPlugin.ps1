@@ -128,7 +128,17 @@ try {
         'New-PowerBIModelGovernanceScorecard.ps1',
         'Test-PowerBICopilotReadiness.ps1',
         'New-PowerBIReleaseChecklist.ps1',
-        'Invoke-PowerBIInnovationReview.ps1'
+        'Invoke-PowerBIInnovationReview.ps1',
+        'New-PowerBIBusinessSemanticLayer.ps1',
+        'New-PowerBIKpiTrustScore.ps1',
+        'New-PowerBIFlightRecorder.ps1',
+        'New-PowerBIDecisionRiskAssistant.ps1',
+        'Compare-PowerBIMeasureBehavior.ps1',
+        'New-PowerBIReportNarrativeCritic.ps1',
+        'Optimize-PowerBICopilotModel.ps1',
+        'New-PowerBIDaxFixSimulation.ps1',
+        'New-PowerBIVisualMeasureImpactMap.ps1',
+        'New-PowerBITrustReleaseGate.ps1'
     )
     $missingInnovationScripts = @($innovationScripts | Where-Object { -not (Test-Path -LiteralPath (Join-Path $scriptsPath $_)) })
     Add-TestResult -Name 'Innovation scripts are present' -Passed ($missingInnovationScripts.Count -eq 0) -Detail ("Missing={0}" -f ($missingInnovationScripts -join ', '))
@@ -168,6 +178,39 @@ try {
 }
 catch {
     Add-TestResult -Name 'Innovation review creates package' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $trust = & (Join-Path $scriptsPath 'New-PowerBIKpiTrustScore.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    Add-TestResult -Name 'KPI trust scores rate all metrics' -Passed ($trust.metricCount -eq 5 -and @($trust.metrics)[0].trustScore -ge 0 -and $trust.overallTrustScore -ge 0) -Detail "Metrics=$($trust.metricCount), Overall=$($trust.overallTrustScore)"
+}
+catch {
+    Add-TestResult -Name 'KPI trust scores rate all metrics' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $gate = & (Join-Path $scriptsPath 'New-PowerBITrustReleaseGate.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Trust release gate returns decision' -Passed (@('Go', 'Warn', 'No-Go') -contains $gate.decision -and $gate.checkCount -ge 5) -Detail "Decision=$($gate.decision)"
+}
+catch {
+    Add-TestResult -Name 'Trust release gate returns decision' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $semantic = & (Join-Path $scriptsPath 'New-PowerBIBusinessSemanticLayer.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Business semantic layer explains decisions' -Passed ($semantic.metricCount -eq 5 -and @($semantic.metrics)[0].decisionContext) -Detail "Metrics=$($semantic.metricCount)"
+}
+catch {
+    Add-TestResult -Name 'Business semantic layer explains decisions' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $uspReview = & (Join-Path $scriptsPath 'Invoke-PowerBIInnovationReview.ps1') -Path $samplePath -OutputDirectory (Join-Path $PluginRoot 'tmp/usp-review-test')
+    $passed = (Test-Path -LiteralPath (Join-Path $uspReview.OutputDirectory 'trust-release-gate.md')) -and (Test-Path -LiteralPath (Join-Path $uspReview.OutputDirectory 'kpi-trust-score.md')) -and (Test-Path -LiteralPath (Join-Path $uspReview.OutputDirectory 'decision-risk-assistant.md'))
+    Add-TestResult -Name 'Innovation review includes USP package' -Passed $passed -Detail $uspReview.OutputDirectory
+}
+catch {
+    Add-TestResult -Name 'Innovation review includes USP package' -Passed $false -Detail $_.Exception.Message
 }
 
 $results | Format-Table Name, Passed, Detail -AutoSize

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.11.0 - 2026-04-24
+
+- Added the Power BI Trust & Release Assistant feature set.
+- Added business semantic layers, KPI trust scores, decision-risk analysis, flight-recorder history, before/after measure behavior comparison, report narrative critique, Copilot optimization, DAX fix simulation, visual-to-measure impact mapping, and Go/Warn/No-Go trust release gates.
+- Integrated USP artifacts into the innovation review package and smoke tests.
+
 ## 0.10.0 - 2026-04-24
 
 - Added innovation review orchestration.
