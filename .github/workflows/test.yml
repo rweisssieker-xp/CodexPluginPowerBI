@@ -19,3 +19,31 @@ jobs:
         shell: pwsh
         run: ./plugins/powerbi-desktop/scripts/Test-PowerBIPlugin.ps1
 
+      - name: Validate committed outputs are clean
+        shell: pwsh
+        run: |
+          $trackedGenerated = git ls-files 'powerbi-*' 'plugins/powerbi-desktop/tmp/*'
+          if ($trackedGenerated) {
+            $trackedGenerated
+            throw 'Generated review outputs must not be committed.'
+          }
+
+      - name: Run Pester tests when available
+        shell: pwsh
+        run: |
+          if (-not (Get-Module -ListAvailable -Name Pester)) {
+            Install-Module Pester -Scope CurrentUser -Force -SkipPublisherCheck
+          }
+          Invoke-Pester ./plugins/powerbi-desktop/tests
+
+      - name: Run PSScriptAnalyzer when available
+        shell: pwsh
+        run: |
+          if (-not (Get-Module -ListAvailable -Name PSScriptAnalyzer)) {
+            Install-Module PSScriptAnalyzer -Scope CurrentUser -Force
+          }
+          $findings = Invoke-ScriptAnalyzer -Path ./plugins/powerbi-desktop/scripts -Recurse -Severity Error
+          if ($findings) {
+            $findings | Format-Table -AutoSize
+            throw 'PSScriptAnalyzer found errors.'
+          }

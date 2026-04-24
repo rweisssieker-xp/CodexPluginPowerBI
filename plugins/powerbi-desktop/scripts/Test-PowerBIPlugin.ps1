@@ -138,7 +138,10 @@ try {
         'Optimize-PowerBICopilotModel.ps1',
         'New-PowerBIDaxFixSimulation.ps1',
         'New-PowerBIVisualMeasureImpactMap.ps1',
-        'New-PowerBITrustReleaseGate.ps1'
+        'New-PowerBITrustReleaseGate.ps1',
+        'New-PowerBIMeasureDraft.ps1',
+        'New-PowerBICalculatedColumnDraft.ps1',
+        'Test-PowerBIModelBestPractices.ps1'
     )
     $missingInnovationScripts = @($innovationScripts | Where-Object { -not (Test-Path -LiteralPath (Join-Path $scriptsPath $_)) })
     Add-TestResult -Name 'Innovation scripts are present' -Passed ($missingInnovationScripts.Count -eq 0) -Detail ("Missing={0}" -f ($missingInnovationScripts -join ', '))
@@ -211,6 +214,47 @@ try {
 }
 catch {
     Add-TestResult -Name 'Innovation review includes USP package' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $rulesPath = Join-Path $PluginRoot 'rules/powerbi-trust-rules.json'
+    $rules = Get-Content -Raw -LiteralPath $rulesPath | ConvertFrom-Json
+    Add-TestResult -Name 'Trust rules config exists' -Passed ($rules.schema -eq 'codex.powerbi.trustRules.v1' -and $rules.releaseGate.goThreshold -gt 0) -Detail $rulesPath
+}
+catch {
+    Add-TestResult -Name 'Trust rules config exists' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $measureDraft = & (Join-Path $scriptsPath 'New-PowerBIMeasureDraft.ps1') -TableName 'Sales' -MeasureName 'Average Sales' -Expression "DIVIDE([Total Sales], COUNTROWS('Sales'))" -OutputPath (Join-Path $PluginRoot 'tmp/measure-draft-test.md') -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Measure draft generator creates safe draft' -Passed ($measureDraft.objectType -eq 'Measure' -and $measureDraft.tmdl -match 'measure Average Sales') -Detail $measureDraft.outputPath
+}
+catch {
+    Add-TestResult -Name 'Measure draft generator creates safe draft' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $columnDraft = & (Join-Path $scriptsPath 'New-PowerBICalculatedColumnDraft.ps1') -TableName 'Sales' -ColumnName 'Sales Bucket' -Expression "IF('Sales'[Sales Amount] > 1000, ""High"", ""Standard"")" -OutputPath (Join-Path $PluginRoot 'tmp/column-draft-test.md') -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Calculated column draft generator creates safe draft' -Passed ($columnDraft.objectType -eq 'CalculatedColumn' -and $columnDraft.tmdl -match 'column Sales Bucket') -Detail $columnDraft.outputPath
+}
+catch {
+    Add-TestResult -Name 'Calculated column draft generator creates safe draft' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $bestPractices = & (Join-Path $scriptsPath 'Test-PowerBIModelBestPractices.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Model best practices produce findings' -Passed ($bestPractices.findingCount -ge 1 -and $bestPractices.score -ge 0) -Detail "Findings=$($bestPractices.findingCount), Score=$($bestPractices.score)"
+}
+catch {
+    Add-TestResult -Name 'Model best practices produce findings' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $pesterPath = Join-Path $PluginRoot 'tests/PowerBIPlugin.Tests.ps1'
+    Add-TestResult -Name 'Pester test file exists' -Passed (Test-Path -LiteralPath $pesterPath) -Detail $pesterPath
+}
+catch {
+    Add-TestResult -Name 'Pester test file exists' -Passed $false -Detail $_.Exception.Message
 }
 
 $results | Format-Table Name, Passed, Detail -AutoSize

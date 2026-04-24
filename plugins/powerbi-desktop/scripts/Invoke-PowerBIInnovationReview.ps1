@@ -21,6 +21,7 @@ $outputs = [ordered]@{
     DaxFixSimulation = Join-Path $resolvedOut 'dax-fix-simulation.md'
     VisualMeasureImpactMap = Join-Path $resolvedOut 'visual-measure-impact-map.md'
     TrustReleaseGate = Join-Path $resolvedOut 'trust-release-gate.md'
+    ModelBestPractices = Join-Path $resolvedOut 'model-best-practices.md'
 }
 & (Join-Path $scriptRoot 'New-PowerBIGuidedFixPlan.ps1') -Path $Path -OutputPath $outputs.GuidedFixPlan | Out-Null
 & (Join-Path $scriptRoot 'New-PowerBIMeasureLineageImpact.ps1') -Path $Path -OutputPath $outputs.MeasureLineageImpact | Out-Null
@@ -39,6 +40,7 @@ $outputs = [ordered]@{
 & (Join-Path $scriptRoot 'New-PowerBIDaxFixSimulation.ps1') -Path $Path -OutputPath $outputs.DaxFixSimulation | Out-Null
 & (Join-Path $scriptRoot 'New-PowerBIVisualMeasureImpactMap.ps1') -Path $Path -OutputPath $outputs.VisualMeasureImpactMap | Out-Null
 & (Join-Path $scriptRoot 'New-PowerBITrustReleaseGate.ps1') -Path $Path -OutputPath $outputs.TrustReleaseGate | Out-Null
+& (Join-Path $scriptRoot 'Test-PowerBIModelBestPractices.ps1') -Path $Path -OutputPath $outputs.ModelBestPractices | Out-Null
 $index = @('# Power BI Innovation Review', '', ('Source: `{0}`' -f (Resolve-Path -LiteralPath $Path).Path), ('Generated: {0}' -f (Get-Date).ToString('s')), '', '## Artifacts') + @($outputs.GetEnumerator() | ForEach-Object { '- {0}: `{1}`' -f $_.Key, $_.Value })
 $indexPath = Join-Path $resolvedOut 'README.md'
 Set-Content -LiteralPath $indexPath -Value (($index -join [Environment]::NewLine) + [Environment]::NewLine) -Encoding UTF8

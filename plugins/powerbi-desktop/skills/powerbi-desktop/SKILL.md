@@ -29,7 +29,8 @@ Use this skill when the user asks Codex to inspect, document, generate, or refac
 11. Generate a report blueprint with `scripts/New-PowerBIReportBlueprint.ps1` when measures exist.
 12. If text-based model files exist, summarize them with `scripts/New-PowerBIModelSummary.ps1`.
 13. For advanced remediation, run `scripts/Invoke-PowerBIInnovationReview.ps1`.
-14. Look for these editable artifacts:
+14. For safe authoring, generate drafts with `scripts/New-PowerBIMeasureDraft.ps1` or `scripts/New-PowerBICalculatedColumnDraft.ps1`.
+15. Look for these editable artifacts:
    - `*.pbip`
    - `*.SemanticModel`, `*.Report`
    - `definition.pbism`, `model.bim`
@@ -102,6 +103,27 @@ Run:
 ```
 
 Use this for the plugin's differentiating trust workflow. It returns a Go/Warn/No-Go decision based on KPI trust score, unresolved P0 fixes, governance score, Copilot readiness, and low-trust KPI count.
+
+### Draft new measures or calculated columns
+
+Run:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\New-PowerBIMeasureDraft.ps1 -TableName Sales -MeasureName "Average Sales" -Expression "DIVIDE([Total Sales], COUNTROWS('Sales'))"
+.\plugins\powerbi-desktop\scripts\New-PowerBICalculatedColumnDraft.ps1 -TableName Sales -ColumnName "Sales Bucket" -Expression "IF('Sales'[Sales Amount] > 1000, ""High"", ""Standard"")"
+```
+
+These commands create TMDL/PBIP-safe drafts and validation guidance. They do not write directly into binary PBIX/PBIT files. Prefer measures for aggregations and calculated columns only when Power Query or source-system columns are not appropriate.
+
+### Check model best practices
+
+Run:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Test-PowerBIModelBestPractices.ps1 -Path . -OutputPath .\powerbi-model-best-practices.md
+```
+
+Use this to evaluate metric ownership, business definitions, PBIP readiness, deterministic DAX, and performance patterns. Trust and best-practice thresholds are configurable in `rules/powerbi-trust-rules.json`.
 
 ### Inspect the open Desktop model
 
@@ -255,3 +277,7 @@ When tools are available, prefer:
 - `scripts/Optimize-PowerBICopilotModel.ps1` proposes names, descriptions, synonyms, and visibility for Copilot/Q&A.
 - `scripts/New-PowerBIDaxFixSimulation.ps1` packages original DAX, simulated DAX, validation queries, and rollback notes.
 - `scripts/New-PowerBIVisualMeasureImpactMap.ps1` maps measures to detected report metadata references when PBIP report JSON is available.
+- `scripts/New-PowerBIMeasureDraft.ps1` creates a safe TMDL draft for a new measure with validation queries and rollback guidance.
+- `scripts/New-PowerBICalculatedColumnDraft.ps1` creates a safe TMDL draft for a calculated column and includes the calculated-column best-practice warning.
+- `scripts/Test-PowerBIModelBestPractices.ps1` checks model best practices using `rules/powerbi-trust-rules.json`.
+- `rules/powerbi-trust-rules.json` configures trust score weights, release-gate thresholds, and best-practice switches.

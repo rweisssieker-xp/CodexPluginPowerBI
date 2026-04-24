@@ -7,6 +7,8 @@ This workspace contains a Codex plugin for Microsoft Power BI Desktop workflows.
 Use the plugin from this repository by pointing Codex at `plugins/powerbi-desktop`.
 Generated review outputs are intentionally ignored by Git; rerun the scripts below to recreate them locally.
 
+Start with [docs/getting-started.md](docs/getting-started.md). Privacy details are in [docs/privacy.md](docs/privacy.md).
+
 ## What It Adds
 
 - A `powerbi-desktop` skill for PBIX/PBIT/PBIP, DAX, Power Query, and semantic model work.
@@ -27,6 +29,8 @@ Generated review outputs are intentionally ignored by Git; rerun the scripts bel
 - Live DAX query validation, metadata governance checks, fix backlogs, DAX fix drafts, and refactor suggestions.
 - Innovation review package with guided fixes, semantic diff support, measure lineage impact, generated DAX test plans, performance advice, report UX critique, executive explainability, governance scorecards, Copilot readiness, and release checklists.
 - Trust and release assistant with business semantic layers, KPI trust scores, decision-risk analysis, flight-recorder history, before/after behavior comparison, narrative critique, Copilot optimization, DAX fix simulation, visual-to-measure impact mapping, and Go/Warn/No-Go release gates.
+- Safe PBIP/TMDL authoring drafts for new measures and calculated columns.
+- Model best-practice checks driven by configurable trust rules.
 - A theme generator for governed report styling.
 - A review prompt template for high-signal Codex report reviews.
 - Marketplace metadata for installing the plugin from this repo.
@@ -39,6 +43,8 @@ Generated review outputs are intentionally ignored by Git; rerun the scripts bel
 .\plugins\powerbi-desktop\scripts\Invoke-PowerBILiveAutoReview.ps1 -OutputDirectory .\powerbi-live-auto-review
 .\plugins\powerbi-desktop\scripts\Invoke-PowerBIInnovationReview.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-innovation-review
 .\plugins\powerbi-desktop\scripts\New-PowerBITrustReleaseGate.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-trust-release-gate.md
+.\plugins\powerbi-desktop\scripts\New-PowerBIMeasureDraft.ps1 -TableName Sales -MeasureName "Average Sales" -Expression "DIVIDE([Total Sales], COUNTROWS('Sales'))"
+.\plugins\powerbi-desktop\scripts\Test-PowerBIModelBestPractices.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-model-best-practices.md
 .\plugins\powerbi-desktop\scripts\Get-PowerBIInventory.ps1 -Path .
 .\plugins\powerbi-desktop\scripts\Get-PowerBIPBIPStructure.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-pbip-structure.md
 .\plugins\powerbi-desktop\scripts\Invoke-PowerBIAutoReview.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-auto-review

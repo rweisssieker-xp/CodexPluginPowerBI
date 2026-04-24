@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.0 - 2026-04-24
+
+- Added v1.0 release polish with documentation, Pester test scaffold, stronger CI, and committed-output guardrails.
+- Added configurable trust rules in `rules/powerbi-trust-rules.json`.
+- Added safe PBIP/TMDL authoring draft generators for measures and calculated columns.
+- Added model best-practice checks for metric governance, deterministic DAX, source-control readiness, and performance patterns.
+
 ## 0.11.0 - 2026-04-24
 
 - Added the Power BI Trust & Release Assistant feature set.

@@ -1,6 +1,6 @@
 {
   "name": "powerbi-desktop",
-  "version": "0.11.0",
+  "version": "1.0.0",
   "description": "AI-assisted local Power BI Desktop workbench for live model review, KPI trust scoring, decision-risk analysis, release gates, business semantic layers, DAX validation, guided fixes, semantic diffs, measure lineage impact, generated DAX tests, performance advice, UX critique, Copilot optimization, discovery, documentation, dependency graphs, AI prompt packs, PBIP/TMDL workflows, refactoring plans, and report blueprints.",
   "author": {
     "name": "Reiner Weisssieker"
@@ -61,7 +61,7 @@
       "Visual Measure Impact"
     ],
     "websiteURL": "https://github.com/rweisssieker-xp/CodexPluginPowerBI",
-    "privacyPolicyURL": "https://github.com/rweisssieker-xp/CodexPluginPowerBI#privacy",
+    "privacyPolicyURL": "https://github.com/rweisssieker-xp/CodexPluginPowerBI/blob/main/docs/privacy.md",
     "termsOfServiceURL": "https://github.com/rweisssieker-xp/CodexPluginPowerBI#license",
     "defaultPrompt": [
       "Inventory this folder for PBIX and PBIT files and summarize what can be inspected safely.",
