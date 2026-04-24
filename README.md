@@ -1,6 +1,11 @@
 # Power BI Desktop Codex Plugin
 
-This workspace contains a local Codex plugin for Microsoft Power BI Desktop workflows.
+This workspace contains a Codex plugin for Microsoft Power BI Desktop workflows.
+
+## Install
+
+Use the plugin from this repository by pointing Codex at `plugins/powerbi-desktop`.
+Generated review outputs are intentionally ignored by Git; rerun the scripts below to recreate them locally.
 
 ## What It Adds
 
@@ -47,3 +52,17 @@ This workspace contains a local Codex plugin for Microsoft Power BI Desktop work
 ```
 
 The plugin intentionally avoids direct binary PBIX editing. Export to PBIP/TMDL or another text-based format before asking Codex to make model or report changes.
+
+## Development
+
+Run the smoke test before publishing changes:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Test-PowerBIPlugin.ps1
+```
+
+The GitHub Actions workflow runs the same smoke test on Windows.
+
+## Privacy
+
+The plugin works against local files and the local Power BI Desktop XMLA/ADOMD endpoint. It does not publish reports, sign in to Power BI Service, refresh credentials, or upload model data by itself.

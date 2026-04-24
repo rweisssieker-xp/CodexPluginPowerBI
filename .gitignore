@@ -1,0 +1,24 @@
+# Generated review outputs
+/powerbi-ai-pack/
+/powerbi-auto-review/
+/powerbi-live-auto-review/
+/powerbi-*.md
+/powerbi-*.mmd
+/sample-model-summary.md
+/executive-theme.json
+
+# Plugin test outputs
+/plugins/powerbi-desktop/tmp/
+
+# Power BI binary/project-local artifacts
+*.pbix
+*.pbit
+*.pbix.bak
+*.pbit.bak
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

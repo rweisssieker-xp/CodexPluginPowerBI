@@ -1,0 +1,21 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  smoke:
+    name: PowerShell smoke tests
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run plugin smoke tests
+        shell: pwsh
+        run: ./plugins/powerbi-desktop/scripts/Test-PowerBIPlugin.ps1
+

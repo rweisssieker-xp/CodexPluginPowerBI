@@ -3,10 +3,10 @@
   "version": "0.9.0",
   "description": "AI-assisted local Power BI Desktop workbench for live Desktop model review, DAX validation, metadata governance, fix backlogs, DAX fix drafts, discovery, documentation, configurable governance, dependency graphs, AI prompt packs, PBIP/TMDL workflows, refactoring plans, and report blueprints.",
   "author": {
-    "name": "Local Codex User"
+    "name": "Reiner Weisssieker"
   },
-  "homepage": "https://learn.microsoft.com/power-bi/",
-  "repository": "local",
+  "homepage": "https://github.com/rweisssieker-xp/CodexPluginPowerBI",
+  "repository": "https://github.com/rweisssieker-xp/CodexPluginPowerBI",
   "license": "MIT",
   "keywords": [
     "power-bi",
@@ -21,7 +21,7 @@
     "displayName": "Power BI Desktop",
     "shortDescription": "AI workbench for local Power BI Desktop projects.",
     "longDescription": "Adds an AI-assisted Power BI Desktop workbench for local projects and open Desktop sessions: live XMLA/ADOMD model discovery, environment discovery, PBIX/PBIT/PBIP inventory, PBIP structure analysis, text-model documentation, configurable DAX and Power Query governance rules, dependency graphs, AI prompt packs, governance scoring, semantic metric catalogs, report UX blueprints, and safe PBIP/TMDL refactoring guidance.",
-    "developerName": "Local Codex User",
+    "developerName": "Reiner Weisssieker",
     "category": "Productivity",
     "capabilities": [
       "Local Files",
@@ -43,9 +43,9 @@
       "Fix Backlog",
       "DAX Fix Drafts"
     ],
-    "websiteURL": "https://learn.microsoft.com/power-bi/",
-    "privacyPolicyURL": "https://privacy.microsoft.com/privacystatement",
-    "termsOfServiceURL": "https://www.microsoft.com/servicesagreement/",
+    "websiteURL": "https://github.com/rweisssieker-xp/CodexPluginPowerBI",
+    "privacyPolicyURL": "https://github.com/rweisssieker-xp/CodexPluginPowerBI#privacy",
+    "termsOfServiceURL": "https://github.com/rweisssieker-xp/CodexPluginPowerBI#license",
     "defaultPrompt": [
       "Inventory this folder for PBIX and PBIT files and summarize what can be inspected safely.",
       "Help me document the DAX measures and Power Query transformations in this Power BI project.",
