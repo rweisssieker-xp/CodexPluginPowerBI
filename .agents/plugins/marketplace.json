@@ -1,0 +1,20 @@
+{
+  "name": "local-productivity-plugins",
+  "interface": {
+    "displayName": "Local Productivity Plugins"
+  },
+  "plugins": [
+    {
+      "name": "powerbi-desktop",
+      "source": {
+        "source": "local",
+        "path": "./plugins/powerbi-desktop"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

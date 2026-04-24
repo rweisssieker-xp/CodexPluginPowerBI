@@ -1,0 +1,51 @@
+﻿{
+    "schema":  "codex.powerbi.liveConnection.v1",
+    "generated":  "2026-04-23T14:10:56",
+    "powerBIDesktopRunning":  true,
+    "powerBIDesktopProcesses":  [
+                                    {
+                                        "Id":  36620,
+                                        "ProcessName":  "PBIDesktop",
+                                        "Path":  "C:\\Program Files\\WindowsApps\\Microsoft.MicrosoftPowerBIDesktop_2.153.910.0_x64__8wekyb3d8bbwe\\bin\\pbidesktop.exe",
+                                        "StartTime":  "\/Date(1776942600514)\/"
+                                    }
+                                ],
+    "msmdsrvProcesses":  [
+                             {
+                                 "ProcessId":  13524,
+                                 "CommandLine":  "\"C:\\Program Files\\WindowsApps\\Microsoft.MicrosoftPowerBIDesktop_2.153.910.0_x64__8wekyb3d8bbwe\\bin\\msmdsrv.exe\" -c -n AnalysisServicesWorkspace_aab53503-a2c2-4d27-829e-a8c37f69d294 -s \"C:\\Users\\reinerw\\Microsoft\\Power BI Desktop Store App\\AnalysisServicesWorkspaces\\AnalysisServicesWorkspace_aab53503-a2c2-4d27-829e-a8c37f69d294\\Data\""
+                             }
+                         ],
+    "workspaces":  [
+                       {
+                           "Workspace":  "C:\\Users\\reinerw\\Microsoft\\Power BI Desktop Store App\\AnalysisServicesWorkspaces\\AnalysisServicesWorkspace_aab53503-a2c2-4d27-829e-a8c37f69d294",
+                           "Port":  63952,
+                           "IsListening":  true,
+                           "ConnectionString":  "Data Source=localhost:63952",
+                           "LastWriteTime":  "\/Date(1776942601846)\/"
+                       },
+                       {
+                           "Workspace":  "C:\\Users\\reinerw\\Microsoft\\Power BI Desktop Store App\\AnalysisServicesWorkspaces\\AnalysisServicesWorkspace_6003ae2e-f013-4a6f-9f0f-8ed5a19cd5b0",
+                           "Port":  59337,
+                           "IsListening":  false,
+                           "ConnectionString":  "Data Source=localhost:59337",
+                           "LastWriteTime":  "\/Date(1773387139842)\/"
+                       },
+                       {
+                           "Workspace":  "C:\\Users\\reinerw\\Microsoft\\Power BI Desktop Store App\\AnalysisServicesWorkspaces\\AnalysisServicesWorkspace_2521645a-bc70-4e79-b535-05660b3d71d1",
+                           "Port":  59293,
+                           "IsListening":  false,
+                           "ConnectionString":  "Data Source=localhost:59293",
+                           "LastWriteTime":  "\/Date(1773220391817)\/"
+                       }
+                   ],
+    "preferredConnection":  [
+                                {
+                                    "Workspace":  "C:\\Users\\reinerw\\Microsoft\\Power BI Desktop Store App\\AnalysisServicesWorkspaces\\AnalysisServicesWorkspace_aab53503-a2c2-4d27-829e-a8c37f69d294",
+                                    "Port":  63952,
+                                    "IsListening":  true,
+                                    "ConnectionString":  "Data Source=localhost:63952",
+                                    "LastWriteTime":  "\/Date(1776942601846)\/"
+                                }
+                            ]
+}

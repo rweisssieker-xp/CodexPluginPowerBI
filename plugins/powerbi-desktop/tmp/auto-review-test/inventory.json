@@ -1,0 +1,38 @@
+[
+  {
+    "Type": "TMDL",
+    "Name": "model.tmdl",
+    "FullName": "D:\\temp\\CodexPluginPowerBI\\plugins\\powerbi-desktop\\examples\\sample-model\\model.tmdl",
+    "RelativePath": "model.tmdl",
+    "SizeKB": 0.2,
+    "LastWriteTime": "2026-04-23T12:11:22.1384569+02:00",
+    "EditableText": true
+  },
+  {
+    "Type": "DAX",
+    "Name": "Risky.Measures.dax",
+    "FullName": "D:\\temp\\CodexPluginPowerBI\\plugins\\powerbi-desktop\\examples\\sample-model\\Risky.Measures.dax",
+    "RelativePath": "Risky.Measures.dax",
+    "SizeKB": 0.2,
+    "LastWriteTime": "2026-04-23T12:13:16.1311523+02:00",
+    "EditableText": true
+  },
+  {
+    "Type": "DAX",
+    "Name": "Sales.Measures.dax",
+    "FullName": "D:\\temp\\CodexPluginPowerBI\\plugins\\powerbi-desktop\\examples\\sample-model\\Sales.Measures.dax",
+    "RelativePath": "Sales.Measures.dax",
+    "SizeKB": 0.3,
+    "LastWriteTime": "2026-04-23T13:05:37.6345308+02:00",
+    "EditableText": true
+  },
+  {
+    "Type": "PQ",
+    "Name": "SalesQuery.pq",
+    "FullName": "D:\\temp\\CodexPluginPowerBI\\plugins\\powerbi-desktop\\examples\\sample-model\\SalesQuery.pq",
+    "RelativePath": "SalesQuery.pq",
+    "SizeKB": 0.3,
+    "LastWriteTime": "2026-04-23T12:11:22.1384569+02:00",
+    "EditableText": true
+  }
+]

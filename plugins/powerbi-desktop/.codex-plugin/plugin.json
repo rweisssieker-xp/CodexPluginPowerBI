@@ -1,0 +1,65 @@
+{
+  "name": "powerbi-desktop",
+  "version": "0.9.0",
+  "description": "AI-assisted local Power BI Desktop workbench for live Desktop model review, DAX validation, metadata governance, fix backlogs, DAX fix drafts, discovery, documentation, configurable governance, dependency graphs, AI prompt packs, PBIP/TMDL workflows, refactoring plans, and report blueprints.",
+  "author": {
+    "name": "Local Codex User"
+  },
+  "homepage": "https://learn.microsoft.com/power-bi/",
+  "repository": "local",
+  "license": "MIT",
+  "keywords": [
+    "power-bi",
+    "powerbi-desktop",
+    "pbix",
+    "semantic-model",
+    "dax",
+    "power-query"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Power BI Desktop",
+    "shortDescription": "AI workbench for local Power BI Desktop projects.",
+    "longDescription": "Adds an AI-assisted Power BI Desktop workbench for local projects and open Desktop sessions: live XMLA/ADOMD model discovery, environment discovery, PBIX/PBIT/PBIP inventory, PBIP structure analysis, text-model documentation, configurable DAX and Power Query governance rules, dependency graphs, AI prompt packs, governance scoring, semantic metric catalogs, report UX blueprints, and safe PBIP/TMDL refactoring guidance.",
+    "developerName": "Local Codex User",
+    "category": "Productivity",
+    "capabilities": [
+      "Local Files",
+      "Code Generation",
+      "Analysis",
+      "Governance",
+      "Report Documentation",
+      "Metric Catalog",
+      "Refactoring Plans",
+      "Report Blueprints",
+      "AI Prompt Packs",
+      "Impact Analysis",
+      "Configurable Rules",
+      "PBIP Structure Analysis",
+      "Live Desktop Model Access",
+      "Live Model Review",
+      "Live DAX Validation",
+      "Metadata Governance",
+      "Fix Backlog",
+      "DAX Fix Drafts"
+    ],
+    "websiteURL": "https://learn.microsoft.com/power-bi/",
+    "privacyPolicyURL": "https://privacy.microsoft.com/privacystatement",
+    "termsOfServiceURL": "https://www.microsoft.com/servicesagreement/",
+    "defaultPrompt": [
+      "Inventory this folder for PBIX and PBIT files and summarize what can be inspected safely.",
+      "Help me document the DAX measures and Power Query transformations in this Power BI project.",
+      "Run a Power BI insight scan and identify DAX risks, model smells, and the safest next actions.",
+      "Create a governed PBIP/TMDL refactoring plan for this report.",
+      "Generate a metric catalog and semantic contract for this Power BI model.",
+      "Create a report UX blueprint from the metric catalog and model summary.",
+      "Create an AI prompt pack for reviewing and improving this Power BI project.",
+      "Run a full AI review package for this Power BI project.",
+      "Inspect the currently open Power BI Desktop model."
+    ],
+    "brandColor": "#F2C811",
+    "composerIcon": "./assets/icon.svg",
+    "logo": "./assets/logo.svg",
+    "screenshots": []
+  }
+}

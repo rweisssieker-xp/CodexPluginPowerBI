@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="160" viewBox="0 0 512 160" role="img" aria-label="Power BI Desktop plugin logo">
+  <rect width="512" height="160" rx="20" fill="#171717"/>
+  <rect x="30" y="84" width="18" height="42" rx="5" fill="#F2C811"/>
+  <rect x="60" y="58" width="18" height="68" rx="5" fill="#F2C811"/>
+  <rect x="90" y="34" width="18" height="92" rx="5" fill="#F2C811"/>
+  <text x="136" y="78" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">Power BI Desktop</text>
+  <text x="136" y="112" fill="#F2C811" font-family="Segoe UI, Arial, sans-serif" font-size="20">Codex plugin</text>
+</svg>
