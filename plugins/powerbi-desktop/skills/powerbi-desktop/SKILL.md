@@ -30,8 +30,9 @@ Use this skill when the user asks Codex to inspect, document, generate, or refac
 12. If text-based model files exist, summarize them with `scripts/New-PowerBIModelSummary.ps1`.
 13. For advanced remediation, run `scripts/Invoke-PowerBIInnovationReview.ps1`.
 14. For safe authoring, generate drafts with `scripts/New-PowerBIMeasureDraft.ps1` or `scripts/New-PowerBICalculatedColumnDraft.ps1`.
-15. For external tool workflows, run `scripts/Invoke-PowerBIExternalToolsReview.ps1`.
-16. Look for these editable artifacts:
+15. For report authoring, create PBIP page/visual drafts with `scripts/Add-PowerBIPBIPReportPage.ps1`.
+16. For external tool workflows, run `scripts/Invoke-PowerBIExternalToolsReview.ps1`.
+17. Look for these editable artifacts:
    - `*.pbip`
    - `*.SemanticModel`, `*.Report`
    - `definition.pbism`, `model.bim`
@@ -115,6 +116,18 @@ Run:
 ```
 
 These commands create TMDL/PBIP-safe drafts and validation guidance. They do not write directly into binary PBIX/PBIT files. Prefer measures for aggregations and calculated columns only when Power Query or source-system columns are not appropriate.
+
+### Draft PBIP pages and visuals
+
+Run:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\New-PowerBIReportPageDraft.ps1 -PageName "Executive Overview" -Measures "Total Sales","Sales YoY %"
+.\plugins\powerbi-desktop\scripts\Add-PowerBIPBIPReportPage.ps1 -PbipPath .\MyReport -PageName "Executive Overview" -Measures "Total Sales","Sales YoY %" -Apply
+.\plugins\powerbi-desktop\scripts\New-PowerBIPBIXCompileWorkflow.ps1 -PbipPath .\MyReport -OutputPbix .\MyReport.pbix
+```
+
+Use this only for PBIP/report JSON workflows. Validate the generated page in Power BI Desktop before saving back to PBIX. If `pbi-tools` is installed, the compile workflow emits a compile command; otherwise use Power BI Desktop Save As PBIX.
 
 ### Check model best practices
 
@@ -293,6 +306,11 @@ When tools are available, prefer:
 - `scripts/New-PowerBICalculatedColumnDraft.ps1` creates a safe TMDL draft for a calculated column and includes the calculated-column best-practice warning.
 - `scripts/Test-PowerBIModelBestPractices.ps1` checks model best practices using `rules/powerbi-trust-rules.json`.
 - `rules/powerbi-trust-rules.json` configures trust score weights, release-gate thresholds, and best-practice switches.
+- `scripts/New-PowerBIReportPageDraft.ps1` creates a PBIP-safe report page draft with visual specs.
+- `scripts/New-PowerBIVisualDraft.ps1` creates a visual spec for KPI cards, bar charts, line charts, matrix/table, slicers, tooltips, and drillthrough pages.
+- `scripts/New-PowerBIReportLayoutPlan.ps1` creates stable visual layout slots.
+- `scripts/Add-PowerBIPBIPReportPage.ps1` writes a generated page into a PBIP report folder when `-Apply` is used.
+- `scripts/New-PowerBIPBIXCompileWorkflow.ps1` creates the safe workflow back from PBIP to PBIX.
 - `scripts/Get-PowerBIExternalToolInventory.ps1` detects installed Power BI external tools from PATH and known Program Files locations.
 - `scripts/New-PowerBIExternalToolCapabilityMatrix.ps1` maps Codex and external tool capabilities side by side.
 - `scripts/Invoke-PowerBIExternalToolsReview.ps1` generates workflows for Tabular Editor, DAX Studio, ALM Toolkit, Power BI Helper, Model Documenter, PBI.tips tools, and pbi-tools.

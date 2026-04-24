@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.0 - 2026-04-24
+
+- Added PBIP report authoring drafts for pages, visuals, and layout plans.
+- Added safe PBIP report page application with generated page files, page manifest updates, and rollback guidance.
+- Added PBIP-to-PBIX compile workflow guidance using pbi-tools when available or Power BI Desktop Save As PBIX when not.
+
 ## 1.1.0 - 2026-04-24
 
 - Added an external-tools integration layer for Tabular Editor, DAX Studio, ALM Toolkit, Power BI Helper, Model Documenter, PBI.tips tools, and pbi-tools.

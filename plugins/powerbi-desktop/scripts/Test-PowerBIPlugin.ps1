@@ -175,7 +175,12 @@ try {
         'New-PowerBITrustReleaseGate.ps1',
         'New-PowerBIMeasureDraft.ps1',
         'New-PowerBICalculatedColumnDraft.ps1',
-        'Test-PowerBIModelBestPractices.ps1'
+        'Test-PowerBIModelBestPractices.ps1',
+        'New-PowerBIReportPageDraft.ps1',
+        'New-PowerBIVisualDraft.ps1',
+        'New-PowerBIReportLayoutPlan.ps1',
+        'Add-PowerBIPBIPReportPage.ps1',
+        'New-PowerBIPBIXCompileWorkflow.ps1'
     )
     $missingInnovationScripts = @($innovationScripts | Where-Object { -not (Test-Path -LiteralPath (Join-Path $scriptsPath $_)) })
     Add-TestResult -Name 'Innovation scripts are present' -Passed ($missingInnovationScripts.Count -eq 0) -Detail ("Missing={0}" -f ($missingInnovationScripts -join ', '))
@@ -289,6 +294,47 @@ try {
 }
 catch {
     Add-TestResult -Name 'Pester test file exists' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $pageDraft = & (Join-Path $scriptsPath 'New-PowerBIReportPageDraft.ps1') -PageName 'Executive Overview' -Measures 'Total Sales','Sales YoY %' -OutputPath (Join-Path $PluginRoot 'tmp/page-draft-test.json') -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Report page draft creates visual specs' -Passed ($pageDraft.pageName -eq 'Executive Overview' -and @($pageDraft.visuals).Count -ge 2) -Detail "Visuals=$(@($pageDraft.visuals).Count)"
+}
+catch {
+    Add-TestResult -Name 'Report page draft creates visual specs' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $visualDraft = & (Join-Path $scriptsPath 'New-PowerBIVisualDraft.ps1') -VisualType 'KpiCard' -Title 'Total Sales' -Measure 'Total Sales' -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Visual draft creates PBIP-safe spec' -Passed ($visualDraft.visualType -eq 'KpiCard' -and $visualDraft.measure -eq 'Total Sales') -Detail $visualDraft.visualId
+}
+catch {
+    Add-TestResult -Name 'Visual draft creates PBIP-safe spec' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $layout = & (Join-Path $scriptsPath 'New-PowerBIReportLayoutPlan.ps1') -PageName 'Executive Overview' -VisualCount 4 -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Report layout plan creates stable slots' -Passed ($layout.slotCount -eq 4 -and @($layout.slots)[0].width -gt 0) -Detail "Slots=$($layout.slotCount)"
+}
+catch {
+    Add-TestResult -Name 'Report layout plan creates stable slots' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $applyRoot = Join-Path $PluginRoot 'tmp/pbip-page-apply-test'
+    $apply = & (Join-Path $scriptsPath 'Add-PowerBIPBIPReportPage.ps1') -PbipPath $applyRoot -PageName 'Executive Overview' -Measures 'Total Sales','Sales YoY %' -Apply -Json | ConvertFrom-Json
+    Add-TestResult -Name 'PBIP report page apply writes draft files' -Passed ($apply.applied -eq $true -and (Test-Path -LiteralPath $apply.pagePath)) -Detail $apply.pagePath
+}
+catch {
+    Add-TestResult -Name 'PBIP report page apply writes draft files' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $compile = & (Join-Path $scriptsPath 'New-PowerBIPBIXCompileWorkflow.ps1') -PbipPath (Join-Path $PluginRoot 'tmp/pbip-page-apply-test') -OutputPbix (Join-Path $PluginRoot 'tmp/report.pbix') -Json | ConvertFrom-Json
+    Add-TestResult -Name 'PBIX compile workflow creates commands' -Passed ($compile.workflow -eq 'PBIP to PBIX' -and @($compile.steps).Count -ge 3) -Detail $compile.recommendedPath
+}
+catch {
+    Add-TestResult -Name 'PBIX compile workflow creates commands' -Passed $false -Detail $_.Exception.Message
 }
 
 $results | Format-Table Name, Passed, Detail -AutoSize
