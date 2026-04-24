@@ -1,0 +1,37 @@
+[
+  {
+    "Table": "IncidentsAllFields",
+    "Name": "_Repeat_Customer_Rate",
+    "OriginalExpression": "DIVIDE(CALCULATE(COUNTA(IncidentsAllFields[incidentid]),FILTER(ALL(IncidentsAllFields),CALCULATE(COUNTA(IncidentsAllFields[incidentid]))>1)),COUNTA(IncidentsAllFields[incidentid]),0)"
+  },
+  {
+    "Table": "IncidentsAllFields",
+    "Name": "_Tickets_0_1Day",
+    "OriginalExpression": "CALCULATE(COUNTA(IncidentsAllFields[incidentid]),FILTER(ALL(IncidentsAllFields),IncidentsAllFields[caseage]<1440))"
+  },
+  {
+    "Table": "IncidentsAllFields",
+    "Name": "_Tickets_1_3Days",
+    "OriginalExpression": "CALCULATE(COUNTA(IncidentsAllFields[incidentid]),FILTER(ALL(IncidentsAllFields),AND(IncidentsAllFields[caseage]>=1440,IncidentsAllFields[caseage]<4320)))"
+  },
+  {
+    "Table": "IncidentsAllFields",
+    "Name": "_Tickets_3_7Days",
+    "OriginalExpression": "CALCULATE(COUNTA(IncidentsAllFields[incidentid]),FILTER(ALL(IncidentsAllFields),AND(IncidentsAllFields[caseage]>=4320,IncidentsAllFields[caseage]<10080)))"
+  },
+  {
+    "Table": "IncidentsAllFields",
+    "Name": "_Tickets_Over_7Days",
+    "OriginalExpression": "CALCULATE(COUNTA(IncidentsAllFields[incidentid]),FILTER(ALL(IncidentsAllFields),IncidentsAllFields[caseage]>=10080))"
+  },
+  {
+    "Table": "IncidentsAllFields",
+    "Name": "_Anomaly_High_Resolution_Time",
+    "OriginalExpression": "CALCULATE(COUNTA(IncidentsAllFields[incidentid]),FILTER(ALL(IncidentsAllFields),IncidentsAllFields[pdw_totalresolutiontime_duration]>([_AVG TTS]*2*60)))"
+  },
+  {
+    "Table": "IncidentsAllFields",
+    "Name": "_Volume_vs_Baseline_Index",
+    "OriginalExpression": "DIVIDE([_CountIncidents],CALCULATE(AVERAGE(COUNTA(IncidentsAllFields[incidentid])),ALL(IncidentsAllFields)),0)"
+  }
+]
