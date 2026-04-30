@@ -17,7 +17,7 @@ jobs:
 
       - name: Run plugin smoke tests
         shell: pwsh
-        run: ./plugins/powerbi-desktop/scripts/Test-PowerBIPlugin.ps1
+        run: ./plugins/powerbi-desktop/tests/Run-PowerBITests.ps1 -SkipPester
 
       - name: Validate committed outputs are clean
         shell: pwsh
@@ -34,7 +34,7 @@ jobs:
           if (-not (Get-Module -ListAvailable -Name Pester)) {
             Install-Module Pester -Scope CurrentUser -Force -SkipPublisherCheck
           }
-          Invoke-Pester ./plugins/powerbi-desktop/tests
+          Invoke-Pester ./plugins/powerbi-desktop/tests/pester
 
       - name: Run PSScriptAnalyzer when available
         shell: pwsh

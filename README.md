@@ -7,7 +7,7 @@ This workspace contains a Codex plugin for Microsoft Power BI Desktop workflows.
 Use the plugin from this repository by pointing Codex at `plugins/powerbi-desktop`.
 Generated review outputs are intentionally ignored by Git; rerun the scripts below to recreate them locally.
 
-Start with [docs/getting-started.md](docs/getting-started.md). Privacy details are in [docs/privacy.md](docs/privacy.md).
+Start with the full [documentation index](docs/index.md). Key guides: [getting started](docs/getting-started.md), [workflows](docs/workflows.md), [script catalog](docs/script-catalog.md), [architecture](docs/architecture.md), [unified review](docs/unified-review.md), [Max AI review](docs/max-ai-review.md), [AI USP workflows](docs/ai-usp-workflows.md), [live Desktop](docs/live-desktop.md), [PBIP Apply Engine](docs/pbip-apply-engine.md), [Fabric planning](docs/fabric.md), [governance](docs/governance.md), [External Tool installation](docs/external-tool-installation.md), [golden baselines](docs/golden-baselines.md), [testing](docs/testing.md), [privacy](docs/privacy.md), and [troubleshooting](docs/troubleshooting.md).
 
 ## What It Adds
 
@@ -35,6 +35,11 @@ Start with [docs/getting-started.md](docs/getting-started.md). Privacy details a
 - Native tool-parity layer for BPA rules, model compare, model documentation, DAX performance heuristics, report layout checks, theme audit, and PBIP source-control planning.
 - Real-feature layer for visual schema checks, render-readiness, live DAX benchmarks, live DMV/VertiPaq-style analysis, calculation groups, relationships, RLS roles, Power Query drafts, service planning, incremental refresh, aggregations, and schema-aware visual planning.
 - PBIP Apply Engine for measure, calculated column, Power Query, generic TMDL, and report-page drafts with manifests and rollback guidance.
+- Unified review runner that combines offline project review, live Desktop review when available, and External Tools registration in one index.
+- Power BI External Tools registration generator for a `Codex Power BI Workbench` `.pbitool.json`.
+- Golden baseline tests for sample-model semantic regression checks.
+- AI/KI engineering workflows for autonomous PBIP fix plans, live-vs-repo reconciliation, measure expectations, PR release comments, KPI trust contracts, local model Q&A, and Fabric readiness.
+- Max AI review with 12 USP workflows: fix-until-green, Copilot evaluator, data contracts, Fabric deployment risk, visual intent, root-cause graph, KPI trust twin, review memory, natural-language PBIP authoring, governance rule mining, explainable DAX refactoring, and report decision simulation.
 - Optional external-tool awareness for Tabular Editor, DAX Studio, ALM Toolkit, Power BI Helper, Model Documenter, PBI.tips tools, and pbi-tools validation workflows.
 - A theme generator for governed report styling.
 - A review prompt template for high-signal Codex report reviews.
@@ -44,6 +49,19 @@ Start with [docs/getting-started.md](docs/getting-started.md). Privacy details a
 
 ```powershell
 .\plugins\powerbi-desktop\scripts\Test-PowerBIEnvironment.ps1
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBIUnifiedReview.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-unified-review
+.\plugins\powerbi-desktop\scripts\New-PowerBIExternalToolRegistration.ps1 -OutputPath .\powerbi-external-tool\CodexPowerBIWorkbench.pbitool.json
+.\plugins\powerbi-desktop\scripts\Install-PowerBIExternalTool.ps1
+.\plugins\powerbi-desktop\scripts\Uninstall-PowerBIExternalTool.ps1
+.\plugins\powerbi-desktop\scripts\Test-PowerBIGoldenBaselines.ps1
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBIAutonomousFixAgent.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-autonomous-fix-agent.md
+.\plugins\powerbi-desktop\scripts\Compare-PowerBILiveRepoModel.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-live-repo-reconciliation.md
+.\plugins\powerbi-desktop\scripts\Test-PowerBIMeasureExpectations.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model
+.\plugins\powerbi-desktop\scripts\New-PowerBIPRReleaseComment.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-pr-comment.md
+.\plugins\powerbi-desktop\scripts\New-PowerBIKpiTrustContract.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-kpi-trust-contract.md
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBIAskModel.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -Question "Which sales measures drive release risk?"
+.\plugins\powerbi-desktop\scripts\New-PowerBIFabricReadinessPlan.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-fabric-readiness.md
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBIMaxAIReview.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-max-ai-review
 .\plugins\powerbi-desktop\scripts\Get-PowerBIExternalToolInventory.ps1
 .\plugins\powerbi-desktop\scripts\Invoke-PowerBINativeToolParityReview.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-native-tool-parity
 .\plugins\powerbi-desktop\scripts\Invoke-PowerBIRealFeatureReview.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-real-feature-review
@@ -71,20 +89,20 @@ Start with [docs/getting-started.md](docs/getting-started.md). Privacy details a
 .\plugins\powerbi-desktop\scripts\New-PowerBIReportBlueprint.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-report-blueprint.md
 .\plugins\powerbi-desktop\scripts\New-PowerBIModelSummary.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\sample-model-summary.md
 .\plugins\powerbi-desktop\scripts\New-PowerBITheme.ps1 -Name "Executive Analytics" -OutputPath .\executive-theme.json
-.\plugins\powerbi-desktop\scripts\Test-PowerBIPlugin.ps1
+.\plugins\powerbi-desktop\tests\Run-PowerBITests.ps1
 ```
 
 The plugin intentionally avoids direct binary PBIX editing. Export to PBIP/TMDL or another text-based format before asking Codex to make model or report changes.
 
 ## Development
 
-Run the smoke test before publishing changes:
+Run the test suite before publishing changes:
 
 ```powershell
-.\plugins\powerbi-desktop\scripts\Test-PowerBIPlugin.ps1
+.\plugins\powerbi-desktop\tests\Run-PowerBITests.ps1
 ```
 
-The GitHub Actions workflow runs the same smoke test on Windows.
+The GitHub Actions workflow runs the same test entrypoint plus Pester tests from `plugins/powerbi-desktop/tests/pester`.
 
 ## Privacy
 

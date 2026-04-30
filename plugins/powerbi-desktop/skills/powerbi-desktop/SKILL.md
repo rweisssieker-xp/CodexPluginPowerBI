@@ -35,7 +35,12 @@ Use this skill when the user asks Codex to inspect, document, generate, or refac
 17. For real feature coverage, run `scripts/Invoke-PowerBIRealFeatureReview.ps1`.
 18. For applying PBIP-safe drafts, use `scripts/Apply-PowerBIPBIPMeasureDraft.ps1`, `scripts/Apply-PowerBIPBIPCalculatedColumnDraft.ps1`, `scripts/Apply-PowerBIPBIPPowerQueryDraft.ps1`, or `scripts/Apply-PowerBIPBIPTmdlDraft.ps1`.
 19. For optional external tool validation workflows, run `scripts/Invoke-PowerBIExternalToolsReview.ps1`.
-20. Look for these editable artifacts:
+20. For a single productized pass, run `scripts/Invoke-PowerBIUnifiedReview.ps1`.
+21. For Power BI External Tools menu integration, generate a `.pbitool.json` with `scripts/New-PowerBIExternalToolRegistration.ps1`, or install/uninstall with `scripts/Install-PowerBIExternalTool.ps1` and `scripts/Uninstall-PowerBIExternalTool.ps1`.
+22. Before publishing plugin changes, run `scripts\Test-PowerBIGoldenBaselines.ps1`.
+23. For maximum AI/KI workflows, use `scripts/Invoke-PowerBIAutonomousFixAgent.ps1`, `scripts/Compare-PowerBILiveRepoModel.ps1`, `scripts/New-PowerBIKpiTrustContract.ps1`, `scripts/Invoke-PowerBIAskModel.ps1`, and `scripts/New-PowerBIFabricReadinessPlan.ps1`.
+24. For the complete 12-USP AI/KI package, run `scripts/Invoke-PowerBIMaxAIReview.ps1`.
+25. Look for these editable artifacts:
    - `*.pbip`
    - `*.SemanticModel`, `*.Report`
    - `definition.pbism`, `model.bim`
@@ -89,6 +94,16 @@ Run:
 
 Use this as the fastest end-to-end path. It produces inventory, PBIP readiness, scan, metric catalog, dependency graph, refactor plan, report blueprint, model summary, executive narrative, AI prompt pack, and innovation review artifacts.
 
+### Run the unified product review
+
+Run:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBIUnifiedReview.ps1 -Path . -OutputDirectory .\powerbi-unified-review
+```
+
+Use this when the user wants the complete productized workflow. It runs the offline auto-review, attempts the live Desktop review when a local endpoint is available, generates the External Tools registration file, and writes a single index plus machine-readable summary.
+
 ### Run the innovation review package
 
 Run:
@@ -98,6 +113,23 @@ Run:
 ```
 
 Use this when the user wants actionable next-generation review artifacts. It produces a guided fix plan, semantic remediation guidance, measure lineage impact, generated DAX test plan, performance advisor, report UX critique, executive explainability pack, governance scorecard, Copilot readiness check, release checklist, business semantic layer, KPI trust score, decision-risk assistant, DAX fix simulation, visual-to-measure impact map, and trust release gate.
+
+### Run maximum AI/KI engineering workflows
+
+Run:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBIAutonomousFixAgent.ps1 -Path . -OutputPath .\powerbi-autonomous-fix-agent.md
+.\plugins\powerbi-desktop\scripts\Compare-PowerBILiveRepoModel.ps1 -Path . -OutputPath .\powerbi-live-repo-reconciliation.md
+.\plugins\powerbi-desktop\scripts\Test-PowerBIMeasureExpectations.ps1 -Path .
+.\plugins\powerbi-desktop\scripts\New-PowerBIPRReleaseComment.ps1 -Path . -OutputPath .\powerbi-pr-comment.md
+.\plugins\powerbi-desktop\scripts\New-PowerBIKpiTrustContract.ps1 -Path . -OutputPath .\powerbi-kpi-trust-contract.md
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBIAskModel.ps1 -Path . -Question "Which KPIs block release?"
+.\plugins\powerbi-desktop\scripts\New-PowerBIFabricReadinessPlan.ps1 -Path . -OutputPath .\powerbi-fabric-readiness.md
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBIMaxAIReview.ps1 -Path . -OutputDirectory .\powerbi-max-ai-review
+```
+
+These commands turn review results into Codex-native engineering artifacts: fix loop plans, live/source-control drift, semantic test expectations, PR comments, KPI trust contracts, local model Q&A, and Fabric deployment readiness. They do not sign in to Fabric or publish content.
 
 ### Decide whether a report is release-ready
 
@@ -184,6 +216,18 @@ Run:
 ```
 
 Use this to detect Tabular Editor, DAX Studio, ALM Toolkit, Power BI Helper, Model Documenter, PBI.tips tools, and pbi-tools. The plugin's core capabilities are native; external tools are optional validation paths for engine-specific traces, BPA rule packs, or deployment compare scenarios.
+
+### Register as a Power BI External Tool
+
+Run:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\New-PowerBIExternalToolRegistration.ps1 -OutputPath .\CodexPowerBIWorkbench.pbitool.json
+.\plugins\powerbi-desktop\scripts\Install-PowerBIExternalTool.ps1
+.\plugins\powerbi-desktop\scripts\Uninstall-PowerBIExternalTool.ps1
+```
+
+Use `-Install` only when the user explicitly wants to write into the machine-wide Power BI Desktop External Tools folder. Power BI Desktop should be restarted after installation.
 
 ### Inspect the open Desktop model
 
@@ -315,7 +359,7 @@ When tools are available, prefer:
 - `scripts/Test-PowerBILiveMetadataGovernance.ps1` checks descriptions, format strings, naming, and local date table signals.
 - `scripts/New-PowerBILiveRefactorSuggestions.ps1` creates DAX refactoring suggestions for risky live measures.
 - `rules/powerbi-governance-rules.json` contains configurable DAX and Power Query governance rules.
-- `scripts/Test-PowerBIPlugin.ps1` runs smoke tests against the bundled sample model.
+- `tests/Run-PowerBITests.ps1` runs smoke, golden-baseline, and Pester tests. Pester specs live under `tests/pester`.
 - `scripts/Invoke-PowerBIInnovationReview.ps1` creates guided fix, lineage, test, performance, UX, explainability, governance, Copilot, and release-readiness artifacts.
 - `scripts/New-PowerBIGuidedFixPlan.ps1` converts findings and metric risks into a prioritized guided remediation workflow.
 - `scripts/Compare-PowerBISemanticModel.ps1` compares two text-based model folders for added, removed, or changed measures.

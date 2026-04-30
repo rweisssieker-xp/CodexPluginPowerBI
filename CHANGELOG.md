@@ -1,57 +1,176 @@
 # Changelog
 
-## 1.5.0 - 2026-04-24
+## 2026-04-27
 
-- Added PBIP Apply Engine for measure, calculated column, Power Query, and generic TMDL drafts.
-- Added draft manifests, backup handling, rollback guidance, and apply-plan summaries.
+### Power BI Live Model Review
 
-## 1.4.0 - 2026-04-24
+- Live-Verbindung zum aktuell geöffneten Power-BI-Desktop-Modell geprüft.
+  - Server: `localhost:57411`
+  - Modellumfang: 151 Tabellen, 2013 Spalten, 41 initiale Measures, 146 Beziehungen
+- Modellzusammenfassung erzeugt:
+  - `powerbi-live-model-summary.md`
+  - `powerbi-live-auto-review/live-model-summary.md`
+  - `powerbi-live-auto-review/live-insight-scan.md`
+- Auffälligkeiten festgehalten:
+  - sehr viele versteckte `LocalDateTable_*` Tabellen
+  - fehlende Measure-Beschreibungen
+  - volatile Datumslogik bei `Days Last Report`
+  - komplexes Measure `_Period Total Hours (Dept aware incl blank)`
 
-- Added real-feature expansion scripts for visual schema checks, render-readiness checks, live DAX benchmark timing, live DMV/VertiPaq-style analysis, calculation groups, relationships, RLS roles, Power Query drafts, Power BI Service planning, incremental refresh, aggregations, and schema-aware visual planning.
-- Added `Invoke-PowerBIRealFeatureReview.ps1` and integrated it into auto-review and innovation-review outputs.
+### RLS / Rollenkonzept
 
-## 1.3.0 - 2026-04-24
+- Im offenen Power-BI-Modell fünf Rollen angelegt:
+  - `RLS_01_Portfolio_Manager`
+  - `RLS_02_BU_Bereichsleiter`
+  - `RLS_03_Lead_Head`
+  - `RLS_04_Project_Manager`
+  - `RLS_05_Team_Member`
+- Versteckte Hilfstabelle `RLS_UserAccess` angelegt.
+- Dynamische RLS-Filter vorbereitet:
+  - BU-/Bereichsleiter und Lead/Head filtern über `Departments[DepartmentID]`.
+  - Project Manager filtern über `Resources[ResourceID]` anhand der Projektteam-Zuordnung in `Project Team`.
+  - Team Member filtern über `Resources[ResourceID]`.
+- Hinweis: `RLS_04_Project_Manager` wurde nicht direkt auf `Projects` gesetzt, weil Power BI wegen einer Beziehung mit Security-Filterverhalten `Both` das Speichern blockiert hat.
+- Lokales Hilfsskript erstellt:
+  - `apply-rls-roles.ps1`
 
-- Added native tool-parity capabilities for common Power BI external-tool workflows.
-- Added native BPA, model compare, model documentation, performance/VertiPaq-style heuristics, report layout checks, theme audit, and PBIP source-control planning.
-- Integrated native parity artifacts into auto-review and innovation-review outputs.
+### Status-Report Text Measures
 
-## 1.2.0 - 2026-04-24
+- DAX-Pattern für textuelle Statusfelder zum jeweils neuesten `Report Date` erarbeitet.
+- Folgende Measures wurden im Modell vorgefunden bzw. genutzt:
+  - `Latest Status Summary`
+  - `Latest Accomplished Activities`
+  - `Latest Accomplished Activities Simple`
+  - `Latest Planned Activities`
+- Ziel: Textfelder wie `Status Summary`, `Accomplished Activities` und `Planned Activities` nicht alphabetisch aggregieren, sondern passend zum neuesten Statusbericht anzeigen.
 
-- Added PBIP report authoring drafts for pages, visuals, and layout plans.
-- Added safe PBIP report page application with generated page files, page manifest updates, and rollback guidance.
-- Added PBIP-to-PBIX compile workflow guidance using pbi-tools when available or Power BI Desktop Save As PBIX when not.
+### TimesheetLines Power Query
 
-## 1.1.0 - 2026-04-24
+- Ursache für fehlende Umlaute analysiert:
+  - `TimesheetLines` nutzt `owneridname` / `tpg_submittername`.
+  - `Resources[ResourceName]` enthält korrekte Umlaute.
+  - `Resources[tpg_resourcename]` und `Resources[tpg_username]` enthalten normalisierte Schreibweisen.
+- Power-Query-Definition von `TimesheetLines` direkt aus dem Live-Modell ausgelesen.
+- Lösung erarbeitet:
+  - Resource-Name mit Umlauten direkt in der SQL Native Query über `[dbo].[tpg_resourcepool]` ermitteln.
+  - Kein Power-Query-Merge auf separate `Resources`-Abfrage, da das zu einem Datenkombinationsfehler geführt hat.
+  - Join auf `tpg_resourcepool` aggregiert, damit keine Timesheet-Zeilen vervielfacht werden:
+    - `GROUP BY tpg_user`
+    - `MAX(tpg_name) AS tpg_name`
+- Lokales Hilfsskript erstellt:
+  - `inspect-powerquery.ps1`
+- Lokaler Dump erstellt:
+  - `powerquery-source-dump.txt`
 
-- Added an external-tools integration layer for Tabular Editor, DAX Studio, ALM Toolkit, Power BI Helper, Model Documenter, PBI.tips tools, and pbi-tools.
-- Added external tool inventory, capability matrix, and workflow generators for BPA, DAX performance, ALM comparison, documentation, source control, and design tooling.
-- Extended local environment detection to known Program Files install paths, including Tabular Editor 3 and DAX Studio.
+### Project Business KPIs
 
-## 1.0.0 - 2026-04-24
+- In Tabelle `Projects` neue Measures unter `Business KPIs` angelegt:
+  - `_Projects Without Recent Status`
+  - `_Status Report Compliance %`
+  - `_Overdue Projects`
+  - `_Projects Ending Next 30 Days`
+  - `_Average Project Duration Days`
+  - `_Project Progress %`
+  - `_Projects At Risk by Progress`
+  - `_Project Cost Variance %`
+  - `_Forecast Budget Overrun`
+  - `_Forecast Budget Overrun %`
+  - `_Effort Variance`
+  - `_Effort Burn Rate %`
+- Measures per DAX-Abfrage validiert.
+- Lokales Hilfsskript erstellt:
+  - `add-project-business-measures.ps1`
 
-- Added v1.0 release polish with documentation, Pester test scaffold, stronger CI, and committed-output guardrails.
-- Added configurable trust rules in `rules/powerbi-trust-rules.json`.
-- Added safe PBIP/TMDL authoring draft generators for measures and calculated columns.
-- Added model best-practice checks for metric governance, deterministic DAX, source-control readiness, and performance patterns.
+### Resource Business KPIs
 
-## 0.11.0 - 2026-04-24
+- In Tabelle `Resources` neue Measures unter `Business KPIs` angelegt:
+  - `_Resource Demand Hours`
+  - `_Resource Demand Hours excl. ATOSS`
+  - `_Resource Capacity Gap Hours`
+  - `_Resource Capacity Gap %`
+  - `_Resources Overallocated`
+  - `_Resources Critically Overallocated`
+  - `_Resources Underutilized`
+  - `_Resources Without Demand`
+  - `_Resources Without Capacity`
+  - `_Resources With Demand No Capacity`
+  - `_Timesheet Coverage %`
+  - `_Timesheet vs Demand Gap Hours`
+  - `_Planned vs Actual Utilization Gap %`
+  - `_Avg Demand per Resource`
+  - `_Avg Capacity per Resource`
+  - `_Avg Timesheet Hours per Resource`
+  - `_Available Capacity Hours`
+  - `_Overallocated Hours`
+  - `_Overallocated Hours %`
+  - `_Resources Missing Department`
+  - `_Resource Master Data Completeness %`
+- Measures per DAX-Abfrage validiert.
+- Lokales Hilfsskript erstellt:
+  - `add-resource-business-measures.ps1`
 
-- Added the Power BI Trust & Release Assistant feature set.
-- Added business semantic layers, KPI trust scores, decision-risk analysis, flight-recorder history, before/after measure behavior comparison, report narrative critique, Copilot optimization, DAX fix simulation, visual-to-measure impact mapping, and Go/Warn/No-Go trust release gates.
-- Integrated USP artifacts into the innovation review package and smoke tests.
+### Control Tower KPIs
 
-## 0.10.0 - 2026-04-24
+- Neue Tabelle `KPI Thresholds` als Schwellenwert-Dokumentation angelegt.
+- Hinweis: Die produktiven Control-Tower-Measures nutzen feste Defaultwerte direkt im DAX, weil die neu angelegte berechnete Tabelle im Live-Desktop-Modell erst nach Refresh materialisiert wird.
+- In Tabelle `Projects` neue Measures unter `Business KPIs\Control Tower` angelegt:
+  - `_Project Schedule Risk Score`
+  - `_Project Cost Risk Score`
+  - `_Project Status Quality Score`
+  - `_Project Overall Risk Score`
+  - `_Project Delivery Confidence %`
+  - `_Project Risk Category`
+  - `_Project Risk Color`
+  - `_Project Attention Reason`
+  - `_Projects Requiring Attention`
+  - `_Projects Due Soon And Low Progress`
+  - `_Projects Over Forecast Budget`
+  - `_Portfolio Investment at Risk`
+  - `_High Value Projects at Risk`
+  - `_Projects With Stale Status`
+- In Tabelle `Resources` neue Measures unter `Business KPIs\Control Tower` angelegt:
+  - `_Resource Overload Score`
+  - `_Resource Availability Score`
+  - `_Resource Forecast Quality Score`
+  - `_Resource Bottleneck Score`
+  - `_Department Capacity Risk Score`
+  - `_Resource Load Category`
+  - `_Resource Load Color`
+  - `_Resource Attention Reason`
+  - `_Resources Overallocated Next 30 Days`
+  - `_Resources Overallocated Next 90 Days`
+  - `_Resources Underutilized Next 30 Days`
+  - `_Demand Without Capacity Hours`
+  - `_Missing Timesheet Hours`
+  - `_Forecast Accuracy %`
+  - `_Demand vs Actual Variance Hours`
+  - `_Resources With Missing Master Data`
+- Measures per DAX-Abfrage validiert.
+- Lokale Hilfsskripte erstellt:
+  - `add-control-tower-measures.ps1`
+  - `patch-control-tower-hardcoded-thresholds.ps1`
 
-- Added innovation review orchestration.
-- Added guided fix plans, semantic model diffing, measure lineage impact, generated DAX test plans, performance advisor, report UX critique, executive explainability pack, governance scorecard, Copilot readiness check, and release checklist.
-- Added innovation review smoke tests and integrated the innovation package into the full auto-review workflow.
+### Lokale Analyse-/Exportdateien
 
-## 0.9.0 - 2026-04-24
+- Folgende lokale Dateien wurden im Workspace erzeugt:
+  - `live-levels.json`
+  - `live-partitions.json`
+  - `live-tables.json`
+  - `live-expressions.json`
+  - `live-measures.json`
+  - `live-measures-before-resource-kpis.json`
+  - `live-measures-after-project-kpis.json`
+  - `live-measures-after-resource-kpis.json`
+  - `live-measures-after-control-tower.json`
+  - `live-measures-visibility.json`
+  - `powerquery-source-dump.txt`
 
-- Added the initial Power BI Desktop Codex plugin.
-- Added local PBIX/PBIT/PBIP inventory and environment checks.
-- Added static Power BI auto-review outputs for DAX, Power Query, metric catalogs, dependency graphs, refactor plans, report blueprints, and AI prompt packs.
-- Added live read-only Power BI Desktop XMLA/ADOMD helpers.
-- Added live DAX validation, metadata governance checks, fix backlogs, DAX fix drafts, and refactor suggestions.
-- Added configurable governance rules and sample model assets.
+### Wichtige Hinweise
+
+- Alle Modelländerungen wurden über die Live-Verbindung in das aktuell geöffnete Power-BI-Desktop-Modell geschrieben.
+- Power BI Desktop muss gespeichert werden, damit die Änderungen im PBIX erhalten bleiben.
+- Falls Measures im Feldbereich nicht sofort sichtbar sind:
+  - Modell speichern
+  - Power BI Desktop schließen und erneut öffnen
+  - in den Tabellen `Projects` und `Resources` nach `_` oder nach dem Ordner `Business KPIs` suchen
+- Die RLS-Hilfstabelle `RLS_UserAccess` muss mit echten Benutzer-/Scope-Zuordnungen befüllt werden, bevor die restriktiven Rollen produktiv nutzbar sind.

@@ -1,0 +1,416 @@
+﻿{
+    "schema":  "codex.powerbi.aiContextPack.v1",
+    "root":  "D:\\temp\\CodexPluginPowerBI\\plugins\\powerbi-desktop\\examples\\sample-model",
+    "generated":  "2026-04-27T14:19:02",
+    "risk":  {
+                 "score":  8,
+                 "level":  "Medium",
+                 "findings":  [
+                                  {
+                                      "Severity":  "High",
+                                      "Score":  3,
+                                      "Category":  "DAX Performance",
+                                      "Title":  "FILTER over ALL pattern",
+                                      "Detail":  "This pattern can be expensive on large models. Review whether KEEPFILTERS, REMOVEFILTERS, or a narrower table expression is possible.",
+                                      "Source":  "Risky.Measures.dax"
+                                  },
+                                  {
+                                      "Severity":  "Medium",
+                                      "Score":  2,
+                                      "Category":  "Refresh Determinism",
+                                      "Title":  "Volatile date/time function",
+                                      "Detail":  "TODAY/NOW can make refresh and testing behavior time-dependent. Consider a governed date table or refresh parameter.",
+                                      "Source":  "Risky.Measures.dax"
+                                  },
+                                  {
+                                      "Severity":  "Medium",
+                                      "Score":  2,
+                                      "Category":  "Data Source Governance",
+                                      "Title":  "Local file dependency",
+                                      "Detail":  "Local file paths can break refresh in shared workspaces. Consider parameters, gateways, SharePoint, OneLake, or governed storage.",
+                                      "Source":  "SalesQuery.pq"
+                                  },
+                                  {
+                                      "Severity":  "Low",
+                                      "Score":  1,
+                                      "Category":  "Project Format",
+                                      "Title":  "Text artifacts without PBIP file",
+                                      "Detail":  "A PBIP entry point improves Power BI Desktop round-tripping and source-control structure.",
+                                      "Source":  "."
+                                  }
+                              ]
+             },
+    "metricCatalog":  {
+                          "schema":  "codex.powerbi.metricCatalog.v1",
+                          "root":  "D:\\temp\\CodexPluginPowerBI\\plugins\\powerbi-desktop\\examples\\sample-model",
+                          "generated":  "2026-04-27T14:19:02",
+                          "metricCount":  5,
+                          "metrics":  [
+                                          {
+                                              "id":  "sales.all-customer-sales",
+                                              "name":  "All Customer Sales",
+                                              "table":  "Sales",
+                                              "source":  "Risky.Measures.dax",
+                                              "tags":  [
+                                                           "finance",
+                                                           "customer"
+                                                       ],
+                                              "riskLevel":  "review",
+                                              "risks":  [
+                                                            "performance: FILTER over ALL"
+                                                        ],
+                                              "owner":  "[TODO: metric owner]",
+                                              "businessDefinition":  "[TODO: business definition]",
+                                              "validationQuestion":  "Does `All Customer Sales` reconcile to the accepted business source for the selected filter context?",
+                                              "expression":  "CALCULATE (\n    [Total Sales],\n    FILTER ( ALL ( \u0027Customer\u0027 ), \u0027Customer\u0027[IsActive] = TRUE () )\n)"
+                                          },
+                                          {
+                                              "id":  "sales.refresh-sensitive-sales",
+                                              "name":  "Refresh Sensitive Sales",
+                                              "table":  "Sales",
+                                              "source":  "Risky.Measures.dax",
+                                              "tags":  [
+                                                           "finance"
+                                                       ],
+                                              "riskLevel":  "review",
+                                              "risks":  [
+                                                            "determinism: volatile date/time"
+                                                        ],
+                                              "owner":  "[TODO: metric owner]",
+                                              "businessDefinition":  "[TODO: business definition]",
+                                              "validationQuestion":  "Does `Refresh Sensitive Sales` reconcile to the accepted business source for the selected filter context?",
+                                              "expression":  "IF ( TODAY () \u003e DATE ( 2026, 1, 1 ), [Total Sales], BLANK () )"
+                                          },
+                                          {
+                                              "id":  "sales.total-sales",
+                                              "name":  "Total Sales",
+                                              "table":  "Sales",
+                                              "source":  "Sales.Measures.dax",
+                                              "tags":  [
+                                                           "finance"
+                                                       ],
+                                              "riskLevel":  "normal",
+                                              "risks":  [
+
+                                                        ],
+                                              "owner":  "[TODO: metric owner]",
+                                              "businessDefinition":  "[TODO: business definition]",
+                                              "validationQuestion":  "Does `Total Sales` reconcile to the accepted business source for the selected filter context?",
+                                              "expression":  "SUM ( \u0027Sales\u0027[Sales Amount] )"
+                                          },
+                                          {
+                                              "id":  "sales.sales-yoy-pct",
+                                              "name":  "Sales YoY %",
+                                              "table":  "Sales",
+                                              "source":  "Sales.Measures.dax",
+                                              "tags":  [
+                                                           "finance",
+                                                           "time-intelligence",
+                                                           "ratio"
+                                                       ],
+                                              "riskLevel":  "normal",
+                                              "risks":  [
+
+                                                        ],
+                                              "owner":  "[TODO: metric owner]",
+                                              "businessDefinition":  "[TODO: business definition]",
+                                              "validationQuestion":  "Does `Sales YoY %` reconcile to the accepted business source for the selected filter context?",
+                                              "expression":  "DIVIDE (\n    [Total Sales] - [Total Sales Prior Year],\n    [Total Sales Prior Year]\n)"
+                                          },
+                                          {
+                                              "id":  "sales.total-sales-prior-year",
+                                              "name":  "Total Sales Prior Year",
+                                              "table":  "Sales",
+                                              "source":  "Sales.Measures.dax",
+                                              "tags":  [
+                                                           "finance",
+                                                           "time-intelligence"
+                                                       ],
+                                              "riskLevel":  "normal",
+                                              "risks":  [
+
+                                                        ],
+                                              "owner":  "[TODO: metric owner]",
+                                              "businessDefinition":  "[TODO: business definition]",
+                                              "validationQuestion":  "Does `Total Sales Prior Year` reconcile to the accepted business source for the selected filter context?",
+                                              "expression":  "CALCULATE (\n    [Total Sales],\n    SAMEPERIODLASTYEAR ( \u0027Date\u0027[Date] )\n)"
+                                          }
+                                      ]
+                      },
+    "dependencyGraph":  {
+                            "schema":  "codex.powerbi.dependencyGraph.v1",
+                            "root":  "D:\\temp\\CodexPluginPowerBI\\plugins\\powerbi-desktop\\examples\\sample-model",
+                            "generated":  "2026-04-27T14:19:02",
+                            "nodeCount":  5,
+                            "edgeCount":  5,
+                            "hubMetrics":  [
+                                               {
+                                                   "id":  "sales.total-sales",
+                                                   "name":  "Total Sales",
+                                                   "table":  "Sales",
+                                                   "source":  "Sales.Measures.dax",
+                                                   "riskLevel":  "normal",
+                                                   "incoming":  4,
+                                                   "outgoing":  0,
+                                                   "hubScore":  4
+                                               },
+                                               {
+                                                   "id":  "sales.sales-yoy-pct",
+                                                   "name":  "Sales YoY %",
+                                                   "table":  "Sales",
+                                                   "source":  "Sales.Measures.dax",
+                                                   "riskLevel":  "normal",
+                                                   "incoming":  0,
+                                                   "outgoing":  2,
+                                                   "hubScore":  2
+                                               },
+                                               {
+                                                   "id":  "sales.total-sales-prior-year",
+                                                   "name":  "Total Sales Prior Year",
+                                                   "table":  "Sales",
+                                                   "source":  "Sales.Measures.dax",
+                                                   "riskLevel":  "normal",
+                                                   "incoming":  1,
+                                                   "outgoing":  1,
+                                                   "hubScore":  2
+                                               },
+                                               {
+                                                   "id":  "sales.all-customer-sales",
+                                                   "name":  "All Customer Sales",
+                                                   "table":  "Sales",
+                                                   "source":  "Risky.Measures.dax",
+                                                   "riskLevel":  "review",
+                                                   "incoming":  0,
+                                                   "outgoing":  1,
+                                                   "hubScore":  1
+                                               },
+                                               {
+                                                   "id":  "sales.refresh-sensitive-sales",
+                                                   "name":  "Refresh Sensitive Sales",
+                                                   "table":  "Sales",
+                                                   "source":  "Risky.Measures.dax",
+                                                   "riskLevel":  "review",
+                                                   "incoming":  0,
+                                                   "outgoing":  1,
+                                                   "hubScore":  1
+                                               }
+                                           ],
+                            "nodes":  [
+                                          {
+                                              "id":  "sales.all-customer-sales",
+                                              "name":  "All Customer Sales",
+                                              "table":  "Sales",
+                                              "source":  "Risky.Measures.dax",
+                                              "riskLevel":  "review",
+                                              "incoming":  0,
+                                              "outgoing":  1,
+                                              "hubScore":  1
+                                          },
+                                          {
+                                              "id":  "sales.refresh-sensitive-sales",
+                                              "name":  "Refresh Sensitive Sales",
+                                              "table":  "Sales",
+                                              "source":  "Risky.Measures.dax",
+                                              "riskLevel":  "review",
+                                              "incoming":  0,
+                                              "outgoing":  1,
+                                              "hubScore":  1
+                                          },
+                                          {
+                                              "id":  "sales.total-sales",
+                                              "name":  "Total Sales",
+                                              "table":  "Sales",
+                                              "source":  "Sales.Measures.dax",
+                                              "riskLevel":  "normal",
+                                              "incoming":  4,
+                                              "outgoing":  0,
+                                              "hubScore":  4
+                                          },
+                                          {
+                                              "id":  "sales.sales-yoy-pct",
+                                              "name":  "Sales YoY %",
+                                              "table":  "Sales",
+                                              "source":  "Sales.Measures.dax",
+                                              "riskLevel":  "normal",
+                                              "incoming":  0,
+                                              "outgoing":  2,
+                                              "hubScore":  2
+                                          },
+                                          {
+                                              "id":  "sales.total-sales-prior-year",
+                                              "name":  "Total Sales Prior Year",
+                                              "table":  "Sales",
+                                              "source":  "Sales.Measures.dax",
+                                              "riskLevel":  "normal",
+                                              "incoming":  1,
+                                              "outgoing":  1,
+                                              "hubScore":  2
+                                          }
+                                      ],
+                            "edges":  [
+                                          {
+                                              "from":  "All Customer Sales",
+                                              "to":  "Total Sales",
+                                              "fromId":  "sales.all-customer-sales",
+                                              "toId":  "sales.total-sales",
+                                              "source":  "Risky.Measures.dax"
+                                          },
+                                          {
+                                              "from":  "Refresh Sensitive Sales",
+                                              "to":  "Total Sales",
+                                              "fromId":  "sales.refresh-sensitive-sales",
+                                              "toId":  "sales.total-sales",
+                                              "source":  "Risky.Measures.dax"
+                                          },
+                                          {
+                                              "from":  "Sales YoY %",
+                                              "to":  "Total Sales",
+                                              "fromId":  "sales.sales-yoy-pct",
+                                              "toId":  "sales.total-sales",
+                                              "source":  "Sales.Measures.dax"
+                                          },
+                                          {
+                                              "from":  "Sales YoY %",
+                                              "to":  "Total Sales Prior Year",
+                                              "fromId":  "sales.sales-yoy-pct",
+                                              "toId":  "sales.total-sales-prior-year",
+                                              "source":  "Sales.Measures.dax"
+                                          },
+                                          {
+                                              "from":  "Total Sales Prior Year",
+                                              "to":  "Total Sales",
+                                              "fromId":  "sales.total-sales-prior-year",
+                                              "toId":  "sales.total-sales",
+                                              "source":  "Sales.Measures.dax"
+                                          }
+                                      ]
+                        },
+    "refactorPlan":  {
+                         "schema":  "codex.powerbi.refactorPlan.v1",
+                         "root":  "D:\\temp\\CodexPluginPowerBI\\plugins\\powerbi-desktop\\examples\\sample-model",
+                         "generated":  "2026-04-27T14:19:02",
+                         "riskLevel":  "Medium",
+                         "riskScore":  8,
+                         "itemCount":  4,
+                         "items":  [
+                                       {
+                                           "Phase":  "Stabilize",
+                                           "Priority":  "High",
+                                           "Effort":  "Medium",
+                                           "Category":  "DAX Performance",
+                                           "Source":  "Risky.Measures.dax",
+                                           "Title":  "FILTER over ALL pattern",
+                                           "Action":  "Review the measure filter shape, benchmark alternatives, and prefer narrower filter expressions where business logic allows.",
+                                           "AcceptanceCriteria":  [
+                                                                      "Change is traceable to a finding or business requirement.",
+                                                                      "Report opens successfully in Power BI Desktop.",
+                                                                      "Affected measures or queries have been reviewed against expected results.",
+                                                                      "Rollback path is documented before publishing."
+                                                                  ]
+                                       },
+                                       {
+                                           "Phase":  "Govern",
+                                           "Priority":  "Medium",
+                                           "Effort":  "Small",
+                                           "Category":  "Refresh Determinism",
+                                           "Source":  "Risky.Measures.dax",
+                                           "Title":  "Volatile date/time function",
+                                           "Action":  "Replace volatile date logic with a governed date table, parameter, or documented refresh-date measure.",
+                                           "AcceptanceCriteria":  [
+                                                                      "Change is traceable to a finding or business requirement.",
+                                                                      "Report opens successfully in Power BI Desktop.",
+                                                                      "Affected measures or queries have been reviewed against expected results.",
+                                                                      "Rollback path is documented before publishing."
+                                                                  ]
+                                       },
+                                       {
+                                           "Phase":  "Govern",
+                                           "Priority":  "Medium",
+                                           "Effort":  "Medium",
+                                           "Category":  "Data Source Governance",
+                                           "Source":  "SalesQuery.pq",
+                                           "Title":  "Local file dependency",
+                                           "Action":  "Move the source to governed storage or parameterize the path for gateway-compatible refresh.",
+                                           "AcceptanceCriteria":  [
+                                                                      "Change is traceable to a finding or business requirement.",
+                                                                      "Report opens successfully in Power BI Desktop.",
+                                                                      "Affected measures or queries have been reviewed against expected results.",
+                                                                      "Rollback path is documented before publishing."
+                                                                  ]
+                                       },
+                                       {
+                                           "Phase":  "Polish",
+                                           "Priority":  "Low",
+                                           "Effort":  "Small",
+                                           "Category":  "Project Format",
+                                           "Source":  ".",
+                                           "Title":  "Text artifacts without PBIP file",
+                                           "Action":  "Add or regenerate the PBIP entry point for round-tripping in Power BI Desktop.",
+                                           "AcceptanceCriteria":  [
+                                                                      "Change is traceable to a finding or business requirement.",
+                                                                      "Report opens successfully in Power BI Desktop.",
+                                                                      "Affected measures or queries have been reviewed against expected results.",
+                                                                      "Rollback path is documented before publishing."
+                                                                  ]
+                                       }
+                                   ]
+                     },
+    "reportBlueprint":  {
+                            "schema":  "codex.powerbi.reportBlueprint.v1",
+                            "root":  "D:\\temp\\CodexPluginPowerBI\\plugins\\powerbi-desktop\\examples\\sample-model",
+                            "generated":  "2026-04-27T14:19:02",
+                            "metricCount":  5,
+                            "pageCount":  3,
+                            "designPrinciples":  [
+                                                     "Use dense, scannable executive pages with clear metric ownership.",
+                                                     "Keep diagnostic and governance content separate from business-consumption pages.",
+                                                     "Surface unresolved metric risks visibly until owners sign off.",
+                                                     "Avoid ambiguous KPI titles; use business definitions from the metric catalog."
+                                                 ],
+                            "pages":  [
+                                          {
+                                              "Name":  "Executive Overview",
+                                              "Purpose":  "Give leadership a fast read on the most important governed metrics.",
+                                              "Visuals":  [
+                                                              "KPI row for primary finance metrics",
+                                                              "Trend line for time-intelligence metrics",
+                                                              "Variance callout for metrics tagged as ratio or YoY",
+                                                              "Risk banner if review metrics remain unresolved"
+                                                          ],
+                                              "Measures":  [
+                                                               "All Customer Sales",
+                                                               "Refresh Sensitive Sales",
+                                                               "Total Sales",
+                                                               "Sales YoY %",
+                                                               "Total Sales Prior Year"
+                                                           ]
+                                          },
+                                          {
+                                              "Name":  "Metric Diagnostics",
+                                              "Purpose":  "Expose measure definitions, owners, and validation state for analysts.",
+                                              "Visuals":  [
+                                                              "Metric catalog table with owner, business definition, and risk level",
+                                                              "DAX review queue filtered to riskLevel = review",
+                                                              "Validation checklist slicer by source file"
+                                                          ],
+                                              "Measures":  [
+                                                               "All Customer Sales",
+                                                               "Refresh Sensitive Sales"
+                                                           ]
+                                          },
+                                          {
+                                              "Name":  "Model Governance",
+                                              "Purpose":  "Track project readiness, source-control posture, and refresh dependencies.",
+                                              "Visuals":  [
+                                                              "Finding count by severity",
+                                                              "Power Query dependency list",
+                                                              "PBIP/TMDL readiness status",
+                                                              "Next-action backlog"
+                                                          ],
+                                              "Measures":  [
+
+                                                           ]
+                                          }
+                                      ]
+                        }
+}

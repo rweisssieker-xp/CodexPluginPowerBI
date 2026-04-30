@@ -319,6 +319,26 @@ try {
         'New-PowerBIReportNarrativeCritic.ps1',
         'Optimize-PowerBICopilotModel.ps1',
         'New-PowerBIDaxFixSimulation.ps1',
+        'Invoke-PowerBIAutonomousFixAgent.ps1',
+        'Compare-PowerBILiveRepoModel.ps1',
+        'Test-PowerBIMeasureExpectations.ps1',
+        'New-PowerBIPRReleaseComment.ps1',
+        'New-PowerBIKpiTrustContract.ps1',
+        'Invoke-PowerBIAskModel.ps1',
+        'New-PowerBIFabricReadinessPlan.ps1',
+        'Invoke-PowerBIFixUntilGreenLoop.ps1',
+        'Test-PowerBISemanticModelCopilotEvaluator.ps1',
+        'New-PowerBIDataContract.ps1',
+        'New-PowerBIFabricDeploymentRiskSimulator.ps1',
+        'New-PowerBIVisualIntentAnalyzer.ps1',
+        'New-PowerBIBrokenMeasureRootCauseGraph.ps1',
+        'New-PowerBIKpiTrustTwin.ps1',
+        'Update-PowerBIReviewMemory.ps1',
+        'New-PowerBINaturalLanguagePBIPAuthoring.ps1',
+        'New-PowerBIGovernanceRuleMiner.ps1',
+        'New-PowerBIExplainableDaxRefactoring.ps1',
+        'New-PowerBIReportDecisionSimulator.ps1',
+        'Invoke-PowerBIMaxAIReview.ps1',
         'New-PowerBIVisualMeasureImpactMap.ps1',
         'New-PowerBITrustReleaseGate.ps1',
         'New-PowerBIMeasureDraft.ps1',
@@ -328,7 +348,12 @@ try {
         'New-PowerBIVisualDraft.ps1',
         'New-PowerBIReportLayoutPlan.ps1',
         'Add-PowerBIPBIPReportPage.ps1',
-        'New-PowerBIPBIXCompileWorkflow.ps1'
+        'New-PowerBIPBIXCompileWorkflow.ps1',
+        'Invoke-PowerBIUnifiedReview.ps1',
+        'New-PowerBIExternalToolRegistration.ps1',
+        'Install-PowerBIExternalTool.ps1',
+        'Uninstall-PowerBIExternalTool.ps1',
+        'Test-PowerBIGoldenBaselines.ps1'
     )
     $missingInnovationScripts = @($innovationScripts | Where-Object { -not (Test-Path -LiteralPath (Join-Path $scriptsPath $_)) })
     Add-TestResult -Name 'Innovation scripts are present' -Passed ($missingInnovationScripts.Count -eq 0) -Detail ("Missing={0}" -f ($missingInnovationScripts -join ', '))
@@ -395,8 +420,75 @@ catch {
 }
 
 try {
+    $fixAgent = & (Join-Path $scriptsPath 'Invoke-PowerBIAutonomousFixAgent.ps1') -Path $samplePath -MaxFixes 2 -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Autonomous fix agent creates fix loop plan' -Passed ($fixAgent.fixCount -ge 1 -and @($fixAgent.fixes)[0].proposedDax) -Detail "Fixes=$($fixAgent.fixCount)"
+}
+catch {
+    Add-TestResult -Name 'Autonomous fix agent creates fix loop plan' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $reconcile = & (Join-Path $scriptsPath 'Compare-PowerBILiveRepoModel.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Live repo reconciliation handles unavailable live endpoint' -Passed (@('Completed','NotAvailable') -contains $reconcile.liveStatus) -Detail "LiveStatus=$($reconcile.liveStatus)"
+}
+catch {
+    Add-TestResult -Name 'Live repo reconciliation handles unavailable live endpoint' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $expectationPath = Join-Path $PluginRoot 'tmp/measure-expectations-test.json'
+    if (Test-Path -LiteralPath $expectationPath) { Remove-Item -LiteralPath $expectationPath -Force }
+    $expectations = & (Join-Path $scriptsPath 'Test-PowerBIMeasureExpectations.ps1') -Path $samplePath -ExpectationsPath $expectationPath -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Measure expectation harness creates template' -Passed ($expectations.status -eq 'TemplateCreated' -and (Test-Path -LiteralPath $expectationPath)) -Detail $expectationPath
+}
+catch {
+    Add-TestResult -Name 'Measure expectation harness creates template' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $comment = & (Join-Path $scriptsPath 'New-PowerBIPRReleaseComment.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    Add-TestResult -Name 'PR release comment creates CI decision' -Passed ($comment.comment -match 'Power BI Release Gate' -and $comment.exitCode -ge 0) -Detail "Decision=$($comment.decision), Exit=$($comment.exitCode)"
+}
+catch {
+    Add-TestResult -Name 'PR release comment creates CI decision' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $contract = & (Join-Path $scriptsPath 'New-PowerBIKpiTrustContract.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    Add-TestResult -Name 'KPI trust contract creates semantic QA records' -Passed ($contract.metricCount -eq 5 -and @($contract.contracts)[0].acceptanceTest) -Detail "Contracts=$($contract.metricCount)"
+}
+catch {
+    Add-TestResult -Name 'KPI trust contract creates semantic QA records' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $ask = & (Join-Path $scriptsPath 'Invoke-PowerBIAskModel.ps1') -Path $samplePath -Question 'Which sales measures drive release risk?' -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Ask model ranks relevant measures' -Passed ($ask.matchCount -ge 1 -and $ask.answer) -Detail "Matches=$($ask.matchCount)"
+}
+catch {
+    Add-TestResult -Name 'Ask model ranks relevant measures' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $fabric = & (Join-Path $scriptsPath 'New-PowerBIFabricReadinessPlan.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Fabric readiness plan creates deployment steps' -Passed ($fabric.stepCount -ge 5 -and $fabric.releaseDecision) -Detail "Decision=$($fabric.releaseDecision)"
+}
+catch {
+    Add-TestResult -Name 'Fabric readiness plan creates deployment steps' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $maxAi = & (Join-Path $scriptsPath 'Invoke-PowerBIMaxAIReview.ps1') -Path $samplePath -OutputDirectory (Join-Path $PluginRoot 'tmp/max-ai-review-test')
+    $passed = (Test-Path -LiteralPath $maxAi.Index) -and (Test-Path -LiteralPath (Join-Path $maxAi.OutputDirectory 'kpi-trust-twin.json')) -and (Test-Path -LiteralPath (Join-Path $maxAi.OutputDirectory 'report-decision-simulator.md'))
+    Add-TestResult -Name 'Max AI review creates 12-USP package' -Passed $passed -Detail $maxAi.OutputDirectory
+}
+catch {
+    Add-TestResult -Name 'Max AI review creates 12-USP package' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
     $uspReview = & (Join-Path $scriptsPath 'Invoke-PowerBIInnovationReview.ps1') -Path $samplePath -OutputDirectory (Join-Path $PluginRoot 'tmp/usp-review-test')
-    $passed = (Test-Path -LiteralPath (Join-Path $uspReview.OutputDirectory 'trust-release-gate.md')) -and (Test-Path -LiteralPath (Join-Path $uspReview.OutputDirectory 'kpi-trust-score.md')) -and (Test-Path -LiteralPath (Join-Path $uspReview.OutputDirectory 'decision-risk-assistant.md'))
+    $passed = (Test-Path -LiteralPath (Join-Path $uspReview.OutputDirectory 'trust-release-gate.md')) -and (Test-Path -LiteralPath (Join-Path $uspReview.OutputDirectory 'kpi-trust-score.md')) -and (Test-Path -LiteralPath (Join-Path $uspReview.OutputDirectory 'decision-risk-assistant.md')) -and (Test-Path -LiteralPath (Join-Path $uspReview.OutputDirectory 'fabric-readiness-plan.md')) -and (Test-Path -LiteralPath (Join-Path $uspReview.OutputDirectory 'kpi-trust-contract.md')) -and (Test-Path -LiteralPath (Join-Path $uspReview.OutputDirectory 'max-ai-review/README.md'))
     Add-TestResult -Name 'Innovation review includes USP package' -Passed $passed -Detail $uspReview.OutputDirectory
 }
 catch {
@@ -437,11 +529,11 @@ catch {
 }
 
 try {
-    $pesterPath = Join-Path $PluginRoot 'tests/PowerBIPlugin.Tests.ps1'
-    Add-TestResult -Name 'Pester test file exists' -Passed (Test-Path -LiteralPath $pesterPath) -Detail $pesterPath
+    $pesterPath = Join-Path $PluginRoot 'tests/pester/PowerBIPlugin.Tests.ps1'
+    Add-TestResult -Name 'Pester test file exists in subdirectory' -Passed (Test-Path -LiteralPath $pesterPath) -Detail $pesterPath
 }
 catch {
-    Add-TestResult -Name 'Pester test file exists' -Passed $false -Detail $_.Exception.Message
+    Add-TestResult -Name 'Pester test file exists in subdirectory' -Passed $false -Detail $_.Exception.Message
 }
 
 try {
@@ -478,11 +570,74 @@ catch {
 }
 
 try {
+    $externalRegistration = & (Join-Path $scriptsPath 'New-PowerBIExternalToolRegistration.ps1') -OutputPath (Join-Path $PluginRoot 'tmp/external-tool/Codex Power BI Workbench.pbitool.json') -Json | ConvertFrom-Json
+    Add-TestResult -Name 'External Tool registration creates pbitool file' -Passed ((Test-Path -LiteralPath $externalRegistration.outputPath) -and $externalRegistration.tool.name -eq 'Codex Power BI Workbench') -Detail $externalRegistration.outputPath
+}
+catch {
+    Add-TestResult -Name 'External Tool registration creates pbitool file' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    Add-TestResult -Name 'External Tool install scripts are present' -Passed ((Test-Path -LiteralPath (Join-Path $scriptsPath 'Install-PowerBIExternalTool.ps1')) -and (Test-Path -LiteralPath (Join-Path $scriptsPath 'Uninstall-PowerBIExternalTool.ps1'))) -Detail $scriptsPath
+}
+catch {
+    Add-TestResult -Name 'External Tool install scripts are present' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $golden = & (Join-Path $scriptsPath 'Test-PowerBIGoldenBaselines.ps1') -PluginRoot $PluginRoot -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Golden baselines pass sample models' -Passed ($golden.failedCount -eq 0 -and $golden.checkCount -ge 20) -Detail "Baselines=$($golden.baselineCount), Checks=$($golden.checkCount)"
+}
+catch {
+    Add-TestResult -Name 'Golden baselines pass sample models' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $unified = & (Join-Path $scriptsPath 'Invoke-PowerBIUnifiedReview.ps1') -Path $samplePath -OutputDirectory (Join-Path $PluginRoot 'tmp/unified-review-test') -SkipLive
+    $passed = (Test-Path -LiteralPath $unified.Index) -and (Test-Path -LiteralPath $unified.Summary) -and (Test-Path -LiteralPath (Join-Path $unified.OutputDirectory 'external-tool/Codex Power BI Workbench.pbitool.json'))
+    Add-TestResult -Name 'Unified review creates combined index' -Passed $passed -Detail $unified.OutputDirectory
+}
+catch {
+    Add-TestResult -Name 'Unified review creates combined index' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
     $compile = & (Join-Path $scriptsPath 'New-PowerBIPBIXCompileWorkflow.ps1') -PbipPath (Join-Path $PluginRoot 'tmp/pbip-page-apply-test') -OutputPbix (Join-Path $PluginRoot 'tmp/report.pbix') -Json | ConvertFrom-Json
     Add-TestResult -Name 'PBIX compile workflow creates commands' -Passed ($compile.workflow -eq 'PBIP to PBIX' -and @($compile.steps).Count -ge 3) -Detail $compile.recommendedPath
 }
 catch {
     Add-TestResult -Name 'PBIX compile workflow creates commands' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $repoRoot = (Resolve-Path -LiteralPath (Join-Path $PluginRoot '../..')).Path
+    $docsPath = Join-Path $repoRoot 'docs'
+    $requiredDocs = @(
+        'index.md',
+        'getting-started.md',
+        'architecture.md',
+        'script-catalog.md',
+        'workflows.md',
+        'unified-review.md',
+        'max-ai-review.md',
+        'ai-usp-workflows.md',
+        'live-desktop.md',
+        'pbip-apply-engine.md',
+        'fabric.md',
+        'governance.md',
+        'external-tool-installation.md',
+        'golden-baselines.md',
+        'testing.md',
+        'privacy.md',
+        'release-checklist.md',
+        'example-output.md',
+        'troubleshooting.md'
+    )
+    $missingDocs = @($requiredDocs | Where-Object { -not (Test-Path -LiteralPath (Join-Path $docsPath $_)) })
+    Add-TestResult -Name 'Documentation coverage files are present' -Passed ($missingDocs.Count -eq 0) -Detail ("Missing={0}" -f ($missingDocs -join ', '))
+}
+catch {
+    Add-TestResult -Name 'Documentation coverage files are present' -Passed $false -Detail $_.Exception.Message
 }
 
 $results | Format-Table Name, Passed, Detail -AutoSize

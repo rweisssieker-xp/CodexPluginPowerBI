@@ -1,9 +1,17 @@
 # Getting Started
 
+Use [docs/index.md](index.md) as the full documentation map. This page is the shortest path from a fresh checkout to a useful Power BI review.
+
 Run the local smoke test first:
 
 ```powershell
-.\plugins\powerbi-desktop\scripts\Test-PowerBIPlugin.ps1
+.\plugins\powerbi-desktop\tests\Run-PowerBITests.ps1
+```
+
+For the productized end-to-end workflow:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBIUnifiedReview.ps1 -Path .\your-model -OutputDirectory .\powerbi-unified-review
 ```
 
 For a full local review of a PBIP/TMDL folder or exported text model:
@@ -32,3 +40,11 @@ To create a PBIP report page with visuals and then return to PBIX:
 ```
 
 If `pbi-tools` is installed, use the generated compile command. Otherwise open the PBIP in Power BI Desktop, validate the new page, and use Save As PBIX.
+
+More focused guides:
+
+- [Unified review](unified-review.md)
+- [Max AI review](max-ai-review.md)
+- [External Tool installation](external-tool-installation.md)
+- [Golden baselines](golden-baselines.md)
+- [Testing](testing.md)

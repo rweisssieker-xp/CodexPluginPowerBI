@@ -1,0 +1,27 @@
+﻿{
+    "schema":  "codex.powerbi.visualSchemaCheck.v1",
+    "generated":  "2026-04-27T14:19:15",
+    "findingCount":  4,
+    "findings":  [
+                     {
+                         "severity":  "High",
+                         "source":  "D:\\temp\\CodexPluginPowerBI\\plugins\\powerbi-desktop\\examples\\sample-model\\model.tmdl",
+                         "message":  "Invalid JSON: Ungültiger JSON-Primitiv: table."
+                     },
+                     {
+                         "severity":  "High",
+                         "source":  "D:\\temp\\CodexPluginPowerBI\\plugins\\powerbi-desktop\\examples\\sample-model\\Risky.Measures.dax",
+                         "message":  "Invalid JSON: Ungültiger JSON-Primitiv: All Customer Sales] =\nCALCULATE (\n    [Total Sales],\n    FILTER ( ALL ( \u0027Customer\u0027 ), \u0027Customer\u0027[IsActive] = TRUE () )\n)\n\n\u0027Sales\u0027[Refresh Sensitive Sales] =\nIF ( TODAY () \u003e DATE ( 2026, 1, 1 ), [Total Sales], BLANK () )\n."
+                     },
+                     {
+                         "severity":  "High",
+                         "source":  "D:\\temp\\CodexPluginPowerBI\\plugins\\powerbi-desktop\\examples\\sample-model\\Sales.Measures.dax",
+                         "message":  "Invalid JSON: Ungültiger JSON-Primitiv: Total Sales] =\nSUM ( \u0027Sales\u0027[Sales Amount] )\n\n\u0027Sales\u0027[Sales YoY %] =\nDIVIDE (\n    [Total Sales] - [Total Sales Prior Year],\n    [Total Sales Prior Year]\n)\n\n\u0027Sales\u0027[Total Sales Prior Year] =\nCALCULATE (\n    [Total Sales],\n    SAMEPERIODLASTYEAR ( \u0027Date\u0027[Date] )\n)\n."
+                     },
+                     {
+                         "severity":  "High",
+                         "source":  "D:\\temp\\CodexPluginPowerBI\\plugins\\powerbi-desktop\\examples\\sample-model\\SalesQuery.pq",
+                         "message":  "Invalid JSON: Ungültiger JSON-Primitiv: let."
+                     }
+                 ]
+}

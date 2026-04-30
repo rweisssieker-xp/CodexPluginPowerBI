@@ -19,6 +19,14 @@ $outputs = [ordered]@{
     ReportNarrativeCritic = Join-Path $resolvedOut 'report-narrative-critic.md'
     CopilotOptimization = Join-Path $resolvedOut 'copilot-optimization.md'
     DaxFixSimulation = Join-Path $resolvedOut 'dax-fix-simulation.md'
+    AutonomousFixAgent = Join-Path $resolvedOut 'autonomous-fix-agent.md'
+    MeasureExpectationsJson = Join-Path $resolvedOut 'measure-expectations.json'
+    MeasureExpectations = Join-Path $resolvedOut 'measure-expectations.md'
+    PrReleaseComment = Join-Path $resolvedOut 'pr-release-comment.md'
+    KpiTrustContract = Join-Path $resolvedOut 'kpi-trust-contract.md'
+    AskModel = Join-Path $resolvedOut 'ask-model.json'
+    FabricReadinessPlan = Join-Path $resolvedOut 'fabric-readiness-plan.md'
+    MaxAIReview = Join-Path $resolvedOut 'max-ai-review'
     VisualMeasureImpactMap = Join-Path $resolvedOut 'visual-measure-impact-map.md'
     TrustReleaseGate = Join-Path $resolvedOut 'trust-release-gate.md'
     ModelBestPractices = Join-Path $resolvedOut 'model-best-practices.md'
@@ -41,6 +49,13 @@ $outputs = [ordered]@{
 & (Join-Path $scriptRoot 'New-PowerBIReportNarrativeCritic.ps1') -Path $Path -OutputPath $outputs.ReportNarrativeCritic | Out-Null
 & (Join-Path $scriptRoot 'Optimize-PowerBICopilotModel.ps1') -Path $Path -OutputPath $outputs.CopilotOptimization | Out-Null
 & (Join-Path $scriptRoot 'New-PowerBIDaxFixSimulation.ps1') -Path $Path -OutputPath $outputs.DaxFixSimulation | Out-Null
+& (Join-Path $scriptRoot 'Invoke-PowerBIAutonomousFixAgent.ps1') -Path $Path -OutputPath $outputs.AutonomousFixAgent | Out-Null
+& (Join-Path $scriptRoot 'Test-PowerBIMeasureExpectations.ps1') -Path $Path -ExpectationsPath $outputs.MeasureExpectationsJson -OutputPath $outputs.MeasureExpectations | Out-Null
+& (Join-Path $scriptRoot 'New-PowerBIPRReleaseComment.ps1') -Path $Path -OutputPath $outputs.PrReleaseComment | Out-Null
+& (Join-Path $scriptRoot 'New-PowerBIKpiTrustContract.ps1') -Path $Path -OutputPath $outputs.KpiTrustContract | Out-Null
+& (Join-Path $scriptRoot 'Invoke-PowerBIAskModel.ps1') -Path $Path -Question 'Which measures affect release risk and trust?' -Json -OutputPath $outputs.AskModel | Out-Null
+& (Join-Path $scriptRoot 'New-PowerBIFabricReadinessPlan.ps1') -Path $Path -OutputPath $outputs.FabricReadinessPlan | Out-Null
+& (Join-Path $scriptRoot 'Invoke-PowerBIMaxAIReview.ps1') -Path $Path -OutputDirectory $outputs.MaxAIReview | Out-Null
 & (Join-Path $scriptRoot 'New-PowerBIVisualMeasureImpactMap.ps1') -Path $Path -OutputPath $outputs.VisualMeasureImpactMap | Out-Null
 & (Join-Path $scriptRoot 'New-PowerBITrustReleaseGate.ps1') -Path $Path -OutputPath $outputs.TrustReleaseGate | Out-Null
 & (Join-Path $scriptRoot 'Test-PowerBIModelBestPractices.ps1') -Path $Path -OutputPath $outputs.ModelBestPractices | Out-Null

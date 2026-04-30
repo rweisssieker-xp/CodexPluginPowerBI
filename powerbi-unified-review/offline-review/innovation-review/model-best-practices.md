@@ -1,0 +1,20 @@
+﻿# Power BI Model Best Practices
+
+Score: **0**
+
+Findings: 13
+
+- [Medium] Metric Governance $(@{severity=Medium; category=Metric Governance; source=All Customer Sales; message=Metric owner is missing.; recommendation=Assign a business or BI owner before release.}.source): Metric owner is missing. Assign a business or BI owner before release.
+- [Medium] Metric Governance $(@{severity=Medium; category=Metric Governance; source=All Customer Sales; message=Business definition is missing.; recommendation=Document business meaning, grain, and accepted filters.}.source): Business definition is missing. Document business meaning, grain, and accepted filters.
+- [High] DAX Performance $(@{severity=High; category=DAX Performance; source=All Customer Sales; message=FILTER over ALL pattern detected.; recommendation=Use narrower REMOVEFILTERS/KEEPFILTERS semantics where possible.}.source): FILTER over ALL pattern detected. Use narrower REMOVEFILTERS/KEEPFILTERS semantics where possible.
+- [Medium] Metric Governance $(@{severity=Medium; category=Metric Governance; source=Refresh Sensitive Sales; message=Metric owner is missing.; recommendation=Assign a business or BI owner before release.}.source): Metric owner is missing. Assign a business or BI owner before release.
+- [Medium] Metric Governance $(@{severity=Medium; category=Metric Governance; source=Refresh Sensitive Sales; message=Business definition is missing.; recommendation=Document business meaning, grain, and accepted filters.}.source): Business definition is missing. Document business meaning, grain, and accepted filters.
+- [Medium] DAX Determinism $(@{severity=Medium; category=DAX Determinism; source=Refresh Sensitive Sales; message=Volatile date/time function detected.; recommendation=Use a governed date table or refresh parameter.}.source): Volatile date/time function detected. Use a governed date table or refresh parameter.
+- [Medium] Metric Governance $(@{severity=Medium; category=Metric Governance; source=Total Sales; message=Metric owner is missing.; recommendation=Assign a business or BI owner before release.}.source): Metric owner is missing. Assign a business or BI owner before release.
+- [Medium] Metric Governance $(@{severity=Medium; category=Metric Governance; source=Total Sales; message=Business definition is missing.; recommendation=Document business meaning, grain, and accepted filters.}.source): Business definition is missing. Document business meaning, grain, and accepted filters.
+- [Medium] Metric Governance $(@{severity=Medium; category=Metric Governance; source=Sales YoY %; message=Metric owner is missing.; recommendation=Assign a business or BI owner before release.}.source): Metric owner is missing. Assign a business or BI owner before release.
+- [Medium] Metric Governance $(@{severity=Medium; category=Metric Governance; source=Sales YoY %; message=Business definition is missing.; recommendation=Document business meaning, grain, and accepted filters.}.source): Business definition is missing. Document business meaning, grain, and accepted filters.
+- [Medium] Metric Governance $(@{severity=Medium; category=Metric Governance; source=Total Sales Prior Year; message=Metric owner is missing.; recommendation=Assign a business or BI owner before release.}.source): Metric owner is missing. Assign a business or BI owner before release.
+- [Medium] Metric Governance $(@{severity=Medium; category=Metric Governance; source=Total Sales Prior Year; message=Business definition is missing.; recommendation=Document business meaning, grain, and accepted filters.}.source): Business definition is missing. Document business meaning, grain, and accepted filters.
+- [High] Source Control $(@{severity=High; category=Source Control; source=model; message=PBIP/TMDL readiness is below strong threshold.; recommendation=Export to PBIP/TMDL for reliable review and source control.}.source): PBIP/TMDL readiness is below strong threshold. Export to PBIP/TMDL for reliable review and source control.
+
