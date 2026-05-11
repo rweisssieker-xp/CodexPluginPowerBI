@@ -181,28 +181,85 @@ def calculate_forecast(rows, forecast_year, start_month, end_month):
     return detail_rows
 
 
-def write_csv(path, rows):
+DETAIL_FIELDNAMES = [
+    "customer_hierarchy",
+    "product_line",
+    "month",
+    "month_no",
+    "actual_sales",
+    "open_backlog",
+    "backlog_conversion_probability",
+    "expected_backlog_revenue",
+    "budget",
+    "roll_forecast",
+    "statistical_demand_forecast",
+    "raw_ai_forecast",
+    "final_ai_forecast",
+    "forecast_low",
+    "forecast_high",
+    "confidence",
+    "risk_flag",
+    "explanation",
+]
+
+SUMMARY_FIELDNAMES = [
+    "month",
+    "actual_sales",
+    "open_backlog",
+    "expected_backlog_revenue",
+    "budget",
+    "roll_forecast",
+    "statistical_demand_forecast",
+    "raw_ai_forecast",
+    "final_ai_forecast",
+    "delta_ai_vs_roll",
+    "delta_ai_vs_budget",
+]
+
+
+def build_summary_rows(detail_rows):
+    by_month = defaultdict(lambda: defaultdict(float))
+    labels = {}
+    for row in detail_rows:
+        month_no = int(row["month_no"])
+        labels[month_no] = row["month"]
+        for fieldname in SUMMARY_FIELDNAMES:
+            if fieldname != "month":
+                by_month[month_no][fieldname] += num(row.get(fieldname))
+
+    summary_rows = []
+    for month_no in sorted(by_month.keys()):
+        values = by_month[month_no]
+        values["delta_ai_vs_roll"] = values["final_ai_forecast"] - values["roll_forecast"]
+        values["delta_ai_vs_budget"] = values["final_ai_forecast"] - values["budget"]
+        summary_rows.append(
+            {
+                "month": labels[month_no],
+                "actual_sales": round(values["actual_sales"], 2),
+                "open_backlog": round(values["open_backlog"], 2),
+                "expected_backlog_revenue": round(values["expected_backlog_revenue"], 2),
+                "budget": round(values["budget"], 2),
+                "roll_forecast": round(values["roll_forecast"], 2),
+                "statistical_demand_forecast": round(values["statistical_demand_forecast"], 2),
+                "raw_ai_forecast": round(values["raw_ai_forecast"], 2),
+                "final_ai_forecast": round(values["final_ai_forecast"], 2),
+                "delta_ai_vs_roll": round(values["delta_ai_vs_roll"], 2),
+                "delta_ai_vs_budget": round(values["delta_ai_vs_budget"], 2),
+            }
+        )
+    return summary_rows
+
+
+def build_top_delta_rows(detail_rows, limit=200):
+    return sorted(
+        detail_rows,
+        key=lambda row: abs(num(row.get("final_ai_forecast")) - num(row.get("roll_forecast"))),
+        reverse=True,
+    )[:limit]
+
+
+def write_csv(path, rows, fieldnames):
     path.parent.mkdir(parents=True, exist_ok=True)
-    fieldnames = [
-        "customer_hierarchy",
-        "product_line",
-        "month",
-        "month_no",
-        "actual_sales",
-        "open_backlog",
-        "backlog_conversion_probability",
-        "expected_backlog_revenue",
-        "budget",
-        "roll_forecast",
-        "statistical_demand_forecast",
-        "raw_ai_forecast",
-        "final_ai_forecast",
-        "forecast_low",
-        "forecast_high",
-        "confidence",
-        "risk_flag",
-        "explanation",
-    ]
     with open(path, "w", newline="", encoding="utf-8-sig") as handle:
         writer = csv.DictWriter(handle, fieldnames=fieldnames, delimiter=";")
         writer.writeheader()
@@ -220,11 +277,17 @@ def main():
     rows = calculate_forecast(load_rows(args.input), args.forecast_year, args.start_month, args.end_month)
     output_dir = Path(args.output_directory)
     detail_path = output_dir / "ai-forecast-detail.csv"
-    write_csv(detail_path, rows)
+    summary_path = output_dir / "ai-forecast-summary.csv"
+    top_delta_path = output_dir / "ai-forecast-top-deltas.csv"
+    write_csv(detail_path, rows, DETAIL_FIELDNAMES)
+    write_csv(summary_path, build_summary_rows(rows), SUMMARY_FIELDNAMES)
+    write_csv(top_delta_path, build_top_delta_rows(rows), DETAIL_FIELDNAMES)
     summary = {
         "schema": "codex.powerbi.aiForecast.v1",
         "rowCount": len(rows),
         "detailPath": str(detail_path),
+        "summaryPath": str(summary_path),
+        "topDeltaPath": str(top_delta_path),
         "forecastYear": args.forecast_year,
         "startMonth": args.start_month,
         "endMonth": args.end_month,
