@@ -59,8 +59,12 @@ def build_series(rows):
             "roll": num(row.get("[ForecastRoll]")),
             "backlog": num(row.get("[Backlog]")),
         }
-        series[key][(year, month_no)] = values
+        point = series[key].setdefault(
+            (year, month_no),
+            {"sales": 0.0, "qty": 0.0, "budget": 0.0, "roll": 0.0, "backlog": 0.0},
+        )
         for metric, value in values.items():
+            point[metric] += value
             monthly_totals[(year, month_no)][metric] += value
     return series, monthly_totals
 
@@ -103,7 +107,8 @@ def calculate_forecast(rows, forecast_year, start_month, end_month):
         else:
             top_down_targets[month] = 0.30 * seasonal_ytd + 0.20 * budget + 0.20 * roll + 0.20 * backlog_expected + 0.10 * trend
 
-    for (customer_hierarchy, product_line), points in series.items():
+    for customer_hierarchy, product_line in sorted(series.keys()):
+        points = series[(customer_hierarchy, product_line)]
         ytd_current = sum(value_for(points, forecast_year, m, "sales") for m in ytd_months)
         ytd_prior = sum(value_for(points, forecast_year - 1, m, "sales") for m in ytd_months)
         raw_growth = ytd_current / ytd_prior - 1 if ytd_prior else global_growth
