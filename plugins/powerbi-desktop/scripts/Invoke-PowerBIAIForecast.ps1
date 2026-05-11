@@ -47,12 +47,12 @@ FILTER(
         'Dates'[Calendar Year],
         'Dates'[Calendar MonthNumber],
         'Dates'[Calendar Month Year],
-        'Dates'[MonthStart],
         FILTER(
             ALL('Dates'[Calendar Year]),
             'Dates'[Calendar Year] >= $fromYear
                 && 'Dates'[Calendar Year] <= $ForecastYear
         ),
+        "MonthStart", MIN('Dates'[Date]),
         "Sales", [_SumSalesTotal],
         "Qty", [_SumQTY],
         "Budget", [_SumBudgetAmount],
