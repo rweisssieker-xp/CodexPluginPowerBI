@@ -97,12 +97,12 @@ if (-not (Test-Path -LiteralPath $OutputDirectory)) {
 
 if (-not $InputPath) {
     $liveDaxScript = Join-Path $PSScriptRoot 'Invoke-PowerBILiveDaxQuery.ps1'
-    $liveArgs = @(
-        '-Query', $segmentQuery,
-        '-Json'
-    )
+    $liveArgs = @{
+        Query = $segmentQuery
+        Json = $true
+    }
     if ($Server) {
-        $liveArgs += @('-Server', $Server)
+        $liveArgs.Server = $Server
     }
 
     $segmentJson = & $liveDaxScript @liveArgs
