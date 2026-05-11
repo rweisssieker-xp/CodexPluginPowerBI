@@ -47,6 +47,10 @@ Scripts live in `plugins/powerbi-desktop/scripts`. Most commands accept either a
 
 ## AI/KI And USP Workflows
 
+### `Invoke-PowerBIAIForecast.ps1`
+
+Creates read-only AI/KI sales forecast from open Desktop model or saved extract. Outputs detail, monthly summary, top-delta CSV. Combines actuals, backlog conversion, segment demand, budget/roll anchors, monthly reconciliation.
+
 - `Invoke-PowerBIFixUntilGreenLoop.ps1`: generates iterative fix-loop guidance.
 - `Test-PowerBISemanticModelCopilotEvaluator.ps1`: evaluates Copilot-readiness semantics.
 - `New-PowerBIDataContract.ps1`: drafts data contracts for key model artifacts.

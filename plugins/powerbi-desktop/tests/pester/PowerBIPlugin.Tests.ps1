@@ -7,6 +7,12 @@ Describe 'Power BI Desktop plugin' {
         { Get-Content -Raw -LiteralPath (Join-Path $pluginRoot '.codex-plugin/plugin.json') | ConvertFrom-Json } | Should Not Throw
     }
 
+    It 'includes the AI forecast entrypoint' {
+        $scriptPath = Join-Path $scriptsPath 'Invoke-PowerBIAIForecast.ps1'
+        Test-Path -LiteralPath $scriptPath | Should Be $true
+        { & $scriptPath -DryRun -Json | ConvertFrom-Json } | Should Not Throw
+    }
+
     It 'generates KPI trust scores' {
         $trust = & (Join-Path $scriptsPath 'New-PowerBIKpiTrustScore.ps1') -Path $samplePath -Json | ConvertFrom-Json
         $trust.metricCount | Should Be 5

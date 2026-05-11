@@ -241,6 +241,16 @@ Run:
 
 This reads the local Analysis Services endpoint created by Power BI Desktop. It can inspect metadata and DMV output from the currently open model when Desktop is running. The live auto-review also creates measure validation, metadata governance, refactor suggestions, prioritized fix backlogs, and DAX fix drafts. Do not use it to modify or publish the report unless the user explicitly asks and a supported write path is available.
 
+### Generate an AI/KI sales forecast
+
+Run:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBIAIForecast.ps1 -OutputDirectory .\powerbi-ai-forecast
+```
+
+Use this as a read-only forecast workflow from the open Desktop model. It exports live customer-hierarchy/product-line monthly data, blends backlog conversion, seasonality, budget, roll forecast, and sparse-series shrinkage, then writes detail, summary, and top-delta CSV outputs. Import the output as a separate forecast table before drafting DAX measures.
+
 ### Customize governance rules
 
 Rules live in `rules/powerbi-governance-rules.json`. Adjust severities, regex patterns, and thresholds there instead of editing scanner code. Keep custom rules specific enough to avoid noisy findings.
