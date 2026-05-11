@@ -6,19 +6,19 @@ from collections import defaultdict
 from pathlib import Path
 
 
-MONTH_LABELS = {
-    1: "Jan 2026",
-    2: "Feb 2026",
-    3: "Mar 2026",
-    4: "Apr 2026",
-    5: "May 2026",
-    6: "Jun 2026",
-    7: "Jul 2026",
-    8: "Aug 2026",
-    9: "Sep 2026",
-    10: "Oct 2026",
-    11: "Nov 2026",
-    12: "Dec 2026",
+MONTH_NAMES = {
+    1: "Jan",
+    2: "Feb",
+    3: "Mar",
+    4: "Apr",
+    5: "May",
+    6: "Jun",
+    7: "Jul",
+    8: "Aug",
+    9: "Sep",
+    10: "Oct",
+    11: "Nov",
+    12: "Dec",
 }
 
 
@@ -67,6 +67,11 @@ def build_series(rows):
 
 def value_for(points, year, month, metric):
     return points.get((year, month), {}).get(metric, 0.0)
+
+
+def month_label(year, month):
+    month_name = MONTH_NAMES.get(month)
+    return f"{month_name} {year}" if month_name else f"{month:02d}/{year}"
 
 
 def calculate_forecast(rows, forecast_year, start_month, end_month):
@@ -139,7 +144,7 @@ def calculate_forecast(rows, forecast_year, start_month, end_month):
             row = {
                 "customer_hierarchy": customer_hierarchy,
                 "product_line": product_line,
-                "month": MONTH_LABELS.get(month, f"{month:02d}/{forecast_year}"),
+                "month": month_label(forecast_year, month),
                 "month_no": month,
                 "actual_sales": round(actual, 2),
                 "open_backlog": round(backlog, 2),
