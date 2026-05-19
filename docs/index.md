@@ -14,6 +14,7 @@ This documentation describes the local Codex plugin for Power BI Desktop and Fab
 - [Unified review](unified-review.md): one review package that combines offline PBIP/project review, live Desktop when available, native parity, external-tool awareness, and AI outputs.
 - [Max AI review](max-ai-review.md): the high-end AI/KI review pack with 12 USP workflows.
 - [AI USP workflows](ai-usp-workflows.md): detailed operating model for the AI differentiators.
+- [Enterprise AI features](enterprise-ai-features.md): service scanner, release candidate pack, risk heatmap, semantic tests, performance/VertiPaq imports, and change journal.
 - [Architecture](architecture.md): local-first design, read-only live access, PBIP write gates, and generated artifacts.
 - [PBIP Apply Engine](pbip-apply-engine.md): how draft generation, apply scripts, manifests, and rollback guidance work.
 

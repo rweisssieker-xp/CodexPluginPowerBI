@@ -129,3 +129,16 @@ Use this before moving a Desktop-centered model toward Fabric operations:
 ```
 
 This produces planning artifacts only. Tenant deployment stays explicit and manual.
+
+## 9. Enterprise Release Candidate
+
+Use this when a model is close to release and you need one package for engineering, governance, and PR review.
+
+```powershell
+.\plugins\powerbi-desktop\scripts\New-PowerBIReleaseCandidatePack.ps1 `
+  -Path .\plugins\powerbi-desktop\examples\sample-model `
+  -OutputDirectory .\powerbi-release-candidate-pack `
+  -SkipLive
+```
+
+The package includes unified review, Max AI review, service scanner, semantic tests, model risk heatmap, and PR release comment. See [Enterprise AI features](enterprise-ai-features.md).

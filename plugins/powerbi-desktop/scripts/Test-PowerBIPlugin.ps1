@@ -621,6 +621,7 @@ try {
         'unified-review.md',
         'max-ai-review.md',
         'ai-usp-workflows.md',
+        'enterprise-ai-features.md',
         'live-desktop.md',
         'pbip-apply-engine.md',
         'fabric.md',
@@ -638,6 +639,127 @@ try {
 }
 catch {
     Add-TestResult -Name 'Documentation coverage files are present' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $enterpriseScripts = @(
+        'Get-PowerBIFabricWorkspaceInventory.ps1',
+        'New-PowerBIServiceScanner.ps1',
+        'New-PowerBITomWritePlan.ps1',
+        'Optimize-PowerBIReportLayout.ps1',
+        'Invoke-PowerBISemanticTestRunner.ps1',
+        'Import-PowerBIPerformanceTrace.ps1',
+        'Import-PowerBIVertiPaqAnalyzer.ps1',
+        'New-PowerBIReportScreenshotUXReview.ps1',
+        'New-PowerBIGovernancePolicyPack.ps1',
+        'Update-PowerBIChangeJournal.ps1',
+        'New-PowerBIModelRiskHeatmap.ps1',
+        'New-PowerBIReleaseCandidatePack.ps1'
+    )
+    $missingEnterpriseScripts = @($enterpriseScripts | Where-Object { -not (Test-Path -LiteralPath (Join-Path $scriptsPath $_)) })
+    Add-TestResult -Name 'Enterprise AI feature scripts are present' -Passed ($missingEnterpriseScripts.Count -eq 0) -Detail ("Missing={0}" -f ($missingEnterpriseScripts -join ', '))
+}
+catch {
+    Add-TestResult -Name 'Enterprise AI feature scripts are present' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $fabricInventory = & (Join-Path $scriptsPath 'Get-PowerBIFabricWorkspaceInventory.ps1') -WorkspaceName 'Demo Workspace' -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Fabric workspace inventory supports offline mode' -Passed ($fabricInventory.schema -eq 'codex.powerbi.fabricWorkspaceInventory.v1' -and $fabricInventory.mode -eq 'OfflinePlan') -Detail $fabricInventory.workspaceName
+}
+catch {
+    Add-TestResult -Name 'Fabric workspace inventory supports offline mode' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $serviceScan = & (Join-Path $scriptsPath 'New-PowerBIServiceScanner.ps1') -Path $samplePath -WorkspaceName 'Demo Workspace' -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Service scanner creates governance findings' -Passed ($serviceScan.schema -eq 'codex.powerbi.serviceScanner.v1' -and $serviceScan.findingCount -ge 3) -Detail "Findings=$($serviceScan.findingCount)"
+}
+catch {
+    Add-TestResult -Name 'Service scanner creates governance findings' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $tomPlan = & (Join-Path $scriptsPath 'New-PowerBITomWritePlan.ps1') -Operation AddMeasure -TableName Sales -ObjectName 'Average Sales' -Expression "DIVIDE([Total Sales], COUNTROWS('Sales'))" -Json | ConvertFrom-Json
+    Add-TestResult -Name 'TOM write plan is gated and reversible' -Passed ($tomPlan.schema -eq 'codex.powerbi.tomWritePlan.v1' -and $tomPlan.dryRun -eq $true -and @($tomPlan.safetyGates).Count -ge 4) -Detail $tomPlan.operation
+}
+catch {
+    Add-TestResult -Name 'TOM write plan is gated and reversible' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $layoutFix = & (Join-Path $scriptsPath 'Optimize-PowerBIReportLayout.ps1') -PageName 'Executive Overview' -VisualCount 5 -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Visual layout optimizer creates fixes' -Passed ($layoutFix.schema -eq 'codex.powerbi.reportLayoutOptimizer.v1' -and $layoutFix.fixCount -ge 5) -Detail "Fixes=$($layoutFix.fixCount)"
+}
+catch {
+    Add-TestResult -Name 'Visual layout optimizer creates fixes' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $semanticTests = & (Join-Path $scriptsPath 'Invoke-PowerBISemanticTestRunner.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Semantic test runner evaluates measures' -Passed ($semanticTests.schema -eq 'codex.powerbi.semanticTestRunner.v1' -and $semanticTests.testCount -ge 5) -Detail "Tests=$($semanticTests.testCount), Failed=$($semanticTests.failedCount)"
+}
+catch {
+    Add-TestResult -Name 'Semantic test runner evaluates measures' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $perfTrace = & (Join-Path $scriptsPath 'Import-PowerBIPerformanceTrace.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Performance trace importer produces hotspot model' -Passed ($perfTrace.schema -eq 'codex.powerbi.performanceTraceImport.v1' -and $perfTrace.hotspotCount -ge 1) -Detail "Hotspots=$($perfTrace.hotspotCount)"
+}
+catch {
+    Add-TestResult -Name 'Performance trace importer produces hotspot model' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $vertipaq = & (Join-Path $scriptsPath 'Import-PowerBIVertiPaqAnalyzer.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    Add-TestResult -Name 'VertiPaq importer estimates storage risk' -Passed ($vertipaq.schema -eq 'codex.powerbi.vertipaqImport.v1' -and $vertipaq.columnCount -ge 1) -Detail "Columns=$($vertipaq.columnCount)"
+}
+catch {
+    Add-TestResult -Name 'VertiPaq importer estimates storage risk' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $uxReview = & (Join-Path $scriptsPath 'New-PowerBIReportScreenshotUXReview.ps1') -ImagePath '.\missing-screenshot.png' -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Screenshot UX review handles missing screenshots' -Passed ($uxReview.schema -eq 'codex.powerbi.screenshotUxReview.v1' -and $uxReview.status -eq 'ScreenshotMissing') -Detail $uxReview.status
+}
+catch {
+    Add-TestResult -Name 'Screenshot UX review handles missing screenshots' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $policyPack = & (Join-Path $scriptsPath 'New-PowerBIGovernancePolicyPack.ps1') -Profile EnterpriseBI -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Governance policy pack creates profile rules' -Passed ($policyPack.schema -eq 'codex.powerbi.governancePolicyPack.v1' -and $policyPack.ruleCount -ge 6) -Detail "Rules=$($policyPack.ruleCount)"
+}
+catch {
+    Add-TestResult -Name 'Governance policy pack creates profile rules' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $journalPath = Join-Path $PluginRoot 'tmp/change-journal-test.json'
+    if (Test-Path -LiteralPath $journalPath) { Remove-Item -LiteralPath $journalPath -Force }
+    $journal = & (Join-Path $scriptsPath 'Update-PowerBIChangeJournal.ps1') -JournalPath $journalPath -Title 'Refactor Total Sales' -Status proposed -Json | ConvertFrom-Json
+    Add-TestResult -Name 'AI change journal records decisions' -Passed ($journal.schema -eq 'codex.powerbi.changeJournal.v1' -and $journal.entryCount -eq 1 -and (Test-Path -LiteralPath $journalPath)) -Detail "Entries=$($journal.entryCount)"
+}
+catch {
+    Add-TestResult -Name 'AI change journal records decisions' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $heatmap = & (Join-Path $scriptsPath 'New-PowerBIModelRiskHeatmap.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    Add-TestResult -Name 'Model risk heatmap aggregates risk areas' -Passed ($heatmap.schema -eq 'codex.powerbi.modelRiskHeatmap.v1' -and @($heatmap.areas).Count -ge 5) -Detail "Overall=$($heatmap.overallRisk)"
+}
+catch {
+    Add-TestResult -Name 'Model risk heatmap aggregates risk areas' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $candidate = & (Join-Path $scriptsPath 'New-PowerBIReleaseCandidatePack.ps1') -Path $samplePath -OutputDirectory (Join-Path $PluginRoot 'tmp/release-candidate-pack-test')
+    $passed = (Test-Path -LiteralPath $candidate.Index) -and (Test-Path -LiteralPath (Join-Path $candidate.OutputDirectory 'model-risk-heatmap.json')) -and (Test-Path -LiteralPath (Join-Path $candidate.OutputDirectory 'service-scanner.json'))
+    Add-TestResult -Name 'Release candidate pack creates enterprise index' -Passed $passed -Detail $candidate.OutputDirectory
+}
+catch {
+    Add-TestResult -Name 'Release candidate pack creates enterprise index' -Passed $false -Detail $_.Exception.Message
 }
 
 $results | Format-Table Name, Passed, Detail -AutoSize

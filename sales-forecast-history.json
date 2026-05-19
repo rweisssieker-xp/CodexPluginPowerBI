@@ -1,0 +1,849 @@
+{
+    "schema":  "codex.powerbi.liveDmv.v1",
+    "server":  "Data Source=localhost:53293",
+    "query":  "EVALUATE\nFILTER(\n    SUMMARIZECOLUMNS(\n        \u0027Dates\u0027[Calendar Year],\n        \u0027Dates\u0027[Calendar MonthNumber],\n        \u0027Dates\u0027[Calendar Month Year],\n        \"MonthStart\", MIN(\u0027Dates\u0027[Date]),\n        \"Sales\", [_SumSalesTotal],\n        \"Qty\", [_SumQTY],\n        \"Budget\", [_SumBudgetAmount],\n        \"ForecastRoll\", [_SumForecastAmountRoll]\n    ),\n    \u0027Dates\u0027[Calendar Year] \u003e= 2021 \u0026\u0026 \u0027Dates\u0027[Calendar Year] \u003c= 2027\n)\nORDER BY [MonthStart]",
+    "adomdClientPath":  "C:\\Program Files\\Microsoft.NET\\ADOMD.NET\\170\\Microsoft.AnalysisServices.AdomdClient.dll",
+    "rowCount":  84,
+    "rows":  [
+                 {
+                     "Dates[Calendar Year]":  2021,
+                     "Dates[Calendar MonthNumber]":  1,
+                     "Dates[Calendar Month Year]":  "Jan 2021",
+                     "[MonthStart]":  "\/Date(1609455600000)\/",
+                     "[Sales]":  13235286.019998098,
+                     "[Qty]":  4976696,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2021,
+                     "Dates[Calendar MonthNumber]":  2,
+                     "Dates[Calendar Month Year]":  "Feb 2021",
+                     "[MonthStart]":  "\/Date(1612134000000)\/",
+                     "[Sales]":  13027474.712370882,
+                     "[Qty]":  4993281,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2021,
+                     "Dates[Calendar MonthNumber]":  3,
+                     "Dates[Calendar Month Year]":  "Mar 2021",
+                     "[MonthStart]":  "\/Date(1614553200000)\/",
+                     "[Sales]":  15235241.628180835,
+                     "[Qty]":  5105419,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2021,
+                     "Dates[Calendar MonthNumber]":  4,
+                     "Dates[Calendar Month Year]":  "Apr 2021",
+                     "[MonthStart]":  "\/Date(1617228000000)\/",
+                     "[Sales]":  12904996.043968348,
+                     "[Qty]":  4921795,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2021,
+                     "Dates[Calendar MonthNumber]":  5,
+                     "Dates[Calendar Month Year]":  "May 2021",
+                     "[MonthStart]":  "\/Date(1619820000000)\/",
+                     "[Sales]":  12032454.714621754,
+                     "[Qty]":  4234648,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2021,
+                     "Dates[Calendar MonthNumber]":  6,
+                     "Dates[Calendar Month Year]":  "Jun 2021",
+                     "[MonthStart]":  "\/Date(1622498400000)\/",
+                     "[Sales]":  13359163.661308145,
+                     "[Qty]":  4750592,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2021,
+                     "Dates[Calendar MonthNumber]":  7,
+                     "Dates[Calendar Month Year]":  "Jul 2021",
+                     "[MonthStart]":  "\/Date(1625090400000)\/",
+                     "[Sales]":  13346983.034221226,
+                     "[Qty]":  5346187,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2021,
+                     "Dates[Calendar MonthNumber]":  8,
+                     "Dates[Calendar Month Year]":  "Aug 2021",
+                     "[MonthStart]":  "\/Date(1627768800000)\/",
+                     "[Sales]":  10327211.389999263,
+                     "[Qty]":  3819062,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2021,
+                     "Dates[Calendar MonthNumber]":  9,
+                     "Dates[Calendar Month Year]":  "Sep 2021",
+                     "[MonthStart]":  "\/Date(1630447200000)\/",
+                     "[Sales]":  14179297.545666397,
+                     "[Qty]":  5625061,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2021,
+                     "Dates[Calendar MonthNumber]":  10,
+                     "Dates[Calendar Month Year]":  "Oct 2021",
+                     "[MonthStart]":  "\/Date(1633039200000)\/",
+                     "[Sales]":  13822173.759998515,
+                     "[Qty]":  4589808,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2021,
+                     "Dates[Calendar MonthNumber]":  11,
+                     "Dates[Calendar Month Year]":  "Nov 2021",
+                     "[MonthStart]":  "\/Date(1635721200000)\/",
+                     "[Sales]":  14827089.509998281,
+                     "[Qty]":  5093842,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2021,
+                     "Dates[Calendar MonthNumber]":  12,
+                     "Dates[Calendar Month Year]":  "Dec 2021",
+                     "[MonthStart]":  "\/Date(1638313200000)\/",
+                     "[Sales]":  11226538.069999058,
+                     "[Qty]":  3929977,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2022,
+                     "Dates[Calendar MonthNumber]":  1,
+                     "Dates[Calendar Month Year]":  "Jan 2022",
+                     "[MonthStart]":  "\/Date(1640991600000)\/",
+                     "[Sales]":  14605525.365550399,
+                     "[Qty]":  6162005,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2022,
+                     "Dates[Calendar MonthNumber]":  2,
+                     "Dates[Calendar Month Year]":  "Feb 2022",
+                     "[MonthStart]":  "\/Date(1643670000000)\/",
+                     "[Sales]":  14047904.021591751,
+                     "[Qty]":  5459453,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2022,
+                     "Dates[Calendar MonthNumber]":  3,
+                     "Dates[Calendar Month Year]":  "Mar 2022",
+                     "[MonthStart]":  "\/Date(1646089200000)\/",
+                     "[Sales]":  15833196.314179111,
+                     "[Qty]":  5679117,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2022,
+                     "Dates[Calendar MonthNumber]":  4,
+                     "Dates[Calendar Month Year]":  "Apr 2022",
+                     "[MonthStart]":  "\/Date(1648764000000)\/",
+                     "[Sales]":  13321082.109363157,
+                     "[Qty]":  5139743,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2022,
+                     "Dates[Calendar MonthNumber]":  5,
+                     "Dates[Calendar Month Year]":  "May 2022",
+                     "[MonthStart]":  "\/Date(1651356000000)\/",
+                     "[Sales]":  15153786.163663829,
+                     "[Qty]":  6373462,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2022,
+                     "Dates[Calendar MonthNumber]":  6,
+                     "Dates[Calendar Month Year]":  "Jun 2022",
+                     "[MonthStart]":  "\/Date(1654034400000)\/",
+                     "[Sales]":  14027967.408018563,
+                     "[Qty]":  5194332,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2022,
+                     "Dates[Calendar MonthNumber]":  7,
+                     "Dates[Calendar Month Year]":  "Jul 2022",
+                     "[MonthStart]":  "\/Date(1656626400000)\/",
+                     "[Sales]":  12951759.5657211,
+                     "[Qty]":  4991372,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2022,
+                     "Dates[Calendar MonthNumber]":  8,
+                     "Dates[Calendar Month Year]":  "Aug 2022",
+                     "[MonthStart]":  "\/Date(1659304800000)\/",
+                     "[Sales]":  12223099.412579915,
+                     "[Qty]":  4820013,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2022,
+                     "Dates[Calendar MonthNumber]":  9,
+                     "Dates[Calendar Month Year]":  "Sep 2022",
+                     "[MonthStart]":  "\/Date(1661983200000)\/",
+                     "[Sales]":  14871745.464487702,
+                     "[Qty]":  5427278,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2022,
+                     "Dates[Calendar MonthNumber]":  10,
+                     "Dates[Calendar Month Year]":  "Oct 2022",
+                     "[MonthStart]":  "\/Date(1664575200000)\/",
+                     "[Sales]":  13556848.535942964,
+                     "[Qty]":  5054573,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2022,
+                     "Dates[Calendar MonthNumber]":  11,
+                     "Dates[Calendar Month Year]":  "Nov 2022",
+                     "[MonthStart]":  "\/Date(1667257200000)\/",
+                     "[Sales]":  15987686.942733385,
+                     "[Qty]":  5662821,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2022,
+                     "Dates[Calendar MonthNumber]":  12,
+                     "Dates[Calendar Month Year]":  "Dec 2022",
+                     "[MonthStart]":  "\/Date(1669849200000)\/",
+                     "[Sales]":  11602692.61514736,
+                     "[Qty]":  3971057,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2023,
+                     "Dates[Calendar MonthNumber]":  1,
+                     "Dates[Calendar Month Year]":  "Jan 2023",
+                     "[MonthStart]":  "\/Date(1672527600000)\/",
+                     "[Sales]":  17039950.100990813,
+                     "[Qty]":  6305729,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2023,
+                     "Dates[Calendar MonthNumber]":  2,
+                     "Dates[Calendar Month Year]":  "Feb 2023",
+                     "[MonthStart]":  "\/Date(1675206000000)\/",
+                     "[Sales]":  15225242.447356211,
+                     "[Qty]":  5437156,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2023,
+                     "Dates[Calendar MonthNumber]":  3,
+                     "Dates[Calendar Month Year]":  "Mar 2023",
+                     "[MonthStart]":  "\/Date(1677625200000)\/",
+                     "[Sales]":  18386471.244574267,
+                     "[Qty]":  5685476,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2023,
+                     "Dates[Calendar MonthNumber]":  4,
+                     "Dates[Calendar Month Year]":  "Apr 2023",
+                     "[MonthStart]":  "\/Date(1680300000000)\/",
+                     "[Sales]":  13409553.849251967,
+                     "[Qty]":  4678497,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2023,
+                     "Dates[Calendar MonthNumber]":  5,
+                     "Dates[Calendar Month Year]":  "May 2023",
+                     "[MonthStart]":  "\/Date(1682892000000)\/",
+                     "[Sales]":  14848132.774468584,
+                     "[Qty]":  4684069,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2023,
+                     "Dates[Calendar MonthNumber]":  6,
+                     "Dates[Calendar Month Year]":  "Jun 2023",
+                     "[MonthStart]":  "\/Date(1685570400000)\/",
+                     "[Sales]":  16282194.961550303,
+                     "[Qty]":  5828167,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2023,
+                     "Dates[Calendar MonthNumber]":  7,
+                     "Dates[Calendar Month Year]":  "Jul 2023",
+                     "[MonthStart]":  "\/Date(1688162400000)\/",
+                     "[Sales]":  13217022.390548032,
+                     "[Qty]":  4395898,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2023,
+                     "Dates[Calendar MonthNumber]":  8,
+                     "Dates[Calendar Month Year]":  "Aug 2023",
+                     "[MonthStart]":  "\/Date(1690840800000)\/",
+                     "[Sales]":  12881283.950628234,
+                     "[Qty]":  4895591,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2023,
+                     "Dates[Calendar MonthNumber]":  9,
+                     "Dates[Calendar Month Year]":  "Sep 2023",
+                     "[MonthStart]":  "\/Date(1693519200000)\/",
+                     "[Sales]":  14969475.08972875,
+                     "[Qty]":  4414869,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2023,
+                     "Dates[Calendar MonthNumber]":  10,
+                     "Dates[Calendar Month Year]":  "Oct 2023",
+                     "[MonthStart]":  "\/Date(1696111200000)\/",
+                     "[Sales]":  15239858.740390895,
+                     "[Qty]":  4900281,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2023,
+                     "Dates[Calendar MonthNumber]":  11,
+                     "Dates[Calendar Month Year]":  "Nov 2023",
+                     "[MonthStart]":  "\/Date(1698793200000)\/",
+                     "[Sales]":  16342480.086757898,
+                     "[Qty]":  4475902,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2023,
+                     "Dates[Calendar MonthNumber]":  12,
+                     "Dates[Calendar Month Year]":  "Dec 2023",
+                     "[MonthStart]":  "\/Date(1701385200000)\/",
+                     "[Sales]":  13204566.668165501,
+                     "[Qty]":  4498622,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2024,
+                     "Dates[Calendar MonthNumber]":  1,
+                     "Dates[Calendar Month Year]":  "Jan 2024",
+                     "[MonthStart]":  "\/Date(1704063600000)\/",
+                     "[Sales]":  16315680.864048125,
+                     "[Qty]":  5039653,
+                     "[Budget]":  16661007.5373344,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2024,
+                     "Dates[Calendar MonthNumber]":  2,
+                     "Dates[Calendar Month Year]":  "Feb 2024",
+                     "[MonthStart]":  "\/Date(1706742000000)\/",
+                     "[Sales]":  16449721.634625152,
+                     "[Qty]":  5343739,
+                     "[Budget]":  16527918.484162271,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2024,
+                     "Dates[Calendar MonthNumber]":  3,
+                     "Dates[Calendar Month Year]":  "Mar 2024",
+                     "[MonthStart]":  "\/Date(1709247600000)\/",
+                     "[Sales]":  14979069.26207535,
+                     "[Qty]":  4903977,
+                     "[Budget]":  17054242.903401937,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2024,
+                     "Dates[Calendar MonthNumber]":  4,
+                     "Dates[Calendar Month Year]":  "Apr 2024",
+                     "[MonthStart]":  "\/Date(1711922400000)\/",
+                     "[Sales]":  16458452.798840322,
+                     "[Qty]":  5610461,
+                     "[Budget]":  15717722.469358997,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2024,
+                     "Dates[Calendar MonthNumber]":  5,
+                     "Dates[Calendar Month Year]":  "May 2024",
+                     "[MonthStart]":  "\/Date(1714514400000)\/",
+                     "[Sales]":  14536578.155479744,
+                     "[Qty]":  4809328,
+                     "[Budget]":  16188717.436152348,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2024,
+                     "Dates[Calendar MonthNumber]":  6,
+                     "Dates[Calendar Month Year]":  "Jun 2024",
+                     "[MonthStart]":  "\/Date(1717192800000)\/",
+                     "[Sales]":  16255903.726320431,
+                     "[Qty]":  5601757,
+                     "[Budget]":  16920786.305645261,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2024,
+                     "Dates[Calendar MonthNumber]":  7,
+                     "Dates[Calendar Month Year]":  "Jul 2024",
+                     "[MonthStart]":  "\/Date(1719784800000)\/",
+                     "[Sales]":  16319582.030072365,
+                     "[Qty]":  5126110,
+                     "[Budget]":  14454361.894555811,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2024,
+                     "Dates[Calendar MonthNumber]":  8,
+                     "Dates[Calendar Month Year]":  "Aug 2024",
+                     "[MonthStart]":  "\/Date(1722463200000)\/",
+                     "[Sales]":  13441880.057666475,
+                     "[Qty]":  4064121,
+                     "[Budget]":  13886325.429815436,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2024,
+                     "Dates[Calendar MonthNumber]":  9,
+                     "Dates[Calendar Month Year]":  "Sep 2024",
+                     "[MonthStart]":  "\/Date(1725141600000)\/",
+                     "[Sales]":  15517204.278836548,
+                     "[Qty]":  4544505,
+                     "[Budget]":  17738847.8129244,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2024,
+                     "Dates[Calendar MonthNumber]":  10,
+                     "Dates[Calendar Month Year]":  "Oct 2024",
+                     "[MonthStart]":  "\/Date(1727733600000)\/",
+                     "[Sales]":  16177105.392751336,
+                     "[Qty]":  4991378,
+                     "[Budget]":  17153117.913087312,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2024,
+                     "Dates[Calendar MonthNumber]":  11,
+                     "Dates[Calendar Month Year]":  "Nov 2024",
+                     "[MonthStart]":  "\/Date(1730415600000)\/",
+                     "[Sales]":  16128990.119766787,
+                     "[Qty]":  4306492,
+                     "[Budget]":  18693228.075006634,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2024,
+                     "Dates[Calendar MonthNumber]":  12,
+                     "Dates[Calendar Month Year]":  "Dec 2024",
+                     "[MonthStart]":  "\/Date(1733007600000)\/",
+                     "[Sales]":  12781754.324465828,
+                     "[Qty]":  3920077,
+                     "[Budget]":  13798174.044863014,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2025,
+                     "Dates[Calendar MonthNumber]":  1,
+                     "Dates[Calendar Month Year]":  "Jan 2025",
+                     "[MonthStart]":  "\/Date(1735686000000)\/",
+                     "[Sales]":  16194410.371037334,
+                     "[Qty]":  4963107,
+                     "[Budget]":  15832342.622605331,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2025,
+                     "Dates[Calendar MonthNumber]":  2,
+                     "Dates[Calendar Month Year]":  "Feb 2025",
+                     "[MonthStart]":  "\/Date(1738364400000)\/",
+                     "[Sales]":  15317296.089151114,
+                     "[Qty]":  4789519,
+                     "[Budget]":  16124841.032206597,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2025,
+                     "Dates[Calendar MonthNumber]":  3,
+                     "Dates[Calendar Month Year]":  "Mar 2025",
+                     "[MonthStart]":  "\/Date(1740783600000)\/",
+                     "[Sales]":  15825487.250884412,
+                     "[Qty]":  4513535,
+                     "[Budget]":  17171656.193297755,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2025,
+                     "Dates[Calendar MonthNumber]":  4,
+                     "Dates[Calendar Month Year]":  "Apr 2025",
+                     "[MonthStart]":  "\/Date(1743458400000)\/",
+                     "[Sales]":  14882489.497111579,
+                     "[Qty]":  4463895,
+                     "[Budget]":  16049835.89622044,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2025,
+                     "Dates[Calendar MonthNumber]":  5,
+                     "Dates[Calendar Month Year]":  "May 2025",
+                     "[MonthStart]":  "\/Date(1746050400000)\/",
+                     "[Sales]":  16046198.259532247,
+                     "[Qty]":  5301200,
+                     "[Budget]":  16477704.247262849,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2025,
+                     "Dates[Calendar MonthNumber]":  6,
+                     "Dates[Calendar Month Year]":  "Jun 2025",
+                     "[MonthStart]":  "\/Date(1748728800000)\/",
+                     "[Sales]":  14768286.135890529,
+                     "[Qty]":  4256682,
+                     "[Budget]":  17122320.892111495,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2025,
+                     "Dates[Calendar MonthNumber]":  7,
+                     "Dates[Calendar Month Year]":  "Jul 2025",
+                     "[MonthStart]":  "\/Date(1751320800000)\/",
+                     "[Sales]":  16045274.002389923,
+                     "[Qty]":  5311170,
+                     "[Budget]":  15713692.002115386,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2025,
+                     "Dates[Calendar MonthNumber]":  8,
+                     "Dates[Calendar Month Year]":  "Aug 2025",
+                     "[MonthStart]":  "\/Date(1753999200000)\/",
+                     "[Sales]":  12849294.997427473,
+                     "[Qty]":  4317797,
+                     "[Budget]":  13627123.018648537,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2025,
+                     "Dates[Calendar MonthNumber]":  9,
+                     "Dates[Calendar Month Year]":  "Sep 2025",
+                     "[MonthStart]":  "\/Date(1756677600000)\/",
+                     "[Sales]":  16835821.19513249,
+                     "[Qty]":  5070621,
+                     "[Budget]":  17581229.974700157,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2025,
+                     "Dates[Calendar MonthNumber]":  10,
+                     "Dates[Calendar Month Year]":  "Oct 2025",
+                     "[MonthStart]":  "\/Date(1759269600000)\/",
+                     "[Sales]":  17182893.864410833,
+                     "[Qty]":  4321819,
+                     "[Budget]":  17627591.472702503,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2025,
+                     "Dates[Calendar MonthNumber]":  11,
+                     "Dates[Calendar Month Year]":  "Nov 2025",
+                     "[MonthStart]":  "\/Date(1761951600000)\/",
+                     "[Sales]":  17418499.006577566,
+                     "[Qty]":  5423142,
+                     "[Budget]":  18041009.893092565,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2025,
+                     "Dates[Calendar MonthNumber]":  12,
+                     "Dates[Calendar Month Year]":  "Dec 2025",
+                     "[MonthStart]":  "\/Date(1764543600000)\/",
+                     "[Sales]":  13966818.025602994,
+                     "[Qty]":  4061479,
+                     "[Budget]":  13764943.682794908,
+                     "[ForecastRoll]":  null
+                 },
+                 {
+                     "Dates[Calendar Year]":  2026,
+                     "Dates[Calendar MonthNumber]":  1,
+                     "Dates[Calendar Month Year]":  "Jan 2026",
+                     "[MonthStart]":  "\/Date(1767222000000)\/",
+                     "[Sales]":  15421217.272056028,
+                     "[Qty]":  5094005,
+                     "[Budget]":  16550407.383074982,
+                     "[ForecastRoll]":  15421217.272208488
+                 },
+                 {
+                     "Dates[Calendar Year]":  2026,
+                     "Dates[Calendar MonthNumber]":  2,
+                     "Dates[Calendar Month Year]":  "Feb 2026",
+                     "[MonthStart]":  "\/Date(1769900400000)\/",
+                     "[Sales]":  16617950.974772755,
+                     "[Qty]":  4897038,
+                     "[Budget]":  17023465.392816406,
+                     "[ForecastRoll]":  16617950.974708928
+                 },
+                 {
+                     "Dates[Calendar Year]":  2026,
+                     "Dates[Calendar MonthNumber]":  3,
+                     "Dates[Calendar Month Year]":  "Mar 2026",
+                     "[MonthStart]":  "\/Date(1772319600000)\/",
+                     "[Sales]":  18605072.013101693,
+                     "[Qty]":  5003926,
+                     "[Budget]":  17176120.139724646,
+                     "[ForecastRoll]":  18605072.012993302
+                 },
+                 {
+                     "Dates[Calendar Year]":  2026,
+                     "Dates[Calendar MonthNumber]":  4,
+                     "Dates[Calendar Month Year]":  "Apr 2026",
+                     "[MonthStart]":  "\/Date(1774994400000)\/",
+                     "[Sales]":  17338304.545435812,
+                     "[Qty]":  5242816,
+                     "[Budget]":  17063754.55549461,
+                     "[ForecastRoll]":  17338304.545498095
+                 },
+                 {
+                     "Dates[Calendar Year]":  2026,
+                     "Dates[Calendar MonthNumber]":  5,
+                     "Dates[Calendar Month Year]":  "May 2026",
+                     "[MonthStart]":  "\/Date(1777586400000)\/",
+                     "[Sales]":  4351555.3325657062,
+                     "[Qty]":  1020712,
+                     "[Budget]":  16386199.403205467,
+                     "[ForecastRoll]":  15855983.97239995
+                 },
+                 {
+                     "Dates[Calendar Year]":  2026,
+                     "Dates[Calendar MonthNumber]":  6,
+                     "Dates[Calendar Month Year]":  "Jun 2026",
+                     "[MonthStart]":  "\/Date(1780264800000)\/",
+                     "[Sales]":  null,
+                     "[Qty]":  null,
+                     "[Budget]":  16279450.540060664,
+                     "[ForecastRoll]":  17184577.543599933
+                 },
+                 {
+                     "Dates[Calendar Year]":  2026,
+                     "Dates[Calendar MonthNumber]":  7,
+                     "Dates[Calendar Month Year]":  "Jul 2026",
+                     "[MonthStart]":  "\/Date(1782856800000)\/",
+                     "[Sales]":  null,
+                     "[Qty]":  null,
+                     "[Budget]":  15997442.175750198,
+                     "[ForecastRoll]":  16135856.825499974
+                 },
+                 {
+                     "Dates[Calendar Year]":  2026,
+                     "Dates[Calendar MonthNumber]":  8,
+                     "Dates[Calendar Month Year]":  "Aug 2026",
+                     "[MonthStart]":  "\/Date(1785535200000)\/",
+                     "[Sales]":  null,
+                     "[Qty]":  null,
+                     "[Budget]":  13974742.383227492,
+                     "[ForecastRoll]":  14120031.085099965
+                 },
+                 {
+                     "Dates[Calendar Year]":  2026,
+                     "Dates[Calendar MonthNumber]":  9,
+                     "Dates[Calendar Month Year]":  "Sep 2026",
+                     "[MonthStart]":  "\/Date(1788213600000)\/",
+                     "[Sales]":  null,
+                     "[Qty]":  null,
+                     "[Budget]":  17759035.874341935,
+                     "[ForecastRoll]":  17375479.068099964
+                 },
+                 {
+                     "Dates[Calendar Year]":  2026,
+                     "Dates[Calendar MonthNumber]":  10,
+                     "Dates[Calendar Month Year]":  "Oct 2026",
+                     "[MonthStart]":  "\/Date(1790805600000)\/",
+                     "[Sales]":  null,
+                     "[Qty]":  null,
+                     "[Budget]":  17421234.876469225,
+                     "[ForecastRoll]":  18804625.421699934
+                 },
+                 {
+                     "Dates[Calendar Year]":  2026,
+                     "Dates[Calendar MonthNumber]":  11,
+                     "Dates[Calendar Month Year]":  "Nov 2026",
+                     "[MonthStart]":  "\/Date(1793487600000)\/",
+                     "[Sales]":  null,
+                     "[Qty]":  null,
+                     "[Budget]":  17558625.893879607,
+                     "[ForecastRoll]":  17462020.903599948
+                 },
+                 {
+                     "Dates[Calendar Year]":  2026,
+                     "Dates[Calendar MonthNumber]":  12,
+                     "Dates[Calendar Month Year]":  "Dec 2026",
+                     "[MonthStart]":  "\/Date(1796079600000)\/",
+                     "[Sales]":  null,
+                     "[Qty]":  null,
+                     "[Budget]":  14688892.756928297,
+                     "[ForecastRoll]":  14817290.824899953
+                 },
+                 {
+                     "Dates[Calendar Year]":  2027,
+                     "Dates[Calendar MonthNumber]":  1,
+                     "Dates[Calendar Month Year]":  "Jan 2027",
+                     "[MonthStart]":  "\/Date(1798758000000)\/",
+                     "[Sales]":  null,
+                     "[Qty]":  null,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  18225225.300299935
+                 },
+                 {
+                     "Dates[Calendar Year]":  2027,
+                     "Dates[Calendar MonthNumber]":  2,
+                     "Dates[Calendar Month Year]":  "Feb 2027",
+                     "[MonthStart]":  "\/Date(1801436400000)\/",
+                     "[Sales]":  null,
+                     "[Qty]":  null,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  18778131.107199959
+                 },
+                 {
+                     "Dates[Calendar Year]":  2027,
+                     "Dates[Calendar MonthNumber]":  3,
+                     "Dates[Calendar Month Year]":  "Mar 2027",
+                     "[MonthStart]":  "\/Date(1803855600000)\/",
+                     "[Sales]":  null,
+                     "[Qty]":  null,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  18184264.277099922
+                 },
+                 {
+                     "Dates[Calendar Year]":  2027,
+                     "Dates[Calendar MonthNumber]":  4,
+                     "Dates[Calendar Month Year]":  "Apr 2027",
+                     "[MonthStart]":  "\/Date(1806530400000)\/",
+                     "[Sales]":  null,
+                     "[Qty]":  null,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  17773724.88949994
+                 },
+                 {
+                     "Dates[Calendar Year]":  2027,
+                     "Dates[Calendar MonthNumber]":  5,
+                     "Dates[Calendar Month Year]":  "May 2027",
+                     "[MonthStart]":  "\/Date(1809122400000)\/",
+                     "[Sales]":  null,
+                     "[Qty]":  null,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  17417979.545299903
+                 },
+                 {
+                     "Dates[Calendar Year]":  2027,
+                     "Dates[Calendar MonthNumber]":  6,
+                     "Dates[Calendar Month Year]":  "Jun 2027",
+                     "[MonthStart]":  "\/Date(1811800800000)\/",
+                     "[Sales]":  null,
+                     "[Qty]":  null,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  18186576.248099916
+                 },
+                 {
+                     "Dates[Calendar Year]":  2027,
+                     "Dates[Calendar MonthNumber]":  7,
+                     "Dates[Calendar Month Year]":  "Jul 2027",
+                     "[MonthStart]":  "\/Date(1814392800000)\/",
+                     "[Sales]":  null,
+                     "[Qty]":  null,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  16768157.268399907
+                 },
+                 {
+                     "Dates[Calendar Year]":  2027,
+                     "Dates[Calendar MonthNumber]":  8,
+                     "Dates[Calendar Month Year]":  "Aug 2027",
+                     "[MonthStart]":  "\/Date(1817071200000)\/",
+                     "[Sales]":  null,
+                     "[Qty]":  null,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  15735240.555299871
+                 },
+                 {
+                     "Dates[Calendar Year]":  2027,
+                     "Dates[Calendar MonthNumber]":  9,
+                     "Dates[Calendar Month Year]":  "Sep 2027",
+                     "[MonthStart]":  "\/Date(1819749600000)\/",
+                     "[Sales]":  null,
+                     "[Qty]":  null,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  18103225.483799882
+                 },
+                 {
+                     "Dates[Calendar Year]":  2027,
+                     "Dates[Calendar MonthNumber]":  10,
+                     "Dates[Calendar Month Year]":  "Oct 2027",
+                     "[MonthStart]":  "\/Date(1822341600000)\/",
+                     "[Sales]":  null,
+                     "[Qty]":  null,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  17627876.068499956
+                 },
+                 {
+                     "Dates[Calendar Year]":  2027,
+                     "Dates[Calendar MonthNumber]":  11,
+                     "Dates[Calendar Month Year]":  "Nov 2027",
+                     "[MonthStart]":  "\/Date(1825023600000)\/",
+                     "[Sales]":  null,
+                     "[Qty]":  null,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  16989221.230299957
+                 },
+                 {
+                     "Dates[Calendar Year]":  2027,
+                     "Dates[Calendar MonthNumber]":  12,
+                     "Dates[Calendar Month Year]":  "Dec 2027",
+                     "[MonthStart]":  "\/Date(1827615600000)\/",
+                     "[Sales]":  null,
+                     "[Qty]":  null,
+                     "[Budget]":  null,
+                     "[ForecastRoll]":  15176030.032199953
+                 }
+             ]
+}

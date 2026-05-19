@@ -1,0 +1,189 @@
+{
+    "schema":  "codex.powerbi.liveDmv.v1",
+    "server":  "Data Source=localhost:53293",
+    "query":  "EVALUATE\nTOPN(\n    20,\n    SUMMARIZECOLUMNS(\n        \u0027dw Custtable\u0027[CustHierachy01],\n        \u0027dw Inventtable\u0027[ProductLineHerachy01],\n        \"Sales2025\", CALCULATE([_SumSalesTotal], \u0027Dates\u0027[Calendar Year] = 2025),\n        \"Sales2026YTD\", CALCULATE([_SumSalesTotal], \u0027Dates\u0027[Calendar Year] = 2026),\n        \"Roll2026\", CALCULATE([_SumForecastAmountRoll], \u0027Dates\u0027[Calendar Year] = 2026),\n        \"Budget2026\", CALCULATE([_SumBudgetAmount], \u0027Dates\u0027[Calendar Year] = 2026),\n        \"Backlog\", [_BacklogAmountMst]\n    ),\n    [Sales2025], DESC\n)",
+    "adomdClientPath":  "C:\\Program Files\\Microsoft.NET\\ADOMD.NET\\170\\Microsoft.AnalysisServices.AdomdClient.dll",
+    "rowCount":  20,
+    "rows":  [
+                 {
+                     "dw Custtable[CustHierachy01]":  "71811 - Komet France",
+                     "dw Inventtable[ProductLineHerachy01]":  "323_11 Biokeramische Sealer",
+                     "[Sales2025]":  960773.89000000339,
+                     "[Sales2026YTD]":  392864.67000000062,
+                     "[Roll2026]":  1066953.8167000003,
+                     "[Budget2026]":  1016054.1921364582,
+                     "[Backlog]":  487.37
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "71811 - Komet France",
+                     "dw Inventtable[ProductLineHerachy01]":  "111_10 Standard",
+                     "[Sales2025]":  1126450.2499999967,
+                     "[Sales2026YTD]":  408307.02000000241,
+                     "[Roll2026]":  1122789.1967999763,
+                     "[Budget2026]":  1136052.5920997853,
+                     "[Backlog]":  323.54999999999995
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "81603 - USA ohne VU",
+                     "dw Inventtable[ProductLineHerachy01]":  "M143_10 Fixation Pins",
+                     "[Sales2025]":  1031233.9300000004,
+                     "[Sales2026YTD]":  381494.93000000005,
+                     "[Roll2026]":  1085813.4417000008,
+                     "[Budget2026]":  1218622.9872822913,
+                     "[Backlog]":  null
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "81603 - USA ohne VU",
+                     "dw Inventtable[ProductLineHerachy01]":  "M141_10 Navigation Pins",
+                     "[Sales2025]":  1234133.6099999999,
+                     "[Sales2026YTD]":  459362.54999999987,
+                     "[Roll2026]":  1261719.1365000005,
+                     "[Budget2026]":  1531457.5079419739,
+                     "[Backlog]":  null
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "81814 - Komet Medical USA",
+                     "dw Inventtable[ProductLineHerachy01]":  "M191_10 Sonstige",
+                     "[Sales2025]":  1444150.02,
+                     "[Sales2026YTD]":  608177.12999999989,
+                     "[Roll2026]":  1638139.5664,
+                     "[Budget2026]":  1685617.1571616821,
+                     "[Backlog]":  929229.298225
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "81202 - Schweiz",
+                     "dw Inventtable[ProductLineHerachy01]":  "M201_10 Stahl",
+                     "[Sales2025]":  1225543.0100000007,
+                     "[Sales2026YTD]":  857109.89999999979,
+                     "[Roll2026]":  2386282.1296000006,
+                     "[Budget2026]":  2024376.1712866698,
+                     "[Backlog]":  351718
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "71814 - Komet USA",
+                     "dw Inventtable[ProductLineHerachy01]":  "111_10 Standard",
+                     "[Sales2025]":  1362957.3100001058,
+                     "[Sales2026YTD]":  476420.12000002759,
+                     "[Roll2026]":  1234056.9050999396,
+                     "[Budget2026]":  1195290.7628475334,
+                     "[Backlog]":  8578.1139780000012
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "71813 - D+Z",
+                     "dw Inventtable[ProductLineHerachy01]":  "n/a",
+                     "[Sales2025]":  1802357.560000014,
+                     "[Sales2026YTD]":  552841.2499999986,
+                     "[Roll2026]":  1484095.8362000135,
+                     "[Budget2026]":  1753304.6776852405,
+                     "[Backlog]":  113260.25999999991
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "81202 - Schweiz",
+                     "dw Inventtable[ProductLineHerachy01]":  "M209_10 Sonstiges",
+                     "[Sales2025]":  1813448.8399999999,
+                     "[Sales2026YTD]":  1113153.6,
+                     "[Roll2026]":  2589890.95,
+                     "[Budget2026]":  2153811.4397013332,
+                     "[Backlog]":  589559.75
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "88418 - Indien",
+                     "dw Inventtable[ProductLineHerachy01]":  "n/a",
+                     "[Sales2025]":  2735454.2000000016,
+                     "[Sales2026YTD]":  956776.73999999976,
+                     "[Roll2026]":  2820066.1170999976,
+                     "[Budget2026]":  3083687.9287500246,
+                     "[Backlog]":  550158.01000000094
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "81811 - Komet France",
+                     "dw Inventtable[ProductLineHerachy01]":  "M151_10 Oszillierend",
+                     "[Sales2025]":  1934828.5600000266,
+                     "[Sales2026YTD]":  740368.97000000067,
+                     "[Roll2026]":  2049063.5102,
+                     "[Budget2026]":  2064021.8472025497,
+                     "[Backlog]":  227745.5
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "81303 - Irland",
+                     "dw Inventtable[ProductLineHerachy01]":  "M161_12 Vollhartmetall",
+                     "[Sales2025]":  2608784.43,
+                     "[Sales2026YTD]":  803588.37999999989,
+                     "[Roll2026]":  2214048.9933999996,
+                     "[Budget2026]":  2115652.8,
+                     "[Backlog]":  750532.52
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "71814 - Komet USA",
+                     "dw Inventtable[ProductLineHerachy01]":  "123_10 Standard",
+                     "[Sales2025]":  2053987.4799999783,
+                     "[Sales2026YTD]":  672319.3900000006,
+                     "[Roll2026]":  1902988.1809999829,
+                     "[Budget2026]":  1828072.4291360292,
+                     "[Backlog]":  8673.464898
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "83102 - Deutschland",
+                     "dw Inventtable[ProductLineHerachy01]":  "M203_10 Stahl",
+                     "[Sales2025]":  3351990.7799999993,
+                     "[Sales2026YTD]":  1204658.92,
+                     "[Roll2026]":  3733557.8447000026,
+                     "[Budget2026]":  3963950.7632026635,
+                     "[Backlog]":  1706964.2100000002
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "81603 - USA ohne VU",
+                     "dw Inventtable[ProductLineHerachy01]":  "M151_10 Oszillierend",
+                     "[Sales2025]":  4364313.31,
+                     "[Sales2026YTD]":  1492924.6199999999,
+                     "[Roll2026]":  4060265.2530999961,
+                     "[Budget2026]":  4521185.3965718225,
+                     "[Backlog]":  1659060.6
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "81202 - Schweiz",
+                     "dw Inventtable[ProductLineHerachy01]":  "M203_10 Stahl",
+                     "[Sales2025]":  1875028.5100000035,
+                     "[Sales2026YTD]":  653014.96000000008,
+                     "[Roll2026]":  2052609.3705999991,
+                     "[Budget2026]":  1831579.3311016872,
+                     "[Backlog]":  0
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "81303 - Irland",
+                     "dw Inventtable[ProductLineHerachy01]":  "M162_12 Vollhartmetall",
+                     "[Sales2025]":  3017245.919999999,
+                     "[Sales2026YTD]":  1117593.5999999996,
+                     "[Roll2026]":  3247611.4444,
+                     "[Budget2026]":  2941900.8000000003,
+                     "[Backlog]":  1018982.3999999989
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "81202 - Schweiz",
+                     "dw Inventtable[ProductLineHerachy01]":  "M151_10 Oszillierend",
+                     "[Sales2025]":  2921375.2900000047,
+                     "[Sales2026YTD]":  1296850.2600000021,
+                     "[Roll2026]":  4048366.4705999903,
+                     "[Budget2026]":  3212787.1327669672,
+                     "[Backlog]":  403682.81
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "83102 - Deutschland",
+                     "dw Inventtable[ProductLineHerachy01]":  "M151_10 Oszillierend",
+                     "[Sales2025]":  2262385.8400000064,
+                     "[Sales2026YTD]":  927427.16000000783,
+                     "[Roll2026]":  2416704.7237000125,
+                     "[Budget2026]":  2327640.4246073123,
+                     "[Backlog]":  8376.54
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "81303 - Irland",
+                     "dw Inventtable[ProductLineHerachy01]":  "M161_10 Diamant",
+                     "[Sales2025]":  2902790.629999999,
+                     "[Sales2026YTD]":  1226422.8600000003,
+                     "[Roll2026]":  3205404.8382999972,
+                     "[Budget2026]":  2805834.48332255,
+                     "[Backlog]":  672656.74
+                 }
+             ]
+}

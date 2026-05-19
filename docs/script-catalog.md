@@ -49,7 +49,7 @@ Scripts live in `plugins/powerbi-desktop/scripts`. Most commands accept either a
 
 ### `Invoke-PowerBIAIForecast.ps1`
 
-Creates read-only AI/KI sales forecast from open Desktop model or saved extract. Outputs detail, monthly summary, top-delta CSV. Combines actuals, backlog conversion, segment demand, budget/roll anchors, monthly reconciliation.
+Creates read-only AI/KI sales forecast from open Desktop model or saved extract. Supports `-AsOfDate`, `-HorizonMonths`, `-Grain CustomerProduct|HierarchyProductLine`, `-Backtest`, and `-Json`. Outputs detail, monthly summary, top-delta, backtest, and model-quality CSV files. Combines actual-to-date, learned backlog conversion, residual demand, budget/roll anchors, sparse-series fallback, and monthly reconciliation. Live `CustomerProduct` extraction can fall back to hierarchy/product-line grain when Desktop cannot materialize the fine grain.
 
 - `Invoke-PowerBIFixUntilGreenLoop.ps1`: generates iterative fix-loop guidance.
 - `Test-PowerBISemanticModelCopilotEvaluator.ps1`: evaluates Copilot-readiness semantics.
@@ -63,6 +63,21 @@ Creates read-only AI/KI sales forecast from open Desktop model or saved extract.
 - `New-PowerBIGovernanceRuleMiner.ps1`: proposes governance rules from repeated findings.
 - `New-PowerBIExplainableDaxRefactoring.ps1`: creates explainable DAX refactor options.
 - `New-PowerBIReportDecisionSimulator.ps1`: simulates report decision risk.
+
+## Enterprise AI Release Engineering
+
+- `Get-PowerBIFabricWorkspaceInventory.ps1`: creates an offline Fabric workspace inventory plan, with explicit token-file gated REST preparation.
+- `New-PowerBIServiceScanner.ps1`: creates service governance findings for ownership, refresh, labels, endorsements, source control, and release gate state.
+- `New-PowerBITomWritePlan.ps1`: drafts gated TOM/TMSL write plans with dry-run, backup, diff, and rollback checks.
+- `Optimize-PowerBIReportLayout.ps1`: creates auto-fix layout plans for report visuals.
+- `Invoke-PowerBISemanticTestRunner.ps1`: creates or evaluates semantic measure test expectations.
+- `Import-PowerBIPerformanceTrace.ps1`: imports Performance Analyzer or DAX Studio trace signals and creates hotspot guidance.
+- `Import-PowerBIVertiPaqAnalyzer.ps1`: imports VPAX/VertiPaq-style storage signals or creates capture guidance.
+- `New-PowerBIReportScreenshotUXReview.ps1`: creates screenshot-based UX, accessibility, and executive-fit review structure.
+- `New-PowerBIGovernancePolicyPack.ps1`: generates profile-specific governance rules.
+- `Update-PowerBIChangeJournal.ps1`: records AI change decisions and statuses.
+- `New-PowerBIModelRiskHeatmap.ps1`: aggregates model, DAX, service, storage, and release risk.
+- `New-PowerBIReleaseCandidatePack.ps1`: creates a one-command enterprise release package.
 
 ## PBIP Authoring And Apply
 

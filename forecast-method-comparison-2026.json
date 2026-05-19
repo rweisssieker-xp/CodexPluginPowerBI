@@ -1,0 +1,72 @@
+[
+  {
+    "Month": "Jun 2026",
+    "RollFC": 17.18,
+    "Budget": 16.28,
+    "SeasonalNaive": 14.77,
+    "YTDGrowth": 16.14,
+    "Trend3Y": 15.94,
+    "BlendRecommended": 16.15,
+    "DiffBlendVsRoll": -1.04
+  },
+  {
+    "Month": "Jul 2026",
+    "RollFC": 16.14,
+    "Budget": 16.0,
+    "SeasonalNaive": 16.05,
+    "YTDGrowth": 17.53,
+    "Trend3Y": 15.36,
+    "BlendRecommended": 16.56,
+    "DiffBlendVsRoll": 0.42
+  },
+  {
+    "Month": "Aug 2026",
+    "RollFC": 14.12,
+    "Budget": 13.97,
+    "SeasonalNaive": 12.85,
+    "YTDGrowth": 14.04,
+    "Trend3Y": 13.2,
+    "BlendRecommended": 13.85,
+    "DiffBlendVsRoll": -0.27
+  },
+  {
+    "Month": "Sep 2026",
+    "RollFC": 17.38,
+    "Budget": 17.76,
+    "SeasonalNaive": 16.84,
+    "YTDGrowth": 18.4,
+    "Trend3Y": 15.94,
+    "BlendRecommended": 17.68,
+    "DiffBlendVsRoll": 0.31
+  },
+  {
+    "Month": "Oct 2026",
+    "RollFC": 18.8,
+    "Budget": 17.42,
+    "SeasonalNaive": 17.18,
+    "YTDGrowth": 18.77,
+    "Trend3Y": 16.37,
+    "BlendRecommended": 17.82,
+    "DiffBlendVsRoll": -0.98
+  },
+  {
+    "Month": "Nov 2026",
+    "RollFC": 17.46,
+    "Budget": 17.56,
+    "SeasonalNaive": 17.42,
+    "YTDGrowth": 19.03,
+    "Trend3Y": 16.81,
+    "BlendRecommended": 18.07,
+    "DiffBlendVsRoll": 0.61
+  },
+  {
+    "Month": "Dec 2026",
+    "RollFC": 14.82,
+    "Budget": 14.69,
+    "SeasonalNaive": 13.97,
+    "YTDGrowth": 15.26,
+    "Trend3Y": 13.46,
+    "BlendRecommended": 14.7,
+    "DiffBlendVsRoll": -0.12
+  }
+]

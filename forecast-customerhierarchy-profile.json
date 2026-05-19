@@ -1,0 +1,184 @@
+{
+    "schema":  "codex.powerbi.liveDmv.v1",
+    "server":  "Data Source=localhost:53293",
+    "query":  "EVALUATE\nTOPN(\n    25,\n    SUMMARIZECOLUMNS(\n        \u0027dw Custtable\u0027[CustHierachy01],\n        \"Sales2025\", CALCULATE([_SumSalesTotal], \u0027Dates\u0027[Calendar Year] = 2025),\n        \"Sales2026YTD\", CALCULATE([_SumSalesTotal], \u0027Dates\u0027[Calendar Year] = 2026),\n        \"Budget2026\", CALCULATE([_SumBudgetAmount], \u0027Dates\u0027[Calendar Year] = 2026),\n        \"ForecastRoll2026\", CALCULATE([_SumForecastAmountRoll], \u0027Dates\u0027[Calendar Year] = 2026)\n    ),\n    [Sales2025], DESC\n)",
+    "adomdClientPath":  "C:\\Program Files\\Microsoft.NET\\ADOMD.NET\\170\\Microsoft.AnalysisServices.AdomdClient.dll",
+    "rowCount":  25,
+    "rows":  [
+                 {
+                     "dw Custtable[CustHierachy01]":  "71111 - Wilk",
+                     "[Sales2025]":  1519577.1000000143,
+                     "[Sales2026YTD]":  585264.24000000441,
+                     "[Budget2026]":  1558737.8361567436,
+                     "[ForecastRoll2026]":  1573148.6410000005
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "71204 - Niederlande",
+                     "[Sales2025]":  1540093.1199999836,
+                     "[Sales2026YTD]":  627488.1300000014,
+                     "[Budget2026]":  1462892.8655297079,
+                     "[ForecastRoll2026]":  1593444.1146999882
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "73245 - Wansing",
+                     "[Sales2025]":  1797901.1800000542,
+                     "[Sales2026YTD]":  698511.60000002082,
+                     "[Budget2026]":  1894055.0311376629,
+                     "[ForecastRoll2026]":  1878853.3452000082
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "71463 - Russland",
+                     "[Sales2025]":  1743184.7900000019,
+                     "[Sales2026YTD]":  496995.31000000017,
+                     "[Budget2026]":  1786426.3418442253,
+                     "[ForecastRoll2026]":  1548286.0117998691
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "73212 - Scholz",
+                     "[Sales2025]":  1564037.8400000518,
+                     "[Sales2026YTD]":  554830.49000002281,
+                     "[Budget2026]":  1648542.9891114174,
+                     "[ForecastRoll2026]":  1559504.6099000028
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "73211 - Klassen",
+                     "[Sales2025]":  1989701.64000009,
+                     "[Sales2026YTD]":  774072.28000002308,
+                     "[Budget2026]":  1900432.2729108932,
+                     "[ForecastRoll2026]":  1663234.7896000121
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "81814 - Komet Medical USA",
+                     "[Sales2025]":  3659854.9400000004,
+                     "[Sales2026YTD]":  1690181.2800000003,
+                     "[Budget2026]":  4151480.1655551582,
+                     "[ForecastRoll2026]":  4747557.4538000021
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "73249 - Stückrath",
+                     "[Sales2025]":  1760612.0000000787,
+                     "[Sales2026YTD]":  667326.410000026,
+                     "[Budget2026]":  1708148.132417605,
+                     "[ForecastRoll2026]":  1869084.0654999977
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "88418 - Indien",
+                     "[Sales2025]":  2825730.6999999974,
+                     "[Sales2026YTD]":  1010868.0099999995,
+                     "[Budget2026]":  3188687.2541882629,
+                     "[ForecastRoll2026]":  2945532.0605000043
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "73227 - von Schassen",
+                     "[Sales2025]":  1688997.2700000522,
+                     "[Sales2026YTD]":  648093.59000003024,
+                     "[Budget2026]":  1751351.1075127162,
+                     "[ForecastRoll2026]":  1790222.5169000058
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "71423 - Japan",
+                     "[Sales2025]":  1827830.8799999985,
+                     "[Sales2026YTD]":  555779.99999999942,
+                     "[Budget2026]":  1811038.0454704175,
+                     "[ForecastRoll2026]":  1787643.5226999999
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "73222 - Heyn",
+                     "[Sales2025]":  2514968.2899995162,
+                     "[Sales2026YTD]":  975210.67000004067,
+                     "[Budget2026]":  2558761.9521079911,
+                     "[ForecastRoll2026]":  2603207.4515
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "81204 - Niederlande",
+                     "[Sales2025]":  2501544.7499999991,
+                     "[Sales2026YTD]":  697915.08999999985,
+                     "[Budget2026]":  2609454.5691942577,
+                     "[ForecastRoll2026]":  2097636.5955999997
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "71814 - Komet USA",
+                     "[Sales2025]":  13496597.269999176,
+                     "[Sales2026YTD]":  4716473.5199996093,
+                     "[Budget2026]":  12769255.984030364,
+                     "[ForecastRoll2026]":  13293721.726400012
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "71812 - Komet Italia",
+                     "[Sales2025]":  4394822.1699998342,
+                     "[Sales2026YTD]":  1608130.2900000382,
+                     "[Budget2026]":  4526972.5488432068,
+                     "[ForecastRoll2026]":  4602109.3235000083
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "71205 - Spanien",
+                     "[Sales2025]":  2176961.919999945,
+                     "[Sales2026YTD]":  921445.95999998867,
+                     "[Budget2026]":  2155121.8392427671,
+                     "[ForecastRoll2026]":  2168856.2283999836
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "71405 - Australien",
+                     "[Sales2025]":  1934928.7300000028,
+                     "[Sales2026YTD]":  646333.29999999912,
+                     "[Budget2026]":  2115023.5676620575,
+                     "[ForecastRoll2026]":  1961319.4928
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "81603 - USA ohne VU",
+                     "[Sales2025]":  10919026.805434158,
+                     "[Sales2026YTD]":  3786279.8779575354,
+                     "[Budget2026]":  11871446.622389097,
+                     "[ForecastRoll2026]":  10887319.922100082
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "81811 - Komet France",
+                     "[Sales2025]":  3612322.9500000249,
+                     "[Sales2026YTD]":  1385270.0700000098,
+                     "[Budget2026]":  3802453.319807075,
+                     "[ForecastRoll2026]":  3745056.9522000011
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "83102 - Deutschland",
+                     "[Sales2025]":  10449317.770000163,
+                     "[Sales2026YTD]":  3901238.1800000151,
+                     "[Budget2026]":  11552909.835895645,
+                     "[ForecastRoll2026]":  11403320.873300018
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "81202 - Schweiz",
+                     "[Sales2025]":  11609994.059999971,
+                     "[Sales2026YTD]":  5368382.9599999953,
+                     "[Budget2026]":  13098636.648718597,
+                     "[ForecastRoll2026]":  15301333.1606
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "71450 - Süd-Korea",
+                     "[Sales2025]":  3549837.6600000197,
+                     "[Sales2026YTD]":  1478689.399999988,
+                     "[Budget2026]":  3522686.7776900264,
+                     "[ForecastRoll2026]":  3622493.6252000025
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "71813 - D+Z",
+                     "[Sales2025]":  3076149.469999983,
+                     "[Sales2026YTD]":  917326.37999999744,
+                     "[Budget2026]":  2896339.1385284644,
+                     "[ForecastRoll2026]":  2504731.174399999
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "71811 - Komet France",
+                     "[Sales2025]":  14636497.239999417,
+                     "[Sales2026YTD]":  5709823.0099997958,
+                     "[Budget2026]":  15440466.900755662,
+                     "[ForecastRoll2026]":  15854267.45869994
+                 },
+                 {
+                     "dw Custtable[CustHierachy01]":  "81303 - Irland",
+                     "[Sales2025]":  10087078.709999997,
+                     "[Sales2026YTD]":  3721615.4599999981,
+                     "[Budget2026]":  9287770.9241685476,
+                     "[ForecastRoll2026]":  10216915.828100005
+                 }
+             ]
+}

@@ -13,6 +13,29 @@ Describe 'Power BI Desktop plugin' {
         { & $scriptPath -DryRun -Json | ConvertFrom-Json } | Should Not Throw
     }
 
+    It 'includes autonomous planning engine skills' {
+        $skillsPath = Join-Path $pluginRoot 'skills'
+        @(
+            'powerbi-autonomous-planning-loop',
+            'powerbi-goal-seeking-planning',
+            'powerbi-constraint-aware-planning',
+            'powerbi-revenue-digital-twin',
+            'powerbi-autonomous-forecast-agents',
+            'powerbi-autonomous-exception-management',
+            'powerbi-revenue-rescue-mode',
+            'powerbi-forecast-trust-market',
+            'powerbi-causal-counterfactual-forecasting',
+            'powerbi-self-healing-forecast-governance',
+            'powerbi-planning-memory',
+            'powerbi-planning-readiness-score',
+            'powerbi-forecast-war-room'
+        ) | ForEach-Object {
+            $skillPath = Join-Path $skillsPath $_
+            Test-Path -LiteralPath (Join-Path $skillPath 'SKILL.md') | Should Be $true
+            (Get-Content -Raw -LiteralPath (Join-Path $skillPath 'SKILL.md')) | Should Match '^---'
+        }
+    }
+
     It 'generates KPI trust scores' {
         $trust = & (Join-Path $scriptsPath 'New-PowerBIKpiTrustScore.ps1') -Path $samplePath -Json | ConvertFrom-Json
         $trust.metricCount | Should Be 5

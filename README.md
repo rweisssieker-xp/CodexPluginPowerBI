@@ -7,7 +7,7 @@ This workspace contains a Codex plugin for Microsoft Power BI Desktop workflows.
 Use the plugin from this repository by pointing Codex at `plugins/powerbi-desktop`.
 Generated review outputs are intentionally ignored by Git; rerun the scripts below to recreate them locally.
 
-Start with the full [documentation index](docs/index.md). Key guides: [getting started](docs/getting-started.md), [workflows](docs/workflows.md), [script catalog](docs/script-catalog.md), [architecture](docs/architecture.md), [unified review](docs/unified-review.md), [Max AI review](docs/max-ai-review.md), [AI USP workflows](docs/ai-usp-workflows.md), [live Desktop](docs/live-desktop.md), [PBIP Apply Engine](docs/pbip-apply-engine.md), [Fabric planning](docs/fabric.md), [governance](docs/governance.md), [External Tool installation](docs/external-tool-installation.md), [golden baselines](docs/golden-baselines.md), [testing](docs/testing.md), [privacy](docs/privacy.md), and [troubleshooting](docs/troubleshooting.md).
+Start with the full [documentation index](docs/index.md). Key guides: [getting started](docs/getting-started.md), [workflows](docs/workflows.md), [script catalog](docs/script-catalog.md), [architecture](docs/architecture.md), [unified review](docs/unified-review.md), [Max AI review](docs/max-ai-review.md), [AI USP workflows](docs/ai-usp-workflows.md), [Enterprise AI features](docs/enterprise-ai-features.md), [live Desktop](docs/live-desktop.md), [PBIP Apply Engine](docs/pbip-apply-engine.md), [Fabric planning](docs/fabric.md), [governance](docs/governance.md), [External Tool installation](docs/external-tool-installation.md), [golden baselines](docs/golden-baselines.md), [testing](docs/testing.md), [privacy](docs/privacy.md), and [troubleshooting](docs/troubleshooting.md).
 
 ## What It Adds
 
@@ -40,6 +40,7 @@ Start with the full [documentation index](docs/index.md). Key guides: [getting s
 - Golden baseline tests for sample-model semantic regression checks.
 - AI/KI engineering workflows for autonomous PBIP fix plans, live-vs-repo reconciliation, measure expectations, PR release comments, KPI trust contracts, local model Q&A, and Fabric readiness.
 - Max AI review with 12 USP workflows: fix-until-green, Copilot evaluator, data contracts, Fabric deployment risk, visual intent, root-cause graph, KPI trust twin, review memory, natural-language PBIP authoring, governance rule mining, explainable DAX refactoring, and report decision simulation.
+- Enterprise AI release engineering with Fabric workspace inventory planning, service scanner, gated TOM/TMSL write plans, layout auto-fix plans, semantic test runner, performance trace import, VertiPaq import, screenshot UX review, policy packs, AI change journal, model risk heatmap, and one-command release candidate pack.
 - Optional external-tool awareness for Tabular Editor, DAX Studio, ALM Toolkit, Power BI Helper, Model Documenter, PBI.tips tools, and pbi-tools validation workflows.
 - A theme generator for governed report styling.
 - A review prompt template for high-signal Codex report reviews.

@@ -1,0 +1,184 @@
+{
+    "schema":  "codex.powerbi.liveDmv.v1",
+    "server":  "Data Source=localhost:53293",
+    "query":  "EVALUATE\nTOPN(\n    25,\n    SUMMARIZECOLUMNS(\n        \u0027dw Inventtable\u0027[ProductLineHerachy01],\n        \"Sales2025\", CALCULATE([_SumSalesTotal], \u0027Dates\u0027[Calendar Year] = 2025),\n        \"Sales2026YTD\", CALCULATE([_SumSalesTotal], \u0027Dates\u0027[Calendar Year] = 2026),\n        \"Budget2026\", CALCULATE([_SumBudgetAmount], \u0027Dates\u0027[Calendar Year] = 2026),\n        \"ForecastRoll2026\", CALCULATE([_SumForecastAmountRoll], \u0027Dates\u0027[Calendar Year] = 2026)\n    ),\n    [Sales2025], DESC\n)",
+    "adomdClientPath":  "C:\\Program Files\\Microsoft.NET\\ADOMD.NET\\170\\Microsoft.AnalysisServices.AdomdClient.dll",
+    "rowCount":  25,
+    "rows":  [
+                 {
+                     "dw Inventtable[ProductLineHerachy01]":  "143_10 Standard",
+                     "[Sales2025]":  1825049.7699999684,
+                     "[Sales2026YTD]":  732818.49000000674,
+                     "[Budget2026]":  2406509.1391779976,
+                     "[ForecastRoll2026]":  2386291.1395999161
+                 },
+                 {
+                     "dw Inventtable[ProductLineHerachy01]":  "201_10 Standard",
+                     "[Sales2025]":  1883914.4800000302,
+                     "[Sales2026YTD]":  731909.36000000732,
+                     "[Budget2026]":  1961468.1204194836,
+                     "[ForecastRoll2026]":  2008550.8262999237
+                 },
+                 {
+                     "dw Inventtable[ProductLineHerachy01]":  "164_12 3/4-stufig",
+                     "[Sales2025]":  1929438.3999999631,
+                     "[Sales2026YTD]":  673976.71999999508,
+                     "[Budget2026]":  1940890.7653421811,
+                     "[ForecastRoll2026]":  1863797.6027999895
+                 },
+                 {
+                     "dw Inventtable[ProductLineHerachy01]":  "111_14 DIAO",
+                     "[Sales2025]":  2061880.7899999795,
+                     "[Sales2026YTD]":  755626.66000000364,
+                     "[Budget2026]":  2383081.2316595744,
+                     "[ForecastRoll2026]":  2105914.1542999581
+                 },
+                 {
+                     "dw Inventtable[ProductLineHerachy01]":  "319_10 Procodile Q",
+                     "[Sales2025]":  2101664.7900000084,
+                     "[Sales2026YTD]":  896048.21000001859,
+                     "[Budget2026]":  2171291.6788554494,
+                     "[ForecastRoll2026]":  2285826.593700001
+                 },
+                 {
+                     "dw Inventtable[ProductLineHerachy01]":  "141_10 H4MC",
+                     "[Sales2025]":  2195337.0499999607,
+                     "[Sales2026YTD]":  847101.34999999311,
+                     "[Budget2026]":  2214748.0087444838,
+                     "[ForecastRoll2026]":  2221760.1640999936
+                 },
+                 {
+                     "dw Inventtable[ProductLineHerachy01]":  "231_11 Knochenfräser Lindemann",
+                     "[Sales2025]":  2639999.419999918,
+                     "[Sales2026YTD]":  1042576.5500000058,
+                     "[Budget2026]":  2652538.0793158873,
+                     "[ForecastRoll2026]":  2733163.7138999971
+                 },
+                 {
+                     "dw Inventtable[ProductLineHerachy01]":  "361_10 Glasfaserstifte (ohne Kopf)",
+                     "[Sales2025]":  2112059.9900000063,
+                     "[Sales2026YTD]":  765960.14000000712,
+                     "[Budget2026]":  2274886.6815978424,
+                     "[ForecastRoll2026]":  2247491.8098000078
+                 },
+                 {
+                     "dw Inventtable[ProductLineHerachy01]":  "M209_10 Sonstiges",
+                     "[Sales2025]":  2146234.25,
+                     "[Sales2026YTD]":  1267442.5000000002,
+                     "[Budget2026]":  2543579.8191525037,
+                     "[ForecastRoll2026]":  3059336.9538999996
+                 },
+                 {
+                     "dw Inventtable[ProductLineHerachy01]":  "M201_10 Stahl",
+                     "[Sales2025]":  2144627.4300000006,
+                     "[Sales2026YTD]":  1251052.4399999995,
+                     "[Budget2026]":  2791186.7076843232,
+                     "[ForecastRoll2026]":  3312485.1631
+                 },
+                 {
+                     "dw Inventtable[ProductLineHerachy01]":  "M161_12 Vollhartmetall",
+                     "[Sales2025]":  2627562.5,
+                     "[Sales2026YTD]":  803588.37999999989,
+                     "[Budget2026]":  2115652.8,
+                     "[ForecastRoll2026]":  2223251.625
+                 },
+                 {
+                     "dw Inventtable[ProductLineHerachy01]":  "203_10 DCB-Schleifer",
+                     "[Sales2025]":  2870215.6100000013,
+                     "[Sales2026YTD]":  972011.55000000761,
+                     "[Budget2026]":  3069797.6687172088,
+                     "[ForecastRoll2026]":  2858917.6264998843
+                 },
+                 {
+                     "dw Inventtable[ProductLineHerachy01]":  "323_11 Biokeramische Sealer",
+                     "[Sales2025]":  2718272.7700000042,
+                     "[Sales2026YTD]":  1149693.2399999986,
+                     "[Budget2026]":  2792843.2776108086,
+                     "[ForecastRoll2026]":  3177540.7157999948
+                 },
+                 {
+                     "dw Inventtable[ProductLineHerachy01]":  "111_13 S-Dia",
+                     "[Sales2025]":  2994111.3400000609,
+                     "[Sales2026YTD]":  1149065.7599999891,
+                     "[Budget2026]":  3009415.4089949946,
+                     "[ForecastRoll2026]":  3033771.5019997964
+                 },
+                 {
+                     "dw Inventtable[ProductLineHerachy01]":  "111_10 Standard",
+                     "[Sales2025]":  10413156.299998794,
+                     "[Sales2026YTD]":  4007660.2299997071,
+                     "[Budget2026]":  10427586.224487282,
+                     "[ForecastRoll2026]":  10621081.287500199
+                 },
+                 {
+                     "dw Inventtable[ProductLineHerachy01]":  "n/a",
+                     "[Sales2025]":  11413036.655127611,
+                     "[Sales2026YTD]":  4317682.12791369,
+                     "[Budget2026]":  12161127.04257426,
+                     "[ForecastRoll2026]":  11041781.684399782
+                 },
+                 {
+                     "dw Inventtable[ProductLineHerachy01]":  "191_10 Hartmetall",
+                     "[Sales2025]":  2646391.05000012,
+                     "[Sales2026YTD]":  929856.45000000193,
+                     "[Budget2026]":  2572106.4237206979,
+                     "[ForecastRoll2026]":  2519526.9940997823
+                 },
+                 {
+                     "dw Inventtable[ProductLineHerachy01]":  "121_10 Standard",
+                     "[Sales2025]":  8041717.1299975934,
+                     "[Sales2026YTD]":  3109636.659999866,
+                     "[Budget2026]":  8139233.0078690918,
+                     "[ForecastRoll2026]":  8330057.4283003118
+                 },
+                 {
+                     "dw Inventtable[ProductLineHerachy01]":  "M161_10 Diamant",
+                     "[Sales2025]":  4882706.5000000037,
+                     "[Sales2026YTD]":  1833332.8500000003,
+                     "[Budget2026]":  4753216.1655945666,
+                     "[ForecastRoll2026]":  4911650.4133000318
+                 },
+                 {
+                     "dw Inventtable[ProductLineHerachy01]":  "M203_10 Stahl",
+                     "[Sales2025]":  6106771.2899999935,
+                     "[Sales2026YTD]":  2448880.19,
+                     "[Budget2026]":  7424863.6946181273,
+                     "[ForecastRoll2026]":  6857921.7523999885
+                 },
+                 {
+                     "dw Inventtable[ProductLineHerachy01]":  "211_10 Labor",
+                     "[Sales2025]":  2251824.1200000248,
+                     "[Sales2026YTD]":  1012023.6099999889,
+                     "[Budget2026]":  2221369.3464693329,
+                     "[ForecastRoll2026]":  2423529.04229996
+                 },
+                 {
+                     "dw Inventtable[ProductLineHerachy01]":  "123_10 Standard",
+                     "[Sales2025]":  3894641.1999998828,
+                     "[Sales2026YTD]":  1377079.0099999863,
+                     "[Budget2026]":  3736411.4974327362,
+                     "[ForecastRoll2026]":  3808339.9504999369
+                 },
+                 {
+                     "dw Inventtable[ProductLineHerachy01]":  "M151_10 Oszillierend",
+                     "[Sales2025]":  13261323.329999894,
+                     "[Sales2026YTD]":  5116674.3799999915,
+                     "[Budget2026]":  14025074.98563296,
+                     "[ForecastRoll2026]":  14196702.520800011
+                 },
+                 {
+                     "dw Inventtable[ProductLineHerachy01]":  "M162_12 Vollhartmetall",
+                     "[Sales2025]":  3017245.919999999,
+                     "[Sales2026YTD]":  1117593.5999999996,
+                     "[Budget2026]":  2941900.8000000003,
+                     "[ForecastRoll2026]":  3247611.4444
+                 },
+                 {
+                     "dw Inventtable[ProductLineHerachy01]":  "231_12 Knochenfräser grazil konisch",
+                     "[Sales2025]":  3056121.4300000397,
+                     "[Sales2026YTD]":  1281896.9300000174,
+                     "[Budget2026]":  3169722.8932972834,
+                     "[ForecastRoll2026]":  3312477.1939999419
+                 }
+             ]
+}

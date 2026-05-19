@@ -1,0 +1,1454 @@
+{
+    "schema":  "codex.powerbi.liveDmv.v1",
+    "server":  "Data Source=localhost:56389",
+    "query":  "SELECT [Name], [Expression], [TableID] FROM $SYSTEM.TMSCHEMA_MEASURES",
+    "adomdClientPath":  "C:\\Program Files\\Microsoft.NET\\ADOMD.NET\\170\\Microsoft.AnalysisServices.AdomdClient.dll",
+    "rowCount":  289,
+    "rows":  [
+                 {
+                     "Name":  "Request Count",
+                     "Expression":  "COUNTA([RequestID]) + 0",
+                     "TableID":  10
+                 },
+                 {
+                     "Name":  "Benefit Count",
+                     "Expression":  "COUNTA([BenefitID]) + 0",
+                     "TableID":  25
+                 },
+                 {
+                     "Name":  "Change Count",
+                     "Expression":  "COUNTA([ChangeID]) + 0",
+                     "TableID":  43
+                 },
+                 {
+                     "Name":  "Decision Count",
+                     "Expression":  "COUNTA([DecisionID]) + 0",
+                     "TableID":  61
+                 },
+                 {
+                     "Name":  "Issue Count",
+                     "Expression":  "COUNTA([IssueID]) + 0",
+                     "TableID":  76
+                 },
+                 {
+                     "Name":  "Lesson Count",
+                     "Expression":  "COUNTA([LessonID]) + 0",
+                     "TableID":  88
+                 },
+                 {
+                     "Name":  "Star Rating",
+                     "Expression":  "REPT(UNICHAR(11088), SUM([Rating]))",
+                     "TableID":  88
+                 },
+                 {
+                     "Name":  "Objective Count",
+                     "Expression":  "COUNTA([ObjectiveID]) + 0",
+                     "TableID":  97
+                 },
+                 {
+                     "Name":  "Risk Count",
+                     "Expression":  "COUNTA([RiskID]) + 0",
+                     "TableID":  106
+                 },
+                 {
+                     "Name":  "Stakeholder Count",
+                     "Expression":  "COUNTA([StakeholderID]) + 0",
+                     "TableID":  118
+                 },
+                 {
+                     "Name":  "Days Last Report",
+                     "Expression":  "DATEDIFF(LASTDATE(\u0027Status Reports\u0027[Report Date]), TODAY(),DAY)",
+                     "TableID":  127
+                 },
+                 {
+                     "Name":  "Status Count",
+                     "Expression":  "COUNTA([StatusReportID]) + 0",
+                     "TableID":  127
+                 },
+                 {
+                     "Name":  "Latest Status Summary",
+                     "Expression":  "\nVAR LatestRow =\n    TOPN(\n        1,\n        FILTER(\n            \u0027Status Reports\u0027,\n            NOT ISBLANK(\u0027Status Reports\u0027[Report Date])\n                \u0026\u0026 NOT ISBLANK(\u0027Status Reports\u0027[Status Summary])\n        ),\n        \u0027Status Reports\u0027[Report Date], DESC,\n        \u0027Status Reports\u0027[StatusReportID], DESC\n    )\nRETURN\n    MAXX(\n        LatestRow,\n        \u0027Status Reports\u0027[Status Summary]\n    )\n",
+                     "TableID":  127
+                 },
+                 {
+                     "Name":  "Latest Accomplished Activities",
+                     "Expression":  "\nVAR LatestRow =\n    TOPN(\n        1,\n        FILTER(\n            \u0027Status Reports\u0027,\n            NOT ISBLANK(\u0027Status Reports\u0027[Report Date])\n                \u0026\u0026 NOT ISBLANK(\u0027Status Reports\u0027[Accomplished Activities])\n        ),\n        \u0027Status Reports\u0027[Report Date], DESC,\n        \u0027Status Reports\u0027[StatusReportID], DESC\n    )\nRETURN\n    MAXX(\n        LatestRow,\n        \u0027Status Reports\u0027[Accomplished Activities]\n    )\n",
+                     "TableID":  127
+                 },
+                 {
+                     "Name":  "Latest Planned Activities",
+                     "Expression":  "\nVAR LatestRow =\n    TOPN(\n        1,\n        FILTER(\n            \u0027Status Reports\u0027,\n            NOT ISBLANK(\u0027Status Reports\u0027[Report Date])\n                \u0026\u0026 NOT ISBLANK(\u0027Status Reports\u0027[Planned Activities])\n        ),\n        \u0027Status Reports\u0027[Report Date], DESC,\n        \u0027Status Reports\u0027[StatusReportID], DESC\n    )\nRETURN\n    MAXX(\n        LatestRow,\n        \u0027Status Reports\u0027[Planned Activities]\n    )\n",
+                     "TableID":  127
+                 },
+                 {
+                     "Name":  "Latest Accomplished Activities Simple",
+                     "Expression":  "\nVAR LatestReportDate =\n    MAX(\u0027Status Reports\u0027[Report Date])\nRETURN\n    CALCULATE(\n        SELECTEDVALUE(\u0027Status Reports\u0027[Accomplished Activities]),\n        \u0027Status Reports\u0027[Report Date] = LatestReportDate\n    )\n",
+                     "TableID":  127
+                 },
+                 {
+                     "Name":  "Accomplished (Latest Only)",
+                     "Expression":  "VAR SelProject = SELECTEDVALUE(\u0027Status Reports\u0027[Project Name])\nRETURN\nIF (\n    NOT ISBLANK(SelProject),\n    CONCATENATEX(\n        FILTER(\n            ALL(\u0027Status Reports\u0027),\n            \u0027Status Reports\u0027[Project Name] = SelProject\n                \u0026\u0026 \u0027Status Reports\u0027[Latest Report] = 1\n                \u0026\u0026 LEN(TRIM(\u0027Status Reports\u0027[Accomplished Activities])) \u003e 0\n        ),\n        \u0027Status Reports\u0027[Accomplished Activities],\n        UNICHAR(10)\n    )\n)",
+                     "TableID":  127
+                 },
+                 {
+                     "Name":  "NextSteps (Latest Only)",
+                     "Expression":  "VAR SelProject = SELECTEDVALUE(\u0027Status Reports\u0027[Project Name])\nRETURN\nIF (\n    NOT ISBLANK(SelProject),\n    CONCATENATEX(\n        FILTER(\n            ALL(\u0027Status Reports\u0027),\n            \u0027Status Reports\u0027[Project Name] = SelProject\n                \u0026\u0026 \u0027Status Reports\u0027[Latest Report] = 1\n                \u0026\u0026 LEN(TRIM(\u0027Status Reports\u0027[Planned Activities])) \u003e 0\n        ),\n        \u0027Status Reports\u0027[Planned Activities],\n        UNICHAR(10)\n    )\n)",
+                     "TableID":  127
+                 },
+                 {
+                     "Name":  "Action Count",
+                     "Expression":  "COUNTA([ActionID]) + 0",
+                     "TableID":  139
+                 },
+                 {
+                     "Name":  "Target Progress",
+                     "Expression":  "1",
+                     "TableID":  139
+                 },
+                 {
+                     "Name":  "Budget KPI_Ampel",
+                     "Expression":  "VAR KPI_Status = LOWER(SELECTEDVALUE(Projects[Cost KPI]))\nRETURN\n    SWITCH(\n        TRUE(),\n        KPI_Status = \"green\", \"🟢\",\n        KPI_Status = \"yellow\", \"🟡\",\n        KPI_Status = \"red\", \"🔴\",\n        \"⚪\"\n    )",
+                     "TableID":  139
+                 },
+                 {
+                     "Name":  "Work KPI_Ampel",
+                     "Expression":  "VAR KPI_Status = LOWER(SELECTEDVALUE(Projects[Work KPI]))\nRETURN\n    SWITCH(\n        TRUE(),\n        KPI_Status = \"green\", \"🟢\",\n        KPI_Status = \"yellow\", \"🟡\",\n        KPI_Status = \"red\", \"🔴\",\n        \"⚪\"\n    )",
+                     "TableID":  139
+                 },
+                 {
+                     "Name":  "Time KPI_Ampel",
+                     "Expression":  "VAR KPI_Status = LOWER(SELECTEDVALUE(Projects[Resource KPI]))\nRETURN\n    SWITCH(\n        TRUE(),\n        KPI_Status = \"green\", \"🟢\",\n        KPI_Status = \"yellow\", \"🟡\",\n        KPI_Status = \"red\", \"🔴\",\n        \"⚪\"\n    )",
+                     "TableID":  139
+                 },
+                 {
+                     "Name":  "Financials Cost Variance",
+                     "Expression":  "SUM(\u0027Financials\u0027[Budget Cost]) - SUM(\u0027Financials\u0027[Actual Cost]) + 0",
+                     "TableID":  154
+                 },
+                 {
+                     "Name":  "Financials Remaining Cost",
+                     "Expression":  "SUM(\u0027Financials\u0027[Forecast Cost]) - SUM(\u0027Financials\u0027[Actual Cost]) + 0",
+                     "TableID":  154
+                 },
+                 {
+                     "Name":  "Requirement Count",
+                     "Expression":  "COUNTA([RequirementID]) + 0",
+                     "TableID":  157
+                 },
+                 {
+                     "Name":  "Portfolio Count",
+                     "Expression":  "COUNTA([PortfolioID]) + 0",
+                     "TableID":  166
+                 },
+                 {
+                     "Name":  "Portfolio Cost Variance",
+                     "Expression":  "SUM(Portfolios[Actual Cost]) - SUM(Portfolios[Budget Cost]) + 0",
+                     "TableID":  166
+                 },
+                 {
+                     "Name":  "Portfolio Remaining Cost",
+                     "Expression":  "SUM(Portfolios[Forecast Cost]) - SUM(Portfolios[Actual Cost]) + 0",
+                     "TableID":  166
+                 },
+                 {
+                     "Name":  "Program Count",
+                     "Expression":  "COUNTA([ProgramID]) + 0",
+                     "TableID":  181
+                 },
+                 {
+                     "Name":  "Project Count",
+                     "Expression":  "COUNTA([ProjectID]) + 0",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "Status Report Health Number",
+                     "Expression":  "IF([Days Last Report] = BLANK(), 3, IF([Days Last Report] \u003c 7, 0, IF([Days Last Report] \u003c 14, 1, IF([Days Last Report] \u003e= 14, 2))))",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_Projects Without Recent Status",
+                     "Expression":  "COUNTROWS(\n    FILTER(\n        \u0027Projects\u0027,\n        ISBLANK(\u0027Projects\u0027[gbl_laststatusupdate])\n            || \u0027Projects\u0027[gbl_laststatusupdate] \u003c TODAY() - 14\n    )\n)",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_Status Report Compliance %",
+                     "Expression":  "DIVIDE(\n    COUNTROWS(\n        FILTER(\n            \u0027Projects\u0027,\n            NOT ISBLANK(\u0027Projects\u0027[gbl_laststatusupdate])\n                \u0026\u0026 \u0027Projects\u0027[gbl_laststatusupdate] \u003e= TODAY() - 14\n        )\n    ),\n    COUNTROWS(\u0027Projects\u0027),\n    0\n)",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_Overdue Projects",
+                     "Expression":  "COUNTROWS(\n    FILTER(\n        \u0027Projects\u0027,\n        NOT ISBLANK(\u0027Projects\u0027[Finish Date])\n            \u0026\u0026 \u0027Projects\u0027[Finish Date] \u003c TODAY()\n            \u0026\u0026 COALESCE(\u0027Projects\u0027[Progress], 0) \u003c 1\n    )\n)",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_Projects Ending Next 30 Days",
+                     "Expression":  "COUNTROWS(\n    FILTER(\n        \u0027Projects\u0027,\n        NOT ISBLANK(\u0027Projects\u0027[Finish Date])\n            \u0026\u0026 \u0027Projects\u0027[Finish Date] \u003e= TODAY()\n            \u0026\u0026 \u0027Projects\u0027[Finish Date] \u003c= TODAY() + 30\n    )\n)",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_Average Project Duration Days",
+                     "Expression":  "AVERAGEX(\n    FILTER(\n        \u0027Projects\u0027,\n        NOT ISBLANK(\u0027Projects\u0027[Start Date])\n            \u0026\u0026 NOT ISBLANK(\u0027Projects\u0027[Finish Date])\n    ),\n    DATEDIFF(\u0027Projects\u0027[Start Date], \u0027Projects\u0027[Finish Date], DAY)\n)",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_Project Progress %",
+                     "Expression":  "AVERAGE(\u0027Projects\u0027[Progress])",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_Projects At Risk by Progress",
+                     "Expression":  "COUNTROWS(\n    FILTER(\n        \u0027Projects\u0027,\n        NOT ISBLANK(\u0027Projects\u0027[Finish Date])\n            \u0026\u0026 \u0027Projects\u0027[Finish Date] \u003c= TODAY() + 30\n            \u0026\u0026 COALESCE(\u0027Projects\u0027[Progress], 0) \u003c 0.8\n    )\n)",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_Project Cost Variance %",
+                     "Expression":  "DIVIDE(\n    SUM(\u0027Projects\u0027[Actual Cost]) - SUM(\u0027Projects\u0027[Budget Cost]),\n    SUM(\u0027Projects\u0027[Budget Cost]),\n    0\n)",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_Forecast Budget Overrun",
+                     "Expression":  "SUM(\u0027Projects\u0027[Forecast Cost]) - SUM(\u0027Projects\u0027[Budget Cost])",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_Forecast Budget Overrun %",
+                     "Expression":  "DIVIDE(\n    [_Forecast Budget Overrun],\n    SUM(\u0027Projects\u0027[Budget Cost]),\n    0\n)",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_Effort Variance",
+                     "Expression":  "SUM(\u0027Projects\u0027[gbl_actualeffort]) - SUM(\u0027Projects\u0027[Forecast Effort])",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_Effort Burn Rate %",
+                     "Expression":  "DIVIDE(\n    SUM(\u0027Projects\u0027[gbl_actualeffort]),\n    SUM(\u0027Projects\u0027[Forecast Effort]),\n    0\n)",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_KPI Threshold Value",
+                     "Expression":  "BLANK()",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_Project Schedule Risk Score",
+                     "Expression":  "VAR DueSoonDays = 30\nVAR LowProgress = 0.8\nVAR Overdue =\n    COUNTROWS(\n        FILTER(\n            \u0027Projects\u0027,\n            NOT ISBLANK(\u0027Projects\u0027[Finish Date])\n                \u0026\u0026 \u0027Projects\u0027[Finish Date] \u003c TODAY()\n                \u0026\u0026 COALESCE(\u0027Projects\u0027[Progress], 0) \u003c 1\n        )\n    )\nVAR DueSoonLowProgress =\n    COUNTROWS(\n        FILTER(\n            \u0027Projects\u0027,\n            NOT ISBLANK(\u0027Projects\u0027[Finish Date])\n                \u0026\u0026 \u0027Projects\u0027[Finish Date] \u003e= TODAY()\n                \u0026\u0026 \u0027Projects\u0027[Finish Date] \u003c= TODAY() + DueSoonDays\n                \u0026\u0026 COALESCE(\u0027Projects\u0027[Progress], 0) \u003c LowProgress\n        )\n    )\nRETURN\n    MIN(100, Overdue * 40 + DueSoonLowProgress * 25)",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_Project Cost Risk Score",
+                     "Expression":  "VAR ForecastVarianceThreshold = 0.15\nVAR OverBudgetProjects =\n    COUNTROWS(\n        FILTER(\n            \u0027Projects\u0027,\n            \u0027Projects\u0027[Budget Cost] \u003e 0\n                \u0026\u0026 DIVIDE(\u0027Projects\u0027[Forecast Cost] - \u0027Projects\u0027[Budget Cost], \u0027Projects\u0027[Budget Cost], 0) \u003e ForecastVarianceThreshold\n        )\n    )\nVAR BudgetVariance =\n    MAX(0, [_Forecast Budget Overrun %])\nRETURN\n    MIN(100, OverBudgetProjects * 25 + BudgetVariance * 100)",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_Project Status Quality Score",
+                     "Expression":  "VAR StaleStatusDays = 14\nVAR TotalProjects = COUNTROWS(\u0027Projects\u0027)\nVAR CurrentStatusProjects =\n    COUNTROWS(\n        FILTER(\n            \u0027Projects\u0027,\n            NOT ISBLANK(\u0027Projects\u0027[gbl_laststatusupdate])\n                \u0026\u0026 \u0027Projects\u0027[gbl_laststatusupdate] \u003e= TODAY() - StaleStatusDays\n        )\n    )\nRETURN\n    DIVIDE(CurrentStatusProjects, TotalProjects, 0) * 100",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_Project Overall Risk Score",
+                     "Expression":  "VAR ScheduleRisk = [_Project Schedule Risk Score]\nVAR CostRisk = [_Project Cost Risk Score]\nVAR StatusRisk = 100 - [_Project Status Quality Score]\nRETURN\n    ROUND(\n        MIN(100, ScheduleRisk * 0.4 + CostRisk * 0.3 + StatusRisk * 0.3),\n        0\n    )",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_Project Delivery Confidence %",
+                     "Expression":  "1 - DIVIDE([_Project Overall Risk Score], 100, 0)",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_Project Risk Category",
+                     "Expression":  "VAR Score = [_Project Overall Risk Score]\nRETURN\n    SWITCH(\n        TRUE(),\n        ISBLANK(Score), \"No Data\",\n        Score \u003e= 70, \"Critical\",\n        Score \u003e= 40, \"Watch\",\n        \"Healthy\"\n    )",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_Project Risk Color",
+                     "Expression":  "SWITCH(\n    [_Project Risk Category],\n    \"Critical\", \"#C00000\",\n    \"Watch\", \"#ED7D31\",\n    \"Healthy\", \"#70AD47\",\n    \"#A6A6A6\"\n)",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_Projects Requiring Attention",
+                     "Expression":  "COUNTROWS(\n    FILTER(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        [_Project Overall Risk Score] \u003e= 40\n    )\n)",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_Projects Due Soon And Low Progress",
+                     "Expression":  "VAR DueSoonDays = 30\nVAR LowProgress = 0.8\nRETURN\n    COUNTROWS(\n        FILTER(\n            \u0027Projects\u0027,\n            NOT ISBLANK(\u0027Projects\u0027[Finish Date])\n                \u0026\u0026 \u0027Projects\u0027[Finish Date] \u003e= TODAY()\n                \u0026\u0026 \u0027Projects\u0027[Finish Date] \u003c= TODAY() + DueSoonDays\n                \u0026\u0026 COALESCE(\u0027Projects\u0027[Progress], 0) \u003c LowProgress\n        )\n    )",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_Projects Over Forecast Budget",
+                     "Expression":  "VAR ForecastVarianceThreshold = 0.15\nRETURN\n    COUNTROWS(\n        FILTER(\n            \u0027Projects\u0027,\n            \u0027Projects\u0027[Budget Cost] \u003e 0\n                \u0026\u0026 DIVIDE(\u0027Projects\u0027[Forecast Cost] - \u0027Projects\u0027[Budget Cost], \u0027Projects\u0027[Budget Cost], 0) \u003e ForecastVarianceThreshold\n        )\n    )",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_Portfolio Investment at Risk",
+                     "Expression":  "SUMX(\n    FILTER(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        [_Project Overall Risk Score] \u003e= 40\n    ),\n    CALCULATE(SUM(\u0027Projects\u0027[Forecast Cost]))\n)",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_High Value Projects at Risk",
+                     "Expression":  "VAR AvgForecast =\n    AVERAGEX(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        CALCULATE(SUM(\u0027Projects\u0027[Forecast Cost]))\n    )\nRETURN\n    COUNTROWS(\n        FILTER(\n            VALUES(\u0027Projects\u0027[ProjectID]),\n            [_Project Overall Risk Score] \u003e= 40\n                \u0026\u0026 CALCULATE(SUM(\u0027Projects\u0027[Forecast Cost])) \u003e= AvgForecast\n        )\n    )",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_Projects With Stale Status",
+                     "Expression":  "VAR StaleStatusDays = 14\nRETURN\n    COUNTROWS(\n        FILTER(\n            \u0027Projects\u0027,\n            ISBLANK(\u0027Projects\u0027[gbl_laststatusupdate])\n                || \u0027Projects\u0027[gbl_laststatusupdate] \u003c TODAY() - StaleStatusDays\n        )\n    )",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "_Project Attention Reason",
+                     "Expression":  "VAR StaleStatusDays = 14\nVAR DueSoonDays = 30\nVAR LowProgress = 0.8\nVAR ForecastVarianceThreshold = 0.15\nVAR HasStaleStatus =\n    MAXX(\n        \u0027Projects\u0027,\n        IF(\n            ISBLANK(\u0027Projects\u0027[gbl_laststatusupdate])\n                || \u0027Projects\u0027[gbl_laststatusupdate] \u003c TODAY() - StaleStatusDays,\n            1,\n            0\n        )\n    ) = 1\nVAR IsOverdue =\n    MAXX(\n        \u0027Projects\u0027,\n        IF(\n            NOT ISBLANK(\u0027Projects\u0027[Finish Date])\n                \u0026\u0026 \u0027Projects\u0027[Finish Date] \u003c TODAY()\n                \u0026\u0026 COALESCE(\u0027Projects\u0027[Progress], 0) \u003c 1,\n            1,\n            0\n        )\n    ) = 1\nVAR IsDueSoonLowProgress =\n    MAXX(\n        \u0027Projects\u0027,\n        IF(\n            NOT ISBLANK(\u0027Projects\u0027[Finish Date])\n                \u0026\u0026 \u0027Projects\u0027[Finish Date] \u003e= TODAY()\n                \u0026\u0026 \u0027Projects\u0027[Finish Date] \u003c= TODAY() + DueSoonDays\n                \u0026\u0026 COALESCE(\u0027Projects\u0027[Progress], 0) \u003c LowProgress,\n            1,\n            0\n        )\n    ) = 1\nVAR HasBudgetRisk =\n    MAXX(\n        \u0027Projects\u0027,\n        IF(\n            \u0027Projects\u0027[Budget Cost] \u003e 0\n                \u0026\u0026 DIVIDE(\u0027Projects\u0027[Forecast Cost] - \u0027Projects\u0027[Budget Cost], \u0027Projects\u0027[Budget Cost], 0) \u003e ForecastVarianceThreshold,\n            1,\n            0\n        )\n    ) = 1\nVAR Reasons =\n    {\n        IF(HasStaleStatus, \"Stale status\", BLANK()),\n        IF(IsOverdue, \"Overdue\", BLANK()),\n        IF(IsDueSoonLowProgress, \"Due soon and low progress\", BLANK()),\n        IF(HasBudgetRisk, \"Forecast over budget\", BLANK())\n    }\nVAR Result =\n    CONCATENATEX(\n        FILTER(Reasons, NOT ISBLANK([Value])),\n        [Value],\n        \"; \"\n    )\nRETURN\n    IF(Result = BLANK(), \"No attention reason\", Result)",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "Project Info",
+                     "Expression":  "COALESCE(SELECTEDVALUE(Projects[Project Name]), \"-\")",
+                     "TableID":  196
+                 },
+                 {
+                     "Name":  "Completed Task Count",
+                     "Expression":  "CALCULATE(COUNT(\u0027Tasks\u0027[TaskID]), FILTER(\u0027Tasks\u0027, [StateID] = 6))",
+                     "TableID":  232
+                 },
+                 {
+                     "Name":  "Early Task Count",
+                     "Expression":  "CALCULATE(COUNT(\u0027Tasks\u0027[TaskID]), FILTER(\u0027Tasks\u0027, [StateID] = 2))",
+                     "TableID":  232
+                 },
+                 {
+                     "Name":  "Future Task Count",
+                     "Expression":  "CALCULATE(COUNT(\u0027Tasks\u0027[TaskID]), FILTER(\u0027Tasks\u0027, [StateID] = 1))",
+                     "TableID":  232
+                 },
+                 {
+                     "Name":  "In Progress Task Count",
+                     "Expression":  "CALCULATE(COUNT(\u0027Tasks\u0027[TaskID]), FILTER(\u0027Tasks\u0027, [StateID] = 3))",
+                     "TableID":  232
+                 },
+                 {
+                     "Name":  "Late Task Count",
+                     "Expression":  "CALCULATE(COUNT(\u0027Tasks\u0027[TaskID]), FILTER(\u0027Tasks\u0027, [StateID] = 4))",
+                     "TableID":  232
+                 },
+                 {
+                     "Name":  "Overdue Task Count",
+                     "Expression":  "CALCULATE(COUNT(\u0027Tasks\u0027[TaskID]), FILTER(\u0027Tasks\u0027, [StateID] = 5))",
+                     "TableID":  232
+                 },
+                 {
+                     "Name":  "Project Duration",
+                     "Expression":  "DATEDIFF(MIN([Start Date]), MAX([Finish Date]), DAY)",
+                     "TableID":  232
+                 },
+                 {
+                     "Name":  "Tasks Count",
+                     "Expression":  "COUNTA([TaskID]) + 0",
+                     "TableID":  232
+                 },
+                 {
+                     "Name":  "Assignment Count",
+                     "Expression":  "COUNTA([TaskID]) + 0",
+                     "TableID":  265
+                 },
+                 {
+                     "Name":  "Resource Count",
+                     "Expression":  "COUNTA([ResourceID]) + 0",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Resource Demand Hours",
+                     "Expression":  "SUM(\u0027Ressouce Demand with Working Hours\u0027[Forecast Demand])",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Resource Demand Hours excl. ATOSS",
+                     "Expression":  "SUM(\u0027Ressouce Demand with Working Hours\u0027[ForecastDemandWithoutAtossAbsent])",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Resource Capacity Gap Hours",
+                     "Expression":  "COALESCE([_CapacityHoursNetto], 0) - COALESCE([_Resource Demand Hours], 0)",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Resource Capacity Gap %",
+                     "Expression":  "DIVIDE([_Resource Capacity Gap Hours], [_CapacityHoursNetto], 0)",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Resources Overallocated",
+                     "Expression":  "COUNTROWS(\n    FILTER(\n        VALUES(\u0027Resources\u0027[ResourceID]),\n        [% Utilization] \u003e 1\n    )\n)",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Resources Critically Overallocated",
+                     "Expression":  "COUNTROWS(\n    FILTER(\n        VALUES(\u0027Resources\u0027[ResourceID]),\n        [% Utilization] \u003e 1.2\n    )\n)",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Resources Underutilized",
+                     "Expression":  "COUNTROWS(\n    FILTER(\n        VALUES(\u0027Resources\u0027[ResourceID]),\n        [% Utilization] \u003e 0\n            \u0026\u0026 [% Utilization] \u003c 0.7\n    )\n)",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Resources Without Demand",
+                     "Expression":  "COUNTROWS(\n    FILTER(\n        VALUES(\u0027Resources\u0027[ResourceID]),\n        COALESCE([_Resource Demand Hours], 0) = 0\n    )\n)",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Resources Without Capacity",
+                     "Expression":  "COUNTROWS(\n    FILTER(\n        VALUES(\u0027Resources\u0027[ResourceID]),\n        COALESCE([_CapacityHoursNetto], 0) = 0\n    )\n)",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Resources With Demand No Capacity",
+                     "Expression":  "COUNTROWS(\n    FILTER(\n        VALUES(\u0027Resources\u0027[ResourceID]),\n        COALESCE([_Resource Demand Hours], 0) \u003e 0\n            \u0026\u0026 COALESCE([_CapacityHoursNetto], 0) = 0\n    )\n)",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Timesheet Coverage %",
+                     "Expression":  "DIVIDE([_TS-Hours], [_CapacityHoursNetto], 0)",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Timesheet vs Demand Gap Hours",
+                     "Expression":  "[_TS-Hours] - [_Resource Demand Hours]",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Planned vs Actual Utilization Gap %",
+                     "Expression":  "DIVIDE([_TS-Hours], [_Resource Demand Hours], 0) - 1",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Avg Demand per Resource",
+                     "Expression":  "AVERAGEX(\n    VALUES(\u0027Resources\u0027[ResourceID]),\n    [_Resource Demand Hours]\n)",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Avg Capacity per Resource",
+                     "Expression":  "AVERAGEX(\n    VALUES(\u0027Resources\u0027[ResourceID]),\n    [_CapacityHoursNetto]\n)",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Avg Timesheet Hours per Resource",
+                     "Expression":  "AVERAGEX(\n    VALUES(\u0027Resources\u0027[ResourceID]),\n    [_TS-Hours]\n)",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Available Capacity Hours",
+                     "Expression":  "MAX(0, [_Resource Capacity Gap Hours])",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Overallocated Hours",
+                     "Expression":  "MAX(0, -[_Resource Capacity Gap Hours])",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Overallocated Hours %",
+                     "Expression":  "DIVIDE([_Overallocated Hours], [_CapacityHoursNetto], 0)",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Resources Missing Department",
+                     "Expression":  "COUNTROWS(\n    FILTER(\n        VALUES(\u0027Resources\u0027[ResourceID]),\n        ISBLANK(CALCULATE(SELECTEDVALUE(\u0027Resources\u0027[DepartmentID])))\n    )\n)",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Resource Master Data Completeness %",
+                     "Expression":  "DIVIDE(\n    COUNTROWS(\n        FILTER(\n            VALUES(\u0027Resources\u0027[ResourceID]),\n            NOT ISBLANK(CALCULATE(SELECTEDVALUE(\u0027Resources\u0027[DepartmentID])))\n                \u0026\u0026 NOT ISBLANK(CALCULATE(SELECTEDVALUE(\u0027Resources\u0027[ResourceName])))\n        )\n    ),\n    COUNTROWS(VALUES(\u0027Resources\u0027[ResourceID])),\n    0\n)",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Resource Overload Score",
+                     "Expression":  "VAR CriticalThreshold = 1.2\nVAR OverThreshold = 1.0\nVAR Utilization = [% Utilization]\nRETURN\n    SWITCH(\n        TRUE(),\n        ISBLANK(Utilization), BLANK(),\n        Utilization \u003e= CriticalThreshold, 100,\n        Utilization \u003e OverThreshold, 70,\n        Utilization \u003e= 0.9, 30,\n        0\n    )",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Resource Availability Score",
+                     "Expression":  "VAR GapPercent = [_Resource Capacity Gap %]\nRETURN\n    SWITCH(\n        TRUE(),\n        ISBLANK(GapPercent), BLANK(),\n        GapPercent \u003c 0, 0,\n        GapPercent \u003c 0.1, 40,\n        GapPercent \u003c 0.3, 70,\n        100\n    )",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Resource Forecast Quality Score",
+                     "Expression":  "VAR WarningThreshold = 0.2\nVAR Demand = [_Resource Demand Hours]\nVAR Actuals = [_TS-Hours]\nVAR VariancePercent = ABS(DIVIDE(Actuals - Demand, Demand, 0))\nRETURN\n    SWITCH(\n        TRUE(),\n        Demand = 0 \u0026\u0026 Actuals = 0, BLANK(),\n        VariancePercent \u003c= WarningThreshold, 100,\n        VariancePercent \u003c= WarningThreshold * 2, 70,\n        VariancePercent \u003c= WarningThreshold * 3, 40,\n        0\n    )",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Resource Bottleneck Score",
+                     "Expression":  "VAR OverloadScore = [_Resource Overload Score]\nVAR AvailabilityRisk = 100 - [_Resource Availability Score]\nVAR ForecastRisk = 100 - [_Resource Forecast Quality Score]\nRETURN\n    ROUND(\n        MIN(\n            100,\n            COALESCE(OverloadScore, 0) * 0.5\n                + COALESCE(AvailabilityRisk, 0) * 0.3\n                + COALESCE(ForecastRisk, 0) * 0.2\n        ),\n        0\n    )",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Department Capacity Risk Score",
+                     "Expression":  "VAR GapPercent = [_Resource Capacity Gap %]\nVAR Overallocated = [_Resources Overallocated]\nVAR WithDemandNoCapacity = [_Resources With Demand No Capacity]\nRETURN\n    ROUND(\n        MIN(\n            100,\n            IF(GapPercent \u003c 0, ABS(GapPercent) * 100, 0)\n                + Overallocated * 10\n                + WithDemandNoCapacity * 20\n        ),\n        0\n    )",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Resource Load Category",
+                     "Expression":  "VAR Score = [_Resource Bottleneck Score]\nRETURN\n    SWITCH(\n        TRUE(),\n        ISBLANK(Score), \"No Data\",\n        Score \u003e= 70, \"Critical\",\n        Score \u003e= 40, \"Watch\",\n        \"Healthy\"\n    )",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Resource Load Color",
+                     "Expression":  "SWITCH(\n    [_Resource Load Category],\n    \"Critical\", \"#C00000\",\n    \"Watch\", \"#ED7D31\",\n    \"Healthy\", \"#70AD47\",\n    \"#A6A6A6\"\n)",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Resources Overallocated Next 30 Days",
+                     "Expression":  "CALCULATE(\n    [_Resources Overallocated],\n    DATESINPERIOD(\u0027Resource Demand\u0027[Capacity Date], TODAY(), 30, DAY)\n)",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Resources Overallocated Next 90 Days",
+                     "Expression":  "CALCULATE(\n    [_Resources Overallocated],\n    DATESINPERIOD(\u0027Resource Demand\u0027[Capacity Date], TODAY(), 90, DAY)\n)",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Resources Underutilized Next 30 Days",
+                     "Expression":  "CALCULATE(\n    [_Resources Underutilized],\n    DATESINPERIOD(\u0027Resource Demand\u0027[Capacity Date], TODAY(), 30, DAY)\n)",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Demand Without Capacity Hours",
+                     "Expression":  "SUMX(\n    FILTER(\n        VALUES(\u0027Resources\u0027[ResourceID]),\n        COALESCE([_Resource Demand Hours], 0) \u003e 0\n            \u0026\u0026 COALESCE([_CapacityHoursNetto], 0) = 0\n    ),\n    [_Resource Demand Hours]\n)",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Missing Timesheet Hours",
+                     "Expression":  "MAX(0, [_Resource Demand Hours] - [_TS-Hours])",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Forecast Accuracy %",
+                     "Expression":  "VAR Demand = [_Resource Demand Hours]\nVAR Actuals = [_TS-Hours]\nVAR VariancePercent = ABS(DIVIDE(Actuals - Demand, Demand, 0))\nRETURN\n    IF(\n        Demand = 0 \u0026\u0026 Actuals = 0,\n        BLANK(),\n        MAX(0, 1 - VariancePercent)\n    )",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Demand vs Actual Variance Hours",
+                     "Expression":  "[_TS-Hours] - [_Resource Demand Hours]",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Resources With Missing Master Data",
+                     "Expression":  "COUNTROWS(\n    FILTER(\n        VALUES(\u0027Resources\u0027[ResourceID]),\n        ISBLANK(CALCULATE(SELECTEDVALUE(\u0027Resources\u0027[DepartmentID])))\n            || ISBLANK(CALCULATE(SELECTEDVALUE(\u0027Resources\u0027[ResourceName])))\n    )\n)",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Resource Attention Reason",
+                     "Expression":  "VAR CriticalThreshold = 1.2\nVAR OverThreshold = 1.0\nVAR TimesheetLowThreshold = 0.7\nVAR Utilization = [% Utilization]\nVAR HasCriticalOverload = Utilization \u003e= CriticalThreshold\nVAR HasOverload = Utilization \u003e OverThreshold \u0026\u0026 NOT HasCriticalOverload\nVAR HasDemandNoCapacity = [_Resources With Demand No Capacity] \u003e 0\nVAR HasLowTimesheetCoverage = [_Timesheet Coverage %] \u003e 0 \u0026\u0026 [_Timesheet Coverage %] \u003c TimesheetLowThreshold\nVAR HasMissingMasterData = [_Resources With Missing Master Data] \u003e 0\nVAR Reasons =\n    {\n        IF(HasCriticalOverload, \"Critical overallocation\", BLANK()),\n        IF(HasOverload, \"Overallocation\", BLANK()),\n        IF(HasDemandNoCapacity, \"Demand without capacity\", BLANK()),\n        IF(HasLowTimesheetCoverage, \"Low timesheet coverage\", BLANK()),\n        IF(HasMissingMasterData, \"Missing master data\", BLANK())\n    }\nVAR Result =\n    CONCATENATEX(\n        FILTER(Reasons, NOT ISBLANK([Value])),\n        [Value],\n        \"; \"\n    )\nRETURN\n    IF(Result = BLANK(), \"No attention reason\", Result)",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Worked Hours",
+                     "Expression":  "[_TS-Hours]",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Worked Hours RD Raw",
+                     "Expression":  "SUM(\u0027Resource Demand\u0027[Worked Hours])",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Worked vs TS Difference Hours",
+                     "Expression":  "[_Worked Hours] - [_TS-Hours]",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Worked vs TS Difference %",
+                     "Expression":  "DIVIDE([_Worked vs TS Difference Hours], [_TS-Hours], 0)",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Worked vs Period Total Difference Hours",
+                     "Expression":  "[_Worked Hours] - [_Period Total Hours (Dept aware incl blank)]",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "_Worked vs TS Abs Difference Hours",
+                     "Expression":  "ABS([_Worked vs TS Difference Hours])",
+                     "TableID":  274
+                 },
+                 {
+                     "Name":  "% Availability",
+                     "Expression":  "DIVIDE(SUM([Availability]) , SUM([Capacity]), 0)",
+                     "TableID":  286
+                 },
+                 {
+                     "Name":  "% Utilization",
+                     "Expression":  "DIVIDE(SUM(\u0027Resource Demand\u0027[Forecast Demand]), [_CapacityHoursNetto], 0)",
+                     "TableID":  286
+                 },
+                 {
+                     "Name":  "_CapacityHoursBrutto",
+                     "Expression":  "VAR KeysPerGrain =\n    DISTINCT(\n        SELECTCOLUMNS(\n            \u0027Ressouce Demand with Working Hours\u0027,\n            \"ResourceID\", \u0027Ressouce Demand with Working Hours\u0027[ResourceID],\n            \"DepartmentID\", \u0027Ressouce Demand with Working Hours\u0027[DepartmentID],\n            \"CapDate\", \u0027Ressouce Demand with Working Hours\u0027[Capacity Date],\n            \"CapDays\", \u0027Ressouce Demand with Working Hours\u0027[Capacity]\n        )\n    )\nRETURN\nSUMX(KeysPerGrain, [CapDays] * 8.0)",
+                     "TableID":  286
+                 },
+                 {
+                     "Name":  "_CapacityHoursNetto",
+                     "Expression":  "[_CapacityHoursBrutto] - SUM(\u0027Ressouce Demand with Working Hours\u0027[AtossAbsent])",
+                     "TableID":  286
+                 },
+                 {
+                     "Name":  "_TargetHoursNetto",
+                     "Expression":  "\n[_CapacityHoursNetto] * CapacityTargetValues[TargetValue]",
+                     "TableID":  286
+                 },
+                 {
+                     "Name":  "_TS-Hours",
+                     "Expression":  "CALCULATE(\n    SUM(\u0027TimesheetLineActuals\u0027[TS-Hours]),\n    TREATAS(VALUES(\u0027Time Set\u0027[Date]), \u0027TimesheetLineActuals\u0027[TimeByDay])\n)",
+                     "TableID":  149383342
+                 },
+                 {
+                     "Name":  "_Period Total Hours (Dept aware incl blank)",
+                     "Expression":  "\nVAR DeptIds =\n    VALUES( Departments[Department] )\nVAR IsDeptFiltered =\n    ISFILTERED( Departments[Department] ) || ISFILTERED( Departments[Department] )\nRETURN\nIF(\n    NOT IsDeptFiltered,\n    -- Keine Department-Auswahl: alles summieren inkl. BLANK DeptID\n    SUM( TimesheetLines[Period Total Hours] ),\n    -- Department ausgewählt: nur passende DeptIDs\n    CALCULATE(\n        SUM( TimesheetLines[Period Total Hours] ),\n        KEEPFILTERS(\n            TREATAS(\n                DeptIds,\n                TimesheetLines[gbl_submitterdepartment]\n            )\n        )\n    )\n)\n",
+                     "TableID":  149383345
+                 },
+                 {
+                     "Name":  "TargetValue",
+                     "Expression":  "SELECTEDVALUE(\u0027CapacityTargetValues\u0027[Parameter], 100) /100",
+                     "TableID":  150607112
+                 },
+                 {
+                     "Name":  "Phasenmodell (Zeitstrahl)",
+                     "Expression":  "[Phasenmodell (aktiv, letztes ModifiedOn)]",
+                     "TableID":  150794655
+                 },
+                 {
+                     "Name":  "Aktuelle Phase (Zeitstrahl)",
+                     "Expression":  "VAR _ReportDate =\n    COALESCE(\n        MAX(\u0027Status Reports\u0027[Report Date]),\n        TODAY()\n    )\nVAR _ProjectIds = VALUES(Projects[ProjectID])\nVAR _UseProjectFilter =\n    ISCROSSFILTERED(Projects[ProjectID])\n        || ISCROSSFILTERED(Projects[gbl_projectnumber])\n        || ISCROSSFILTERED(Projects[Project Name])\nVAR CandidateRows =\n    CALCULATETABLE(\n        FILTER(\n            \u0027VollständigePhasenListe\u0027,\n            NOT ISBLANK(\u0027VollständigePhasenListe\u0027[Phasenmodell])\n                \u0026\u0026 NOT ISBLANK(\u0027VollständigePhasenListe\u0027[Aktuelle_Phase])\n                \u0026\u0026 NOT ISBLANK(\u0027VollständigePhasenListe\u0027[ModifiedOn])\n                \u0026\u0026 \u0027VollständigePhasenListe\u0027[CreatedOn] \u003c= _ReportDate\n                \u0026\u0026 \u0027VollständigePhasenListe\u0027[ModifiedOn] \u003c= _ReportDate\n                \u0026\u0026 (\n                    NOT _UseProjectFilter\n                    || CONTAINS(_ProjectIds, Projects[ProjectID], \u0027VollständigePhasenListe\u0027[Project_ID])\n                )\n        ),\n        REMOVEFILTERS(\u0027Status Reports\u0027)\n    )\nVAR Latest =\n    TOPN(\n        1,\n        CandidateRows,\n        [ModifiedOn], DESC,\n        [CreatedOn], DESC,\n        [Project_ID], ASC,\n        [ModelPhaseKey], ASC\n    )\nRETURN\nIF(\n    ISEMPTY(CandidateRows),\n    BLANK(),\n    MAXX(Latest, [Aktuelle_Phase])\n)",
+                     "TableID":  150794655
+                 },
+                 {
+                     "Name":  "Linie (alle Phasen) (Zeitstrahl)",
+                     "Expression":  "VAR _Model = UPPER(TRIM([Phasenmodell (Zeitstrahl)]))\nVAR _AxisM = UPPER(TRIM(SELECTEDVALUE(DimPhasen[Phasenmodell])))\nRETURN IF(NOT ISBLANK(_Model) \u0026\u0026 NOT ISBLANK(_AxisM) \u0026\u0026 _AxisM = _Model, 1, BLANK())",
+                     "TableID":  150794655
+                 },
+                 {
+                     "Name":  "Linie (aktuelle Phase) (Zeitstrahl)",
+                     "Expression":  "VAR _Model  = UPPER(TRIM([Phasenmodell (Zeitstrahl)]))\nVAR _AxisM  = UPPER(TRIM(SELECTEDVALUE(DimPhasen[Phasenmodell])))\nVAR _Phase  = UPPER(TRIM([Aktuelle Phase (Zeitstrahl)]))\nVAR _AxisP  = UPPER(TRIM(SELECTEDVALUE(DimPhasen[Phase_Name])))\nRETURN IF(\n    NOT ISBLANK(_Model)\n        \u0026\u0026 NOT ISBLANK(_AxisM)\n        \u0026\u0026 NOT ISBLANK(_Phase)\n        \u0026\u0026 NOT ISBLANK(_AxisP)\n        \u0026\u0026 _AxisM = _Model\n        \u0026\u0026 _AxisP = _Phase,\n    1,\n    BLANK()\n)",
+                     "TableID":  150794655
+                 },
+                 {
+                     "Name":  "Phasenmodell (aktiv, letztes ModifiedOn)",
+                     "Expression":  "VAR _ReportDate =\n    COALESCE(\n        MAX(\u0027Status Reports\u0027[Report Date]),\n        TODAY()\n    )\nVAR _ProjectIds = VALUES(Projects[ProjectID])\nVAR _UseProjectFilter =\n    ISCROSSFILTERED(Projects[ProjectID])\n        || ISCROSSFILTERED(Projects[gbl_projectnumber])\n        || ISCROSSFILTERED(Projects[Project Name])\nVAR CandidateRows =\n    CALCULATETABLE(\n        FILTER(\n            \u0027VollständigePhasenListe\u0027,\n            NOT ISBLANK(\u0027VollständigePhasenListe\u0027[Phasenmodell])\n                \u0026\u0026 NOT ISBLANK(\u0027VollständigePhasenListe\u0027[Aktuelle_Phase])\n                \u0026\u0026 NOT ISBLANK(\u0027VollständigePhasenListe\u0027[ModifiedOn])\n                \u0026\u0026 \u0027VollständigePhasenListe\u0027[CreatedOn] \u003c= _ReportDate\n                \u0026\u0026 \u0027VollständigePhasenListe\u0027[ModifiedOn] \u003c= _ReportDate\n                \u0026\u0026 (\n                    NOT _UseProjectFilter\n                    || CONTAINS(_ProjectIds, Projects[ProjectID], \u0027VollständigePhasenListe\u0027[Project_ID])\n                )\n        ),\n        REMOVEFILTERS(\u0027Status Reports\u0027)\n    )\nVAR Latest =\n    TOPN(\n        1,\n        CandidateRows,\n        [ModifiedOn], DESC,\n        [CreatedOn], DESC,\n        [Project_ID], ASC,\n        [ModelPhaseKey], ASC\n    )\nRETURN\nIF(\n    ISEMPTY(CandidateRows),\n    BLANK(),\n    MAXX(Latest, [Phasenmodell])\n)",
+                     "TableID":  150794655
+                 },
+                 {
+                     "Name":  "Project Time (01)",
+                     "Expression":  "VAR ProjectTimeWorkdays =\n    SUMX (\n        Projects,\n        VAR s = Projects[Start Date]\n        VAR e = Projects[Finish Date]\n        RETURN\n            IF (\n                NOT ISBLANK(s) \u0026\u0026 NOT ISBLANK(e) \u0026\u0026 s \u003c= e,\n                COUNTROWS (\n                    FILTER (\n                        ADDCOLUMNS ( CALENDAR ( s, e ), \"Weekday\", WEEKDAY ( [Date], 2 ) ),\n                        [Weekday] \u003c= 5\n                    )\n                ),\n                0\n            )\n    )\nVAR DaysElapsedWorkdays =\n    SUMX (\n        Projects,\n        VAR s = Projects[Start Date]\n        VAR e = Projects[Finish Date]\n        VAR until = MIN ( TODAY(), e )\n        RETURN\n            IF (\n                NOT ISBLANK(s) \u0026\u0026 NOT ISBLANK(e) \u0026\u0026 s \u003c= until,\n                COUNTROWS (\n                    FILTER (\n                        ADDCOLUMNS ( CALENDAR ( s, until ), \"Weekday\", WEEKDAY ( [Date], 2 ) ),\n                        [Weekday] \u003c= 5\n                    )\n                ),\n                0\n            )\n    )\nVAR raw = DIVIDE(DaysElapsedWorkdays, ProjectTimeWorkdays)\nRETURN MAX(0, MIN(1, raw))",
+                     "TableID":  150794658
+                 },
+                 {
+                     "Name":  "Progress (01)",
+                     "Expression":  "VAR raw = AVERAGE(Projects[Progress])\nRETURN MAX(0, MIN(1, IF(raw \u003e 1, raw / 100, raw)))",
+                     "TableID":  150794658
+                 },
+                 {
+                     "Name":  "KPI Value (01)",
+                     "Expression":  "SWITCH(\n    SELECTEDVALUE(\u0027KPI Dim\u0027[KPI Label]),\n    \"Project Time\", [Project Time (01)],\n    \"Working Effort\", [Progress (01)],\n    BLANK()\n)",
+                     "TableID":  150794658
+                 },
+                 {
+                     "Name":  "Bar Left (%)",
+                     "Expression":  "[KPI Value (01)]",
+                     "TableID":  150794658
+                 },
+                 {
+                     "Name":  "Bar Right (%)",
+                     "Expression":  "1 - [KPI Value (01)]",
+                     "TableID":  150794658
+                 },
+                 {
+                     "Name":  "Open Actions",
+                     "Expression":  "CALCULATE(\n    COUNTROWS(\u0027Actions\u0027),\n    FILTER(\n        \u0027Actions\u0027,\n        NOT(LOWER(COALESCE(\u0027Actions\u0027[Status], \"\")) IN { \"closed\", \"done\", \"completed\", \"inactive\" })\n            \u0026\u0026 NOT(LOWER(COALESCE(\u0027Actions\u0027[State], \"\")) IN { \"inactive\" })\n    )\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Overdue Actions",
+                     "Expression":  "CALCULATE(\n    COUNTROWS(\u0027Actions\u0027),\n    FILTER(\n        \u0027Actions\u0027,\n        NOT(LOWER(COALESCE(\u0027Actions\u0027[Status], \"\")) IN { \"closed\", \"done\", \"completed\", \"inactive\" })\n            \u0026\u0026 NOT(LOWER(COALESCE(\u0027Actions\u0027[State], \"\")) IN { \"inactive\" })\n            \u0026\u0026 NOT(ISBLANK(\u0027Actions\u0027[Due Date]))\n            \u0026\u0026 \u0027Actions\u0027[Due Date] \u003c TODAY()\n    )\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Open Risks",
+                     "Expression":  "CALCULATE(\n    COUNTROWS(\u0027Risks\u0027),\n    FILTER(\n        \u0027Risks\u0027,\n        NOT(LOWER(COALESCE(\u0027Risks\u0027[Status], \"\")) IN { \"closed\", \"done\", \"completed\", \"inactive\" })\n            \u0026\u0026 NOT(LOWER(COALESCE(\u0027Risks\u0027[State], \"\")) IN { \"inactive\" })\n    )\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "High Risks",
+                     "Expression":  "CALCULATE(\n    COUNTROWS(\u0027Risks\u0027),\n    FILTER(\n        \u0027Risks\u0027,\n        NOT(LOWER(COALESCE(\u0027Risks\u0027[Status], \"\")) IN { \"closed\", \"done\", \"completed\", \"inactive\" })\n            \u0026\u0026 NOT(LOWER(COALESCE(\u0027Risks\u0027[State], \"\")) IN { \"inactive\" })\n            \u0026\u0026 (\n                \u0027Risks\u0027[Health Number] \u003e= 2\n                || \u0027Risks\u0027[Exposure] \u003e= 9\n                || \u0027Risks\u0027[Cost Exposure] \u003e 0\n            )\n    )\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Open Issues",
+                     "Expression":  "CALCULATE(\n    COUNTROWS(\u0027Issues\u0027),\n    FILTER(\n        \u0027Issues\u0027,\n        NOT(LOWER(COALESCE(\u0027Issues\u0027[Status], \"\")) IN { \"closed\", \"done\", \"completed\", \"inactive\" })\n            \u0026\u0026 NOT(LOWER(COALESCE(\u0027Issues\u0027[State], \"\")) IN { \"inactive\" })\n    )\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Overdue Issues",
+                     "Expression":  "CALCULATE(\n    COUNTROWS(\u0027Issues\u0027),\n    FILTER(\n        \u0027Issues\u0027,\n        NOT(LOWER(COALESCE(\u0027Issues\u0027[Status], \"\")) IN { \"closed\", \"done\", \"completed\", \"inactive\" })\n            \u0026\u0026 NOT(LOWER(COALESCE(\u0027Issues\u0027[State], \"\")) IN { \"inactive\" })\n            \u0026\u0026 NOT(ISBLANK(\u0027Issues\u0027[Due Date]))\n            \u0026\u0026 \u0027Issues\u0027[Due Date] \u003c TODAY()\n    )\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Days Since Last Status Report",
+                     "Expression":  "VAR LastReportDate = MAX(\u0027Status Reports\u0027[Report Date])\nRETURN\nIF(ISBLANK(LastReportDate), BLANK(), DATEDIFF(LastReportDate, TODAY(), DAY))",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Status Report Is Overdue",
+                     "Expression":  "VAR DaysSince = [Days Since Last Status Report]\nRETURN\nIF(ISBLANK(DaysSince) || DaysSince \u003e 14, 1, 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Project Progress %",
+                     "Expression":  "AVERAGE(\u0027Projects\u0027[Progress])",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Schedule Variance Days",
+                     "Expression":  "AVERAGEX(\n    FILTER(\n        \u0027Projects\u0027,\n        NOT(ISBLANK(\u0027Projects\u0027[Finish Date]))\n            \u0026\u0026 NOT(ISBLANK(\u0027Projects\u0027[gbl_baselinefinish]))\n    ),\n    DATEDIFF(\u0027Projects\u0027[gbl_baselinefinish], \u0027Projects\u0027[Finish Date], DAY)\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Budget Variance",
+                     "Expression":  "SUM(\u0027Projects\u0027[Actual Cost]) - SUM(\u0027Projects\u0027[Budget Cost])",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Budget Variance %",
+                     "Expression":  "DIVIDE([Budget Variance], SUM(\u0027Projects\u0027[Budget Cost]), 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Effort Variance",
+                     "Expression":  "SUM(\u0027Projects\u0027[gbl_actualeffort]) - SUM(\u0027Projects\u0027[Forecast Effort])",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Effort Variance %",
+                     "Expression":  "DIVIDE([Effort Variance], SUM(\u0027Projects\u0027[Forecast Effort]), 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Next Milestone Date",
+                     "Expression":  "MINX(\n    FILTER(\n        \u0027Tasks\u0027,\n        (\n            \u0027Tasks\u0027[IsMilestoneID] = TRUE()\n            || LOWER(COALESCE(\u0027Tasks\u0027[Is Milestone], \"\")) IN { \"yes\", \"true\", \"1\" }\n            || NOT(ISBLANK(\u0027Tasks\u0027[Milestone]))\n        )\n            \u0026\u0026 NOT(ISBLANK(\u0027Tasks\u0027[Finish Date]))\n            \u0026\u0026 \u0027Tasks\u0027[Finish Date] \u003e= TODAY()\n    ),\n    \u0027Tasks\u0027[Finish Date]\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Days To Finish",
+                     "Expression":  "VAR FinishDate = MAX(\u0027Projects\u0027[Finish Date])\nRETURN\nIF(ISBLANK(FinishDate), BLANK(), DATEDIFF(TODAY(), FinishDate, DAY))",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Project Health Score",
+                     "Expression":  "VAR RiskPenalty = MIN(30, [High Risks] * 10)\nVAR ActionPenalty = MIN(20, [Overdue Actions] * 5)\nVAR IssuePenalty = MIN(20, [Overdue Issues] * 5)\nVAR StatusPenalty = IF([Status Report Is Overdue] = 1, 15, 0)\nVAR BudgetPenalty = MIN(15, ABS([Budget Variance %]) * 100)\nRETURN\nMAX(0, ROUND(100 - RiskPenalty - ActionPenalty - IssuePenalty - StatusPenalty - BudgetPenalty, 0))",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Project Health Color",
+                     "Expression":  "VAR Score = [Project Health Score]\nRETURN\nSWITCH(\n    TRUE(),\n    ISBLANK(Score), \"#BDBDBD\",\n    Score \u003e= 80, \"#2ECC71\",\n    Score \u003e= 60, \"#F2C94C\",\n    \"#EB5757\"\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Reporting Compliance %",
+                     "Expression":  "VAR ProjectCount = COUNTROWS(VALUES(\u0027Projects\u0027[ProjectID]))\nRETURN\nDIVIDE(\n    COALESCE(COUNTROWS(\n        FILTER(\n            VALUES(\u0027Projects\u0027[ProjectID]),\n            CALCULATE([Status Report Is Overdue]) = 0\n        )\n    ), 0),\n    ProjectCount,\n    0\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Projects Without Recent Status",
+                     "Expression":  "COALESCE(COUNTROWS(\n    FILTER(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        CALCULATE([Status Report Is Overdue]) = 1\n    )\n), 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Projects Missing Finish Date",
+                     "Expression":  "COALESCE(COUNTROWS(\n    FILTER(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        CALCULATE(COUNTROWS(FILTER(\u0027Projects\u0027, ISBLANK(\u0027Projects\u0027[Finish Date])))) \u003e 0\n    )\n), 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Projects Missing Owner",
+                     "Expression":  "COALESCE(COUNTROWS(\n    FILTER(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        CALCULATE(COUNTROWS(FILTER(\u0027Projects\u0027, ISBLANK(\u0027Projects\u0027[Project Owner]) || TRIM(\u0027Projects\u0027[Project Owner]) = \"\"))) \u003e 0\n    )\n), 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Projects Without Risk Assessment",
+                     "Expression":  "COALESCE(COUNTROWS(\n    FILTER(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        CALCULATE(COUNTROWS(\u0027Risks\u0027)) = 0\n    )\n), 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Projects Without Open Actions",
+                     "Expression":  "COALESCE(COUNTROWS(\n    FILTER(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        CALCULATE([Open Actions]) = 0\n    )\n), 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Projects Without Baseline",
+                     "Expression":  "COALESCE(COUNTROWS(\n    FILTER(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        CALCULATE(\n            COUNTROWS(\n                FILTER(\n                    \u0027Projects\u0027,\n                    ISBLANK(\u0027Projects\u0027[gbl_baselinestart])\n                        || ISBLANK(\u0027Projects\u0027[gbl_baselinefinish])\n                )\n            )\n        ) \u003e 0\n    )\n), 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Projects With Overdue Actions",
+                     "Expression":  "COALESCE(COUNTROWS(\n    FILTER(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        CALCULATE([Overdue Actions]) \u003e 0\n    )\n), 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Projects With Overdue Issues",
+                     "Expression":  "COALESCE(COUNTROWS(\n    FILTER(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        CALCULATE([Overdue Issues]) \u003e 0\n    )\n), 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Average Days Since Last Report",
+                     "Expression":  "AVERAGEX(\n    VALUES(\u0027Projects\u0027[ProjectID]),\n    CALCULATE([Days Since Last Status Report])\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "PMO Data Quality Score",
+                     "Expression":  "VAR TotalProjects = COUNTROWS(VALUES(\u0027Projects\u0027[ProjectID]))\nVAR MaxIssues = TotalProjects * 4\nVAR Issues =\n    [Projects Missing Owner]\n        + [Projects Missing Finish Date]\n        + [Projects Without Baseline]\n        + [Projects Without Recent Status]\nRETURN\nIF(TotalProjects = 0, BLANK(), MAX(0, 1 - DIVIDE(Issues, MaxIssues, 0)))",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Data Quality Score",
+                     "Expression":  "[PMO Data Quality Score]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "PMO Attention Count",
+                     "Expression":  "[Projects Without Recent Status]\n    + [Projects Missing Finish Date]\n    + [Projects Missing Owner]\n    + [Projects Without Risk Assessment]\n    + [Projects Without Baseline]\n    + [Projects With Overdue Actions]\n    + [Projects With Overdue Issues]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Active Projects",
+                     "Expression":  "CALCULATE(\n    DISTINCTCOUNT(\u0027Projects\u0027[ProjectID]),\n    FILTER(\n        \u0027Projects\u0027,\n        NOT(LOWER(COALESCE(\u0027Projects\u0027[Status], \"\")) IN { \"closed\", \"done\", \"completed\", \"inactive\" })\n            \u0026\u0026 NOT(LOWER(COALESCE(\u0027Projects\u0027[State], \"\")) IN { \"inactive\" })\n    )\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Projects At Risk",
+                     "Expression":  "COALESCE(COUNTROWS(\n    FILTER(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        CALCULATE([Project Health Score]) \u003c 60\n    )\n), 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Projects Critical",
+                     "Expression":  "COALESCE(COUNTROWS(\n    FILTER(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        CALCULATE([Project Health Score]) \u003c 40\n    )\n), 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Projects Over Budget",
+                     "Expression":  "COALESCE(COUNTROWS(\n    FILTER(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        CALCULATE(SUM(\u0027Projects\u0027[Forecast Cost])) \u003e CALCULATE(SUM(\u0027Projects\u0027[Budget Cost]))\n            || CALCULATE(SUM(\u0027Projects\u0027[Actual Cost])) \u003e CALCULATE(SUM(\u0027Projects\u0027[Budget Cost]))\n    )\n), 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Projects Behind Schedule",
+                     "Expression":  "COALESCE(COUNTROWS(\n    FILTER(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        CALCULATE(\n            COUNTROWS(\n                FILTER(\n                    \u0027Projects\u0027,\n                    (\n                        NOT(ISBLANK(\u0027Projects\u0027[Finish Date]))\n                            \u0026\u0026 NOT(ISBLANK(\u0027Projects\u0027[gbl_baselinefinish]))\n                            \u0026\u0026 \u0027Projects\u0027[Finish Date] \u003e \u0027Projects\u0027[gbl_baselinefinish]\n                    )\n                    || (\n                        NOT(ISBLANK(\u0027Projects\u0027[Finish Date]))\n                            \u0026\u0026 \u0027Projects\u0027[Finish Date] \u003c TODAY()\n                            \u0026\u0026 COALESCE(\u0027Projects\u0027[Progress], 0) \u003c 1\n                    )\n                )\n            )\n        ) \u003e 0\n    )\n), 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Capacity Demand Hours",
+                     "Expression":  "CALCULATE(\n    SUM(\u0027Resource Demand\u0027[Demand (Hours)]),\n    TREATAS(VALUES(\u0027Projects\u0027[ProjectID]), \u0027Resource Demand\u0027[ProjectID])\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Available Capacity Hours",
+                     "Expression":  "CALCULATE(\n    SUM(\u0027Resource Demand\u0027[Availability (Hours)]),\n    TREATAS(VALUES(\u0027Projects\u0027[ProjectID]), \u0027Resource Demand\u0027[ProjectID])\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Capacity Gap Hours",
+                     "Expression":  "[Capacity Demand Hours] - [Available Capacity Hours]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Capacity Utilization %",
+                     "Expression":  "DIVIDE([Capacity Demand Hours], [Available Capacity Hours], 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Budget At Risk",
+                     "Expression":  "SUMX(\n    FILTER(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        CALCULATE([Project Health Score]) \u003c 60\n    ),\n    CALCULATE(SUM(\u0027Projects\u0027[Forecast Cost]))\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Forecast Overrun",
+                     "Expression":  "SUM(\u0027Projects\u0027[Forecast Cost]) - SUM(\u0027Projects\u0027[Budget Cost])",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Department Health Score",
+                     "Expression":  "AVERAGEX(\n    VALUES(\u0027Projects\u0027[ProjectID]),\n    CALCULATE([Project Health Score])\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Top Risk Count",
+                     "Expression":  "[High Risks]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Executive Attention Flag",
+                     "Expression":  "IF(\n    [Project Health Score] \u003c 50\n        || [High Risks] \u003e 0\n        || [Portfolio Budget Variance %] \u003e 0.15\n        || [Status Report Is Overdue] = 1,\n    1,\n    0\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Escalation Count",
+                     "Expression":  "COALESCE(COUNTROWS(\n    FILTER(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        CALCULATE([Executive Attention Flag]) = 1\n    )\n), 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Portfolio Budget",
+                     "Expression":  "COALESCE(SUM(\u0027Portfolios\u0027[Portfolio Budget]), SUM(\u0027Projects\u0027[Budget Cost]))",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Portfolio Actual Cost",
+                     "Expression":  "COALESCE(SUM(\u0027Portfolios\u0027[Actual Cost]), SUM(\u0027Projects\u0027[Actual Cost]))",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Portfolio Forecast Cost",
+                     "Expression":  "COALESCE(SUM(\u0027Portfolios\u0027[Forecast Cost]), SUM(\u0027Projects\u0027[Forecast Cost]))",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Portfolio Budget Variance",
+                     "Expression":  "[Portfolio Forecast Cost] - [Portfolio Budget]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Portfolio Budget Variance %",
+                     "Expression":  "DIVIDE([Portfolio Budget Variance], [Portfolio Budget], 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Portfolio Value At Risk",
+                     "Expression":  "SUMX(\n    FILTER(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        CALCULATE([Project Health Score]) \u003c 60\n    ),\n    CALCULATE(SUM(\u0027Projects\u0027[Forecast Cost]))\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Strategic Projects Count",
+                     "Expression":  "COALESCE(COUNTROWS(\n    FILTER(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        CALCULATE(\n            COUNTROWS(\n                FILTER(\n                    \u0027Projects\u0027,\n                    CONTAINSSTRING(LOWER(COALESCE(\u0027Projects\u0027[Program Name], \"\")), \"strateg\")\n                        || CONTAINSSTRING(LOWER(COALESCE(\u0027Projects\u0027[Tagging], \"\")), \"strateg\")\n                        || CONTAINSSTRING(LOWER(COALESCE(\u0027Projects\u0027[Project Type], \"\")), \"strateg\")\n                )\n            )\n        ) \u003e 0\n    )\n), 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Strategic Projects At Risk",
+                     "Expression":  "COALESCE(COUNTROWS(\n    FILTER(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        CALCULATE(\n            COUNTROWS(\n                FILTER(\n                    \u0027Projects\u0027,\n                    CONTAINSSTRING(LOWER(COALESCE(\u0027Projects\u0027[Program Name], \"\")), \"strateg\")\n                        || CONTAINSSTRING(LOWER(COALESCE(\u0027Projects\u0027[Tagging], \"\")), \"strateg\")\n                        || CONTAINSSTRING(LOWER(COALESCE(\u0027Projects\u0027[Project Type], \"\")), \"strateg\")\n                )\n            )\n        ) \u003e 0\n            \u0026\u0026 CALCULATE([Project Health Score]) \u003c 60\n    )\n), 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Benefit Target",
+                     "Expression":  "SUMX(\n    \u0027Benefits\u0027,\n    IFERROR(VALUE(SUBSTITUTE(\u0027Benefits\u0027[Target], \",\", \".\")), BLANK())\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Benefit Realized",
+                     "Expression":  "SUM(\u0027Benefits\u0027[Realized])",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Benefit Realization %",
+                     "Expression":  "DIVIDE([Benefit Realized], [Benefit Target], 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Delivery Confidence %",
+                     "Expression":  "DIVIDE(\n    AVERAGEX(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        CALCULATE([Project Health Score])\n    ),\n    100,\n    0\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Executive Risk Score",
+                     "Expression":  "100 - ([Delivery Confidence %] * 100)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Projects Requiring Executive Attention",
+                     "Expression":  "COALESCE(COUNTROWS(\n    FILTER(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        CALCULATE([Executive Attention Flag]) = 1\n    )\n), 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Next Due Action Date",
+                     "Expression":  "MINX(\n    FILTER(\n        \u0027Actions\u0027,\n        NOT(LOWER(COALESCE(\u0027Actions\u0027[Status], \"\")) IN { \"closed\", \"done\", \"completed\", \"inactive\" })\n            \u0026\u0026 NOT(LOWER(COALESCE(\u0027Actions\u0027[State], \"\")) IN { \"inactive\" })\n            \u0026\u0026 NOT(ISBLANK(\u0027Actions\u0027[Due Date]))\n    ),\n    \u0027Actions\u0027[Due Date]\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Next Due Action",
+                     "Expression":  "VAR NextRows =\n    TOPN(\n        1,\n        FILTER(\n            \u0027Actions\u0027,\n            NOT(LOWER(COALESCE(\u0027Actions\u0027[Status], \"\")) IN { \"closed\", \"done\", \"completed\", \"inactive\" })\n                \u0026\u0026 NOT(LOWER(COALESCE(\u0027Actions\u0027[State], \"\")) IN { \"inactive\" })\n                \u0026\u0026 NOT(ISBLANK(\u0027Actions\u0027[Due Date]))\n        ),\n        \u0027Actions\u0027[Due Date], ASC,\n        \u0027Actions\u0027[PriorityID], DESC,\n        \u0027Actions\u0027[Action Name], ASC\n    )\nRETURN\nCONCATENATEX(NextRows, \u0027Actions\u0027[Action Name], \"\")",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Open Critical Actions",
+                     "Expression":  "CALCULATE(\n    COUNTROWS(\u0027Actions\u0027),\n    FILTER(\n        \u0027Actions\u0027,\n        NOT(LOWER(COALESCE(\u0027Actions\u0027[Status], \"\")) IN { \"closed\", \"done\", \"completed\", \"inactive\" })\n            \u0026\u0026 NOT(LOWER(COALESCE(\u0027Actions\u0027[State], \"\")) IN { \"inactive\" })\n            \u0026\u0026 (\n                \u0027Actions\u0027[Health Number] \u003e= 2\n                || \u0027Actions\u0027[PriorityID] \u003e= 2\n                || (NOT(ISBLANK(\u0027Actions\u0027[Due Date])) \u0026\u0026 \u0027Actions\u0027[Due Date] \u003c TODAY())\n            )\n    )\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Action Aging Avg Days",
+                     "Expression":  "AVERAGEX(\n    FILTER(\n        \u0027Actions\u0027,\n        NOT(LOWER(COALESCE(\u0027Actions\u0027[Status], \"\")) IN { \"closed\", \"done\", \"completed\", \"inactive\" })\n            \u0026\u0026 NOT(LOWER(COALESCE(\u0027Actions\u0027[State], \"\")) IN { \"inactive\" })\n    ),\n    \u0027Actions\u0027[Action Age]\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Overdue Action Aging Days",
+                     "Expression":  "AVERAGEX(\n    FILTER(\n        \u0027Actions\u0027,\n        NOT(LOWER(COALESCE(\u0027Actions\u0027[Status], \"\")) IN { \"closed\", \"done\", \"completed\", \"inactive\" })\n            \u0026\u0026 NOT(LOWER(COALESCE(\u0027Actions\u0027[State], \"\")) IN { \"inactive\" })\n            \u0026\u0026 NOT(ISBLANK(\u0027Actions\u0027[Due Date]))\n            \u0026\u0026 \u0027Actions\u0027[Due Date] \u003c TODAY()\n    ),\n    DATEDIFF(\u0027Actions\u0027[Due Date], TODAY(), DAY)\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Actions Due Next 7 Days",
+                     "Expression":  "CALCULATE(\n    COUNTROWS(\u0027Actions\u0027),\n    FILTER(\n        \u0027Actions\u0027,\n        NOT(LOWER(COALESCE(\u0027Actions\u0027[Status], \"\")) IN { \"closed\", \"done\", \"completed\", \"inactive\" })\n            \u0026\u0026 NOT(LOWER(COALESCE(\u0027Actions\u0027[State], \"\")) IN { \"inactive\" })\n            \u0026\u0026 NOT(ISBLANK(\u0027Actions\u0027[Due Date]))\n            \u0026\u0026 \u0027Actions\u0027[Due Date] \u003e= TODAY()\n            \u0026\u0026 \u0027Actions\u0027[Due Date] \u003c= TODAY() + 7\n    )\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Open Blocking Issues",
+                     "Expression":  "CALCULATE(\n    COUNTROWS(\u0027Issues\u0027),\n    FILTER(\n        \u0027Issues\u0027,\n        NOT(LOWER(COALESCE(\u0027Issues\u0027[Status], \"\")) IN { \"closed\", \"done\", \"completed\", \"inactive\" })\n            \u0026\u0026 NOT(LOWER(COALESCE(\u0027Issues\u0027[State], \"\")) IN { \"inactive\" })\n            \u0026\u0026 (\u0027Issues\u0027[Health Number] \u003e= 2 || \u0027Issues\u0027[PriorityID] \u003e= 2)\n    )\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Issue Aging Avg Days",
+                     "Expression":  "AVERAGEX(\n    FILTER(\n        \u0027Issues\u0027,\n        NOT(LOWER(COALESCE(\u0027Issues\u0027[Status], \"\")) IN { \"closed\", \"done\", \"completed\", \"inactive\" })\n            \u0026\u0026 NOT(LOWER(COALESCE(\u0027Issues\u0027[State], \"\")) IN { \"inactive\" })\n    ),\n    \u0027Issues\u0027[Issue Age]\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Oldest Open Issue Days",
+                     "Expression":  "MAXX(\n    FILTER(\n        \u0027Issues\u0027,\n        NOT(LOWER(COALESCE(\u0027Issues\u0027[Status], \"\")) IN { \"closed\", \"done\", \"completed\", \"inactive\" })\n            \u0026\u0026 NOT(LOWER(COALESCE(\u0027Issues\u0027[State], \"\")) IN { \"inactive\" })\n    ),\n    \u0027Issues\u0027[Issue Age]\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Critical Issue Count",
+                     "Expression":  "CALCULATE(\n    COUNTROWS(\u0027Issues\u0027),\n    FILTER(\n        \u0027Issues\u0027,\n        NOT(LOWER(COALESCE(\u0027Issues\u0027[Status], \"\")) IN { \"closed\", \"done\", \"completed\", \"inactive\" })\n            \u0026\u0026 NOT(LOWER(COALESCE(\u0027Issues\u0027[State], \"\")) IN { \"inactive\" })\n            \u0026\u0026 \u0027Issues\u0027[Health Number] \u003e= 2\n    )\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "High Exposure Risks",
+                     "Expression":  "CALCULATE(\n    COUNTROWS(\u0027Risks\u0027),\n    FILTER(\n        \u0027Risks\u0027,\n        NOT(LOWER(COALESCE(\u0027Risks\u0027[Status], \"\")) IN { \"closed\", \"done\", \"completed\", \"inactive\" })\n            \u0026\u0026 NOT(LOWER(COALESCE(\u0027Risks\u0027[State], \"\")) IN { \"inactive\" })\n            \u0026\u0026 (\u0027Risks\u0027[Exposure] \u003e= 9 || \u0027Risks\u0027[Cost Exposure] \u003e 0)\n    )\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Risk Exposure Value",
+                     "Expression":  "SUMX(\n    FILTER(\n        \u0027Risks\u0027,\n        NOT(LOWER(COALESCE(\u0027Risks\u0027[Status], \"\")) IN { \"closed\", \"done\", \"completed\", \"inactive\" })\n            \u0026\u0026 NOT(LOWER(COALESCE(\u0027Risks\u0027[State], \"\")) IN { \"inactive\" })\n    ),\n    COALESCE(\u0027Risks\u0027[Cost Exposure], 0)\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Oldest Open Risk Days",
+                     "Expression":  "MAXX(\n    FILTER(\n        \u0027Risks\u0027,\n        NOT(LOWER(COALESCE(\u0027Risks\u0027[Status], \"\")) IN { \"closed\", \"done\", \"completed\", \"inactive\" })\n            \u0026\u0026 NOT(LOWER(COALESCE(\u0027Risks\u0027[State], \"\")) IN { \"inactive\" })\n    ),\n    \u0027Risks\u0027[Risk Age]\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Risk Aging Avg Days",
+                     "Expression":  "AVERAGEX(\n    FILTER(\n        \u0027Risks\u0027,\n        NOT(LOWER(COALESCE(\u0027Risks\u0027[Status], \"\")) IN { \"closed\", \"done\", \"completed\", \"inactive\" })\n            \u0026\u0026 NOT(LOWER(COALESCE(\u0027Risks\u0027[State], \"\")) IN { \"inactive\" })\n    ),\n    \u0027Risks\u0027[Risk Age]\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Next Milestone Name",
+                     "Expression":  "VAR NextRows =\n    TOPN(\n        1,\n        FILTER(\n            \u0027Tasks\u0027,\n            (\u0027Tasks\u0027[IsMilestoneID] = TRUE() || NOT(ISBLANK(\u0027Tasks\u0027[Milestone])))\n                \u0026\u0026 NOT(ISBLANK(\u0027Tasks\u0027[Finish Date]))\n                \u0026\u0026 \u0027Tasks\u0027[Finish Date] \u003e= TODAY()\n        ),\n        \u0027Tasks\u0027[Finish Date], ASC,\n        \u0027Tasks\u0027[Task Name], ASC\n    )\nRETURN\nCONCATENATEX(NextRows, COALESCE(\u0027Tasks\u0027[Milestone], \u0027Tasks\u0027[Task Name]), \"\")",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Milestone Slippage Days",
+                     "Expression":  "AVERAGEX(\n    FILTER(\n        \u0027Tasks\u0027,\n        (\u0027Tasks\u0027[IsMilestoneID] = TRUE() || NOT(ISBLANK(\u0027Tasks\u0027[Milestone])))\n            \u0026\u0026 NOT(ISBLANK(\u0027Tasks\u0027[Deadline Date]))\n            \u0026\u0026 NOT(ISBLANK(\u0027Tasks\u0027[Finish Date]))\n    ),\n    DATEDIFF(\u0027Tasks\u0027[Deadline Date], \u0027Tasks\u0027[Finish Date], DAY)\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Overdue Milestones",
+                     "Expression":  "CALCULATE(\n    COUNTROWS(\u0027Tasks\u0027),\n    FILTER(\n        \u0027Tasks\u0027,\n        (\u0027Tasks\u0027[IsMilestoneID] = TRUE() || NOT(ISBLANK(\u0027Tasks\u0027[Milestone])))\n            \u0026\u0026 NOT(ISBLANK(\u0027Tasks\u0027[Finish Date]))\n            \u0026\u0026 \u0027Tasks\u0027[Finish Date] \u003c TODAY()\n            \u0026\u0026 COALESCE(\u0027Tasks\u0027[Progress], 0) \u003c 1\n    )\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Milestone Delivery Confidence %",
+                     "Expression":  "VAR Penalty =\n    MIN(\n        1,\n        DIVIDE([Overdue Milestones] * 20 + MAX(0, [Milestone Slippage Days]), 100, 0)\n    )\nRETURN\nMAX(0, 1 - Penalty)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Latest Status Has Summary",
+                     "Expression":  "VAR LatestRows = TOPN(1, \u0027Status Reports\u0027, \u0027Status Reports\u0027[Report Date], DESC, \u0027Status Reports\u0027[Modified Date], DESC)\nRETURN\nIF(LEN(TRIM(COALESCE(MAXX(LatestRows, \u0027Status Reports\u0027[Status Summary]), \"\"))) \u003e 0, 1, 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Latest Status Has Accomplished",
+                     "Expression":  "VAR LatestRows = TOPN(1, \u0027Status Reports\u0027, \u0027Status Reports\u0027[Report Date], DESC, \u0027Status Reports\u0027[Modified Date], DESC)\nRETURN\nIF(LEN(TRIM(COALESCE(MAXX(LatestRows, \u0027Status Reports\u0027[Accomplished Activities]), \"\"))) \u003e 0, 1, 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Latest Status Has Next Steps",
+                     "Expression":  "VAR LatestRows = TOPN(1, \u0027Status Reports\u0027, \u0027Status Reports\u0027[Report Date], DESC, \u0027Status Reports\u0027[Modified Date], DESC)\nRETURN\nIF(LEN(TRIM(COALESCE(MAXX(LatestRows, \u0027Status Reports\u0027[Planned Activities]), \"\"))) \u003e 0, 1, 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Latest Status Has Missed Activities",
+                     "Expression":  "VAR LatestRows = TOPN(1, \u0027Status Reports\u0027, \u0027Status Reports\u0027[Report Date], DESC, \u0027Status Reports\u0027[Modified Date], DESC)\nRETURN\nIF(LEN(TRIM(COALESCE(MAXX(LatestRows, \u0027Status Reports\u0027[Missed Activities]), \"\"))) \u003e 0, 1, 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Latest Status Has Sponsor Actions",
+                     "Expression":  "VAR LatestRows = TOPN(1, \u0027Status Reports\u0027, \u0027Status Reports\u0027[Report Date], DESC, \u0027Status Reports\u0027[Modified Date], DESC)\nRETURN\nIF(LEN(TRIM(COALESCE(MAXX(LatestRows, \u0027Status Reports\u0027[Sponsor Actions]), \"\"))) \u003e 0, 1, 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Latest Status Completeness %",
+                     "Expression":  "DIVIDE(\n    [Latest Status Has Summary]\n        + [Latest Status Has Accomplished]\n        + [Latest Status Has Next Steps]\n        + [Latest Status Has Missed Activities]\n        + [Latest Status Has Sponsor Actions],\n    5,\n    0\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Status Quality Score",
+                     "Expression":  "ROUND([Latest Status Completeness %] * 100, 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Project Control Score",
+                     "Expression":  "VAR HealthPart = COALESCE([Project Health Score], 0) * 0.45\nVAR StatusPart = COALESCE([Status Quality Score], 0) * 0.25\nVAR MilestonePart = COALESCE([Milestone Delivery Confidence %], 0) * 100 * 0.20\nVAR ActionPenalty = MIN(10, [Open Critical Actions] * 2)\nRETURN\nMAX(0, ROUND(HealthPart + StatusPart + MilestonePart - ActionPenalty, 0))",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Project Control Color",
+                     "Expression":  "VAR Score = [Project Control Score]\nRETURN\nSWITCH(TRUE(), ISBLANK(Score), \"#BDBDBD\", Score \u003e= 80, \"#2ECC71\", Score \u003e= 60, \"#F2C94C\", \"#EB5757\")",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Project Requires PM Attention",
+                     "Expression":  "IF(\n    [Project Control Score] \u003c 60\n        || [Open Critical Actions] \u003e 0\n        || [Critical Issue Count] \u003e 0\n        || [Overdue Milestones] \u003e 0,\n    1,\n    0\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Governance Owner Complete",
+                     "Expression":  "IF([Projects Missing Owner] = 0, 1, 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Governance Dates Complete",
+                     "Expression":  "VAR MissingDates =\n    COUNTROWS(\n        FILTER(\n            VALUES(\u0027Projects\u0027[ProjectID]),\n            CALCULATE(COUNTROWS(FILTER(\u0027Projects\u0027, ISBLANK(\u0027Projects\u0027[Start Date]) || ISBLANK(\u0027Projects\u0027[Finish Date])))) \u003e 0\n        )\n    )\nRETURN IF(COALESCE(MissingDates, 0) = 0, 1, 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Governance Baseline Complete",
+                     "Expression":  "IF([Projects Without Baseline] = 0, 1, 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Projects Missing Budget",
+                     "Expression":  "COALESCE(\n    COUNTROWS(\n        FILTER(\n            VALUES(\u0027Projects\u0027[ProjectID]),\n            CALCULATE(SUM(\u0027Projects\u0027[Budget Cost])) = 0\n                \u0026\u0026 CALCULATE(SUM(\u0027Projects\u0027[gbl_totalprojectbudget])) = 0\n        )\n    ),\n    0\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Governance Budget Complete",
+                     "Expression":  "IF([Projects Missing Budget] = 0, 1, 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Projects Without Phase",
+                     "Expression":  "COALESCE(\n    COUNTROWS(\n        FILTER(\n            VALUES(\u0027Projects\u0027[ProjectID]),\n            CALCULATE(\n                COUNTROWS(\n                    FILTER(\u0027Projects\u0027, ISBLANK(\u0027Projects\u0027[Phase]) || TRIM(\u0027Projects\u0027[Phase]) = \"\")\n                )\n            ) \u003e 0\n        )\n    ),\n    0\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Governance Compliance %",
+                     "Expression":  "VAR TotalProjects = COUNTROWS(VALUES(\u0027Projects\u0027[ProjectID]))\nVAR MaxIssues = TotalProjects * 5\nVAR Issues =\n    [Projects Missing Owner]\n        + [Projects Missing Finish Date]\n        + [Projects Without Baseline]\n        + [Projects Missing Budget]\n        + [Projects Without Phase]\nRETURN\nIF(TotalProjects = 0, BLANK(), MAX(0, 1 - DIVIDE(Issues, MaxIssues, 0)))",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Projects Reported On Time",
+                     "Expression":  "COALESCE(\n    COUNTROWS(\n        FILTER(\n            VALUES(\u0027Projects\u0027[ProjectID]),\n            CALCULATE([Status Report Is Overdue]) = 0\n        )\n    ),\n    0\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Projects Missing Current Report",
+                     "Expression":  "[Projects Without Recent Status]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Projects With Incomplete Report",
+                     "Expression":  "COALESCE(\n    COUNTROWS(\n        FILTER(\n            VALUES(\u0027Projects\u0027[ProjectID]),\n            CALCULATE([Latest Status Completeness %]) \u003c 0.8\n        )\n    ),\n    0\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Reporting Completeness %",
+                     "Expression":  "VAR TotalProjects = COUNTROWS(VALUES(\u0027Projects\u0027[ProjectID]))\nRETURN\nIF(\n    TotalProjects = 0,\n    BLANK(),\n    1 - DIVIDE([Projects Missing Current Report] + [Projects With Incomplete Report], TotalProjects * 2, 0)\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Missing Owner Count",
+                     "Expression":  "[Projects Missing Owner]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Missing Baseline Count",
+                     "Expression":  "[Projects Without Baseline]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Missing Budget Count",
+                     "Expression":  "[Projects Missing Budget]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Missing Phase Count",
+                     "Expression":  "[Projects Without Phase]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Model Data Quality Score",
+                     "Expression":  "DIVIDE([PMO Data Quality Score] + [Governance Compliance %] + [Reporting Completeness %], 3, 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Projects Without Phase Model",
+                     "Expression":  "COALESCE(\n    COUNTROWS(\n        FILTER(\n            VALUES(\u0027Projects\u0027[ProjectID]),\n            CALCULATE(COUNTROWS(\u0027VollständigePhasenListe\u0027)) = 0\n        )\n    ),\n    0\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Projects With Invalid Phase",
+                     "Expression":  "COALESCE(\n    COUNTROWS(\n        FILTER(\n            VALUES(\u0027Projects\u0027[ProjectID]),\n            CALCULATE(COUNTROWS(\u0027VollständigePhasenListe\u0027)) \u003e 0\n                \u0026\u0026 CALCULATE(COUNTROWS(\u0027DimPhasen\u0027)) = 0\n        )\n    ),\n    0\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Lifecycle Coverage %",
+                     "Expression":  "VAR TotalProjects = COUNTROWS(VALUES(\u0027Projects\u0027[ProjectID]))\nRETURN\nIF(TotalProjects = 0, BLANK(), 1 - DIVIDE([Projects Without Phase Model] + [Projects With Invalid Phase], TotalProjects, 0))",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Project Has PMO Exception",
+                     "Expression":  "IF(\n    [Status Report Is Overdue] = 1\n        || [Projects Without Baseline] \u003e 0\n        || [Projects Missing Owner] \u003e 0\n        || [Projects Missing Budget] \u003e 0\n        || [Overdue Actions] \u003e 0\n        || [Overdue Issues] \u003e 0\n        || [Projects Without Phase Model] \u003e 0,\n    1,\n    0\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "PMO Exception Count",
+                     "Expression":  "COALESCE(\n    COUNTROWS(\n        FILTER(\n            VALUES(\u0027Projects\u0027[ProjectID]),\n            CALCULATE([Project Has PMO Exception]) = 1\n        )\n    ),\n    0\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "PMO Critical Exception Count",
+                     "Expression":  "COALESCE(\n    COUNTROWS(\n        FILTER(\n            VALUES(\u0027Projects\u0027[ProjectID]),\n            CALCULATE([Project Health Score]) \u003c 50\n                || CALCULATE([High Risks]) \u003e 0\n                || CALCULATE([Overdue Issues]) \u003e 0\n                || CALCULATE([Status Report Is Overdue]) = 1\n        )\n    ),\n    0\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "PMO Exception Severity Score",
+                     "Expression":  "MIN(\n    100,\n    [PMO Critical Exception Count] * 10\n        + ([PMO Exception Count] - [PMO Critical Exception Count]) * 2\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Projects Needing Decision",
+                     "Expression":  "COALESCE(\n    COUNTROWS(\n        FILTER(\n            VALUES(\u0027Projects\u0027[ProjectID]),\n            CALCULATE([Open Decisions]) \u003e 0\n        )\n    ),\n    0\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Projects For Steering",
+                     "Expression":  "COALESCE(\n    COUNTROWS(\n        FILTER(\n            VALUES(\u0027Projects\u0027[ProjectID]),\n            CALCULATE([PMO Review Priority Score]) \u003e= 60\n        )\n    ),\n    0\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Projects For Escalation",
+                     "Expression":  "COALESCE(\n    COUNTROWS(\n        FILTER(\n            VALUES(\u0027Projects\u0027[ProjectID]),\n            CALCULATE([Executive Attention Flag]) = 1\n                || CALCULATE([PMO Critical Exception Count]) \u003e 0\n        )\n    ),\n    0\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "PMO Review Priority Score",
+                     "Expression":  "MIN(\n    100,\n    [PMO Exception Severity Score]\n        + [Overdue Actions] * 2\n        + [Overdue Issues] * 4\n        + [High Risks] * 5\n        + [Overdue Decisions] * 5\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Department Project Count",
+                     "Expression":  "DISTINCTCOUNT(\u0027Projects\u0027[ProjectID])",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Department Projects At Risk",
+                     "Expression":  "[Projects At Risk]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Department Critical Projects",
+                     "Expression":  "[Projects Critical]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Department Delivery Health %",
+                     "Expression":  "DIVIDE([Department Health Score], 100, 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Department Demand Hours",
+                     "Expression":  "[Capacity Demand Hours]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Department Available Hours",
+                     "Expression":  "[Available Capacity Hours]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Department Capacity Gap",
+                     "Expression":  "[Capacity Gap Hours]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Department Utilization %",
+                     "Expression":  "[Capacity Utilization %]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Department Budget",
+                     "Expression":  "SUM(\u0027Projects\u0027[Budget Cost])",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Department Forecast",
+                     "Expression":  "SUM(\u0027Projects\u0027[Forecast Cost])",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Department Overrun",
+                     "Expression":  "[Department Forecast] - [Department Budget]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Department Budget At Risk",
+                     "Expression":  "[Budget At Risk]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Projects Blocked By Capacity",
+                     "Expression":  "COALESCE(\n    COUNTROWS(\n        FILTER(\n            VALUES(\u0027Projects\u0027[ProjectID]),\n            CALCULATE([Capacity Gap Hours]) \u003e 0\n                \u0026\u0026 CALCULATE([Project Health Score]) \u003c 70\n        )\n    ),\n    0\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Resource Bottleneck Count",
+                     "Expression":  "[Projects Blocked By Capacity]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Capacity Risk Score",
+                     "Expression":  "MIN(100, DIVIDE(MAX(0, [Capacity Gap Hours]), [Capacity Demand Hours], 0) * 100)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Department High Risks",
+                     "Expression":  "[High Risks]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Department Risk Exposure",
+                     "Expression":  "[Risk Exposure Value]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Department Escalation Count",
+                     "Expression":  "[Escalation Count]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Department Delivery Health Score",
+                     "Expression":  "[Department Health Score]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Executive Attention Projects",
+                     "Expression":  "[Projects Requiring Executive Attention]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Executive Attention Budget",
+                     "Expression":  "SUMX(\n    FILTER(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        CALCULATE([Executive Attention Flag]) = 1\n    ),\n    CALCULATE(SUM(\u0027Projects\u0027[Forecast Cost]))\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Executive Attention Risk Exposure",
+                     "Expression":  "SUMX(\n    FILTER(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        CALCULATE([Executive Attention Flag]) = 1\n    ),\n    CALCULATE([Risk Exposure Value])\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Executive Attention Score",
+                     "Expression":  "MIN(\n    100,\n    [Executive Attention Projects] * 5\n        + [High Risks] * 4\n        + [Overdue Decisions] * 5\n        + MAX(0, [Portfolio Budget Variance %]) * 100\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Portfolio Schedule Confidence %",
+                     "Expression":  "1 - DIVIDE([Projects Behind Schedule], DISTINCTCOUNT(\u0027Projects\u0027[ProjectID]), 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Portfolio Budget Confidence %",
+                     "Expression":  "1 - MIN(1, MAX(0, [Portfolio Budget Variance %]))",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Portfolio Risk Confidence %",
+                     "Expression":  "1 - DIVIDE([Projects At Risk], DISTINCTCOUNT(\u0027Projects\u0027[ProjectID]), 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Portfolio Delivery Confidence %",
+                     "Expression":  "DIVIDE(\n    [Delivery Confidence %]\n        + [Portfolio Schedule Confidence %]\n        + [Portfolio Budget Confidence %]\n        + [Portfolio Risk Confidence %],\n    4,\n    0\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Budget Value At Risk",
+                     "Expression":  "[Portfolio Value At Risk]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Benefit Value At Risk",
+                     "Expression":  "SUMX(\n    FILTER(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        CALCULATE([Executive Attention Flag]) = 1\n    ),\n    CALCULATE([Benefit Target Clean] - [Benefit Realized])\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Strategic Value At Risk",
+                     "Expression":  "SUMX(\n    FILTER(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        CALCULATE([Is Strategic Project]) = 1\n            \u0026\u0026 CALCULATE([Project Health Score]) \u003c 60\n    ),\n    CALCULATE(SUM(\u0027Projects\u0027[Forecast Cost]))\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Is Strategic Project",
+                     "Expression":  "IF(\n    COUNTROWS(\n        FILTER(\n            \u0027Projects\u0027,\n            CONTAINSSTRING(LOWER(COALESCE(\u0027Projects\u0027[Program Name], \"\")), \"strateg\")\n                || CONTAINSSTRING(LOWER(COALESCE(\u0027Projects\u0027[Tagging], \"\")), \"strateg\")\n                || CONTAINSSTRING(LOWER(COALESCE(\u0027Projects\u0027[gbl_tagging], \"\")), \"strateg\")\n                || CONTAINSSTRING(LOWER(COALESCE(\u0027Projects\u0027[Project Type], \"\")), \"strateg\")\n                || CALCULATE(COUNTROWS(\u0027Objectives\u0027)) \u003e 0\n        )\n    ) \u003e 0,\n    1,\n    0\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Strategic Projects %",
+                     "Expression":  "DIVIDE([Strategic Projects Count], DISTINCTCOUNT(\u0027Projects\u0027[ProjectID]), 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Strategic Projects At Risk %",
+                     "Expression":  "DIVIDE([Strategic Projects At Risk], [Strategic Projects Count], 0)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Projects Without Strategic Link",
+                     "Expression":  "COALESCE(\n    COUNTROWS(\n        FILTER(\n            VALUES(\u0027Projects\u0027[ProjectID]),\n            CALCULATE([Is Strategic Project]) = 0\n        )\n    ),\n    0\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Strategic Alignment Score",
+                     "Expression":  "MAX(0, 100 - DIVIDE([Projects Without Strategic Link], DISTINCTCOUNT(\u0027Projects\u0027[ProjectID]), 0) * 100)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Open Decisions",
+                     "Expression":  "CALCULATE(\n    COUNTROWS(\u0027Decisions\u0027),\n    FILTER(\n        \u0027Decisions\u0027,\n        NOT(LOWER(COALESCE(\u0027Decisions\u0027[Status], \"\")) IN { \"closed\", \"done\", \"completed\", \"approved\", \"inactive\" })\n            \u0026\u0026 NOT(LOWER(COALESCE(\u0027Decisions\u0027[State], \"\")) IN { \"inactive\" })\n    )\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Overdue Decisions",
+                     "Expression":  "CALCULATE(\n    COUNTROWS(\u0027Decisions\u0027),\n    FILTER(\n        \u0027Decisions\u0027,\n        NOT(LOWER(COALESCE(\u0027Decisions\u0027[Status], \"\")) IN { \"closed\", \"done\", \"completed\", \"approved\", \"inactive\" })\n            \u0026\u0026 NOT(LOWER(COALESCE(\u0027Decisions\u0027[State], \"\")) IN { \"inactive\" })\n            \u0026\u0026 NOT(ISBLANK(\u0027Decisions\u0027[Target Date]))\n            \u0026\u0026 \u0027Decisions\u0027[Target Date] \u003c TODAY()\n    )\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Critical Decisions",
+                     "Expression":  "CALCULATE(\n    COUNTROWS(\u0027Decisions\u0027),\n    FILTER(\n        \u0027Decisions\u0027,\n        NOT(LOWER(COALESCE(\u0027Decisions\u0027[Status], \"\")) IN { \"closed\", \"done\", \"completed\", \"approved\", \"inactive\" })\n            \u0026\u0026 NOT(LOWER(COALESCE(\u0027Decisions\u0027[State], \"\")) IN { \"inactive\" })\n            \u0026\u0026 (\n                \u0027Decisions\u0027[ExecutiveReportingID] = TRUE()\n                || \u0027Decisions\u0027[Health Number] \u003e= 2\n                || \u0027Decisions\u0027[PriorityID] \u003e= 2\n            )\n    )\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Decision Aging Days",
+                     "Expression":  "AVERAGEX(\n    FILTER(\n        \u0027Decisions\u0027,\n        NOT(LOWER(COALESCE(\u0027Decisions\u0027[Status], \"\")) IN { \"closed\", \"done\", \"completed\", \"approved\", \"inactive\" })\n            \u0026\u0026 NOT(LOWER(COALESCE(\u0027Decisions\u0027[State], \"\")) IN { \"inactive\" })\n    ),\n    \u0027Decisions\u0027[Decision Age]\n)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Decision Backlog Severity",
+                     "Expression":  "MIN(100, [Open Decisions] * 2 + [Overdue Decisions] * 8 + [Critical Decisions] * 10)",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Benefit Target Clean",
+                     "Expression":  "[Benefit Target]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Benefit Gap",
+                     "Expression":  "[Benefit Target Clean] - [Benefit Realized]",
+                     "TableID":  150797295
+                 },
+                 {
+                     "Name":  "Benefits At Risk",
+                     "Expression":  "SUMX(\n    FILTER(\n        VALUES(\u0027Projects\u0027[ProjectID]),\n        CALCULATE([Project Health Score]) \u003c 60\n    ),\n    CALCULATE([Benefit Gap])\n)",
+                     "TableID":  150797295
+                 }
+             ]
+}

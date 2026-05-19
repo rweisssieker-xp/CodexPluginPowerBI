@@ -40,7 +40,9 @@ Use this skill when the user asks Codex to inspect, document, generate, or refac
 22. Before publishing plugin changes, run `scripts\Test-PowerBIGoldenBaselines.ps1`.
 23. For maximum AI/KI workflows, use `scripts/Invoke-PowerBIAutonomousFixAgent.ps1`, `scripts/Compare-PowerBILiveRepoModel.ps1`, `scripts/New-PowerBIKpiTrustContract.ps1`, `scripts/Invoke-PowerBIAskModel.ps1`, and `scripts/New-PowerBIFabricReadinessPlan.ps1`.
 24. For the complete 12-USP AI/KI package, run `scripts/Invoke-PowerBIMaxAIReview.ps1`.
-25. Look for these editable artifacts:
+25. For enterprise release engineering, run `scripts/New-PowerBIReleaseCandidatePack.ps1`, `scripts/New-PowerBIServiceScanner.ps1`, `scripts/New-PowerBIModelRiskHeatmap.ps1`, `scripts/Invoke-PowerBISemanticTestRunner.ps1`, and `scripts/New-PowerBITomWritePlan.ps1`.
+26. For disruptive autonomous planning workflows, use the dedicated skills `powerbi-autonomous-planning-loop`, `powerbi-goal-seeking-planning`, `powerbi-constraint-aware-planning`, `powerbi-autonomous-forecast-agents`, `powerbi-autonomous-exception-management`, `powerbi-revenue-rescue-mode`, `powerbi-forecast-trust-market`, `powerbi-causal-counterfactual-forecasting`, `powerbi-self-healing-forecast-governance`, `powerbi-planning-memory`, `powerbi-planning-readiness-score`, and `powerbi-forecast-war-room`.
+27. Look for these editable artifacts:
    - `*.pbip`
    - `*.SemanticModel`, `*.Report`
    - `definition.pbism`, `model.bim`
@@ -130,6 +132,20 @@ Run:
 ```
 
 These commands turn review results into Codex-native engineering artifacts: fix loop plans, live/source-control drift, semantic test expectations, PR comments, KPI trust contracts, local model Q&A, and Fabric deployment readiness. They do not sign in to Fabric or publish content.
+
+### Run enterprise release engineering
+
+Run:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\New-PowerBIReleaseCandidatePack.ps1 -Path . -OutputDirectory .\powerbi-release-candidate-pack -SkipLive
+.\plugins\powerbi-desktop\scripts\New-PowerBIServiceScanner.ps1 -Path . -WorkspaceName "Target Workspace" -OutputPath .\powerbi-service-scanner.md
+.\plugins\powerbi-desktop\scripts\New-PowerBIModelRiskHeatmap.ps1 -Path . -OutputPath .\powerbi-model-risk-heatmap.md
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBISemanticTestRunner.ps1 -Path . -OutputPath .\powerbi-semantic-tests.md
+.\plugins\powerbi-desktop\scripts\New-PowerBITomWritePlan.ps1 -Operation AddMeasure -TableName Sales -ObjectName "Average Sales" -Expression "DIVIDE([Total Sales], COUNTROWS('Sales'))"
+```
+
+Use this when the user wants the strongest Power BI/Fabric engineering workflow. The release candidate pack combines unified review, Max AI review, service scanner, semantic tests, model risk heatmap, and PR release comment. Fabric REST and TOM/TMSL writes stay explicit and gated; do not sign in, publish, or mutate a model unless the user explicitly asks and provides the required endpoint/token/write confirmation.
 
 ### Decide whether a report is release-ready
 
@@ -246,10 +262,26 @@ This reads the local Analysis Services endpoint created by Power BI Desktop. It 
 Run:
 
 ```powershell
-.\plugins\powerbi-desktop\scripts\Invoke-PowerBIAIForecast.ps1 -OutputDirectory .\powerbi-ai-forecast
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBIAIForecast.ps1 -OutputDirectory .\powerbi-ai-forecast -HorizonMonths 3 -Grain CustomerProduct -Backtest
 ```
 
-Use this as a read-only forecast workflow from the open Desktop model. It exports live customer-hierarchy/product-line monthly data, blends backlog conversion, seasonality, budget, roll forecast, and sparse-series shrinkage, then writes detail, summary, and top-delta CSV outputs. Import the output as a separate forecast table before drafting DAX measures.
+Use this as a read-only forecast workflow from the open Desktop model. It exports live customer/product monthly data when feasible, falls back to customer-hierarchy/product-line if Desktop cannot materialize the fine grain, blends learned backlog conversion, residual demand, seasonality, budget, roll forecast, and sparse-series shrinkage, then writes detail, summary, top-delta, backtest, and model-quality CSV outputs. Import the output as a separate forecast table before drafting DAX measures.
+
+For innovation beyond a static forecast, route the request to the focused autonomous planning skills:
+
+- `powerbi-autonomous-planning-loop`: closed-loop observe, forecast, detect, simulate, decide, act, learn, repeat.
+- `powerbi-goal-seeking-planning`: reverse planning from budget, roll, margin, cash, or management targets.
+- `powerbi-constraint-aware-planning`: delivery, capacity, stock, margin, cash, and sales-resource constraints.
+- `powerbi-revenue-digital-twin`: scenario simulation and target-gap closure.
+- `powerbi-autonomous-forecast-agents`: backlog, demand, budget, skeptic, risk, and arbitrator perspectives.
+- `powerbi-autonomous-exception-management`: managed cases for gaps, risks, blockers, and biased planning outputs.
+- `powerbi-revenue-rescue-mode`: operational customer/product actions to close revenue gaps.
+- `powerbi-forecast-trust-market`: human override, confidence, and model-vs-human trust loops.
+- `powerbi-causal-counterfactual-forecasting`: causal drivers and what-if alternatives.
+- `powerbi-self-healing-forecast-governance`: demotion, blocking, and safer-baseline routing when AI quality is poor.
+- `powerbi-planning-memory`: durable run, assumption, action, override, actual, and lesson memory.
+- `powerbi-planning-readiness-score`: autonomous-readiness scoring and blocker identification.
+- `powerbi-forecast-war-room`: executive control tower, action ownership, and gap status.
 
 ### Customize governance rules
 

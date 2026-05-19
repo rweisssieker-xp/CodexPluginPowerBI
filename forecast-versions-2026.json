@@ -1,0 +1,129 @@
+{
+    "schema":  "codex.powerbi.liveDmv.v1",
+    "server":  "Data Source=localhost:53293",
+    "query":  "EVALUATE\nFILTER(\n    SUMMARIZECOLUMNS(\n        \u0027Dates\u0027[Calendar Year],\n        \u0027Dates\u0027[Calendar Month Year],\n        \"MonthStart\", MIN(\u0027Dates\u0027[Date]),\n        \"FC1\", [_SumForecastAmountFC1],\n        \"FC2\", [_SumForecastAmountFC2],\n        \"FC3\", [_SumForecastAmountFC3],\n        \"Roll\", [_SumForecastAmountRoll],\n        \"Budget\", [_SumBudgetAmount]\n    ),\n    \u0027Dates\u0027[Calendar Year] = 2026\n)\nORDER BY [MonthStart]",
+    "adomdClientPath":  "C:\\Program Files\\Microsoft.NET\\ADOMD.NET\\170\\Microsoft.AnalysisServices.AdomdClient.dll",
+    "rowCount":  12,
+    "rows":  [
+                 {
+                     "Dates[Calendar Year]":  2026,
+                     "Dates[Calendar Month Year]":  "Jan 2026",
+                     "[MonthStart]":  "\/Date(1767222000000)\/",
+                     "[FC1]":  null,
+                     "[FC2]":  null,
+                     "[FC3]":  null,
+                     "[Roll]":  15421217.272208488,
+                     "[Budget]":  16550407.383074982
+                 },
+                 {
+                     "Dates[Calendar Year]":  2026,
+                     "Dates[Calendar Month Year]":  "Feb 2026",
+                     "[MonthStart]":  "\/Date(1769900400000)\/",
+                     "[FC1]":  null,
+                     "[FC2]":  null,
+                     "[FC3]":  null,
+                     "[Roll]":  16617950.974708928,
+                     "[Budget]":  17023465.392816406
+                 },
+                 {
+                     "Dates[Calendar Year]":  2026,
+                     "Dates[Calendar Month Year]":  "Mar 2026",
+                     "[MonthStart]":  "\/Date(1772319600000)\/",
+                     "[FC1]":  null,
+                     "[FC2]":  null,
+                     "[FC3]":  null,
+                     "[Roll]":  18605072.012993302,
+                     "[Budget]":  17176120.139724646
+                 },
+                 {
+                     "Dates[Calendar Year]":  2026,
+                     "Dates[Calendar Month Year]":  "Apr 2026",
+                     "[MonthStart]":  "\/Date(1774994400000)\/",
+                     "[FC1]":  null,
+                     "[FC2]":  null,
+                     "[FC3]":  null,
+                     "[Roll]":  17338304.545498095,
+                     "[Budget]":  17063754.55549461
+                 },
+                 {
+                     "Dates[Calendar Year]":  2026,
+                     "Dates[Calendar Month Year]":  "May 2026",
+                     "[MonthStart]":  "\/Date(1777586400000)\/",
+                     "[FC1]":  null,
+                     "[FC2]":  null,
+                     "[FC3]":  null,
+                     "[Roll]":  15855983.97239995,
+                     "[Budget]":  16386199.403205467
+                 },
+                 {
+                     "Dates[Calendar Year]":  2026,
+                     "Dates[Calendar Month Year]":  "Jun 2026",
+                     "[MonthStart]":  "\/Date(1780264800000)\/",
+                     "[FC1]":  null,
+                     "[FC2]":  null,
+                     "[FC3]":  null,
+                     "[Roll]":  17184577.543599933,
+                     "[Budget]":  16279450.540060664
+                 },
+                 {
+                     "Dates[Calendar Year]":  2026,
+                     "Dates[Calendar Month Year]":  "Jul 2026",
+                     "[MonthStart]":  "\/Date(1782856800000)\/",
+                     "[FC1]":  null,
+                     "[FC2]":  null,
+                     "[FC3]":  null,
+                     "[Roll]":  16135856.825499974,
+                     "[Budget]":  15997442.175750198
+                 },
+                 {
+                     "Dates[Calendar Year]":  2026,
+                     "Dates[Calendar Month Year]":  "Aug 2026",
+                     "[MonthStart]":  "\/Date(1785535200000)\/",
+                     "[FC1]":  null,
+                     "[FC2]":  null,
+                     "[FC3]":  null,
+                     "[Roll]":  14120031.085099965,
+                     "[Budget]":  13974742.383227492
+                 },
+                 {
+                     "Dates[Calendar Year]":  2026,
+                     "Dates[Calendar Month Year]":  "Sep 2026",
+                     "[MonthStart]":  "\/Date(1788213600000)\/",
+                     "[FC1]":  null,
+                     "[FC2]":  null,
+                     "[FC3]":  null,
+                     "[Roll]":  17375479.068099964,
+                     "[Budget]":  17759035.874341935
+                 },
+                 {
+                     "Dates[Calendar Year]":  2026,
+                     "Dates[Calendar Month Year]":  "Oct 2026",
+                     "[MonthStart]":  "\/Date(1790805600000)\/",
+                     "[FC1]":  null,
+                     "[FC2]":  null,
+                     "[FC3]":  null,
+                     "[Roll]":  18804625.421699934,
+                     "[Budget]":  17421234.876469225
+                 },
+                 {
+                     "Dates[Calendar Year]":  2026,
+                     "Dates[Calendar Month Year]":  "Nov 2026",
+                     "[MonthStart]":  "\/Date(1793487600000)\/",
+                     "[FC1]":  null,
+                     "[FC2]":  null,
+                     "[FC3]":  null,
+                     "[Roll]":  17462020.903599948,
+                     "[Budget]":  17558625.893879607
+                 },
+                 {
+                     "Dates[Calendar Year]":  2026,
+                     "Dates[Calendar Month Year]":  "Dec 2026",
+                     "[MonthStart]":  "\/Date(1796079600000)\/",
+                     "[FC1]":  null,
+                     "[FC2]":  null,
+                     "[FC3]":  null,
+                     "[Roll]":  14817290.824899953,
+                     "[Budget]":  14688892.756928297
+                 }
+             ]
+}
