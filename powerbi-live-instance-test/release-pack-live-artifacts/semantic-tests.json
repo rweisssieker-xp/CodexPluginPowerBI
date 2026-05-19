@@ -1,0 +1,13 @@
+{
+  "schema": "codex.powerbi.semanticTestRunner.v2",
+  "generated": "2026-05-19T06:56:51",
+  "source": "D:\\temp\\CodexPluginPowerBI\\powerbi-live-instance-test\\live-auto-review",
+  "expectationsPath": "D:\\temp\\CodexPluginPowerBI\\powerbi-live-instance-test\\live-auto-review\\measure-expectations.json",
+  "status": "Passed",
+  "testCount": 0,
+  "passedCount": 0,
+  "failedCount": 0,
+  "pendingCount": 0,
+  "failOnPending": false,
+  "tests": []
+}

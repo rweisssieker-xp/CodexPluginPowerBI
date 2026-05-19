@@ -27,6 +27,32 @@ function Normalize-Key {
 }
 
 $trust = & (Join-Path $scriptRoot 'New-PowerBIKpiTrustScore.ps1') -Path $resolved -Json | ConvertFrom-Json
+if (@($trust.metrics).Count -eq 0) {
+    $liveCatalogPath = Join-Path $resolved 'live-metric-catalog.json'
+    if (Test-Path -LiteralPath $liveCatalogPath) {
+        $liveCatalog = Get-Content -Raw -LiteralPath $liveCatalogPath | ConvertFrom-Json
+        $liveMetrics = foreach ($metric in @($liveCatalog.metrics)) {
+            $score = 100
+            $deductions = New-Object System.Collections.Generic.List[string]
+            if (@($metric.risks).Count -gt 0) { $score -= 25; $deductions.Add('DAX risk detected') }
+            if ($metric.owner -match 'TODO') { $score -= 15; $deductions.Add('Metric owner missing') }
+            if ($metric.businessDefinition -match 'TODO') { $score -= 15; $deductions.Add('Business definition missing') }
+            $score = [math]::Max(0, [int]$score)
+            [pscustomobject]@{
+                name = $metric.name
+                table = $metric.table
+                trustScore = $score
+                trustBand = $(if ($score -ge 80) { 'High' } elseif ($score -ge 60) { 'Medium' } else { 'Low' })
+                releaseUse = $(if ($score -ge 80) { 'Approved candidate after business sign-off.' } elseif ($score -ge 60) { 'Use with warning and validation note.' } else { 'Do not use for executive release without remediation.' })
+            }
+        }
+        $trust = [pscustomobject]@{
+            schema = 'codex.powerbi.kpiTrustScore.liveCatalogFallback.v1'
+            metrics = @($liveMetrics)
+            overallTrustScore = if (@($liveMetrics).Count -gt 0) { [int]((@($liveMetrics | Select-Object -ExpandProperty trustScore) | Measure-Object -Average).Average) } else { 0 }
+        }
+    }
+}
 $gate = & (Join-Path $scriptRoot 'New-PowerBITrustReleaseGate.ps1') -Path $resolved -Json | ConvertFrom-Json
 $service = & (Join-Path $scriptRoot 'New-PowerBIServiceScanner.ps1') -Path $resolved -Json | ConvertFrom-Json
 $usage = Read-JsonFile -LiteralPath $UsageSignalsPath

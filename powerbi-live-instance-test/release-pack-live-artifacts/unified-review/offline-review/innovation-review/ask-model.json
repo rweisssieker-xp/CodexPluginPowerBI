@@ -1,0 +1,8 @@
+{
+  "schema": "codex.powerbi.askModel.v1",
+  "generated": "2026-05-19T06:56:04",
+  "question": "Which measures affect release risk and trust?",
+  "answer": "No directly matching measure was found in the local catalog.",
+  "matchCount": 0,
+  "matches": []
+}

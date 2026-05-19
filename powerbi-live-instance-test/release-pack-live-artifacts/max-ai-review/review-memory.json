@@ -1,0 +1,12 @@
+{
+  "schema": "codex.powerbi.reviewMemoryUpdate.v1",
+  "memoryPath": "D:\\temp\\CodexPluginPowerBI\\powerbi-live-instance-test\\release-pack-live-artifacts\\max-ai-review\\review-memory-store.json",
+  "reviewCount": 1,
+  "latest": {
+    "generated": "2026-05-19T06:56:47",
+    "path": "D:\\temp\\CodexPluginPowerBI\\powerbi-live-instance-test\\live-auto-review",
+    "decision": "No-Go",
+    "fixCount": 1,
+    "p0Count": 1
+  }
+}

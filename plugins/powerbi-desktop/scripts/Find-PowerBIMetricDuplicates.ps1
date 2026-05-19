@@ -92,6 +92,27 @@ function Get-CanonicalRecommendation {
 }
 
 $catalog = & $catalogScript -Path $root -Json | ConvertFrom-Json
+if (@($catalog.metrics).Count -eq 0) {
+    $liveCatalogPath = Join-Path $root 'live-metric-catalog.json'
+    if (Test-Path -LiteralPath $liveCatalogPath) {
+        $liveCatalog = Get-Content -Raw -LiteralPath $liveCatalogPath | ConvertFrom-Json
+        $catalog = [pscustomobject]@{
+            schema = 'codex.powerbi.metricCatalog.liveCatalogFallback.v1'
+            root = $root
+            metricCount = @($liveCatalog.metrics).Count
+            metrics = @($liveCatalog.metrics | ForEach-Object {
+                [pscustomobject]@{
+                    id = $_.id
+                    name = $_.name
+                    table = $_.table
+                    source = $_.source
+                    expression = $_.expression
+                    risks = @($_.risks)
+                }
+            })
+        }
+    }
+}
 $metrics = @($catalog.metrics | ForEach-Object {
     $normalizedName = Normalize-MetricName -Name $_.name
     $tokens = @(Get-ExpressionTokens -Expression $_.expression)
@@ -115,7 +136,7 @@ for ($i = 0; $i -lt $metrics.Count; $i++) {
         $right = $metrics[$j]
         $nameScore = Get-NameScore -Left $left.normalizedName -Right $right.normalizedName
         $tokenScore = Get-JaccardScore -Left $left.expressionTokens -Right $right.expressionTokens
-        $combined = [math]::Round(($nameScore * 0.45) + ($tokenScore * 0.55), 4)
+        $combined = [math]::Round([math]::Min(1.0, [math]::Max(0.0, (($nameScore * 0.45) + ($tokenScore * 0.55)))), 4)
         $exactExpression = ($left.expression -and $right.expression -and (($left.expression -replace '\s+', ' ').Trim() -eq ($right.expression -replace '\s+', ' ').Trim()))
         if ($combined -ge $SimilarityThreshold -or ($exactExpression -and $tokenScore -ge 0.5)) {
             $edges.Add([pscustomobject]@{

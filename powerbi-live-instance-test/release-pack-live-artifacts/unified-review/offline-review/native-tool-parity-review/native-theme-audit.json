@@ -1,0 +1,12 @@
+{
+  "schema": "codex.powerbi.themeAudit.v1",
+  "generated": "2026-05-19T06:56:33",
+  "findingCount": 1,
+  "findings": [
+    {
+      "severity": "Info",
+      "source": "theme",
+      "message": "No theme file provided."
+    }
+  ]
+}

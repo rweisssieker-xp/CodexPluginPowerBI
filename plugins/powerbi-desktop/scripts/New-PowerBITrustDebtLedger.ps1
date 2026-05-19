@@ -60,7 +60,48 @@ function Get-DueDateForSeverity {
     (Get-Date).Date.AddDays($days).ToString('yyyy-MM-dd')
 }
 
+function Convert-LiveCatalogToTrustScore {
+    param([string]$RootPath)
+
+    $liveCatalogPath = Join-Path $RootPath 'live-metric-catalog.json'
+    if (-not (Test-Path -LiteralPath $liveCatalogPath)) { return $null }
+
+    $liveCatalog = Get-Content -Raw -LiteralPath $liveCatalogPath | ConvertFrom-Json
+    $metrics = foreach ($metric in @($liveCatalog.metrics)) {
+        $score = 100
+        $deductions = New-Object System.Collections.Generic.List[string]
+        if (@($metric.risks).Count -gt 0) { $score -= 25; $deductions.Add('DAX risk detected') }
+        if ($metric.owner -match 'TODO') { $score -= 15; $deductions.Add('Metric owner missing') }
+        if ($metric.businessDefinition -match 'TODO') { $score -= 15; $deductions.Add('Business definition missing') }
+        $score = [math]::Max(0, [int]$score)
+        [pscustomobject]@{
+            id = $metric.id
+            name = $metric.name
+            table = $metric.table
+            trustScore = $score
+            trustBand = $(if ($score -ge 80) { 'High' } elseif ($score -ge 60) { 'Medium' } else { 'Low' })
+            deductions = @($deductions.ToArray())
+            riskCount = @($metric.risks).Count
+            downstreamCount = 0
+            generatedTestCount = 0
+            releaseUse = $(if ($score -ge 80) { 'Approved candidate after business sign-off.' } elseif ($score -ge 60) { 'Use with warning and validation note.' } else { 'Do not use for executive release without remediation.' })
+        }
+    }
+    $overall = if (@($metrics).Count -gt 0) { [int]((@($metrics | Select-Object -ExpandProperty trustScore) | Measure-Object -Average).Average) } else { 0 }
+    [pscustomobject]@{
+        schema = 'codex.powerbi.kpiTrustScore.liveCatalogFallback.v1'
+        root = $liveCatalog.root
+        metricCount = @($metrics).Count
+        overallTrustScore = $overall
+        metrics = @($metrics)
+    }
+}
+
 $trust = Invoke-JsonScript -ScriptName 'New-PowerBIKpiTrustScore.ps1' -Arguments @{ Path = $Path }
+if (@($trust.metrics).Count -eq 0) {
+    $liveTrust = Convert-LiveCatalogToTrustScore -RootPath $root
+    if ($liveTrust) { $trust = $liveTrust }
+}
 $gate = Invoke-JsonScript -ScriptName 'New-PowerBITrustReleaseGate.ps1' -Arguments @{ Path = $Path }
 $fixPlan = Invoke-JsonScript -ScriptName 'New-PowerBIGuidedFixPlan.ps1' -Arguments @{ Path = $Path }
 $optionalDocs = @(Read-OptionalJsonFiles -RootPath $root)

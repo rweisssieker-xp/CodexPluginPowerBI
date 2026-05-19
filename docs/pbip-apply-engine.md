@@ -8,8 +8,10 @@ The PBIP Apply Engine is the write path for text-based Power BI project changes.
 2. Review the generated TMDL, M, JSON, or report-page output.
 3. Apply only to the intended PBIP folder with `-Apply`.
 4. Generate an apply plan.
-5. Open Power BI Desktop, refresh metadata, and validate.
-6. Run tests and release gates.
+5. Validate PBIP roundtrip readiness.
+6. Open Power BI Desktop, refresh metadata, and validate compile warnings.
+7. Confirm rollback readiness.
+8. Run tests and release gates.
 
 ## Draft Commands
 
@@ -59,6 +61,31 @@ Other apply scripts:
 
 The apply plan lists generated artifacts and gives review context for PRs.
 
+## Roundtrip Validation
+
+Roundtrip validation checks whether the PBIP folder has the structure needed to reopen, inspect, and produce a PBIX candidate after text-based edits:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Get-PowerBIPBIPStructure.ps1 `
+  -Path .\MyReport `
+  -OutputPath .\powerbi-pbip-structure.json `
+  -Json
+```
+
+The result includes `roundtripStatus`, readiness checks, relative PBIP files, and a roundtrip plan. A warning does not always block local work, but it should be resolved or documented before a release candidate is produced.
+
+## Compile Warning Plan
+
+PBIX compilation is never implicit. Generate the compile workflow and treat warnings as a plan for manual Desktop validation:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\New-PowerBIPBIXCompileWorkflow.ps1 `
+  -PbipPath .\MyReport `
+  -OutputPbix .\MyReport.pbix
+```
+
+If `pbi-tools` is available, use the generated command. Otherwise open the PBIP in Power BI Desktop, refresh metadata, inspect compile/load warnings, validate visuals, and save the PBIX explicitly.
+
 ## Rollback Guidance
 
 The plugin expects source control to be the rollback mechanism for PBIP projects. Before applying to a real project:
@@ -67,6 +94,17 @@ The plugin expects source control to be the rollback mechanism for PBIP projects
 - Apply one logical change set at a time.
 - Review generated TMDL/M/JSON before opening Desktop.
 - Run model checks after Desktop reloads the project.
+
+For release candidates, also run rollback readiness:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Test-PowerBIPBIPRollbackReadiness.ps1 `
+  -PbipPath .\MyReport `
+  -OutputPath .\powerbi-rollback-readiness.json `
+  -Json
+```
+
+Rollback readiness maps apply-manifest artifacts to files that would be removed or restored, checks for PBIP entry points and model/report folders, and records the rehearsal guidance reviewers need before approving a write path.
 
 ## PBIX Compile Workflow
 

@@ -1,0 +1,69 @@
+{
+  "schema": "codex.powerbi.pbipRollbackReadiness.v1",
+  "pbipPath": "D:\\temp\\CodexPluginPowerBI\\powerbi-live-instance-test\\live-auto-review",
+  "generated": "2026-05-19T06:54:25",
+  "status": "Blocked",
+  "checkCount": 7,
+  "blockedCount": 1,
+  "warnCount": 5,
+  "pbipFileCount": 0,
+  "semanticModelDirectoryCount": 0,
+  "reportDirectoryCount": 0,
+  "tmdlFileCount": 0,
+  "backupHintCount": 0,
+  "draftManifest": [],
+  "draftArtifactCount": 0,
+  "rollbackChecks": [
+    {
+      "id": "pbip.path",
+      "name": "PBIP path exists",
+      "status": "Pass",
+      "detail": "Rollback rehearsal requires an existing PBIP project path."
+    },
+    {
+      "id": "pbip.entrypoint",
+      "name": "PBIP entry point",
+      "status": "Blocked",
+      "detail": "A .pbip file should be present so Desktop can reopen the project after rollback."
+    },
+    {
+      "id": "pbip.semanticModel",
+      "name": "Semantic model folder",
+      "status": "Warn",
+      "detail": "A SemanticModel folder is expected for model artifact rollback checks."
+    },
+    {
+      "id": "pbip.report",
+      "name": "Report folder",
+      "status": "Warn",
+      "detail": "A Report folder improves visual/page rollback rehearsal coverage."
+    },
+    {
+      "id": "pbip.tmdl",
+      "name": "TMDL/model artifacts",
+      "status": "Warn",
+      "detail": "TMDL files make model rollback review explicit and source-reviewable."
+    },
+    {
+      "id": "draft.manifest",
+      "name": "Apply draft manifest",
+      "status": "Warn",
+      "detail": "No draft manifest found. Rehearsal can still inspect PBIP structure, but artifact-specific rollback is limited."
+    },
+    {
+      "id": "backup.hints",
+      "name": "Backup hints",
+      "status": "Warn",
+      "detail": "Backup files are optional, but their presence improves restore confidence."
+    }
+  ],
+  "rehearsalPlan": [
+    "Confirm working tree or source-control snapshot before any manual restore.",
+    "Review PBIP entry point, SemanticModel, Report, and TMDL artifacts without copying or deleting files.",
+    "Map each apply-draft manifest artifact to the file that would be removed or restored during rollback.",
+    "Open the PBIP in Power BI Desktop after rehearsal and refresh metadata.",
+    "Run semantic tests, RLS leakage drafts, and release gate checks before publish."
+  ],
+  "draftArtifactRollbackPlan": [],
+  "destructiveActionsPerformed": false
+}

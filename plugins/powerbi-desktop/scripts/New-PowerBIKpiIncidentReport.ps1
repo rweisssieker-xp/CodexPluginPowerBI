@@ -39,7 +39,34 @@ function Add-TimelineEvent {
     })
 }
 
-$catalog = Invoke-JsonScript -ScriptName 'New-PowerBIMetricCatalog.ps1' -Arguments @{ Path = $Path }
+function Get-MetricCatalogWithLiveFallback {
+    param([string]$ProjectPath, [string]$RootPath)
+
+    $catalogResult = Invoke-JsonScript -ScriptName 'New-PowerBIMetricCatalog.ps1' -Arguments @{ Path = $ProjectPath }
+    if (@($catalogResult.metrics).Count -gt 0) { return $catalogResult }
+
+    $liveCatalogPath = Join-Path $RootPath 'live-metric-catalog.json'
+    if (-not (Test-Path -LiteralPath $liveCatalogPath)) { return $catalogResult }
+
+    $liveCatalog = Get-Content -Raw -LiteralPath $liveCatalogPath | ConvertFrom-Json
+    [pscustomobject]@{
+        schema = 'codex.powerbi.metricCatalog.liveCatalogFallback.v1'
+        root = $RootPath
+        metricCount = @($liveCatalog.metrics).Count
+        metrics = @($liveCatalog.metrics | ForEach-Object {
+            [pscustomobject]@{
+                id = $_.id
+                name = $_.name
+                table = $_.table
+                source = $_.source
+                expression = $_.expression
+                risks = @($_.risks)
+            }
+        })
+    }
+}
+
+$catalog = Get-MetricCatalogWithLiveFallback -ProjectPath $Path -RootPath $root
 $trust = Invoke-JsonScript -ScriptName 'New-PowerBIKpiTrustScore.ps1' -Arguments @{ Path = $Path }
 $rootCauseGraph = Invoke-JsonScript -ScriptName 'New-PowerBIBrokenMeasureRootCauseGraph.ps1' -Arguments @{ Path = $Path }
 $flightRecorder = $null

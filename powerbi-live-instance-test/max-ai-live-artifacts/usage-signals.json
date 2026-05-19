@@ -1,0 +1,21 @@
+{
+  "schema": "codex.powerbi.usageSignals.v1",
+  "generated": "2026-05-19T06:57:42",
+  "source": "D:\\temp\\CodexPluginPowerBI\\powerbi-live-instance-test\\live-auto-review",
+  "usagePath": "",
+  "status": "EmptyImport",
+  "expectedColumns": [
+    "ReportName",
+    "DatasetName",
+    "WorkspaceName",
+    "UserPrincipalName",
+    "Activity",
+    "Operation",
+    "CreationTime",
+    "ViewCount"
+  ],
+  "fileCount": 0,
+  "signalCount": 0,
+  "reportUsage": [],
+  "signals": []
+}

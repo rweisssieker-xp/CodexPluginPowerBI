@@ -30,7 +30,7 @@ Read that sequence as a safety funnel:
 - Generate a write safety plan before any TOM/TMSL or PBIP mutation.
 - Run semantic tests from `measure-expectations.json`, or let the runner create pending placeholders.
 - Review visual intelligence against PBIP report metadata when it exists.
-- Produce the release candidate pack as the machine-readable handoff for governance and PR review.
+- Produce the release candidate pack as the machine-readable handoff for governance and PR review, including gate status, roundtrip readiness, rollback readiness, and live availability.
 
 For a full local review of a PBIP/TMDL folder or exported text model:
 

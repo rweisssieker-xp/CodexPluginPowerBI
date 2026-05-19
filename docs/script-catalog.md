@@ -12,6 +12,7 @@ Scripts live in `plugins/powerbi-desktop/scripts`. Most commands accept either a
 
 - `Test-PowerBIEnvironment.ps1`: checks local Power BI tooling such as Power BI Desktop, Tabular Editor, DAX Studio, pbi-tools, and .NET.
 - `Test-PowerBIPlugin.ps1`: runs the local plugin smoke and regression checks.
+- `Test-PowerBIDocumentationCoverage.ps1`: checks that scripts are mentioned in documentation and stale claims are absent.
 - `Get-PowerBIInventory.ps1`: discovers Power BI files in a workspace.
 - `Get-PowerBIPBIPStructure.ps1`: scores PBIP/TMDL inspectability and source-control readiness.
 - `Get-PowerBIDesktopLiveConnection.ps1`: detects running Desktop model endpoints; supports explicit `-Server`, `-Port`, and `-RequireSingle` target selection.
@@ -64,17 +65,30 @@ Scripts live in `plugins/powerbi-desktop/scripts`. Most commands accept either a
 Creates read-only AI/KI sales forecast from open Desktop model or saved extract. Supports `-AsOfDate`, `-HorizonMonths`, `-Grain CustomerProduct|HierarchyProductLine`, `-Backtest`, and `-Json`. Outputs detail, monthly summary, top-delta, backtest, and model-quality CSV files. Combines actual-to-date, learned backlog conversion, residual demand, budget/roll anchors, sparse-series fallback, and monthly reconciliation. Live `CustomerProduct` extraction can fall back to hierarchy/product-line grain when Desktop cannot materialize the fine grain.
 
 - `Invoke-PowerBIFixUntilGreenLoop.ps1`: generates iterative fix-loop guidance.
+- `Invoke-PowerBIAskModel.ps1`: answers model questions from local Power BI metadata.
+- `Invoke-PowerBIAutonomousFixAgent.ps1`: creates autonomous fix guidance and guarded remediation plans.
 - `Test-PowerBISemanticModelCopilotEvaluator.ps1`: evaluates Copilot-readiness semantics.
+- `Test-PowerBICopilotReadiness.ps1`: scores Copilot readiness from technical naming and missing semantic definitions.
+- `Optimize-PowerBICopilotModel.ps1`: proposes display names, descriptions, synonyms, and Q&A visibility.
 - `New-PowerBIDataContract.ps1`: drafts data contracts for key model artifacts.
 - `New-PowerBIFabricDeploymentRiskSimulator.ps1`: simulates deployment risk.
 - `New-PowerBIVisualIntentAnalyzer.ps1`: checks whether report visuals match metric intent.
 - `New-PowerBIBrokenMeasureRootCauseGraph.ps1`: maps likely root causes for broken measures.
 - `New-PowerBIKpiTrustTwin.ps1`: creates KPI trust-twin scoring.
+- `New-PowerBIKpiTrustScore.ps1`: scores KPI trust using DAX risks, ownership, definitions, lineage impact, and generated test coverage.
+- `New-PowerBIKpiTrustContract.ps1`: creates KPI trust contracts for ownership, validation, and release-use rules.
 - `Update-PowerBIReviewMemory.ps1`: maintains local review memory.
 - `New-PowerBINaturalLanguagePBIPAuthoring.ps1`: turns natural-language intent into PBIP draft instructions.
 - `New-PowerBIGovernanceRuleMiner.ps1`: proposes governance rules from repeated findings.
 - `New-PowerBIExplainableDaxRefactoring.ps1`: creates explainable DAX refactor options.
 - `New-PowerBIReportDecisionSimulator.ps1`: simulates report decision risk.
+- `New-PowerBIBusinessSemanticLayer.ps1`: documents business context, allowed use, prohibited use, sign-off, and warnings for metrics.
+- `New-PowerBIDaxFixSimulation.ps1`: simulates DAX fix candidates and validation queries for risky measures.
+- `New-PowerBIDecisionRiskAssistant.ps1`: links KPI trust scores to affected decisions, audiences, and required actions.
+- `New-PowerBIFlightRecorder.ps1`: records trust and release-gate history and computes trend movement.
+- `New-PowerBIMeasureLineageImpact.ps1`: ranks measure change impact from upstream and downstream dependencies.
+- `New-PowerBIModelGovernanceScorecard.ps1`: scores DAX quality, metadata, PBIP readiness, performance risk, and test coverage.
+- `New-PowerBIPerformanceAdvisor.ps1`: finds DAX performance-risk patterns and proposes benchmark guidance.
 - `New-PowerBITrustDebtLedger.ps1`: creates owner/SLA-style KPI trust debt from trust scores, release gates, and guided fixes.
 - `New-PowerBIKpiIncidentReport.ps1`: creates KPI incident evidence, root-cause, rollback, and validation dossiers.
 - `Test-PowerBIRlsLeakage.ps1`: drafts RLS leakage tests and release-gate impact from role metadata or role matrices.
@@ -141,6 +155,9 @@ Creates read-only AI/KI sales forecast from open Desktop model or saved extract.
 - `Get-PowerBIExternalToolInventory.ps1`: detects known external tools.
 - `New-PowerBIExternalToolCapabilityMatrix.ps1`: maps tool capabilities.
 - `New-PowerBITabularEditorWorkflow.ps1`, `New-PowerBIDaxStudioWorkflow.ps1`, `New-PowerBIALMToolkitWorkflow.ps1`, `New-PowerBIHelperWorkflow.ps1`, `New-PowerBIPbiToolsWorkflow.ps1`: tool-specific workflows.
+- `New-PowerBIExternalToolRegistration.ps1`: creates external-tool registration metadata.
+- `Install-PowerBIExternalTool.ps1`: installs or stages external-tool registration assets.
+- `Uninstall-PowerBIExternalTool.ps1`: removes external-tool registration assets.
 
 ## Fabric And Service Planning
 
@@ -161,3 +178,6 @@ Creates read-only AI/KI sales forecast from open Desktop model or saved extract.
 - `New-PowerBIExecutiveExplainabilityPack.ps1`: explainability package.
 - `New-PowerBITheme.ps1`: governed theme generator.
 - `New-PowerBIAIPromptPack.ps1`: context and prompt pack for Codex reviews.
+- `New-PowerBIVisualMeasureImpactMap.ps1`: maps measures to report visual metadata references and impact guidance.
+- `Test-PowerBIVisualSchema.ps1`: validates PBIP report visual JSON structure.
+- `Test-PowerBIReportRenderReadiness.ps1`: combines visual schema checks with manual render and screenshot readiness status.

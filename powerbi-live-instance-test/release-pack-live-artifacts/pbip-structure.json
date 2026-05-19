@@ -1,0 +1,79 @@
+{
+  "schema": "codex.powerbi.pbipStructure.v1",
+  "root": "D:\\temp\\CodexPluginPowerBI\\powerbi-live-instance-test\\live-auto-review",
+  "generated": "2026-05-19T06:56:51",
+  "readiness": "Limited",
+  "roundtripStatus": "Incomplete",
+  "score": 0,
+  "pbipFiles": [],
+  "pbipRelativeFiles": [],
+  "semanticModelDirectories": [],
+  "reportDirectories": [],
+  "tmdlFileCount": 0,
+  "reportMetadataFileCount": 0,
+  "modelMetadataFileCount": 0,
+  "platformMetadataFileCount": 0,
+  "diagramLayoutFileCount": 0,
+  "checks": [
+    {
+      "id": "pbip.entrypoint",
+      "name": "PBIP entry point",
+      "status": "Fail",
+      "passed": false,
+      "severity": "Fail",
+      "detail": "A .pbip file is required as the source-controlled Desktop project entry point."
+    },
+    {
+      "id": "semantic.folder",
+      "name": "Semantic model folder",
+      "status": "Fail",
+      "passed": false,
+      "severity": "Fail",
+      "detail": "A *.SemanticModel folder is expected for realistic PBIP round-trip validation."
+    },
+    {
+      "id": "semantic.definition",
+      "name": "Semantic model definition",
+      "status": "Fail",
+      "passed": false,
+      "severity": "Fail",
+      "detail": "TMDL files, model.bim, or definition.pbism should be present for model round-tripping."
+    },
+    {
+      "id": "report.folder",
+      "name": "Report folder",
+      "status": "Warn",
+      "passed": false,
+      "severity": "Warn",
+      "detail": "A *.Report folder is expected when validating report layout round-tripping."
+    },
+    {
+      "id": "report.definition",
+      "name": "Report definition",
+      "status": "Warn",
+      "passed": false,
+      "severity": "Warn",
+      "detail": "Report metadata such as definition.pbir or report.json should be present."
+    },
+    {
+      "id": "platform.metadata",
+      "name": "Platform metadata",
+      "status": "Warn",
+      "passed": false,
+      "severity": "Warn",
+      "detail": ".platform files are usually present in complete PBIP artifacts."
+    }
+  ],
+  "roundtripPlan": [
+    "Validate PBIP entry point, *.SemanticModel, semantic definition files, and *.Report metadata.",
+    "Run the trust release gate and resolve No-Go checks before producing a PBIX candidate.",
+    "Compile with pbi-tools when available, otherwise open the PBIP in Power BI Desktop and Save As PBIX.",
+    "Reopen the produced PBIX and rerun semantic tests plus live validation before any publishing step."
+  ],
+  "recommendations": [
+    "Create or export a PBIP entry point for source-controlled Desktop round-tripping.",
+    "Export the semantic model to TMDL or model.bim before requesting structural changes.",
+    "Export report metadata if layout or visual analysis is required.",
+    "Include .platform metadata from Desktop/Git export to improve PBIP completeness checks."
+  ]
+}

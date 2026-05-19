@@ -1,0 +1,15 @@
+{
+  "schema": "codex.powerbi.schemaAwareVisualPlan.v1",
+  "root": "D:\\temp\\CodexPluginPowerBI\\powerbi-live-instance-test\\live-auto-review",
+  "measure": "Total Sales",
+  "categoryColumn": "",
+  "metricFound": false,
+  "recommendation": {
+    "visualType": "KpiCard",
+    "reason": "Selected from metric naming/tags and available category column.",
+    "requiredFields": [
+      "Total Sales"
+    ]
+  },
+  "caveat": "For robust schema-aware visuals, export PBIP with column metadata and validate data types/cardinality."
+}

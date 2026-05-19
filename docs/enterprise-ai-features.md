@@ -13,6 +13,8 @@ These features extend the plugin from local model review into enterprise release
 
 Creates one release index with unified review, Max AI review, service scanner, semantic tests, model risk heatmap, and PR release comment.
 
+The pack is the enterprise handoff artifact. Its `summary.json` combines the release gate decision, open P0/P1 counts, pending semantic test count, live status, PBIP roundtrip status, rollback readiness, service scanner evidence, risk heatmap, trust debt, RLS leakage, capacity risk, and usage trust signals. Use `-SkipLive` for deterministic offline packaging; omit it when Desktop live evidence is required.
+
 ## Fabric And Service
 
 ```powershell
@@ -39,19 +41,40 @@ The TOM/TMSL plan is dry-run by default. It documents required gates: explicit e
 ```powershell
 .\plugins\powerbi-desktop\scripts\Optimize-PowerBIReportLayout.ps1 -PageName "Executive Overview" -VisualCount 5
 .\plugins\powerbi-desktop\scripts\New-PowerBIReportScreenshotUXReview.ps1 -ImagePath .\report.png
+.\plugins\powerbi-desktop\scripts\New-PowerBIVisualMeasureImpactMap.ps1 -Path .\MyModel
+.\plugins\powerbi-desktop\scripts\New-PowerBIVisualIntentAnalyzer.ps1 -Path .\MyModel
 ```
 
 The layout optimizer creates governed placement fixes for PBIP/report JSON workflows. Screenshot review gives structured UX, accessibility, and executive-fit checks.
+
+Report and visual intelligence works at two levels:
+
+- Metadata review maps measures to detected visual references and flags risky visual choices when PBIP report JSON is available.
+- Screenshot review adds visual QA evidence for spacing, hierarchy, accessibility, executive fit, and follow-up capture needs.
+
+When report metadata is unavailable, the metadata tools return a non-destructive availability status instead of invalidating the model review.
 
 ## Semantic Tests And Performance
 
 ```powershell
 .\plugins\powerbi-desktop\scripts\Invoke-PowerBISemanticTestRunner.ps1 -Path .\MyModel
+.\plugins\powerbi-desktop\scripts\Compare-PowerBIMeasureBehavior.ps1 -BaselineResultsPath .\baseline.json -CurrentResultsPath .\current.json
 .\plugins\powerbi-desktop\scripts\Import-PowerBIPerformanceTrace.ps1 -Path .\MyModel -TracePath .\trace.json
 .\plugins\powerbi-desktop\scripts\Import-PowerBIVertiPaqAnalyzer.ps1 -Path .\MyModel -VpaxPath .\model.vpax
 ```
 
 Semantic tests generate measure-level expectations when no expectation file exists. Performance and VertiPaq importers can consume exported traces, but also provide deterministic fallback guidance when exports are not available.
+
+The Semantic Test Runner reads `measure-expectations.json` when present. Each expectation can define:
+
+- `measure`: the measure under test.
+- `expected`: the expected scalar value, or an existence-only check when no expected value is supplied.
+- `tolerance`: the acceptable numeric variance.
+- `filters` or `filterContext`: the context for generated DAX.
+
+Without expectations, the runner creates generated placeholders so teams can see coverage gaps. Pending live DAX checks normally warn; add `-FailOnPending` when CI should fail until a live server or result file supplies evidence.
+
+Measure Behavior Diff compares actual outcomes rather than only metadata. It supports baseline/current result files, live baseline/current servers, or plan-only model diffs. `Passed` means current values match within tolerance, `Failed` means a value/context changed beyond tolerance or exists only on one side, and `NotAvailable` means the script produced a validation plan but did not receive comparable live or result-file evidence.
 
 ## Governance And Change Control
 

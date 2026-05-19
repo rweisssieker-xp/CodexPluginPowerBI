@@ -1,0 +1,12 @@
+{
+  "schema": "codex.powerbi.reviewMemory.v1",
+  "reviews": [
+    {
+      "generated": "2026-05-19T06:56:06",
+      "path": "D:\\temp\\CodexPluginPowerBI\\powerbi-live-instance-test\\live-auto-review",
+      "decision": "No-Go",
+      "fixCount": 1,
+      "p0Count": 1
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "schema": "codex.powerbi.liveVertiPaqAnalyzer.v1",
+  "generated": "2026-05-19T06:56:46",
+  "sectionCount": 3,
+  "sections": [
+    {
+      "name": "Tables",
+      "status": "Read",
+      "rowCount": 80,
+      "error": null
+    },
+    {
+      "name": "Columns",
+      "status": "Read",
+      "rowCount": 1466,
+      "error": null
+    },
+    {
+      "name": "Relationships",
+      "status": "Read",
+      "rowCount": 76,
+      "error": null
+    }
+  ],
+  "note": "Uses live DMVs available through Desktop XMLA. Full VertiPaq dictionary/segment detail depends on exposed DMV support."
+}

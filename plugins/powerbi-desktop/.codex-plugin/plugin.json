@@ -1,7 +1,7 @@
 {
   "name": "powerbi-desktop",
   "version": "2.0.0",
-  "description": "AI-assisted local Power BI Desktop and Fabric engineering workbench with Enterprise AI features: Fabric workspace inventory planning, Power BI Service scanner, gated TOM/TMSL write plans, report layout auto-fix plans, semantic test runner, performance trace import, VertiPaq import, screenshot UX review, governance policy packs, AI change journal, model risk heatmap, release candidate pack, 12-USP Max AI review, PBIP Apply Engine, native BPA, model compare, and live DMV analysis.",
+  "description": "AI-assisted local Power BI Desktop and Fabric engineering workbench with Enterprise AI release engineering, 20-USP Max AI review, live safety planning, semantic tests, measure behavior diff, governance packs, PBIP validation, visual intelligence, PBIP Apply Engine, native BPA, model compare, and live DMV analysis.",
   "author": {
     "name": "Reiner Weisssieker"
   },
@@ -20,7 +20,7 @@
   "interface": {
     "displayName": "Power BI Desktop",
     "shortDescription": "AI workbench for local Power BI Desktop projects.",
-    "longDescription": "Adds an AI-assisted Power BI Desktop workbench for local projects and open Desktop sessions: Enterprise AI release candidate packs, Fabric workspace inventory planning, Power BI Service scanner, gated TOM/TMSL write plans, report layout auto-fix plans, semantic test runner, performance trace import, VertiPaq import, screenshot UX review, governance policy packs, AI change journal, model risk heatmap, PBIP Apply Engine for measures, calculated columns, Power Query, generic TMDL, and report pages; native BPA rules, native model compare, native model documentation, DAX performance and VertiPaq-style heuristics, live DMV analysis, report render-readiness checks, calculation group drafts, relationship drafts, RLS role drafts, Power Query/M drafts, service integration planning, incremental refresh drafts, aggregation drafts, schema-aware visual planning, report layout checks, theme audit, PBIP source-control planning, PBIP report page and visual authoring drafts, PBIP-to-PBIX compile workflows, optional external-tool awareness, live XMLA/ADOMD model discovery, PBIX/PBIT/PBIP inventory, PBIP structure analysis, configurable governance rules, dependency graphs, AI prompt packs, business semantic layers, KPI trust scoring, decision-risk analysis, release gates, guided fixes, semantic diffs, measure lineage impact, generated DAX test plans, report narrative and UX critique, executive explainability, governance scorecards, Copilot readiness and optimization, release checklists, semantic metric catalogs, report UX blueprints, and safe PBIP/TMDL refactoring guidance.",
+    "longDescription": "Adds an AI-assisted Power BI Desktop workbench for local projects and open Desktop sessions: 20-USP Max AI review with 21 artifacts, Enterprise AI release candidate packs, Fabric workspace inventory planning, Power BI Service scanner, gated TOM/TMSL write plans, report layout auto-fix plans, semantic test runner, measure behavior diff, live safety planning, live-vs-repo drift analysis, PBIP roundtrip validation, enterprise governance packs, report/visual intelligence, guided fix loops, performance trace import, VertiPaq import, screenshot UX review, AI change journal, model risk heatmap, PBIP Apply Engine for measures, calculated columns, Power Query, generic TMDL, and report pages; native BPA rules, native model compare, native model documentation, DAX performance and VertiPaq-style heuristics, live DMV analysis, report render-readiness checks, calculation group drafts, relationship drafts, RLS role drafts, Power Query/M drafts, service integration planning, incremental refresh drafts, aggregation drafts, schema-aware visual planning, report layout checks, theme audit, PBIP source-control planning, PBIP report page and visual authoring drafts, PBIP-to-PBIX compile workflows, optional external-tool awareness, live XMLA/ADOMD model discovery, PBIX/PBIT/PBIP inventory, PBIP structure analysis, configurable governance rules, dependency graphs, AI prompt packs, business semantic layers, KPI trust scoring, decision-risk analysis, release gates, guided fixes, semantic diffs, measure lineage impact, generated DAX test plans, report narrative and UX critique, executive explainability, governance scorecards, Copilot readiness and optimization, release checklists, semantic metric catalogs, report UX blueprints, and safe PBIP/TMDL refactoring guidance.",
     "developerName": "Reiner Weisssieker",
     "category": "Productivity",
     "capabilities": [
@@ -119,6 +119,13 @@
       "Gated TOM Write Plans",
       "Report Layout Auto Fix",
       "Semantic Test Runner",
+      "Measure Behavior Diff",
+      "Live Safety Layer",
+      "Live vs Repo Drift",
+      "PBIP Roundtrip Validation",
+      "Enterprise Governance Pack",
+      "Report Visual Intelligence",
+      "Guided Fix Loop",
       "Performance Trace Import",
       "VertiPaq Import",
       "Screenshot UX Review",
@@ -161,7 +168,10 @@
       "Apply safe PBIP drafts for measures, columns, Power Query, TMDL, and report pages.",
       "Run a unified review that combines offline project review, live Desktop review, External Tool registration, and golden baseline checks.",
       "Run the AI/KI Power BI engineering workflow with autonomous fixes, KPI trust contracts, live-vs-repo reconciliation, and Fabric readiness planning.",
-      "Run the Max AI review with all 12 AI/KI USP workflows for Power BI Desktop and Fabric engineering.",
+      "Run the Max AI review with 21 artifacts across all 20 AI/KI USP workflows for Power BI Desktop and Fabric engineering.",
+      "Resolve the current live Power BI Desktop target and create a live safety plan before changing anything.",
+      "Run semantic tests with pending checks treated as failures, then compare measure behavior for release risk.",
+      "Analyze report and visual intent, validate PBIP roundtrip readiness, and build a guided fix loop.",
       "Create an Enterprise Power BI release candidate pack with service scanner, semantic tests, model risk heatmap, and PR comment.",
       "Create a Fabric workspace inventory plan and compare service governance risks with the local PBIP model.",
       "Create a gated TOM/TMSL write plan with dry-run, backup, diff, and rollback gates.",

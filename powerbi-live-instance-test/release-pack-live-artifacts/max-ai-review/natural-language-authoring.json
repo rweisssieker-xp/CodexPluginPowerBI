@@ -1,0 +1,76 @@
+{
+  "schema": "codex.powerbi.naturalLanguagePbipAuthoring.v1",
+  "intent": "Create an executive overview with the most important risk and trust KPIs.",
+  "selectedMeasures": [],
+  "pageDraft": {
+    "schema": "codex.powerbi.reportPageDraft.v1",
+    "pageId": "page_49af480d110d",
+    "pageName": "AI Authored Page",
+    "displayName": "AI Authored Page",
+    "pageSize": {
+      "width": 1280,
+      "height": 720
+    },
+    "visuals": [
+      {
+        "schema": "codex.powerbi.visualDraft.v1",
+        "visualId": "visual_5c4721b16584",
+        "visualType": "KpiCard",
+        "title": "Overview",
+        "measure": "",
+        "category": "",
+        "layout": {
+          "x": 32,
+          "y": 32,
+          "width": 1216,
+          "height": 656
+        },
+        "pbipDraft": {
+          "name": "visual_5c4721b16584",
+          "displayName": "Overview",
+          "visualType": "KpiCard",
+          "projections": {
+            "Values": [],
+            "Category": []
+          },
+          "position": {
+            "x": 32,
+            "y": 32,
+            "width": 1216,
+            "height": 656
+          }
+        },
+        "safety": "PBIP report JSON draft. Validate in Power BI Desktop before publishing."
+      }
+    ],
+    "pbipDraft": {
+      "name": "page_49af480d110d",
+      "displayName": "AI Authored Page",
+      "width": 1280,
+      "height": 720,
+      "visuals": [
+        {
+          "name": "visual_5c4721b16584",
+          "displayName": "Overview",
+          "visualType": "KpiCard",
+          "projections": {
+            "Values": [],
+            "Category": []
+          },
+          "position": {
+            "x": 32,
+            "y": 32,
+            "width": 1216,
+            "height": 656
+          }
+        }
+      ]
+    },
+    "safety": "Draft only. Apply to PBIP with Add-PowerBIPBIPReportPage.ps1 -Apply, then validate in Power BI Desktop."
+  },
+  "requiredFollowUp": [
+    "Validate measure semantics",
+    "Apply with Add-PowerBIPBIPReportPage.ps1",
+    "Run report layout checks"
+  ]
+}

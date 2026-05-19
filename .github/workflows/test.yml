@@ -36,6 +36,10 @@ jobs:
           }
           Invoke-Pester ./plugins/powerbi-desktop/tests/pester
 
+      - name: Run documentation coverage gate
+        shell: pwsh
+        run: ./plugins/powerbi-desktop/scripts/Test-PowerBIDocumentationCoverage.ps1
+
       - name: Run PSScriptAnalyzer when available
         shell: pwsh
         run: |

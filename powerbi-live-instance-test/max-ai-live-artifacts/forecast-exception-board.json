@@ -1,0 +1,15 @@
+{
+  "schema": "codex.powerbi.forecastExceptionBoard.v1",
+  "root": "D:\\temp\\CodexPluginPowerBI\\powerbi-live-instance-test\\live-auto-review",
+  "forecastDirectory": "D:\\temp\\CodexPluginPowerBI\\powerbi-live-instance-test\\live-auto-review",
+  "generated": "2026-05-19T06:57:42",
+  "status": "NeedsData",
+  "availableFiles": [],
+  "missingFiles": [
+    "ai-forecast-summary.csv",
+    "ai-forecast-top-deltas.csv",
+    "ai-forecast-model-quality.csv"
+  ],
+  "exceptionCount": 0,
+  "exceptions": []
+}

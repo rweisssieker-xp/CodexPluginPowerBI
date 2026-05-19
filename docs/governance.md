@@ -36,6 +36,51 @@ Golden baselines protect the sample model from accidental semantic regressions i
 
 The release gate creates a Go/Warn/No-Go decision artifact based on model, trust, and risk signals.
 
+## Gate Model
+
+The gate model is intentionally explicit:
+
+- P0 guided fixes are release blockers when `blockOnP0` or `blockOnOpenP0` is enabled.
+- P1 guided fixes create a Warn decision when `warnOnP1` or `warnOnOpenP1` is enabled.
+- Pending semantic tests create a warning by default. They become No-Go when `blockOnPendingSemanticTests` is enabled or when the semantic runner is executed with `-FailOnPending`.
+- Live validation can be optional or blocking. `warnOnLiveUnavailable` records missing Desktop/XMLA evidence as Warn; `blockOnLiveUnavailable` or `-TreatLiveUnavailableAsNoGo` promotes that condition to No-Go.
+- Machine-readable JSON is required by the default trust rules so CI, PR comments, and release candidate packs can consume the same evidence as humans.
+
+The main switch locations are:
+
+- `plugins/powerbi-desktop/rules/powerbi-trust-rules.json`
+- `plugins/powerbi-desktop/rules/powerbi-governance-rules.json`
+
+Typical CI-oriented invocation:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\New-PowerBITrustReleaseGate.ps1 `
+  -Path .\plugins\powerbi-desktop\examples\sample-model `
+  -CheckLiveAvailability `
+  -OutputPath .\powerbi-trust-release-gate.json `
+  -Json
+```
+
+Use `-TreatLiveUnavailableAsNoGo` only when the release policy requires live Desktop/XMLA evidence for every candidate.
+
+## Machine-Readable Results
+
+Governance artifacts should be written as JSON when another process will make a decision from them:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBISemanticTestRunner.ps1 `
+  -Path .\plugins\powerbi-desktop\examples\sample-model `
+  -OutputPath .\semantic-tests.json `
+  -Json
+
+.\plugins\powerbi-desktop\scripts\New-PowerBIReleaseCandidatePack.ps1 `
+  -Path .\plugins\powerbi-desktop\examples\sample-model `
+  -OutputDirectory .\powerbi-release-candidate-pack `
+  -SkipLive
+```
+
+The release candidate pack summary carries the gate decision, fail/warn counts, open P0/P1 counts, pending semantic test count, live status, PBIP roundtrip status, and rollback readiness.
+
 ## Data Contracts
 
 ```powershell

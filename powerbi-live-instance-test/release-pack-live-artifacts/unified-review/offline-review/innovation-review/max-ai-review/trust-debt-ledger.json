@@ -1,0 +1,2586 @@
+{
+  "schema": "codex.powerbi.trustDebtLedger.v1",
+  "root": "D:\\temp\\CodexPluginPowerBI\\powerbi-live-instance-test\\live-auto-review",
+  "generated": "2026-05-19T06:56:07",
+  "overallTrustScore": 68,
+  "releaseDecision": "No-Go",
+  "debtItemCount": 170,
+  "releaseBlockerCount": 12,
+  "optionalEvidence": [],
+  "debtItems": [
+    {
+      "metric": "_Cyclical_Pattern_Detected",
+      "trustScore": 45,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-05-26",
+      "recurrenceHint": "Review whenever DAX expression changes.",
+      "releaseBlocker": true,
+      "recommendedAction": "Do not use for executive release without remediation.",
+      "severity": "High",
+      "sourceSignals": [
+        "trustScore:45/Low",
+        "deduction:DAX risk detected",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing",
+        "releaseGate:blockerCandidate"
+      ]
+    },
+    {
+      "metric": "_Holiday_Impact_Index",
+      "trustScore": 45,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-05-26",
+      "recurrenceHint": "Review whenever DAX expression changes.",
+      "releaseBlocker": true,
+      "recommendedAction": "Do not use for executive release without remediation.",
+      "severity": "High",
+      "sourceSignals": [
+        "trustScore:45/Low",
+        "deduction:DAX risk detected",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing",
+        "releaseGate:blockerCandidate"
+      ]
+    },
+    {
+      "metric": "_Overdue_Tickets_Count",
+      "trustScore": 45,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-05-26",
+      "recurrenceHint": "Review whenever DAX expression changes.",
+      "releaseBlocker": true,
+      "recommendedAction": "Do not use for executive release without remediation.",
+      "severity": "High",
+      "sourceSignals": [
+        "trustScore:45/Low",
+        "deduction:DAX risk detected",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing",
+        "releaseGate:blockerCandidate"
+      ]
+    },
+    {
+      "metric": "_Potential_SLA_Breach_24h",
+      "trustScore": 45,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-05-26",
+      "recurrenceHint": "Review whenever DAX expression changes.",
+      "releaseBlocker": true,
+      "recommendedAction": "Do not use for executive release without remediation.",
+      "severity": "High",
+      "sourceSignals": [
+        "trustScore:45/Low",
+        "deduction:DAX risk detected",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing",
+        "releaseGate:blockerCandidate"
+      ]
+    },
+    {
+      "metric": "_Quarter_Performance_Trend",
+      "trustScore": 45,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-05-26",
+      "recurrenceHint": "Review whenever DAX expression changes.",
+      "releaseBlocker": true,
+      "recommendedAction": "Do not use for executive release without remediation.",
+      "severity": "High",
+      "sourceSignals": [
+        "trustScore:45/Low",
+        "deduction:DAX risk detected",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing",
+        "releaseGate:blockerCandidate"
+      ]
+    },
+    {
+      "metric": "_SRA_Overdue Open Tickets",
+      "trustScore": 45,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-05-26",
+      "recurrenceHint": "Review whenever DAX expression changes.",
+      "releaseBlocker": true,
+      "recommendedAction": "Do not use for executive release without remediation.",
+      "severity": "High",
+      "sourceSignals": [
+        "trustScore:45/Low",
+        "deduction:DAX risk detected",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing",
+        "releaseGate:blockerCandidate"
+      ]
+    },
+    {
+      "metric": "_SRA_SLA Due Next 24h",
+      "trustScore": 45,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-05-26",
+      "recurrenceHint": "Review whenever DAX expression changes.",
+      "releaseBlocker": true,
+      "recommendedAction": "Do not use for executive release without remediation.",
+      "severity": "High",
+      "sourceSignals": [
+        "trustScore:45/Low",
+        "deduction:DAX risk detected",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing",
+        "releaseGate:blockerCandidate"
+      ]
+    },
+    {
+      "metric": "_SRA_Ticket Recommended Action",
+      "trustScore": 45,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-05-26",
+      "recurrenceHint": "Review whenever DAX expression changes.",
+      "releaseBlocker": true,
+      "recommendedAction": "Do not use for executive release without remediation.",
+      "severity": "High",
+      "sourceSignals": [
+        "trustScore:45/Low",
+        "deduction:DAX risk detected",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing",
+        "releaseGate:blockerCandidate"
+      ]
+    },
+    {
+      "metric": "_SRA_Ticket Risk Score",
+      "trustScore": 45,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-05-26",
+      "recurrenceHint": "Review whenever DAX expression changes.",
+      "releaseBlocker": true,
+      "recommendedAction": "Do not use for executive release without remediation.",
+      "severity": "High",
+      "sourceSignals": [
+        "trustScore:45/Low",
+        "deduction:DAX risk detected",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing",
+        "releaseGate:blockerCandidate"
+      ]
+    },
+    {
+      "metric": "_SRA_Top Driver Theme",
+      "trustScore": 45,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-05-26",
+      "recurrenceHint": "Review whenever DAX expression changes.",
+      "releaseBlocker": true,
+      "recommendedAction": "Do not use for executive release without remediation.",
+      "severity": "High",
+      "sourceSignals": [
+        "trustScore:45/Low",
+        "deduction:DAX risk detected",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing",
+        "releaseGate:blockerCandidate"
+      ]
+    },
+    {
+      "metric": "_Status_Date_Mismatch_Count",
+      "trustScore": 45,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-05-26",
+      "recurrenceHint": "Review whenever DAX expression changes.",
+      "releaseBlocker": true,
+      "recommendedAction": "Do not use for executive release without remediation.",
+      "severity": "High",
+      "sourceSignals": [
+        "trustScore:45/Low",
+        "deduction:DAX risk detected",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing",
+        "releaseGate:blockerCandidate"
+      ]
+    },
+    {
+      "metric": "Gleitender Durchschnitt für \"_CountIncidents\"",
+      "trustScore": 45,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-05-26",
+      "recurrenceHint": "Review whenever DAX expression changes.",
+      "releaseBlocker": true,
+      "recommendedAction": "Do not use for executive release without remediation.",
+      "severity": "High",
+      "sourceSignals": [
+        "trustScore:45/Low",
+        "deduction:DAX risk detected",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing",
+        "releaseGate:blockerCandidate"
+      ]
+    },
+    {
+      "metric": "_Agent_Burnout_Risk",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Agent_Fair_Performance_Rank",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Agent_Idle_Time_Hours",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Agent_Performance_Rank",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Agent_Skill_Gap",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Agents_Needing_Training",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Anomaly_High_Resolution_Time",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_AVG TTR",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_AVG TTS",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Avg_Cases_Per_Agent",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Avg_Days_Open",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_AVGCase Age Hours",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_AVGX _CountIncidentsPerDay",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Backlog_Volume",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Best_Practice_Position",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Break_Even_SLA_Improvement",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Capacity_Planning_Agents_Needed",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Capacity_Simulation_SLA_Improvement",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Case Age Hours",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Channel_CSAT_Differential",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Channel_Performance_Email",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Churn_Risk_Indicator",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Compliance_Audit_Ready_Index",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Context_Switching_Cost",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Cost_Avoidance_Prevention",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Cost_Per_Resolution",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Cost_Savings_Potential",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_CountDescription",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_CountIncidents",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_CountIncidents gesamt für statuscodename",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_CountIncidents MTD",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_CountIncidents YoY%",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_CountIncidents YTD",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Critical_Alerts_Count",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_CSAT_Score",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Custom_SLA_Variance",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Customer_Cluster_Segment",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Customer_Effort_Score",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Customer_Engagement_Quality",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Customer_Lifetime_Value",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Customer_Profitability_Index",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Customer_Sentiment_Score",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Customer_Support_Burden_Score",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Customer_Total_Cost_Ownership",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Daily_Spike_Detection",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Data_Privacy_Compliance",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Data_Quality_Score",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Documentation_Completeness",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_DurationTicket",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Effort_Reduction_Opportunity",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Escalated_Tickets_Count",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Escalation_Authority_Compliance",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Escalation_Prevention_ROI",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Escalation_Probability",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Escalation_Rate",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Estimated_Days_to_Clear_Backlog",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Executive_Health_Score",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_FCR_Improvement_Opportunity",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_First_Fix_Quality_Rate",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_First_Response_Compliance",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_First_Response_SLA_Met",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_FirstContactResolutionRate_FCR",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Handoff_Success_Rate",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Hidden_Cost_Poor_Service",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_High_Priority_Backlog_Percent",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Improvement_Efficiency_ROI",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Incidents_Prio",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Individual_Churn_Propensity",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Individual_SLA_Breach_Risk",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Industry_Benchmark_Index",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_KB_Self_Service_Rate",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_KB_Usage_Effectiveness",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Low_Month_Volume",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Macro_Script_Utilization_Level",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Median_Resolution_Hours",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Missing_Description_Rate",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Missing_Resolution_Notes_Rate",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Month_over_Month_Change",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Multi_Touch_Channel_Attribution",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Open_Incidents",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Open_vs_Closed_Ratio",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Optimal_Assignment_Ratio",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Peak_Business_Hours_Concentration",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Peak_Month_Volume",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Performance_Percentile_Rank",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Performance_Trend_Signal",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Preferred_Channel_Detection",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Problem_Pattern_Concentration",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Queue_Wait_Time_Days",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Recurring_Issue_Ratio",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Repeat_Customer_Rate",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Resolution_Time_StdDev",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Resolution_Time_Trend",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Revenue_Impact_VIP_Score",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Root_Cause_Correlation_Score",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Root_Cause_Identification_Rate",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Seasonal_Root_Cause_Variance",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Seasonality_Index",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Service_Health_Status",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Service_Profitability_Ratio",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Service_Quality_Index",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SLA_Achievement_Trajectory",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SLA_Breach_Count",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SLA_Breach_Factor_Analysis",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SLA_Breach_Forecast_24h",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SLA_Compliance",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SLA_Conflict",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SLA_Improvement_Opportunity",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SLA_ROI",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SLA_Violation_Severity_Index",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SRA_Action Board Summary",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SRA_Action Queue Size",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SRA_Action Required Tickets",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SRA_Assign Owner Tickets",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SRA_Average Driver Count",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SRA_Average Risk Score",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SRA_Critical Or Action Share",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SRA_Critical Share",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SRA_Low Risk Tickets",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SRA_Multi Driver Tickets",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SRA_Next Best Action Summary",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SRA_Open Critical Tickets",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SRA_Owner Load Risk Score",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SRA_Prioritize SLA Risk Tickets",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SRA_Resolve Overdue SLA Tickets",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SRA_Review Escalation Tickets",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SRA_Risk Band Sort",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SRA_Send First Response Tickets",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SRA_Service Health Score",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SRA_Service Health Status",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SRA_SLA Exposure Share",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SRA_Ticket Risk Band",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SRA_Tickets Without Owner",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SRA_Top Risk Customer",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SRA_Top Risk Owner",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SRA_Watch Tickets",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_SumUsedHours",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Support_Efficiency_Index",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Team_Productivity_Index",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Team_Stress_Index",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Ticket_Rework_Rate",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Ticket_Type_TTR_Prediction",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Ticket_Velocity",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Tickets_0_1Day",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Tickets_1_3Days",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Tickets_3_7Days",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Tickets_Over_7Days",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Top_Agent_Case_Load",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Top_Priority_Ticket_Count",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Top_Problem_Categories_Pareto",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Trend_Acceleration_Rate",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_TTR_Prediction_Confidence",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Unassigned_Tickets",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Volume_Forecast_12Weeks",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Volume_Forecast_4Weeks",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Volume_vs_Baseline_Index",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "_Weekly_Service_Risk",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    },
+    {
+      "metric": "AVG _CountIncidents_Date",
+      "trustScore": 70,
+      "ownerStatus": "Missing",
+      "dueDate": "2026-06-02",
+      "recurrenceHint": "Review during normal release readiness.",
+      "releaseBlocker": false,
+      "recommendedAction": "Use with warning and validation note.",
+      "severity": "Medium",
+      "sourceSignals": [
+        "trustScore:70/Medium",
+        "deduction:Metric owner missing",
+        "deduction:Business definition missing"
+      ]
+    }
+  ]
+}

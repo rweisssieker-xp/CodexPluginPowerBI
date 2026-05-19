@@ -1,0 +1,12 @@
+{
+  "schema": "codex.powerbi.visualSchemaCheck.v1",
+  "generated": "2026-05-19T06:56:33",
+  "findingCount": 1,
+  "findings": [
+    {
+      "severity": "Info",
+      "source": "PBIP report",
+      "message": "No PBIP report visual JSON found. Export report to PBIP for strict schema validation."
+    }
+  ]
+}

@@ -2,6 +2,17 @@
 
 This page describes practical end-to-end flows.
 
+The current USP stack is organized around eight repeatable workflows:
+
+1. Unified review package.
+2. Live target resolution and live-vs-repo reconciliation.
+3. Semantic test runner.
+4. Measure behavior diff.
+5. PBIP Apply Engine with roundtrip and rollback checks.
+6. Governance release gate.
+7. Report and visual intelligence.
+8. Release candidate pack for enterprise handoff.
+
 ## 1. First Local Health Check
 
 Run this after cloning or changing plugin scripts:
@@ -43,16 +54,27 @@ Use the unified review when you want one navigable package.
 
 Expected outputs include an index, model summary, scans, native parity outputs, external-tool context, and live outputs when Desktop is available.
 
-## 4. Live Desktop Review
+## 4. Live Target Resolution And Reconciliation
 
 Open Power BI Desktop with the model first. Then run:
 
 ```powershell
+.\plugins\powerbi-desktop\scripts\Resolve-PowerBILiveTarget.ps1 -Json
 .\plugins\powerbi-desktop\scripts\Get-PowerBIDesktopLiveConnection.ps1
 .\plugins\powerbi-desktop\scripts\Invoke-PowerBILiveAutoReview.ps1 -OutputDirectory .\powerbi-live-auto-review
 ```
 
-Use live mode when you need validation against the currently open Desktop model, not just source files.
+Use live mode when you need validation against the currently open Desktop model, not just source files. `Resolve-PowerBILiveTarget.ps1` makes target selection explicit and returns `TargetResolved`, `NoLiveTarget`, or `AmbiguousLiveTarget` before downstream scripts use a Desktop endpoint.
+
+For source-control drift checks:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Compare-PowerBILiveRepoModel.ps1 `
+  -Path .\plugins\powerbi-desktop\examples\sample-model `
+  -Json
+```
+
+The live-vs-repo status is `LiveUnavailable`, `NoDrift`, or `DriftDetected`. `LiveUnavailable` means the offline review is still valid, but no live evidence was attached.
 
 ## 5. Max AI/KI Review
 
@@ -66,7 +88,31 @@ Use this when you want the full USP package.
 
 This package focuses on fix loops, Copilot readiness, data contracts, Fabric risk, visual intent, root-cause graphs, KPI trust, review memory, natural-language PBIP authoring, governance rule mining, explainable refactoring, and decision simulation.
 
-## 6. PBIP Draft And Apply
+## 6. Semantic Tests And Measure Behavior Diff
+
+Run semantic tests before release gates:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBISemanticTestRunner.ps1 `
+  -Path .\plugins\powerbi-desktop\examples\sample-model `
+  -ExpectationsPath .\measure-expectations.json `
+  -Json
+```
+
+Expectation entries carry `expected`, `tolerance`, and optional filter context. Add `-FailOnPending` when pending live DAX validation should fail CI instead of remaining a warning.
+
+Compare behavior across two result files:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Compare-PowerBIMeasureBehavior.ps1 `
+  -BaselineResultsPath .\baseline-semantic-tests.json `
+  -CurrentResultsPath .\current-semantic-tests.json `
+  -OutputPath .\measure-behavior-diff.md
+```
+
+Use behavior diff after DAX changes, PBIP apply runs, or live-server comparisons. A plan-only result is `NotAvailable` until result files or live servers are supplied.
+
+## 7. PBIP Draft And Apply
 
 Generate a draft first:
 
@@ -96,7 +142,19 @@ Summarize applied artifacts:
   -OutputPath .\powerbi-apply-plan\apply-plan.json
 ```
 
-## 7. Release Gate
+Validate roundtrip and rollback readiness before handing a PBIX candidate to reviewers:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Get-PowerBIPBIPStructure.ps1 `
+  -Path .\MyReport `
+  -Json
+
+.\plugins\powerbi-desktop\scripts\Test-PowerBIPBIPRollbackReadiness.ps1 `
+  -PbipPath .\MyReport `
+  -Json
+```
+
+## 8. Governance Release Gate
 
 Run a trust gate before merging model changes:
 
@@ -107,6 +165,7 @@ Run a trust gate before merging model changes:
 
 .\plugins\powerbi-desktop\scripts\New-PowerBITrustReleaseGate.ps1 `
   -Path .\plugins\powerbi-desktop\examples\sample-model `
+  -CheckLiveAvailability `
   -OutputPath .\powerbi-trust-release-gate.md
 
 .\plugins\powerbi-desktop\scripts\New-PowerBIPRReleaseComment.ps1 `
@@ -114,7 +173,29 @@ Run a trust gate before merging model changes:
   -OutputPath .\powerbi-pr-comment.md
 ```
 
-## 8. Fabric Readiness
+The gate evaluates open P0/P1 guided fixes, pending semantic tests, live validation availability, governance score, and trust signals. Use JSON output when CI or PR automation needs machine-readable decisions.
+
+## 9. Report And Visual Intelligence
+
+Use report intelligence when PBIP report metadata or screenshots are available:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\New-PowerBIVisualMeasureImpactMap.ps1 `
+  -Path .\MyReport `
+  -OutputPath .\powerbi-visual-impact.md
+
+.\plugins\powerbi-desktop\scripts\New-PowerBIVisualIntentAnalyzer.ps1 `
+  -Path .\MyReport `
+  -OutputPath .\powerbi-visual-intent.md
+
+.\plugins\powerbi-desktop\scripts\New-PowerBIReportScreenshotUXReview.ps1 `
+  -ImagePath .\report.png `
+  -OutputPath .\powerbi-screenshot-ux.md
+```
+
+This maps measures to visual metadata, flags risky visual patterns, and adds UX/accessibility review evidence when screenshots are attached.
+
+## 10. Fabric Readiness
 
 Use this before moving a Desktop-centered model toward Fabric operations:
 
@@ -130,7 +211,7 @@ Use this before moving a Desktop-centered model toward Fabric operations:
 
 This produces planning artifacts only. Tenant deployment stays explicit and manual.
 
-## 9. Enterprise Release Candidate
+## 11. Enterprise Release Candidate
 
 Use this when a model is close to release and you need one package for engineering, governance, and PR review.
 

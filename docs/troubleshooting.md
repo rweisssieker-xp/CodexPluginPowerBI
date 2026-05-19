@@ -10,6 +10,12 @@ Wait until the report is fully loaded and rerun:
 
 If the endpoint is still missing, close and reopen the report. Live mode depends on Desktop exposing the local model endpoint.
 
+Status guidance:
+
+- `NoLiveTarget`: no listening local Desktop model endpoint was found. Open a PBIX/PBIP in Power BI Desktop, wait for load completion, and rerun discovery.
+- `AmbiguousLiveTarget`: more than one compatible local endpoint is visible. Close extra Desktop windows or pass the intended server and database values to the live script that supports explicit targeting.
+- `LiveUnavailable`: the workflow attempted live validation but could not connect or query. Treat live-only checks as unavailable, then rerun after Desktop, ADOMD, and permissions are healthy.
+
 ## ADOMD Or Provider Errors
 
 Some environments load ADOMD more reliably in Windows PowerShell 5.1 than in PowerShell 7.
@@ -74,9 +80,38 @@ Validate the expression in DAX Studio or simplify the query:
 
 If the simple query works, the connection is healthy and the issue is in the DAX or model context.
 
+## Semantic Tests Are Pending
+
+`PendingLiveDax` means the semantic expectation was generated or discovered, but could not be validated against a live model. This is expected in offline-only CI or when Desktop/ADOMD is unavailable.
+
+For release gates, rerun with live Desktop available and use `-FailOnPending` so unresolved live DAX checks fail the gate:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBISemanticTestRunner.ps1 `
+  -Path .\plugins\powerbi-desktop\examples\sample-model `
+  -FailOnPending
+```
+
 ## Offline Review Finds Too Little
 
 The plugin can only inspect available files. For binary PBIX-only reports, export to PBIP/TMDL or use live Desktop mode.
+
+## PBIP Roundtrip Is Incomplete
+
+PBIP-to-PBIX workflows require enough PBIP structure for Desktop or `pbi-tools` to round-trip safely. If `New-PowerBIPBIXCompileWorkflow.ps1` warns that `pbi-tools` is missing or the PBIP roundtrip status is incomplete, do not treat automated compile as ready.
+
+Run:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Get-PowerBIPBIPStructure.ps1 -Path .\MyReport
+.\plugins\powerbi-desktop\scripts\New-PowerBIPBIXCompileWorkflow.ps1 -PbipPath .\MyReport
+```
+
+Install `pbi-tools` only when automated compile is required. Otherwise open the PBIP in Power BI Desktop, validate it manually, and save the release candidate PBIX from Desktop.
+
+## Screenshot Review Needs Input
+
+`New-PowerBIReportScreenshotUXReview.ps1` returns `NotAvailable` with `needsInput` when the screenshot path is missing or cannot be read. Export or capture a report page screenshot and rerun the review with a valid `-ImagePath`.
 
 ## Fabric Scripts Do Not Publish
 

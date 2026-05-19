@@ -1,0 +1,89 @@
+{
+  "schema": "codex.powerbi.trustReleaseGate.v2",
+  "root": "D:\\temp\\CodexPluginPowerBI\\powerbi-live-instance-test\\live-auto-review",
+  "generated": "2026-05-19T06:56:52",
+  "decision": "No-Go",
+  "machineReadable": true,
+  "failCount": 2,
+  "warnCount": 2,
+  "checkCount": 8,
+  "openP0Count": 1,
+  "openP1Count": 0,
+  "pendingSemanticTestCount": 0,
+  "liveStatus": "NotChecked",
+  "checks": [
+    {
+      "id": "kpi.trustScore",
+      "name": "KPI trust score",
+      "status": "Fail",
+      "value": 0,
+      "detail": "Overall KPI trust score.",
+      "gateImpact": "No-Go when below warn threshold"
+    },
+    {
+      "id": "kpi.lowTrustCount",
+      "name": "Low-trust KPI count",
+      "status": "Pass",
+      "value": 0,
+      "detail": "KPIs below trust score 60.",
+      "gateImpact": "No-Go"
+    },
+    {
+      "id": "fixes.openP0",
+      "name": "Open P0 guided fixes",
+      "status": "Fail",
+      "value": 1,
+      "detail": "Open P0 fixes block release.",
+      "gateImpact": "No-Go"
+    },
+    {
+      "id": "fixes.openP1",
+      "name": "Open P1 guided fixes",
+      "status": "Pass",
+      "value": 0,
+      "detail": "Open P1 fixes require explicit caveat or waiver.",
+      "gateImpact": "Warn"
+    },
+    {
+      "id": "governance.score",
+      "name": "Governance score",
+      "status": "Warn",
+      "value": 57,
+      "detail": "Model governance scorecard result.",
+      "gateImpact": "Warn"
+    },
+    {
+      "id": "copilot.readiness",
+      "name": "Copilot readiness",
+      "status": "Pass",
+      "value": 100,
+      "detail": "Copilot readiness score.",
+      "gateImpact": "Warn"
+    },
+    {
+      "id": "semantic.pendingTests",
+      "name": "Pending semantic tests",
+      "status": "Pass",
+      "value": 0,
+      "detail": "Generated, not-run, or live-DAX-pending semantic tests.",
+      "gateImpact": "Warn"
+    },
+    {
+      "id": "live.availability",
+      "name": "Live validation availability",
+      "status": "Warn",
+      "value": "NotChecked",
+      "detail": "Live validation was not requested.",
+      "gateImpact": "Warn"
+    }
+  ],
+  "blockingReasons": [
+    "kpi.trustScore: 0",
+    "fixes.openP0: 1"
+  ],
+  "warnings": [
+    "governance.score: 57",
+    "live.availability: NotChecked"
+  ],
+  "releaseNote": "Block publish until failing checks are remediated."
+}

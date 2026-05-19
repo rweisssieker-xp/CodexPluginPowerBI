@@ -1,0 +1,3151 @@
+{
+  "schema": "codex.powerbi.kpiIncidentReport.v1",
+  "incidentId": "pbi-kpi-d2b2527f96c5",
+  "root": "D:\\temp\\CodexPluginPowerBI\\powerbi-live-instance-test\\live-auto-review",
+  "generated": "2026-05-19T06:56:48",
+  "measureName": "",
+  "comparisonStatus": "NotRequested",
+  "affectedMeasures": [
+    {
+      "name": "_CountIncidents",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_AVGX _CountIncidentsPerDay",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Case Age Hours",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_AVGCase Age Hours",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_CountIncidents MTD",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_CountIncidents YTD",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_CountIncidents YoY%",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "Gleitender Durchschnitt für \"_CountIncidents\"",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [
+        "usability: measure can intentionally raise ERROR",
+        "maintainability: long expression"
+      ],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "AVG _CountIncidents_Date",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Open_Incidents",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Incidents_Prio",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SLA_Conflict",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_AVG TTR",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_AVG TTS",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_FirstContactResolutionRate_FCR",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_CountIncidents gesamt für statuscodename",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SLA_Compliance",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Resolution_Time_Trend",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Open_vs_Closed_Ratio",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Escalation_Rate",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Avg_Days_Open",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Backlog_Volume",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Ticket_Velocity",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Repeat_Customer_Rate",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_First_Response_SLA_Met",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SLA_Breach_Count",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Tickets_0_1Day",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Tickets_1_3Days",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Tickets_3_7Days",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Tickets_Over_7Days",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Median_Resolution_Hours",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Potential_SLA_Breach_24h",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [
+        "determinism: volatile date/time"
+      ],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Top_Priority_Ticket_Count",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Month_over_Month_Change",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Escalated_Tickets_Count",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Top_Agent_Case_Load",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Avg_Cases_Per_Agent",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_First_Fix_Quality_Rate",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Missing_Description_Rate",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Unassigned_Tickets",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Status_Date_Mismatch_Count",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [
+        "determinism: volatile date/time"
+      ],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Overdue_Tickets_Count",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [
+        "determinism: volatile date/time"
+      ],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Missing_Resolution_Notes_Rate",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Data_Quality_Score",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Daily_Spike_Detection",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Resolution_Time_StdDev",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Anomaly_High_Resolution_Time",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Peak_Month_Volume",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Low_Month_Volume",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Volume_vs_Baseline_Index",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Escalation_Probability",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Estimated_Days_to_Clear_Backlog",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Customer_Support_Burden_Score",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_High_Priority_Backlog_Percent",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Team_Stress_Index",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_TTR_Prediction_Confidence",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_CSAT_Score",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Customer_Effort_Score",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Churn_Risk_Indicator",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Customer_Lifetime_Value",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Volume_Forecast_4Weeks",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Capacity_Planning_Agents_Needed",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SLA_Breach_Forecast_24h",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Seasonality_Index",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Top_Problem_Categories_Pareto",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Root_Cause_Identification_Rate",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_KB_Self_Service_Rate",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Recurring_Issue_Ratio",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Agent_Skill_Gap",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Agent_Burnout_Risk",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Agents_Needing_Training",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Agent_Performance_Rank",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Queue_Wait_Time_Days",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Optimal_Assignment_Ratio",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Handoff_Success_Rate",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Ticket_Rework_Rate",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Cost_Per_Resolution",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Revenue_Impact_VIP_Score",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SLA_ROI",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Support_Efficiency_Index",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Holiday_Impact_Index",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [
+        "determinism: volatile date/time"
+      ],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Peak_Business_Hours_Concentration",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Trend_Acceleration_Rate",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Cyclical_Pattern_Detected",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [
+        "determinism: volatile date/time"
+      ],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Executive_Health_Score",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Service_Quality_Index",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Team_Productivity_Index",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Customer_Sentiment_Score",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Service_Health_Status",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Critical_Alerts_Count",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Weekly_Service_Risk",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Performance_Trend_Signal",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_FCR_Improvement_Opportunity",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SLA_Improvement_Opportunity",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Effort_Reduction_Opportunity",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Cost_Savings_Potential",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Industry_Benchmark_Index",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Performance_Percentile_Rank",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Custom_SLA_Variance",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Agent_Fair_Performance_Rank",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Volume_Forecast_12Weeks",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Capacity_Simulation_SLA_Improvement",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Escalation_Prevention_ROI",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Ticket_Type_TTR_Prediction",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Customer_Cluster_Segment",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Customer_Profitability_Index",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Individual_Churn_Propensity",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Customer_Engagement_Quality",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SLA_Breach_Factor_Analysis",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Root_Cause_Correlation_Score",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Problem_Pattern_Concentration",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Seasonal_Root_Cause_Variance",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Customer_Total_Cost_Ownership",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Service_Profitability_Ratio",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Cost_Avoidance_Prevention",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Break_Even_SLA_Improvement",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SLA_Achievement_Trajectory",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Compliance_Audit_Ready_Index",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_First_Response_Compliance",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Documentation_Completeness",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Channel_Performance_Email",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Multi_Touch_Channel_Attribution",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Preferred_Channel_Detection",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Channel_CSAT_Differential",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Agent_Idle_Time_Hours",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_KB_Usage_Effectiveness",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Macro_Script_Utilization_Level",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Context_Switching_Cost",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Individual_SLA_Breach_Risk",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Data_Privacy_Compliance",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Escalation_Authority_Compliance",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SLA_Violation_Severity_Index",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Quarter_Performance_Trend",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [
+        "determinism: volatile date/time"
+      ],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Best_Practice_Position",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Hidden_Cost_Poor_Service",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_Improvement_Efficiency_ROI",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SumUsedHours",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Open Critical Tickets",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Action Required Tickets",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Tickets Without Owner",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_SLA Due Next 24h",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [
+        "determinism: volatile date/time"
+      ],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Overdue Open Tickets",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [
+        "determinism: volatile date/time"
+      ],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Ticket Risk Score",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [
+        "determinism: volatile date/time",
+        "maintainability: long expression"
+      ],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Ticket Risk Band",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Ticket Recommended Action",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [
+        "determinism: volatile date/time",
+        "maintainability: long expression"
+      ],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Average Risk Score",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Critical Share",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Action Queue Size",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Watch Tickets",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Low Risk Tickets",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Critical Or Action Share",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Service Health Score",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Service Health Status",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_SLA Exposure Share",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Owner Load Risk Score",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Top Risk Owner",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Top Risk Customer",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Next Best Action Summary",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Risk Band Sort",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Assign Owner Tickets",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Resolve Overdue SLA Tickets",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Prioritize SLA Risk Tickets",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Send First Response Tickets",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Review Escalation Tickets",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Multi Driver Tickets",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Average Driver Count",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Top Driver Theme",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [
+        "maintainability: long expression"
+      ],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_SRA_Action Board Summary",
+      "table": "IncidentsAllFields",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_DurationTicket",
+      "table": "TimeSheet",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    },
+    {
+      "name": "_CountDescription",
+      "table": "TimeSheet",
+      "source": "live-desktop",
+      "trustScore": null,
+      "risks": [],
+      "rootCauseCount": 0,
+      "comparisonStatuses": []
+    }
+  ],
+  "evidenceTimeline": [
+    {
+      "timestamp": "2026-05-19T06:56:48",
+      "stage": "Catalog",
+      "signal": "MetricCatalog",
+      "detail": "Cataloged 170 measures from D:\\temp\\CodexPluginPowerBI\\powerbi-live-instance-test\\live-auto-review."
+    },
+    {
+      "timestamp": "2026-05-19T06:56:48",
+      "stage": "Trust",
+      "signal": "KpiTrustScore",
+      "detail": "Overall trust score 0; selected affected measures 170."
+    },
+    {
+      "timestamp": "2026-05-19T06:56:48",
+      "stage": "RootCause",
+      "signal": "BrokenMeasureRootCauseGraph",
+      "detail": "Root cause candidates 0."
+    },
+    {
+      "timestamp": "2026-05-19T06:56:48",
+      "stage": "History",
+      "signal": "FlightRecorder",
+      "detail": "Latest recorded score 0, decision No-Go, trend 0."
+    }
+  ],
+  "probableRootCauses": [
+    {
+      "measure": "_CountIncidents",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_AVGX _CountIncidentsPerDay",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Case Age Hours",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_AVGCase Age Hours",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_CountIncidents MTD",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_CountIncidents YTD",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_CountIncidents YoY%",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "Gleitender Durchschnitt für \"_CountIncidents\"",
+      "cause": "DAX risk requires manual review.",
+      "confidence": "Medium",
+      "evidence": [
+        "usability: measure can intentionally raise ERROR",
+        "maintainability: long expression",
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "AVG _CountIncidents_Date",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Open_Incidents",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Incidents_Prio",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SLA_Conflict",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_AVG TTR",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_AVG TTS",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_FirstContactResolutionRate_FCR",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_CountIncidents gesamt für statuscodename",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SLA_Compliance",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Resolution_Time_Trend",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Open_vs_Closed_Ratio",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Escalation_Rate",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Avg_Days_Open",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Backlog_Volume",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Ticket_Velocity",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Repeat_Customer_Rate",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_First_Response_SLA_Met",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SLA_Breach_Count",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Tickets_0_1Day",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Tickets_1_3Days",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Tickets_3_7Days",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Tickets_Over_7Days",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Median_Resolution_Hours",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Potential_SLA_Breach_24h",
+      "cause": "DAX risk requires manual review.",
+      "confidence": "Medium",
+      "evidence": [
+        "determinism: volatile date/time",
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Top_Priority_Ticket_Count",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Month_over_Month_Change",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Escalated_Tickets_Count",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Top_Agent_Case_Load",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Avg_Cases_Per_Agent",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_First_Fix_Quality_Rate",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Missing_Description_Rate",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Unassigned_Tickets",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Status_Date_Mismatch_Count",
+      "cause": "DAX risk requires manual review.",
+      "confidence": "Medium",
+      "evidence": [
+        "determinism: volatile date/time",
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Overdue_Tickets_Count",
+      "cause": "DAX risk requires manual review.",
+      "confidence": "Medium",
+      "evidence": [
+        "determinism: volatile date/time",
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Missing_Resolution_Notes_Rate",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Data_Quality_Score",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Daily_Spike_Detection",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Resolution_Time_StdDev",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Anomaly_High_Resolution_Time",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Peak_Month_Volume",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Low_Month_Volume",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Volume_vs_Baseline_Index",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Escalation_Probability",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Estimated_Days_to_Clear_Backlog",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Customer_Support_Burden_Score",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_High_Priority_Backlog_Percent",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Team_Stress_Index",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_TTR_Prediction_Confidence",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_CSAT_Score",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Customer_Effort_Score",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Churn_Risk_Indicator",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Customer_Lifetime_Value",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Volume_Forecast_4Weeks",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Capacity_Planning_Agents_Needed",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SLA_Breach_Forecast_24h",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Seasonality_Index",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Top_Problem_Categories_Pareto",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Root_Cause_Identification_Rate",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_KB_Self_Service_Rate",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Recurring_Issue_Ratio",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Agent_Skill_Gap",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Agent_Burnout_Risk",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Agents_Needing_Training",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Agent_Performance_Rank",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Queue_Wait_Time_Days",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Optimal_Assignment_Ratio",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Handoff_Success_Rate",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Ticket_Rework_Rate",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Cost_Per_Resolution",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Revenue_Impact_VIP_Score",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SLA_ROI",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Support_Efficiency_Index",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Holiday_Impact_Index",
+      "cause": "DAX risk requires manual review.",
+      "confidence": "Medium",
+      "evidence": [
+        "determinism: volatile date/time",
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Peak_Business_Hours_Concentration",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Trend_Acceleration_Rate",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Cyclical_Pattern_Detected",
+      "cause": "DAX risk requires manual review.",
+      "confidence": "Medium",
+      "evidence": [
+        "determinism: volatile date/time",
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Executive_Health_Score",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Service_Quality_Index",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Team_Productivity_Index",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Customer_Sentiment_Score",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Service_Health_Status",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Critical_Alerts_Count",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Weekly_Service_Risk",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Performance_Trend_Signal",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_FCR_Improvement_Opportunity",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SLA_Improvement_Opportunity",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Effort_Reduction_Opportunity",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Cost_Savings_Potential",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Industry_Benchmark_Index",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Performance_Percentile_Rank",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Custom_SLA_Variance",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Agent_Fair_Performance_Rank",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Volume_Forecast_12Weeks",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Capacity_Simulation_SLA_Improvement",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Escalation_Prevention_ROI",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Ticket_Type_TTR_Prediction",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Customer_Cluster_Segment",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Customer_Profitability_Index",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Individual_Churn_Propensity",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Customer_Engagement_Quality",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SLA_Breach_Factor_Analysis",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Root_Cause_Correlation_Score",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Problem_Pattern_Concentration",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Seasonal_Root_Cause_Variance",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Customer_Total_Cost_Ownership",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Service_Profitability_Ratio",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Cost_Avoidance_Prevention",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Break_Even_SLA_Improvement",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SLA_Achievement_Trajectory",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Compliance_Audit_Ready_Index",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_First_Response_Compliance",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Documentation_Completeness",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Channel_Performance_Email",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Multi_Touch_Channel_Attribution",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Preferred_Channel_Detection",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Channel_CSAT_Differential",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Agent_Idle_Time_Hours",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_KB_Usage_Effectiveness",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Macro_Script_Utilization_Level",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Context_Switching_Cost",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Individual_SLA_Breach_Risk",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Data_Privacy_Compliance",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Escalation_Authority_Compliance",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SLA_Violation_Severity_Index",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Quarter_Performance_Trend",
+      "cause": "DAX risk requires manual review.",
+      "confidence": "Medium",
+      "evidence": [
+        "determinism: volatile date/time",
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Best_Practice_Position",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Hidden_Cost_Poor_Service",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_Improvement_Efficiency_ROI",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SumUsedHours",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Open Critical Tickets",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Action Required Tickets",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Tickets Without Owner",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_SLA Due Next 24h",
+      "cause": "DAX risk requires manual review.",
+      "confidence": "Medium",
+      "evidence": [
+        "determinism: volatile date/time",
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Overdue Open Tickets",
+      "cause": "DAX risk requires manual review.",
+      "confidence": "Medium",
+      "evidence": [
+        "determinism: volatile date/time",
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Ticket Risk Score",
+      "cause": "DAX risk requires manual review.",
+      "confidence": "Medium",
+      "evidence": [
+        "determinism: volatile date/time",
+        "maintainability: long expression",
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Ticket Risk Band",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Ticket Recommended Action",
+      "cause": "DAX risk requires manual review.",
+      "confidence": "Medium",
+      "evidence": [
+        "determinism: volatile date/time",
+        "maintainability: long expression",
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Average Risk Score",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Critical Share",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Action Queue Size",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Watch Tickets",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Low Risk Tickets",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Critical Or Action Share",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Service Health Score",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Service Health Status",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_SLA Exposure Share",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Owner Load Risk Score",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Top Risk Owner",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Top Risk Customer",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Next Best Action Summary",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Risk Band Sort",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Assign Owner Tickets",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Resolve Overdue SLA Tickets",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Prioritize SLA Risk Tickets",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Send First Response Tickets",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Review Escalation Tickets",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Multi Driver Tickets",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Average Driver Count",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Top Driver Theme",
+      "cause": "DAX risk requires manual review.",
+      "confidence": "Medium",
+      "evidence": [
+        "maintainability: long expression",
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_SRA_Action Board Summary",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_DurationTicket",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    },
+    {
+      "measure": "_CountDescription",
+      "cause": "Trust score deductions require owner and validation review.",
+      "confidence": "Medium",
+      "evidence": [
+        "trustScore:"
+      ],
+      "fixOrder": "Review locally before downstream validation."
+    }
+  ],
+  "rollbackGuidance": [
+    "Do not mutate PBIX/PBIT binaries from this report.",
+    "If behavior validation fails, restore the previous DAX expression from source control or the before PBIP/TMDL model.",
+    "Rerun MetricCatalog, KPI Trust Score, BrokenMeasureRootCauseGraph, and measure behavior comparison before release sign-off."
+  ],
+  "validationPlan": [
+    "Run New-PowerBIMetricCatalog.ps1 to confirm affected measures are still discoverable.",
+    "Run New-PowerBIKpiTrustScore.ps1 and confirm affected measure trust scores are 80 or higher, or document an explicit waiver.",
+    "Run New-PowerBIBrokenMeasureRootCauseGraph.ps1 to verify no high-confidence root cause remains open.",
+    "Run Compare-PowerBIMeasureBehavior.ps1 with before/after paths or baseline/current result files for value-level validation."
+  ]
+}
