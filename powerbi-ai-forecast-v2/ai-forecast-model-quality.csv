@@ -1,4 +1,0 @@
-﻿horizon_months;segment;actual_sales;ai_forecast;roll_forecast;wape;roll_wape;bias;risk_flag
-1;Total;56912882.86;108497859.68;68417310.86;0.906385;0.202141;0.906385;advisory_only
-2;Total;40294931.89;54403249.22;68983937.18;0.835956;0.711976;0.350126;advisory_only
-3;Total;21689859.88;54406619.76;66514721.24;1.948224;2.066628;1.50839;biased
