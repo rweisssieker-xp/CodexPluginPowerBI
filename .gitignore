@@ -13,6 +13,9 @@
 /powerbi-*.mmd
 /sample-model-summary.md
 /executive-theme.json
+/forecast-segment-monthly.json
+/powerbi-ai-forecast/segment-monthly.json
+/powerbi-ai-forecast-v2/segment-monthly.json
 
 # Plugin test outputs
 /plugins/powerbi-desktop/tmp/
