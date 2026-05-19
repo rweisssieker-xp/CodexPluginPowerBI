@@ -2,9 +2,16 @@
 
 Scripts live in `plugins/powerbi-desktop/scripts`. Most commands accept either a local `-Path` for offline review or generate output through `-OutputPath`, `-OutputDirectory`, or `-Json`.
 
+## Status Model And Schemas
+
+- Live/repo reconciliation uses `LiveUnavailable`, `NoDrift`, and `DriftDetected` to distinguish skipped live checks from clean or changed live Desktop comparisons.
+- Semantic test output uses schema `codex.powerbi.semanticTestRunner.v2`.
+- Semantic tests can return `PendingLiveDax` when live DAX execution is required; `-FailOnPending` treats those pending checks as failures for release gates.
+
 ## Environment And Discovery
 
 - `Test-PowerBIEnvironment.ps1`: checks local Power BI tooling such as Power BI Desktop, Tabular Editor, DAX Studio, pbi-tools, and .NET.
+- `Test-PowerBIPlugin.ps1`: runs the local plugin smoke and regression checks.
 - `Get-PowerBIInventory.ps1`: discovers Power BI files in a workspace.
 - `Get-PowerBIPBIPStructure.ps1`: scores PBIP/TMDL inspectability and source-control readiness.
 - `Get-PowerBIDesktopLiveConnection.ps1`: detects running Desktop model endpoints; supports explicit `-Server`, `-Port`, and `-RequireSingle` target selection.
@@ -46,6 +53,9 @@ Scripts live in `plugins/powerbi-desktop/scripts`. Most commands accept either a
 - `Invoke-PowerBILiveDaxBenchmark.ps1`: lightweight DAX benchmark helper.
 - `Get-PowerBILiveVertiPaqAnalyzer.ps1`: VertiPaq-style live metadata extraction.
 - `Invoke-PowerBILiveAutoReview.ps1`: live review package.
+- `Compare-PowerBILiveRepoModel.ps1`: compares a live Desktop model with local repo metadata and reports live drift status.
+- `New-PowerBILiveDependencyGraph.ps1`: builds live measure dependency nodes and edges, with optional Mermaid output.
+- `New-PowerBILiveExecutiveNarrative.ps1`: summarizes live model risk, top findings, and high-impact measures for executives.
 
 ## AI/KI And USP Workflows
 

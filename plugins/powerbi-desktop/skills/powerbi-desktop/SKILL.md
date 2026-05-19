@@ -39,7 +39,7 @@ Use this skill when the user asks Codex to inspect, document, generate, or refac
 21. For Power BI External Tools menu integration, generate a `.pbitool.json` with `scripts/New-PowerBIExternalToolRegistration.ps1`, or install/uninstall with `scripts/Install-PowerBIExternalTool.ps1` and `scripts/Uninstall-PowerBIExternalTool.ps1`.
 22. Before publishing plugin changes, run `scripts\Test-PowerBIGoldenBaselines.ps1`.
 23. For maximum AI/KI workflows, use `scripts/Invoke-PowerBIAutonomousFixAgent.ps1`, `scripts/Compare-PowerBILiveRepoModel.ps1`, `scripts/New-PowerBIKpiTrustContract.ps1`, `scripts/Invoke-PowerBIAskModel.ps1`, and `scripts/New-PowerBIFabricReadinessPlan.ps1`.
-24. For the complete 12-USP AI/KI package, run `scripts/Invoke-PowerBIMaxAIReview.ps1`.
+24. For the complete 21-artifact AI/KI USP package, run `scripts/Invoke-PowerBIMaxAIReview.ps1`.
 25. For enterprise release engineering, run `scripts/New-PowerBIReleaseCandidatePack.ps1`, `scripts/New-PowerBIServiceScanner.ps1`, `scripts/New-PowerBIModelRiskHeatmap.ps1`, `scripts/Invoke-PowerBISemanticTestRunner.ps1`, and `scripts/New-PowerBITomWritePlan.ps1`.
 26. For disruptive autonomous planning workflows, use the dedicated skills `powerbi-autonomous-planning-loop`, `powerbi-goal-seeking-planning`, `powerbi-constraint-aware-planning`, `powerbi-autonomous-forecast-agents`, `powerbi-autonomous-exception-management`, `powerbi-revenue-rescue-mode`, `powerbi-forecast-trust-market`, `powerbi-causal-counterfactual-forecasting`, `powerbi-self-healing-forecast-governance`, `powerbi-planning-memory`, `powerbi-planning-readiness-score`, and `powerbi-forecast-war-room`.
 27. Look for these editable artifacts:

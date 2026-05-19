@@ -40,7 +40,7 @@ Start with the full [documentation index](docs/index.md). Key guides: [getting s
 - Golden baseline tests for sample-model semantic regression checks.
 - AI/KI engineering workflows for autonomous PBIP fix plans, live-vs-repo reconciliation, measure expectations, PR release comments, KPI trust contracts, local model Q&A, and Fabric readiness.
 - Max AI review with 21 artifacts across 20 USP workflows: fix-until-green, Copilot evaluator, data contracts, Fabric deployment risk, visual intent, root-cause graph, KPI trust twin, review memory, natural-language PBIP authoring, governance rule mining, explainable DAX refactoring, report decision simulation, trust debt ledger, KPI incident recorder, RLS leakage checks, Fabric capacity risk forecast, semantic duplicate detection, forecast exception board, usage-vs-trust prioritization, and PBIP rollback readiness.
-- Enterprise AI release engineering with Fabric workspace inventory planning, service scanner, gated TOM/TMSL write plans, layout auto-fix plans, semantic test runner, performance trace import, VertiPaq import, screenshot UX review, policy packs, AI change journal, model risk heatmap, and one-command release candidate pack.
+- Enterprise AI release engineering with Fabric workspace inventory planning, service scanner, gated TOM/TMSL write plans, layout auto-fix plans, semantic test runner, measure behavior diff, live safety layer, live-vs-repo drift, PBIP roundtrip validation, enterprise governance packs, report/visual intelligence, guided fix loops, performance trace import, VertiPaq import, screenshot UX review, AI change journal, model risk heatmap, and one-command release candidate pack.
 - Optional external-tool awareness for Tabular Editor, DAX Studio, ALM Toolkit, Power BI Helper, Model Documenter, PBI.tips tools, and pbi-tools validation workflows.
 - A theme generator for governed report styling.
 - A review prompt template for high-signal Codex report reviews.
@@ -48,48 +48,19 @@ Start with the full [documentation index](docs/index.md). Key guides: [getting s
 
 ## Quick Checks
 
+Core release and live-model checks:
+
 ```powershell
+.\plugins\powerbi-desktop\scripts\Resolve-PowerBILiveTarget.ps1
+.\plugins\powerbi-desktop\scripts\New-PowerBILiveSafetyPlan.ps1
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBISemanticTestRunner.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -FailOnPending
+.\plugins\powerbi-desktop\scripts\Compare-PowerBIMeasureBehavior.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model
+.\plugins\powerbi-desktop\scripts\New-PowerBIReleaseCandidatePack.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-release-candidate
+.\plugins\powerbi-desktop\scripts\New-PowerBIVisualIntentAnalyzer.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-visual-intent.md
 .\plugins\powerbi-desktop\scripts\Test-PowerBIEnvironment.ps1
 .\plugins\powerbi-desktop\scripts\Invoke-PowerBIUnifiedReview.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-unified-review
-.\plugins\powerbi-desktop\scripts\New-PowerBIExternalToolRegistration.ps1 -OutputPath .\powerbi-external-tool\CodexPowerBIWorkbench.pbitool.json
-.\plugins\powerbi-desktop\scripts\Install-PowerBIExternalTool.ps1
-.\plugins\powerbi-desktop\scripts\Uninstall-PowerBIExternalTool.ps1
 .\plugins\powerbi-desktop\scripts\Test-PowerBIGoldenBaselines.ps1
-.\plugins\powerbi-desktop\scripts\Invoke-PowerBIAutonomousFixAgent.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-autonomous-fix-agent.md
-.\plugins\powerbi-desktop\scripts\Compare-PowerBILiveRepoModel.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-live-repo-reconciliation.md
-.\plugins\powerbi-desktop\scripts\Test-PowerBIMeasureExpectations.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model
-.\plugins\powerbi-desktop\scripts\New-PowerBIPRReleaseComment.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-pr-comment.md
-.\plugins\powerbi-desktop\scripts\New-PowerBIKpiTrustContract.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-kpi-trust-contract.md
-.\plugins\powerbi-desktop\scripts\Invoke-PowerBIAskModel.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -Question "Which sales measures drive release risk?"
-.\plugins\powerbi-desktop\scripts\New-PowerBIFabricReadinessPlan.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-fabric-readiness.md
 .\plugins\powerbi-desktop\scripts\Invoke-PowerBIMaxAIReview.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-max-ai-review
-.\plugins\powerbi-desktop\scripts\Get-PowerBIExternalToolInventory.ps1
-.\plugins\powerbi-desktop\scripts\Invoke-PowerBINativeToolParityReview.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-native-tool-parity
-.\plugins\powerbi-desktop\scripts\Invoke-PowerBIRealFeatureReview.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-real-feature-review
-.\plugins\powerbi-desktop\scripts\Invoke-PowerBIExternalToolsReview.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-external-tools-review
-.\plugins\powerbi-desktop\scripts\Get-PowerBIDesktopLiveConnection.ps1
-.\plugins\powerbi-desktop\scripts\Invoke-PowerBILiveAutoReview.ps1 -OutputDirectory .\powerbi-live-auto-review
-.\plugins\powerbi-desktop\scripts\Invoke-PowerBIInnovationReview.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-innovation-review
-.\plugins\powerbi-desktop\scripts\New-PowerBITrustReleaseGate.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-trust-release-gate.md
-.\plugins\powerbi-desktop\scripts\New-PowerBIMeasureDraft.ps1 -TableName Sales -MeasureName "Average Sales" -Expression "DIVIDE([Total Sales], COUNTROWS('Sales'))"
-.\plugins\powerbi-desktop\scripts\Apply-PowerBIPBIPMeasureDraft.ps1 -PbipPath .\MyReport -TableName Sales -MeasureName "Average Sales" -Expression "DIVIDE([Total Sales], COUNTROWS('Sales'))" -Apply
-.\plugins\powerbi-desktop\scripts\Invoke-PowerBIPBIPApplyPlan.ps1 -PbipPath .\MyReport -OutputPath .\powerbi-apply-plan\apply-plan.json
-.\plugins\powerbi-desktop\scripts\Add-PowerBIPBIPReportPage.ps1 -PbipPath .\MyReport -PageName "Executive Overview" -Measures "Total Sales","Sales YoY %" -Apply
-.\plugins\powerbi-desktop\scripts\New-PowerBIPBIXCompileWorkflow.ps1 -PbipPath .\MyReport -OutputPbix .\MyReport.pbix
-.\plugins\powerbi-desktop\scripts\Test-PowerBIModelBestPractices.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-model-best-practices.md
-.\plugins\powerbi-desktop\scripts\Get-PowerBIInventory.ps1 -Path .
-.\plugins\powerbi-desktop\scripts\Get-PowerBIPBIPStructure.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-pbip-structure.md
-.\plugins\powerbi-desktop\scripts\Invoke-PowerBIAutoReview.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-auto-review
-.\plugins\powerbi-desktop\scripts\Invoke-PowerBIInsightScan.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-insight-scan.md
-.\plugins\powerbi-desktop\scripts\New-PowerBIMetricCatalog.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-metric-catalog.md
-.\plugins\powerbi-desktop\scripts\New-PowerBIDependencyGraph.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-dependency-graph.md
-.\plugins\powerbi-desktop\scripts\New-PowerBIDependencyGraph.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -Mermaid -OutputPath .\powerbi-dependency-graph.mmd
-.\plugins\powerbi-desktop\scripts\New-PowerBIAIPromptPack.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-ai-pack
-.\plugins\powerbi-desktop\scripts\New-PowerBIExecutiveNarrative.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-executive-narrative.md
-.\plugins\powerbi-desktop\scripts\New-PowerBIRefactorPlan.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-refactor-plan.md
-.\plugins\powerbi-desktop\scripts\New-PowerBIReportBlueprint.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-report-blueprint.md
-.\plugins\powerbi-desktop\scripts\New-PowerBIModelSummary.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\sample-model-summary.md
-.\plugins\powerbi-desktop\scripts\New-PowerBITheme.ps1 -Name "Executive Analytics" -OutputPath .\executive-theme.json
 .\plugins\powerbi-desktop\tests\Run-PowerBITests.ps1
 ```
 

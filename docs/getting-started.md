@@ -14,6 +14,24 @@ For the productized end-to-end workflow:
 .\plugins\powerbi-desktop\scripts\Invoke-PowerBIUnifiedReview.ps1 -Path .\your-model -OutputDirectory .\powerbi-unified-review
 ```
 
+For the fastest release-oriented path through the new USP stack:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Resolve-PowerBILiveTarget.ps1 -Json
+.\plugins\powerbi-desktop\scripts\New-PowerBITomWritePlan.ps1 -Operation AddMeasure -TableName Sales -ObjectName "Average Sales"
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBISemanticTestRunner.ps1 -Path .\your-model -Json
+.\plugins\powerbi-desktop\scripts\New-PowerBIVisualIntentAnalyzer.ps1 -Path .\your-model -OutputPath .\powerbi-visual-intelligence.md
+.\plugins\powerbi-desktop\scripts\New-PowerBIReleaseCandidatePack.ps1 -Path .\your-model -OutputDirectory .\powerbi-release-candidate-pack -SkipLive
+```
+
+Read that sequence as a safety funnel:
+
+- Resolve the live target first, or make the unavailable/ambiguous live endpoint explicit.
+- Generate a write safety plan before any TOM/TMSL or PBIP mutation.
+- Run semantic tests from `measure-expectations.json`, or let the runner create pending placeholders.
+- Review visual intelligence against PBIP report metadata when it exists.
+- Produce the release candidate pack as the machine-readable handoff for governance and PR review.
+
 For a full local review of a PBIP/TMDL folder or exported text model:
 
 ```powershell

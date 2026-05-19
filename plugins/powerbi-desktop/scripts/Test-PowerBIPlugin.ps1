@@ -480,10 +480,10 @@ catch {
 try {
     $maxAi = & (Join-Path $scriptsPath 'Invoke-PowerBIMaxAIReview.ps1') -Path $samplePath -OutputDirectory (Join-Path $PluginRoot 'tmp/max-ai-review-test')
     $passed = (Test-Path -LiteralPath $maxAi.Index) -and (Test-Path -LiteralPath (Join-Path $maxAi.OutputDirectory 'kpi-trust-twin.json')) -and (Test-Path -LiteralPath (Join-Path $maxAi.OutputDirectory 'report-decision-simulator.md'))
-    Add-TestResult -Name 'Max AI review creates 12-USP package' -Passed $passed -Detail $maxAi.OutputDirectory
+    Add-TestResult -Name 'Max AI review creates 21-artifact USP package' -Passed $passed -Detail $maxAi.OutputDirectory
 }
 catch {
-    Add-TestResult -Name 'Max AI review creates 12-USP package' -Passed $false -Detail $_.Exception.Message
+    Add-TestResult -Name 'Max AI review creates 21-artifact USP package' -Passed $false -Detail $_.Exception.Message
 }
 
 try {
