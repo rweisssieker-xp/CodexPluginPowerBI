@@ -48,6 +48,42 @@ Describe 'Power BI Desktop plugin' {
         $draft.safety | Should Match 'Draft only'
     }
 
+    It 'resolves live Desktop targets without requiring Desktop to be open' {
+        $live = & (Join-Path $scriptsPath 'Get-PowerBIDesktopLiveConnection.ps1') -RequireSingle -Json | ConvertFrom-Json
+        $live.schema | Should Be 'codex.powerbi.liveConnection.v1'
+        (@('TargetResolved','AmbiguousLiveTarget','NoLiveTarget') -contains $live.status) | Should Be $true
+    }
+
+    It 'honors explicit live Desktop port selection' {
+        $live = & (Join-Path $scriptsPath 'Get-PowerBIDesktopLiveConnection.ps1') -Port 12345 -Json | ConvertFrom-Json
+        $live.status | Should Be 'TargetResolved'
+        $live.target.connectionString | Should Be 'Data Source=localhost:12345'
+        $live.target.source | Should Be 'Explicit'
+
+        $serverLive = & (Join-Path $scriptsPath 'Get-PowerBIDesktopLiveConnection.ps1') -Server 'Data Source=localhost:54321' -Json | ConvertFrom-Json
+        $serverLive.status | Should Be 'TargetResolved'
+        $serverLive.target.connectionString | Should Be 'Data Source=localhost:54321'
+    }
+
+    It 'creates machine-readable live safety plans' {
+        $plan = & (Join-Path $scriptsPath 'New-PowerBILiveSafetyPlan.ps1') -OperationType Mutating -DryRun -Json | ConvertFrom-Json
+        $plan.schema | Should Be 'codex.powerbi.liveSafetyPlan.v1'
+        $plan.mode | Should Be 'DryRun'
+        $plan.allowedToExecute | Should Be $false
+        ($plan.guardrails -join ' ') | Should Match 'No SaveChanges'
+        ($plan.guardrails -join ' ') | Should Match 'No publish'
+        ($plan.guardrails -join ' ') | Should Match 'No credential'
+    }
+
+    It 'reports live-vs-repo drift as unavailable when no live endpoint exists' {
+        $drift = & (Join-Path $scriptsPath 'Compare-PowerBILiveRepoModel.ps1') -Path $samplePath -RequireSingle -Json | ConvertFrom-Json
+        $drift.schema | Should Be 'codex.powerbi.liveRepoReconciliation.v1'
+        (@('LiveUnavailable','NoDrift','DriftDetected') -contains $drift.liveStatus) | Should Be $true
+        $drift.liveStatus | Should Not Be 'NotAvailable'
+        $drift.repoMeasureCount | Should Be 5
+        ($drift.repoTableCount -ge 1) | Should Be $true
+    }
+
     It 'passes golden baselines' {
         $result = & (Join-Path $scriptsPath 'Test-PowerBIGoldenBaselines.ps1') -PluginRoot $pluginRoot -Json | ConvertFrom-Json
         $result.failedCount | Should Be 0
@@ -75,9 +111,75 @@ Describe 'Power BI Desktop plugin' {
         $fabric.stepCount | Should Be 5
     }
 
-    It 'creates the 12-USP Max AI review package' {
+    It 'creates the 21-artifact Max AI review package' {
         $review = & (Join-Path $scriptsPath 'Invoke-PowerBIMaxAIReview.ps1') -Path $samplePath -OutputDirectory (Join-Path $pluginRoot 'tmp/pester-max-ai')
-        $review.ArtifactCount | Should Be 12
+        $review.ArtifactCount | Should Be 21
         (Test-Path -LiteralPath $review.Index) | Should Be $true
+        (Test-Path -LiteralPath (Join-Path $pluginRoot 'tmp/pester-max-ai/trust-debt-ledger.json')) | Should Be $true
+        (Test-Path -LiteralPath (Join-Path $pluginRoot 'tmp/pester-max-ai/usage-trust-matrix.json')) | Should Be $true
+    }
+
+    It 'creates enterprise USP governance artifacts' {
+        $trustDebt = & (Join-Path $scriptsPath 'New-PowerBITrustDebtLedger.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $incident = & (Join-Path $scriptsPath 'New-PowerBIKpiIncidentReport.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $rls = & (Join-Path $scriptsPath 'Test-PowerBIRlsLeakage.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $capacity = & (Join-Path $scriptsPath 'New-PowerBIFabricCapacityRiskForecast.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $duplicates = & (Join-Path $scriptsPath 'Find-PowerBIMetricDuplicates.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $usage = & (Join-Path $scriptsPath 'Import-PowerBIUsageSignals.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $usageTrust = & (Join-Path $scriptsPath 'New-PowerBIUsageTrustMatrix.ps1') -Path $samplePath -Json | ConvertFrom-Json
+
+        $trustDebt.schema | Should Be 'codex.powerbi.trustDebtLedger.v1'
+        $incident.schema | Should Be 'codex.powerbi.kpiIncidentReport.v1'
+        $rls.schema | Should Be 'codex.powerbi.rlsLeakage.v1'
+        $capacity.schema | Should Be 'codex.powerbi.fabricCapacityRiskForecast.v1'
+        $duplicates.schema | Should Be 'codex.powerbi.metricDuplicates.v1'
+        $usage.schema | Should Be 'codex.powerbi.usageSignals.v1'
+        $usageTrust.schema | Should Be 'codex.powerbi.usageTrustMatrix.v1'
+        $trustDebt.debtItemCount | Should Be 5
+        $incident.affectedMeasures.Count | Should BeGreaterThan 0
+        $usageTrust.metricCount | Should Be 5
+    }
+
+    It 'reports PBIP roundtrip structure checks as machine-readable JSON' {
+        $pbipRoot = Join-Path $pluginRoot 'tmp/pester-pbip-roundtrip'
+        $semanticRoot = Join-Path $pbipRoot 'Demo.SemanticModel'
+        $reportRoot = Join-Path $pbipRoot 'Demo.Report'
+        New-Item -ItemType Directory -Force -Path $semanticRoot | Out-Null
+        New-Item -ItemType Directory -Force -Path $reportRoot | Out-Null
+        Set-Content -LiteralPath (Join-Path $pbipRoot 'Demo.pbip') -Value '{}' -Encoding UTF8
+        Set-Content -LiteralPath (Join-Path $semanticRoot 'model.tmdl') -Value 'model Demo' -Encoding UTF8
+        Set-Content -LiteralPath (Join-Path $semanticRoot '.platform') -Value '{}' -Encoding UTF8
+        Set-Content -LiteralPath (Join-Path $reportRoot 'definition.pbir') -Value '{}' -Encoding UTF8
+
+        $structure = & (Join-Path $scriptsPath 'Get-PowerBIPBIPStructure.ps1') -Path $pbipRoot -Json | ConvertFrom-Json
+        $structure.schema | Should Be 'codex.powerbi.pbipStructure.v1'
+        $structure.roundtripStatus | Should Be 'Ready'
+        @($structure.checks).Count | Should BeGreaterThan 4
+    }
+
+    It 'creates a PBIX compile workflow warning when pbi-tools is unavailable or structure is incomplete' {
+        $pbipRoot = Join-Path $pluginRoot 'tmp/pester-pbip-compile'
+        New-Item -ItemType Directory -Force -Path $pbipRoot | Out-Null
+        $pbipPath = Join-Path $pbipRoot 'Incomplete.pbip'
+        Set-Content -LiteralPath $pbipPath -Value '{}' -Encoding UTF8
+
+        $workflow = & (Join-Path $scriptsPath 'New-PowerBIPBIXCompileWorkflow.ps1') -PbipPath $pbipPath -OutputPbix (Join-Path $pbipRoot 'Candidate.pbix') -Json | ConvertFrom-Json
+        $workflow.schema | Should Be 'codex.powerbi.pbixCompileWorkflow.v1'
+        $workflow.status | Should Be 'Warning'
+        $workflow.pbipStructure.roundtripStatus | Should Be 'Incomplete'
+        @($workflow.validationPlan).Count | Should BeGreaterThan 2
+    }
+
+    It 'emits governance policy and release gate machine-readable warning fields' {
+        $policy = & (Join-Path $scriptsPath 'New-PowerBIGovernancePolicyPack.ps1') -Json | ConvertFrom-Json
+        $gate = & (Join-Path $scriptsPath 'New-PowerBITrustReleaseGate.ps1') -Path $samplePath -Json | ConvertFrom-Json
+
+        $policy.gatePolicy.machineReadableResultsRequired | Should Be $true
+        @($policy.rules | Where-Object id -eq 'semantic-tests-pending').Count | Should Be 1
+        $gate.schema | Should Be 'codex.powerbi.trustReleaseGate.v2'
+        $gate.machineReadable | Should Be $true
+        $gate.pendingSemanticTestCount | Should BeGreaterThan 0
+        @($gate.checks | Where-Object id -eq 'fixes.openP1').Count | Should Be 1
+        @($gate.checks | Where-Object id -eq 'live.availability').Count | Should Be 1
     }
 }

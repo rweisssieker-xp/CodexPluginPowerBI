@@ -4,7 +4,13 @@
     "goThreshold": 80,
     "warnThreshold": 60,
     "blockOnP0": true,
-    "blockOnLowTrustKpis": true
+    "blockOnLowTrustKpis": true,
+    "warnOnP1": true,
+    "warnOnPendingSemanticTests": true,
+    "blockOnPendingSemanticTests": false,
+    "warnOnLiveUnavailable": true,
+    "blockOnLiveUnavailable": false,
+    "requireMachineReadableResults": true
   },
   "weights": {
     "daxRisk": 25,
@@ -24,4 +30,3 @@
     "preferGovernedDateTable": true
   }
 }
-

@@ -429,7 +429,7 @@ catch {
 
 try {
     $reconcile = & (Join-Path $scriptsPath 'Compare-PowerBILiveRepoModel.ps1') -Path $samplePath -Json | ConvertFrom-Json
-    Add-TestResult -Name 'Live repo reconciliation handles unavailable live endpoint' -Passed (@('Completed','NotAvailable') -contains $reconcile.liveStatus) -Detail "LiveStatus=$($reconcile.liveStatus)"
+    Add-TestResult -Name 'Live repo reconciliation handles unavailable live endpoint' -Passed (@('LiveUnavailable','NoDrift','DriftDetected') -contains $reconcile.liveStatus) -Detail "LiveStatus=$($reconcile.liveStatus)"
 }
 catch {
     Add-TestResult -Name 'Live repo reconciliation handles unavailable live endpoint' -Passed $false -Detail $_.Exception.Message
@@ -697,7 +697,7 @@ catch {
 
 try {
     $semanticTests = & (Join-Path $scriptsPath 'Invoke-PowerBISemanticTestRunner.ps1') -Path $samplePath -Json | ConvertFrom-Json
-    Add-TestResult -Name 'Semantic test runner evaluates measures' -Passed ($semanticTests.schema -eq 'codex.powerbi.semanticTestRunner.v1' -and $semanticTests.testCount -ge 5) -Detail "Tests=$($semanticTests.testCount), Failed=$($semanticTests.failedCount)"
+    Add-TestResult -Name 'Semantic test runner evaluates measures' -Passed ($semanticTests.schema -eq 'codex.powerbi.semanticTestRunner.v2' -and $semanticTests.testCount -ge 5) -Detail "Tests=$($semanticTests.testCount), Failed=$($semanticTests.failedCount)"
 }
 catch {
     Add-TestResult -Name 'Semantic test runner evaluates measures' -Passed $false -Detail $_.Exception.Message
@@ -721,7 +721,7 @@ catch {
 
 try {
     $uxReview = & (Join-Path $scriptsPath 'New-PowerBIReportScreenshotUXReview.ps1') -ImagePath '.\missing-screenshot.png' -Json | ConvertFrom-Json
-    Add-TestResult -Name 'Screenshot UX review handles missing screenshots' -Passed ($uxReview.schema -eq 'codex.powerbi.screenshotUxReview.v1' -and $uxReview.status -eq 'ScreenshotMissing') -Detail $uxReview.status
+    Add-TestResult -Name 'Screenshot UX review handles missing screenshots' -Passed ($uxReview.schema -eq 'codex.powerbi.screenshotUxReview.v1' -and $uxReview.status -eq 'NotAvailable' -and $uxReview.needsInput) -Detail $uxReview.status
 }
 catch {
     Add-TestResult -Name 'Screenshot UX review handles missing screenshots' -Passed $false -Detail $_.Exception.Message

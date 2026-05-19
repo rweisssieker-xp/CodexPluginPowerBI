@@ -7,13 +7,15 @@ Scripts live in `plugins/powerbi-desktop/scripts`. Most commands accept either a
 - `Test-PowerBIEnvironment.ps1`: checks local Power BI tooling such as Power BI Desktop, Tabular Editor, DAX Studio, pbi-tools, and .NET.
 - `Get-PowerBIInventory.ps1`: discovers Power BI files in a workspace.
 - `Get-PowerBIPBIPStructure.ps1`: scores PBIP/TMDL inspectability and source-control readiness.
-- `Get-PowerBIDesktopLiveConnection.ps1`: detects a running Desktop model and local endpoint.
+- `Get-PowerBIDesktopLiveConnection.ps1`: detects running Desktop model endpoints; supports explicit `-Server`, `-Port`, and `-RequireSingle` target selection.
+- `Resolve-PowerBILiveTarget.ps1`: machine-readable live target resolver with ambiguity handling.
+- `New-PowerBILiveSafetyPlan.ps1`: machine-readable DryRun/Preview/Confirm guardrail plan for live Desktop workflows.
 
 ## Review Orchestrators
 
 - `Invoke-PowerBIAutoReview.ps1`: offline review package for a project path.
 - `Invoke-PowerBIUnifiedReview.ps1`: broad review index combining offline, live when available, native parity, external tools, and AI outputs.
-- `Invoke-PowerBIMaxAIReview.ps1`: advanced AI/KI package with 12 USP workflows.
+- `Invoke-PowerBIMaxAIReview.ps1`: advanced AI/KI package with 21 artifacts across 20 USP workflows.
 - `Invoke-PowerBIInnovationReview.ps1`: innovation-focused package with UX, governance, release, and trust outputs.
 - `Invoke-PowerBIRealFeatureReview.ps1`: real-feature validation for schema, render readiness, Fabric/service planning, refresh, aggregation, RLS, and visuals.
 - `Invoke-PowerBINativeToolParityReview.ps1`: native parity package for BPA, compare, docs, performance, layout, theme, and source control.
@@ -63,6 +65,15 @@ Creates read-only AI/KI sales forecast from open Desktop model or saved extract.
 - `New-PowerBIGovernanceRuleMiner.ps1`: proposes governance rules from repeated findings.
 - `New-PowerBIExplainableDaxRefactoring.ps1`: creates explainable DAX refactor options.
 - `New-PowerBIReportDecisionSimulator.ps1`: simulates report decision risk.
+- `New-PowerBITrustDebtLedger.ps1`: creates owner/SLA-style KPI trust debt from trust scores, release gates, and guided fixes.
+- `New-PowerBIKpiIncidentReport.ps1`: creates KPI incident evidence, root-cause, rollback, and validation dossiers.
+- `Test-PowerBIRlsLeakage.ps1`: drafts RLS leakage tests and release-gate impact from role metadata or role matrices.
+- `New-PowerBIFabricCapacityRiskForecast.ps1`: forecasts Fabric capacity, refresh, and query risk from local evidence.
+- `Find-PowerBIMetricDuplicates.ps1`: finds semantic duplicate measures and canonical KPI candidates.
+- `New-PowerBIForecastExceptionBoard.ps1`: creates forecast exception cases with owners, actions, due windows, and closure evidence.
+- `Import-PowerBIUsageSignals.ps1`: imports usage metrics, audit, or activity CSV/JSON exports.
+- `New-PowerBIUsageTrustMatrix.ps1`: combines usage signals and KPI trust to prioritize high-usage/low-trust remediation.
+- `Test-PowerBIPBIPRollbackReadiness.ps1`: checks PBIP rollback rehearsal readiness without destructive file operations.
 
 ## Enterprise AI Release Engineering
 

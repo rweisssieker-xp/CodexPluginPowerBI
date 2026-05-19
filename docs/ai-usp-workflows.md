@@ -10,7 +10,7 @@ The Max AI/KI layer is designed to make Codex useful beyond static linting. It t
   -OutputDirectory .\powerbi-max-ai-review
 ```
 
-## The 12 USP Workflows
+## The 20 USP Workflows
 
 1. Fix-until-green loop
 
@@ -59,6 +59,38 @@ The Max AI/KI layer is designed to make Codex useful beyond static linting. It t
 12. Report decision simulator
 
    `New-PowerBIReportDecisionSimulator.ps1` simulates how report issues can affect business decisions.
+
+13. KPI trust debt ledger
+
+   `New-PowerBITrustDebtLedger.ps1` turns low-trust KPIs, release blockers, and guided fixes into owner/SLA-style trust debt.
+
+14. KPI incident recorder
+
+   `New-PowerBIKpiIncidentReport.ps1` creates an incident dossier with evidence timeline, probable root causes, rollback guidance, and validation steps.
+
+15. RLS leakage simulator
+
+   `Test-PowerBIRlsLeakage.ps1` drafts role-level DAX validation queries and release-gate impact for row-level-security leakage checks.
+
+16. Fabric capacity risk forecaster
+
+   `New-PowerBIFabricCapacityRiskForecast.ps1` combines model, service, storage, and trace signals into capacity, refresh, and query-risk forecasts.
+
+17. Semantic duplicate merger
+
+   `Find-PowerBIMetricDuplicates.ps1` finds semantically similar measures across local models and recommends a canonical KPI candidate for review.
+
+18. Forecast exception board
+
+   `New-PowerBIForecastExceptionBoard.ps1` turns AI forecast deltas and quality findings into owner-linked exception cases with closure evidence.
+
+19. Usage-vs-trust scanner
+
+   `Import-PowerBIUsageSignals.ps1` and `New-PowerBIUsageTrustMatrix.ps1` prioritize governance work by combining usage/activity exports with KPI trust.
+
+20. PBIP rollback rehearsal gate
+
+   `Test-PowerBIPBIPRollbackReadiness.ps1` checks whether PBIP apply workflows have enough structure, manifests, and backup hints for a reproducible rollback.
 
 ## How To Use The Outputs
 

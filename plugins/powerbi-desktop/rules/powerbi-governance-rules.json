@@ -62,5 +62,14 @@
     "longMeasureLines": 20,
     "highRiskScore": 9,
     "mediumRiskScore": 4
+  },
+  "releaseGate": {
+    "blockOnOpenP0": true,
+    "warnOnOpenP1": true,
+    "warnOnPendingSemanticTests": true,
+    "blockOnPendingSemanticTests": false,
+    "warnOnLiveUnavailable": true,
+    "blockOnLiveUnavailable": false,
+    "machineReadableResultsRequired": true
   }
 }

@@ -16,10 +16,39 @@ Start with:
 ```
 
 The command reports whether Desktop is running and whether an endpoint was found.
+When multiple Desktop models are open, no endpoint is selected automatically. Use `-RequireSingle` to fail unless exactly one listening endpoint exists, or pass `-Server "Data Source=localhost:12345"` / `-Port 12345` to select the intended model.
+
+For machine-readable target selection:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Resolve-PowerBILiveTarget.ps1 -RequireSingle -Json
+```
+
+Statuses are `TargetResolved`, `AmbiguousLiveTarget`, or `NoLiveTarget`.
 
 ## Read-Only Contract
 
 Live scripts query metadata, DMV data, and DAX results. They do not mutate the open model. Durable changes should be drafted into PBIP/TMDL using the PBIP authoring and apply scripts.
+
+## Safety Plan
+
+Mutating live workflows must publish a safety plan before execution:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\New-PowerBILiveSafetyPlan.ps1 `
+  -ActionName "Update measure" `
+  -OperationType Mutating `
+  -DryRun `
+  -Json
+```
+
+The plan is machine-readable (`codex.powerbi.liveSafetyPlan.v1`) and separates:
+
+- `DryRun`: plan only, no mutation.
+- `Preview`: resolve target and show intended action, no mutation.
+- `Confirm`: explicit opt-in required by any mutating workflow.
+
+Guardrails are fixed: no live `SaveChanges`, no publish, and no credential read/write/prompt/storage.
 
 ## Common Commands
 
