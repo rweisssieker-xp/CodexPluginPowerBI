@@ -72,4 +72,13 @@ CALCULATE ( [Total Sales], FILTER ( ALL ( Sales ), Sales[Amount] > 0 ) )
         $review.reviewMode | Should Be 'ScreenshotEnvelope'
         $review.findingCount | Should Be 1
     }
+
+    It 'flags executive narrative quality risks from report metadata' {
+        $quality = & (Join-Path $scriptsPath 'New-PowerBIExecutiveNarrativeQualityAgent.ps1') -Path $script:caseRoot -Json | ConvertFrom-Json
+
+        $quality.schema | Should Be 'codex.powerbi.executiveNarrativeQuality.v1'
+        $quality.qualityScore | Should BeGreaterThan -1
+        $quality.findings.Count | Should BeGreaterThan 0
+        @($quality.findings | Where-Object { $_.category -in @('visual_narrative_mismatch','release_gate_conflict','missing_variance_context') }).Count | Should BeGreaterThan 0
+    }
 }

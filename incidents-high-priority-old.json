@@ -1,0 +1,209 @@
+{
+    "schema":  "codex.powerbi.liveDmv.v1",
+    "server":  "Data Source=localhost:64728",
+    "query":  "EVALUATE\nTOPN(\n  20,\n  FILTER(\n    SELECTCOLUMNS(\n      IncidentsAllFields,\n      \"IncidentId\", IncidentsAllFields[incidentid],\n      \"Title\", IncidentsAllFields[title],\n      \"Status\", IncidentsAllFields[statuscodename],\n      \"Priority\", IncidentsAllFields[pdw_priority_codename],\n      \"Owner\", IncidentsAllFields[owneridname],\n      \"AgeDays\", DIVIDE(IncidentsAllFields[caseage], 1440),\n      \"FirstResponse\", IncidentsAllFields[firstresponsesent],\n      \"Drivers\", IncidentsAllFields[SRA Risk Drivers]\n    ),\n    [Status] IN {\"Neu\",\"In Progress\",\"In Wartezustand\"} \u0026\u0026 [Priority] IN {\"Hoch\",\"Kritisch\"}\n  ),\n  [AgeDays], DESC\n)",
+    "adomdClientPath":  "C:\\Program Files\\Microsoft.NET\\ADOMD.NET\\170\\Microsoft.AnalysisServices.AdomdClient.dll",
+    "rowCount":  20,
+    "rows":  [
+                 {
+                     "[IncidentId]":  "05521B45-73A3-F011-BBD2-7CED8D489A2D",
+                     "[Title]":  "fehlende Daten im LVS",
+                     "[Status]":  "Neu",
+                     "[Priority]":  "Hoch",
+                     "[Owner]":  "Ronald Sonntag",
+                     "[AgeDays]":  217.8423611111111,
+                     "[FirstResponse]":  false,
+                     "[Drivers]":  "Missing SLA due date; Age \u003e 7 days; Missing first response"
+                 },
+                 {
+                     "[IncidentId]":  "49C1BE6E-A39A-F011-B4CC-7C1E52FB2406",
+                     "[Title]":  "WG: fehlende WE Daten",
+                     "[Status]":  "Neu",
+                     "[Priority]":  "Hoch",
+                     "[Owner]":  "Ronald Sonntag",
+                     "[AgeDays]":  229.05625,
+                     "[FirstResponse]":  false,
+                     "[Drivers]":  "Missing SLA due date; Age \u003e 7 days; Missing first response"
+                 },
+                 {
+                     "[IncidentId]":  "C200ADBA-D399-F011-B4CC-7C1E52FB2406",
+                     "[Title]":  "Fehlende WE - Daten",
+                     "[Status]":  "Neu",
+                     "[Priority]":  "Hoch",
+                     "[Owner]":  "Ronald Sonntag",
+                     "[AgeDays]":  230.0888888888889,
+                     "[FirstResponse]":  false,
+                     "[Drivers]":  "Missing SLA due date; Age \u003e 7 days; Missing first response"
+                 },
+                 {
+                     "[IncidentId]":  "3587CA28-4483-F011-B4CC-000D3ADBE9F8",
+                     "[Title]":  "IT Request",
+                     "[Status]":  "Neu",
+                     "[Priority]":  "Hoch",
+                     "[Owner]":  "Jan-Bodo Moeller",
+                     "[AgeDays]":  258.79930555555558,
+                     "[FirstResponse]":  false,
+                     "[Drivers]":  "Missing SLA due date; Age \u003e 7 days; Missing first response"
+                 },
+                 {
+                     "[IncidentId]":  "47A4C8E9-1095-F011-B4CC-7C1E52208CC9",
+                     "[Title]":  "Fehler bei Buchungen in AX PRIO 1",
+                     "[Status]":  "Neu",
+                     "[Priority]":  "Hoch",
+                     "[Owner]":  "Andreas Vigano",
+                     "[AgeDays]":  236.14722222222221,
+                     "[FirstResponse]":  false,
+                     "[Drivers]":  "Missing SLA due date; Age \u003e 7 days; Missing first response"
+                 },
+                 {
+                     "[IncidentId]":  "9AD16457-A03B-F011-B4CC-6045BDDF087C",
+                     "[Title]":  "Key-User AX | Schulung von MA\u0027s",
+                     "[Status]":  "Neu",
+                     "[Priority]":  "Hoch",
+                     "[Owner]":  "Reiner Weisssieker",
+                     "[AgeDays]":  349.96666666666664,
+                     "[FirstResponse]":  false,
+                     "[Drivers]":  "Missing SLA due date; Age \u003e 7 days; Missing first response"
+                 },
+                 {
+                     "[IncidentId]":  "DB51425B-BE93-F011-B4CC-7C1E5234DB84",
+                     "[Title]":  "Fehler bei Abfrage Rückstände datalake",
+                     "[Status]":  "Neu",
+                     "[Priority]":  "Hoch",
+                     "[Owner]":  "Jan-Bodo Moeller",
+                     "[AgeDays]":  237.83055555555555,
+                     "[FirstResponse]":  false,
+                     "[Drivers]":  "Missing SLA due date; Age \u003e 7 days; Missing first response"
+                 },
+                 {
+                     "[IncidentId]":  "0AEE0346-0C46-F011-877A-6045BDDF8FA5",
+                     "[Title]":  "TPG Scheduler Navigationsleiste verschwindet \u0026 Anwendung im Read-only-Modus nach Stundenbuchung",
+                     "[Status]":  "Neu",
+                     "[Priority]":  "Hoch",
+                     "[Owner]":  "Bennet Fiedler",
+                     "[AgeDays]":  336.70486111111109,
+                     "[FirstResponse]":  false,
+                     "[Drivers]":  "Missing SLA due date; Age \u003e 7 days; Missing first response"
+                 },
+                 {
+                     "[IncidentId]":  "3FFD1DEE-FB7C-F011-B4CC-000D3A69C265",
+                     "[Title]":  "DENTY Bugfix - Konfigurator",
+                     "[Status]":  "Neu",
+                     "[Priority]":  "Hoch",
+                     "[Owner]":  "Hagen Guhr",
+                     "[AgeDays]":  266.79305555555555,
+                     "[FirstResponse]":  false,
+                     "[Drivers]":  "Missing SLA due date; Age \u003e 7 days; Missing first response"
+                 },
+                 {
+                     "[IncidentId]":  "2B97C8C2-D462-F011-BEC3-6045BDDF8FA5",
+                     "[Title]":  "DENTY - Lieferschein Status 3 umsetzen",
+                     "[Status]":  "Neu",
+                     "[Priority]":  "Hoch",
+                     "[Owner]":  "Jan-Bodo Moeller",
+                     "[AgeDays]":  300.07569444444442,
+                     "[FirstResponse]":  false,
+                     "[Drivers]":  "Missing SLA due date; Age \u003e 7 days; Missing first response"
+                 },
+                 {
+                     "[IncidentId]":  "2C6A83E9-2732-F011-8C4E-7C1E5234DB84",
+                     "[Title]":  "Schnittstelle Kardex\u003e\u003c AX",
+                     "[Status]":  "Neu",
+                     "[Priority]":  "Hoch",
+                     "[Owner]":  "Jan-Bodo Moeller",
+                     "[AgeDays]":  362.01875,
+                     "[FirstResponse]":  false,
+                     "[Drivers]":  "Missing SLA due date; Age \u003e 7 days; Missing first response"
+                 },
+                 {
+                     "[IncidentId]":  "5609D99A-DD0B-F011-BAE3-6045BDDF087C",
+                     "[Title]":  "Fehlende Berechtigung zwecks Update",
+                     "[Status]":  "In Wartezustand",
+                     "[Priority]":  "Hoch",
+                     "[Owner]":  "Jan-Bodo Moeller",
+                     "[AgeDays]":  410.74652777777777,
+                     "[FirstResponse]":  true,
+                     "[Drivers]":  "Missing SLA due date; Age \u003e 7 days"
+                 },
+                 {
+                     "[IncidentId]":  "79AF7C75-0036-F011-8C4E-000D3ADBE9F8",
+                     "[Title]":  "BR Sharepoint-personelle Maßnahmen",
+                     "[Status]":  "Neu",
+                     "[Priority]":  "Hoch",
+                     "[Owner]":  "Jan-Bodo Moeller",
+                     "[AgeDays]":  357.12430555555557,
+                     "[FirstResponse]":  false,
+                     "[Drivers]":  "Missing SLA due date; Age \u003e 7 days; Missing first response"
+                 },
+                 {
+                     "[IncidentId]":  "6840033D-F5E9-EF11-9342-0022489F2F63",
+                     "[Title]":  "Korrektur Berechtigung für alte Thommen Vorlage",
+                     "[Status]":  "In Wartezustand",
+                     "[Priority]":  "Hoch",
+                     "[Owner]":  "Jan-Bodo Moeller",
+                     "[AgeDays]":  453.89652777777781,
+                     "[FirstResponse]":  true,
+                     "[Drivers]":  "Missing SLA due date; Age \u003e 7 days"
+                 },
+                 {
+                     "[IncidentId]":  "636F45C5-5706-F011-BAE3-7C1E52765AA5",
+                     "[Title]":  "Anpassung Schnittstelle KF2GBL-AX",
+                     "[Status]":  "In Wartezustand",
+                     "[Priority]":  "Hoch",
+                     "[Owner]":  "Oliver Schroeder",
+                     "[AgeDays]":  417.77430555555554,
+                     "[FirstResponse]":  true,
+                     "[Drivers]":  "Missing SLA due date; Age \u003e 7 days"
+                 },
+                 {
+                     "[IncidentId]":  "16C3E581-34F0-EF11-9341-7C1E52353202",
+                     "[Title]":  "Infopath - Workflow - Arbeitszeitanpassung - Kostenstellen und Personen fehlen",
+                     "[Status]":  "In Wartezustand",
+                     "[Priority]":  "Hoch",
+                     "[Owner]":  "Hagen Guhr",
+                     "[AgeDays]":  445.94652777777776,
+                     "[FirstResponse]":  true,
+                     "[Drivers]":  "Missing SLA due date; Age \u003e 7 days"
+                 },
+                 {
+                     "[IncidentId]":  "F9509FB0-5810-F011-9989-000D3ADBE9F8",
+                     "[Title]":  "Automatisiertes Einlesen von FedEx-Rechnungen per CSV-Datei",
+                     "[Status]":  "Neu",
+                     "[Priority]":  "Hoch",
+                     "[Owner]":  "Jan-Bodo Moeller",
+                     "[AgeDays]":  405.04375,
+                     "[FirstResponse]":  false,
+                     "[Drivers]":  "Missing SLA due date; Age \u003e 7 days; Missing first response"
+                 },
+                 {
+                     "[IncidentId]":  "2ADB4B41-0A16-F011-9989-000D3AB53B96",
+                     "[Title]":  "[LCDI] legal compliance to Dematerialized invoices",
+                     "[Status]":  "Neu",
+                     "[Priority]":  "Hoch",
+                     "[Owner]":  "Oliver Schroeder",
+                     "[AgeDays]":  397.79791666666665,
+                     "[FirstResponse]":  false,
+                     "[Drivers]":  "Missing SLA due date; Age \u003e 7 days; Missing first response"
+                 },
+                 {
+                     "[IncidentId]":  "1004435D-CC2F-F011-8C4E-7C1E5234DB84",
+                     "[Title]":  "Probleme Intranet Recht",
+                     "[Status]":  "Neu",
+                     "[Priority]":  "Hoch",
+                     "[Owner]":  "Jan-Bodo Moeller",
+                     "[AgeDays]":  365.01875,
+                     "[FirstResponse]":  false,
+                     "[Drivers]":  "Missing SLA due date; Age \u003e 7 days; Missing first response"
+                 },
+                 {
+                     "[IncidentId]":  "B0CD3E31-C50F-F011-998A-7C1E5234DB84",
+                     "[Title]":  "Fehlerhafter Zugriff auf den Bereich Personalvorgänge",
+                     "[Status]":  "In Wartezustand",
+                     "[Priority]":  "Hoch",
+                     "[Owner]":  "Jan-Bodo Moeller",
+                     "[AgeDays]":  405.77708333333334,
+                     "[FirstResponse]":  true,
+                     "[Drivers]":  "Missing SLA due date; Age \u003e 7 days"
+                 }
+             ]
+}

@@ -5,6 +5,7 @@ This documentation describes the local Codex plugin for Power BI Desktop and Fab
 ## Start Here
 
 - [Getting started](getting-started.md): install path, first checks, first review run.
+- [Value proposition and USPs](value-proposition.md): business value, differentiators, best-fit use cases, and positioning.
 - [Workflows](workflows.md): practical end-to-end flows for model review, live Desktop review, PBIP authoring, release gates, and Fabric planning.
 - [Script catalog](script-catalog.md): command families and when to use each script.
 - [Testing](testing.md): local smoke tests, Pester tests, and CI layout.
@@ -12,7 +13,7 @@ This documentation describes the local Codex plugin for Power BI Desktop and Fab
 ## Core Capabilities
 
 - [Unified review](unified-review.md): one review package that combines offline PBIP/project review, live Desktop when available, native parity, external-tool awareness, and AI outputs.
-- [Max AI review](max-ai-review.md): the high-end AI/KI review pack with 12 USP workflows.
+- [Max AI review](max-ai-review.md): the high-end AI/KI review pack with 28 USP workflows and 29 artifacts.
 - [AI USP workflows](ai-usp-workflows.md): detailed operating model for the AI differentiators.
 - [Enterprise AI features](enterprise-ai-features.md): service scanner, release candidate pack, risk heatmap, semantic tests, performance/VertiPaq imports, and change journal.
 - [Architecture](architecture.md): local-first design, read-only live access, PBIP write gates, and generated artifacts.

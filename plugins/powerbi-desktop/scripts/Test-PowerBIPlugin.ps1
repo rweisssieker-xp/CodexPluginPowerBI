@@ -478,12 +478,60 @@ catch {
 }
 
 try {
-    $maxAi = & (Join-Path $scriptsPath 'Invoke-PowerBIMaxAIReview.ps1') -Path $samplePath -OutputDirectory (Join-Path $PluginRoot 'tmp/max-ai-review-test')
-    $passed = (Test-Path -LiteralPath $maxAi.Index) -and (Test-Path -LiteralPath (Join-Path $maxAi.OutputDirectory 'kpi-trust-twin.json')) -and (Test-Path -LiteralPath (Join-Path $maxAi.OutputDirectory 'report-decision-simulator.md'))
-    Add-TestResult -Name 'Max AI review creates 21-artifact USP package' -Passed $passed -Detail $maxAi.OutputDirectory
+    $newUspScripts = @(
+        'New-PowerBIAgenticRemediationPlan.ps1',
+        'New-PowerBIBusinessOutcomeSimulator.ps1',
+        'New-PowerBISemanticLayerAutopilot.ps1',
+        'New-PowerBIAIGovernanceEvidencePack.ps1',
+        'New-PowerBIHumanOverrideLearning.ps1',
+        'New-PowerBICrossReportKpiConflictDetector.ps1',
+        'New-PowerBIExecutiveNarrativeQualityAgent.ps1',
+        'New-PowerBIAutonomousQALab.ps1'
+    )
+    $missingNewUspScripts = @($newUspScripts | Where-Object { -not (Test-Path -LiteralPath (Join-Path $scriptsPath $_)) })
+    Add-TestResult -Name '28-USP AI/KI expansion scripts are present' -Passed ($missingNewUspScripts.Count -eq 0) -Detail ("Missing={0}" -f ($missingNewUspScripts -join ', '))
 }
 catch {
-    Add-TestResult -Name 'Max AI review creates 21-artifact USP package' -Passed $false -Detail $_.Exception.Message
+    Add-TestResult -Name '28-USP AI/KI expansion scripts are present' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $agentic = & (Join-Path $scriptsPath 'New-PowerBIAgenticRemediationPlan.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    $outcome = & (Join-Path $scriptsPath 'New-PowerBIBusinessOutcomeSimulator.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    $semantic = & (Join-Path $scriptsPath 'New-PowerBISemanticLayerAutopilot.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    $governance = & (Join-Path $scriptsPath 'New-PowerBIAIGovernanceEvidencePack.ps1') -Path $samplePath -OutputDirectory (Join-Path $PluginRoot 'tmp/ai-governance-evidence-test') -Json | ConvertFrom-Json
+    $override = & (Join-Path $scriptsPath 'New-PowerBIHumanOverrideLearning.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    $conflicts = & (Join-Path $scriptsPath 'New-PowerBICrossReportKpiConflictDetector.ps1') -Path $samplePath -ComparisonPath $samplePath -Json | ConvertFrom-Json
+    $narrative = & (Join-Path $scriptsPath 'New-PowerBIExecutiveNarrativeQualityAgent.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    $qa = & (Join-Path $scriptsPath 'New-PowerBIAutonomousQALab.ps1') -Path $samplePath -OutputDirectory (Join-Path $PluginRoot 'tmp/autonomous-qa-lab-test') -Json | ConvertFrom-Json
+
+    $passed = (
+        $agentic.schema -eq 'codex.powerbi.agenticRemediationPlan.v1' -and
+        $outcome.schema -eq 'codex.powerbi.businessOutcomeSimulator.v1' -and
+        $semantic.schema -eq 'codex.powerbi.semanticLayerAutopilot.v1' -and
+        $governance.schema -eq 'codex.powerbi.aiGovernanceEvidencePack.v1' -and
+        $override.schema -eq 'codex.powerbi.humanOverrideLearning.v1' -and
+        $conflicts.schema -eq 'codex.powerbi.crossReportKpiConflicts.v1' -and
+        $narrative.schema -eq 'codex.powerbi.executiveNarrativeQuality.v1' -and
+        $qa.schema -eq 'codex.powerbi.autonomousQALab.v1' -and
+        $agentic.itemCount -ge 1 -and
+        $semantic.metricCount -eq 5 -and
+        $override.status -eq 'NeedsOverrideInput' -and
+        $qa.qaQuestionCount -eq 5
+    )
+    Add-TestResult -Name '28-USP AI/KI expansion scripts return expected schemas' -Passed $passed -Detail "Agentic=$($agentic.itemCount), QA=$($qa.qaQuestionCount)"
+}
+catch {
+    Add-TestResult -Name '28-USP AI/KI expansion scripts return expected schemas' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $maxAi = & (Join-Path $scriptsPath 'Invoke-PowerBIMaxAIReview.ps1') -Path $samplePath -OutputDirectory (Join-Path $PluginRoot 'tmp/max-ai-review-test')
+    $passed = ($maxAi.ArtifactCount -eq 29) -and (Test-Path -LiteralPath $maxAi.Index) -and (Test-Path -LiteralPath (Join-Path $maxAi.OutputDirectory 'kpi-trust-twin.json')) -and (Test-Path -LiteralPath (Join-Path $maxAi.OutputDirectory 'report-decision-simulator.md')) -and (Test-Path -LiteralPath (Join-Path $maxAi.OutputDirectory 'agentic-remediation-plan.json')) -and (Test-Path -LiteralPath (Join-Path $maxAi.OutputDirectory 'ai-governance-evidence-pack/summary.json')) -and (Test-Path -LiteralPath (Join-Path $maxAi.OutputDirectory 'autonomous-qa-lab/summary.json'))
+    Add-TestResult -Name 'Max AI review creates 29-artifact USP package' -Passed $passed -Detail $maxAi.OutputDirectory
+}
+catch {
+    Add-TestResult -Name 'Max AI review creates 29-artifact USP package' -Passed $false -Detail $_.Exception.Message
 }
 
 try {
@@ -632,7 +680,8 @@ try {
         'privacy.md',
         'release-checklist.md',
         'example-output.md',
-        'troubleshooting.md'
+        'troubleshooting.md',
+        'value-proposition.md'
     )
     $missingDocs = @($requiredDocs | Where-Object { -not (Test-Path -LiteralPath (Join-Path $docsPath $_)) })
     Add-TestResult -Name 'Documentation coverage files are present' -Passed ($missingDocs.Count -eq 0) -Detail ("Missing={0}" -f ($missingDocs -join ', '))
@@ -654,7 +703,15 @@ try {
         'New-PowerBIGovernancePolicyPack.ps1',
         'Update-PowerBIChangeJournal.ps1',
         'New-PowerBIModelRiskHeatmap.ps1',
-        'New-PowerBIReleaseCandidatePack.ps1'
+        'New-PowerBIReleaseCandidatePack.ps1',
+        'New-PowerBIAgenticRemediationPlan.ps1',
+        'New-PowerBIBusinessOutcomeSimulator.ps1',
+        'New-PowerBISemanticLayerAutopilot.ps1',
+        'New-PowerBIAIGovernanceEvidencePack.ps1',
+        'New-PowerBIHumanOverrideLearning.ps1',
+        'New-PowerBICrossReportKpiConflictDetector.ps1',
+        'New-PowerBIExecutiveNarrativeQualityAgent.ps1',
+        'New-PowerBIAutonomousQALab.ps1'
     )
     $missingEnterpriseScripts = @($enterpriseScripts | Where-Object { -not (Test-Path -LiteralPath (Join-Path $scriptsPath $_)) })
     Add-TestResult -Name 'Enterprise AI feature scripts are present' -Passed ($missingEnterpriseScripts.Count -eq 0) -Detail ("Missing={0}" -f ($missingEnterpriseScripts -join ', '))

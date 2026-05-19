@@ -1,0 +1,41 @@
+{
+    "schema":  "codex.powerbi.liveDmv.v1",
+    "server":  "Data Source=localhost:64728",
+    "query":  "EVALUATE\nSUMMARIZECOLUMNS(\n  IncidentsAllFields[pdw_priority_codename],\n  \"Tickets\", DISTINCTCOUNT(IncidentsAllFields[incidentid]),\n  \"OpenTickets\", CALCULATE(DISTINCTCOUNT(IncidentsAllFields[incidentid]), NOT IncidentsAllFields[statuscodename] IN {\"Behoben\",\"Abgeschlossen\",\"Closed\"}),\n  \"NoFirstResponse\", CALCULATE(DISTINCTCOUNT(IncidentsAllFields[incidentid]), IncidentsAllFields[firstresponsesent] = FALSE()),\n  \"NoResolveBy\", CALCULATE(DISTINCTCOUNT(IncidentsAllFields[incidentid]), ISBLANK(IncidentsAllFields[resolveby])),\n  \"Escalated\", CALCULATE(DISTINCTCOUNT(IncidentsAllFields[incidentid]), IncidentsAllFields[isescalated] = TRUE())\n)\nORDER BY [OpenTickets] DESC",
+    "adomdClientPath":  "C:\\Program Files\\Microsoft.NET\\ADOMD.NET\\170\\Microsoft.AnalysisServices.AdomdClient.dll",
+    "rowCount":  4,
+    "rows":  [
+                 {
+                     "IncidentsAllFields[pdw_priority_codename]":  "Niedrig",
+                     "[Tickets]":  18851,
+                     "[OpenTickets]":  523,
+                     "[NoFirstResponse]":  497,
+                     "[NoResolveBy]":  18851,
+                     "[Escalated]":  null
+                 },
+                 {
+                     "IncidentsAllFields[pdw_priority_codename]":  "Normal",
+                     "[Tickets]":  1014,
+                     "[OpenTickets]":  109,
+                     "[NoFirstResponse]":  92,
+                     "[NoResolveBy]":  1014,
+                     "[Escalated]":  null
+                 },
+                 {
+                     "IncidentsAllFields[pdw_priority_codename]":  "Hoch",
+                     "[Tickets]":  2807,
+                     "[OpenTickets]":  82,
+                     "[NoFirstResponse]":  70,
+                     "[NoResolveBy]":  2807,
+                     "[Escalated]":  null
+                 },
+                 {
+                     "IncidentsAllFields[pdw_priority_codename]":  "Kritisch",
+                     "[Tickets]":  26,
+                     "[OpenTickets]":  null,
+                     "[NoFirstResponse]":  null,
+                     "[NoResolveBy]":  26,
+                     "[Escalated]":  null
+                 }
+             ]
+}

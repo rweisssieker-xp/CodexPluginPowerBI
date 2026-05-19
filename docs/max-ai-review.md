@@ -1,6 +1,6 @@
 # Max AI Review
 
-The Max AI review is the complete 21-artifact Codex workflow for Power BI Desktop and Fabric engineering.
+The Max AI review is the complete 29-artifact Codex workflow for Power BI Desktop and Fabric engineering.
 
 Run it with:
 
@@ -31,5 +31,13 @@ It creates these artifacts:
 - `usage-signals.json`: imported usage/activity export signals or an explicit empty-import contract.
 - `usage-trust-matrix.json`: high-usage/low-trust KPI prioritization for governance teams.
 - `pbip-rollback-readiness.json`: non-destructive rollback rehearsal checks for PBIP apply workflows.
+- `agentic-remediation-plan.json`: ranked remediation backlog that combines release gates, guided fixes, DAX simulations, lineage impact, usage trust, and service findings.
+- `business-outcome-simulation.json`: decision-risk scenarios that translate KPI trust and report intent into possible business outcome risk.
+- `semantic-layer-autopilot.json`: semantic improvement plan for display names, descriptions, synonyms, owner gaps, KPI contracts, and Copilot readiness.
+- `ai-governance-evidence-pack/summary.json`: audit-style evidence package with AI suggestions, sign-off gaps, residual risks, and release evidence.
+- `human-override-learning.json`: override-learning status, capture template, learning signals, and bias findings from human overrides.
+- `cross-report-kpi-conflicts.json`: cross-report KPI definition conflicts and canonical metric recommendations.
+- `executive-narrative-quality.json`: executive story quality checks across narrative, visual intent, KPI trust, and release gates.
+- `autonomous-qa-lab/summary.json`: QA lab summary with generated questions, semantic expectations, visual readiness, and regression risk.
 
 The workflow is local-first. It does not sign in to Fabric, publish content, or write directly to binary PBIX files. PBIP/TMDL write actions remain gated through explicit apply scripts.

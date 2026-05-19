@@ -23,7 +23,7 @@ Scripts live in `plugins/powerbi-desktop/scripts`. Most commands accept either a
 
 - `Invoke-PowerBIAutoReview.ps1`: offline review package for a project path.
 - `Invoke-PowerBIUnifiedReview.ps1`: broad review index combining offline, live when available, native parity, external tools, and AI outputs.
-- `Invoke-PowerBIMaxAIReview.ps1`: advanced AI/KI package with 21 artifacts across 20 USP workflows.
+- `Invoke-PowerBIMaxAIReview.ps1`: advanced AI/KI package with 29 artifacts across 28 USP workflows.
 - `Invoke-PowerBIInnovationReview.ps1`: innovation-focused package with UX, governance, release, and trust outputs.
 - `Invoke-PowerBIRealFeatureReview.ps1`: real-feature validation for schema, render readiness, Fabric/service planning, refresh, aggregation, RLS, and visuals.
 - `Invoke-PowerBINativeToolParityReview.ps1`: native parity package for BPA, compare, docs, performance, layout, theme, and source control.
@@ -98,6 +98,14 @@ Creates read-only AI/KI sales forecast from open Desktop model or saved extract.
 - `Import-PowerBIUsageSignals.ps1`: imports usage metrics, audit, or activity CSV/JSON exports.
 - `New-PowerBIUsageTrustMatrix.ps1`: combines usage signals and KPI trust to prioritize high-usage/low-trust remediation.
 - `Test-PowerBIPBIPRollbackReadiness.ps1`: checks PBIP rollback rehearsal readiness without destructive file operations.
+- `New-PowerBIAgenticRemediationPlan.ps1`: ranks release blockers, guided fixes, DAX simulations, lineage impact, usage trust, and service governance into an actionable remediation backlog.
+- `New-PowerBIBusinessOutcomeSimulator.ps1`: translates low-trust KPIs and report intent into business decision scenarios, confidence bands, and required evidence.
+- `New-PowerBISemanticLayerAutopilot.ps1`: creates a semantic improvement plan for names, descriptions, synonyms, owner gaps, KPI contracts, visibility, and Copilot readiness.
+- `New-PowerBIAIGovernanceEvidencePack.ps1`: builds an audit-style AI evidence package with suggestions, sign-off gaps, residual risks, and release evidence.
+- `New-PowerBIHumanOverrideLearning.ps1`: reads optional human override CSV/JSON evidence or emits a capture template and learning-readiness status.
+- `New-PowerBICrossReportKpiConflictDetector.ps1`: detects cross-report KPI definition conflicts and recommends canonical KPI ownership decisions.
+- `New-PowerBIExecutiveNarrativeQualityAgent.ps1`: checks whether executive narrative claims are supported by visual intent, KPI trust, and release gates.
+- `New-PowerBIAutonomousQALab.ps1`: generates QA questions, semantic expectations, visual readiness evidence, and regression-risk summaries.
 
 ## Enterprise AI Release Engineering
 

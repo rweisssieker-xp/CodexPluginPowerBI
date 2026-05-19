@@ -111,12 +111,32 @@ Describe 'Power BI Desktop plugin' {
         $fabric.stepCount | Should Be 5
     }
 
-    It 'creates the 21-artifact Max AI review package' {
+    It 'creates the 28-USP AI/KI expansion artifacts' {
+        $agentic = & (Join-Path $scriptsPath 'New-PowerBIAgenticRemediationPlan.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $outcome = & (Join-Path $scriptsPath 'New-PowerBIBusinessOutcomeSimulator.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $semantic = & (Join-Path $scriptsPath 'New-PowerBISemanticLayerAutopilot.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $override = & (Join-Path $scriptsPath 'New-PowerBIHumanOverrideLearning.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $conflicts = & (Join-Path $scriptsPath 'New-PowerBICrossReportKpiConflictDetector.ps1') -Path $samplePath -ComparisonPath $samplePath -Json | ConvertFrom-Json
+
+        $agentic.schema | Should Be 'codex.powerbi.agenticRemediationPlan.v1'
+        $outcome.schema | Should Be 'codex.powerbi.businessOutcomeSimulator.v1'
+        $semantic.schema | Should Be 'codex.powerbi.semanticLayerAutopilot.v1'
+        $override.schema | Should Be 'codex.powerbi.humanOverrideLearning.v1'
+        $conflicts.schema | Should Be 'codex.powerbi.crossReportKpiConflicts.v1'
+        $agentic.itemCount | Should BeGreaterThan 0
+        $semantic.metricCount | Should Be 5
+        $override.status | Should Be 'NeedsOverrideInput'
+    }
+
+    It 'creates the 29-artifact Max AI review package' {
         $review = & (Join-Path $scriptsPath 'Invoke-PowerBIMaxAIReview.ps1') -Path $samplePath -OutputDirectory (Join-Path $pluginRoot 'tmp/pester-max-ai')
-        $review.ArtifactCount | Should Be 21
+        $review.ArtifactCount | Should Be 29
         (Test-Path -LiteralPath $review.Index) | Should Be $true
         (Test-Path -LiteralPath (Join-Path $pluginRoot 'tmp/pester-max-ai/trust-debt-ledger.json')) | Should Be $true
         (Test-Path -LiteralPath (Join-Path $pluginRoot 'tmp/pester-max-ai/usage-trust-matrix.json')) | Should Be $true
+        (Test-Path -LiteralPath (Join-Path $pluginRoot 'tmp/pester-max-ai/agentic-remediation-plan.json')) | Should Be $true
+        (Test-Path -LiteralPath (Join-Path $pluginRoot 'tmp/pester-max-ai/ai-governance-evidence-pack/summary.json')) | Should Be $true
+        (Test-Path -LiteralPath (Join-Path $pluginRoot 'tmp/pester-max-ai/autonomous-qa-lab/summary.json')) | Should Be $true
     }
 
     It 'creates enterprise USP governance artifacts' {

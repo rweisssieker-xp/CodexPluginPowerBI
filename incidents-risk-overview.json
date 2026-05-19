@@ -1,0 +1,27 @@
+{
+    "schema":  "codex.powerbi.liveDmv.v1",
+    "server":  "Data Source=localhost:64728",
+    "query":  "EVALUATE\nROW(\n    \"Total Incidents\", DISTINCTCOUNT(IncidentsAllFields[incidentid]),\n    \"Open Incidents\", [_Open_Incidents],\n    \"SRA Action Required\", [_SRA_Action Required Tickets],\n    \"SRA Critical\", [_SRA_Open Critical Tickets],\n    \"SRA Watch\", [_SRA_Watch Tickets],\n    \"SRA Overdue Open\", [_SRA_Overdue Open Tickets],\n    \"SRA SLA Due 24h\", [_SRA_SLA Due Next 24h],\n    \"Tickets Without Owner\", [_SRA_Tickets Without Owner],\n    \"No First Response\", [_SRA_Send First Response Tickets],\n    \"Multi Driver Tickets\", [_SRA_Multi Driver Tickets],\n    \"Avg Risk Score\", [_SRA_Average Risk Score],\n    \"Service Health Score\", [_SRA_Service Health Score],\n    \"Service Health Status\", [_SRA_Service Health Status],\n    \"Top Driver Theme\", [_SRA_Top Driver Theme],\n    \"Action Board Summary\", [_SRA_Action Board Summary],\n    \"Next Best Action\", [_SRA_Next Best Action Summary]\n)",
+    "adomdClientPath":  "C:\\Program Files\\Microsoft.NET\\ADOMD.NET\\170\\Microsoft.AnalysisServices.AdomdClient.dll",
+    "rowCount":  1,
+    "rows":  [
+                 {
+                     "[Total Incidents]":  22698,
+                     "[Open Incidents]":  714,
+                     "[SRA Action Required]":  null,
+                     "[SRA Critical]":  null,
+                     "[SRA Watch]":  415,
+                     "[SRA Overdue Open]":  null,
+                     "[SRA SLA Due 24h]":  null,
+                     "[Tickets Without Owner]":  null,
+                     "[No First Response]":  659,
+                     "[Multi Driver Tickets]":  378,
+                     "[Avg Risk Score]":  0.85994977752323887,
+                     "[Service Health Score]":  99.613022600114547,
+                     "[Service Health Status]":  "Healthy",
+                     "[Top Driver Theme]":  "Missing SLA due date",
+                     "[Action Board Summary]":  "Assign:  | Overdue:  | SLA risk:  | First response: 659 | Escalation: ",
+                     "[Next Best Action]":  "Healthy | Queue: 660 | Critical:  | Overdue:  | Due 24h: "
+                 }
+             ]
+}

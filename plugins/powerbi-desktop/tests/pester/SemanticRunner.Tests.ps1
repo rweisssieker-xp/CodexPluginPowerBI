@@ -99,4 +99,16 @@ MEASURE 'Odd Table'[Margin Check] = 1
         $result.comparisons[0].status | Should Be 'NotAvailable'
         $result.comparisons[0].daxQuery | Should Match 'EVALUATE ROW'
     }
+
+    It 'creates autonomous QA Lab packages with pending checks' {
+        $qa = & (Join-Path $scriptsPath 'New-PowerBIAutonomousQALab.ps1') -Path $samplePath -OutputDirectory (Join-Path $pluginRoot 'tmp/pester-qa-lab') -Json | ConvertFrom-Json
+        $strict = & (Join-Path $scriptsPath 'New-PowerBIAutonomousQALab.ps1') -Path $samplePath -OutputDirectory (Join-Path $pluginRoot 'tmp/pester-qa-lab-strict') -FailOnPending -Json | ConvertFrom-Json
+
+        $qa.schema | Should Be 'codex.powerbi.autonomousQALab.v1'
+        $qa.qaQuestionCount | Should Be 5
+        $qa.pendingCount | Should Be 0
+        (Test-Path -LiteralPath (Join-Path $pluginRoot 'tmp/pester-qa-lab/generated-questions.json')) | Should Be $true
+        $strict.schema | Should Be 'codex.powerbi.autonomousQALab.v1'
+        (@('Low','Medium','High') -contains $strict.releaseRisk) | Should Be $true
+    }
 }

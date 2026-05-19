@@ -10,7 +10,7 @@ The Max AI/KI layer is designed to make Codex useful beyond static linting. It t
   -OutputDirectory .\powerbi-max-ai-review
 ```
 
-## The 20 USP Workflows
+## The 28 USP Workflows
 
 1. Fix-until-green loop
 
@@ -91,6 +91,38 @@ The Max AI/KI layer is designed to make Codex useful beyond static linting. It t
 20. PBIP rollback rehearsal gate
 
    `Test-PowerBIPBIPRollbackReadiness.ps1` checks whether PBIP apply workflows have enough structure, manifests, and backup hints for a reproducible rollback.
+
+21. Agentic remediation prioritization
+
+   `New-PowerBIAgenticRemediationPlan.ps1` ranks release blockers, guided fixes, DAX simulations, lineage impact, usage trust, and service findings into a remediation backlog.
+
+22. Business outcome simulation
+
+   `New-PowerBIBusinessOutcomeSimulator.ps1` maps KPI trust and report intent to likely business decision risk, affected audiences, confidence bands, and required evidence.
+
+23. Semantic layer autopilot
+
+   `New-PowerBISemanticLayerAutopilot.ps1` combines metric catalog, Copilot optimization, KPI trust contracts, semantic layer evidence, and readiness checks into one improvement plan.
+
+24. AI governance evidence pack
+
+   `New-PowerBIAIGovernanceEvidencePack.ps1` creates audit-style local evidence with AI suggestions, sign-off gaps, residual risks, and release evidence.
+
+25. Human override learning
+
+   `New-PowerBIHumanOverrideLearning.ps1` reads human override evidence or emits a capture template so teams can learn from accepted and rejected AI recommendations.
+
+26. Cross-report KPI conflict detection
+
+   `New-PowerBICrossReportKpiConflictDetector.ps1` detects conflicting KPI definitions across report roots and proposes canonical KPI decisions.
+
+27. Executive narrative quality agent
+
+   `New-PowerBIExecutiveNarrativeQualityAgent.ps1` checks whether executive narratives are supported by visual intent, KPI trust, and release evidence.
+
+28. Autonomous Power BI QA Lab
+
+   `New-PowerBIAutonomousQALab.ps1` packages generated QA questions, semantic expectations, visual readiness, and regression-risk evidence.
 
 ## How To Use The Outputs
 
