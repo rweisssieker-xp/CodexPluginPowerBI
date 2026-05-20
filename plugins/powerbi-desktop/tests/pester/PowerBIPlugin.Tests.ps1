@@ -111,32 +111,65 @@ Describe 'Power BI Desktop plugin' {
         $fabric.stepCount | Should Be 5
     }
 
-    It 'creates the 28-USP AI/KI expansion artifacts' {
+    It 'creates the 38-USP AI/KI expansion artifacts' {
         $agentic = & (Join-Path $scriptsPath 'New-PowerBIAgenticRemediationPlan.ps1') -Path $samplePath -Json | ConvertFrom-Json
         $outcome = & (Join-Path $scriptsPath 'New-PowerBIBusinessOutcomeSimulator.ps1') -Path $samplePath -Json | ConvertFrom-Json
         $semantic = & (Join-Path $scriptsPath 'New-PowerBISemanticLayerAutopilot.ps1') -Path $samplePath -Json | ConvertFrom-Json
         $override = & (Join-Path $scriptsPath 'New-PowerBIHumanOverrideLearning.ps1') -Path $samplePath -Json | ConvertFrom-Json
         $conflicts = & (Join-Path $scriptsPath 'New-PowerBICrossReportKpiConflictDetector.ps1') -Path $samplePath -ComparisonPath $samplePath -Json | ConvertFrom-Json
+        $impactGate = & (Join-Path $scriptsPath 'New-PowerBIPBIPChangeImpactGate.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $fixtures = & (Join-Path $scriptsPath 'New-PowerBISemanticTestFixtureGenerator.ps1') -Path $samplePath -OutputDirectory (Join-Path $pluginRoot 'tmp/pester-semantic-fixtures') -Json | ConvertFrom-Json
+        $signoff = & (Join-Path $scriptsPath 'New-PowerBIKpiOwnerSignoffWorkflow.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $blastRadius = & (Join-Path $scriptsPath 'New-PowerBIRefreshBlastRadiusAnalyzer.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $exposure = & (Join-Path $scriptsPath 'New-PowerBISensitiveDataExposureMap.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $capacityPlan = & (Join-Path $scriptsPath 'New-PowerBICapacityMitigationPlanner.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $retirement = & (Join-Path $scriptsPath 'New-PowerBIReportRetirementAdvisor.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $evidence = & (Join-Path $scriptsPath 'New-PowerBILiveValidationEvidenceRecorder.ps1') -Path $samplePath -OutputDirectory (Join-Path $pluginRoot 'tmp/pester-live-validation-evidence') -Json | ConvertFrom-Json
+        $drift = & (Join-Path $scriptsPath 'New-PowerBISemanticContractDriftMonitor.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $persona = & (Join-Path $scriptsPath 'New-PowerBIRlsPersonaCoverageMatrix.ps1') -Path $samplePath -Json | ConvertFrom-Json
 
         $agentic.schema | Should Be 'codex.powerbi.agenticRemediationPlan.v1'
         $outcome.schema | Should Be 'codex.powerbi.businessOutcomeSimulator.v1'
         $semantic.schema | Should Be 'codex.powerbi.semanticLayerAutopilot.v1'
         $override.schema | Should Be 'codex.powerbi.humanOverrideLearning.v1'
         $conflicts.schema | Should Be 'codex.powerbi.crossReportKpiConflicts.v1'
+        $impactGate.schema | Should Be 'codex.powerbi.pbipChangeImpactGate.v1'
+        $fixtures.schema | Should Be 'codex.powerbi.semanticTestFixtureGenerator.v1'
+        $signoff.schema | Should Be 'codex.powerbi.kpiOwnerSignoffWorkflow.v1'
+        $blastRadius.schema | Should Be 'codex.powerbi.refreshBlastRadius.v1'
+        $exposure.schema | Should Be 'codex.powerbi.sensitiveDataExposureMap.v1'
+        $capacityPlan.schema | Should Be 'codex.powerbi.capacityMitigationPlanner.v1'
+        $retirement.schema | Should Be 'codex.powerbi.reportRetirementAdvisor.v1'
+        $evidence.schema | Should Be 'codex.powerbi.liveValidationEvidenceRecorder.v1'
+        $drift.schema | Should Be 'codex.powerbi.semanticContractDriftMonitor.v1'
+        $persona.schema | Should Be 'codex.powerbi.rlsPersonaCoverageMatrix.v1'
         $agentic.itemCount | Should BeGreaterThan 0
         $semantic.metricCount | Should Be 5
         $override.status | Should Be 'NeedsOverrideInput'
+        $fixtures.expectationCount | Should BeGreaterThan 0
+        $signoff.signoffItemCount | Should BeGreaterThan 0
+        $capacityPlan.mitigationCount | Should BeGreaterThan 0
     }
 
-    It 'creates the 29-artifact Max AI review package' {
+    It 'creates the 39-artifact Max AI review package' {
         $review = & (Join-Path $scriptsPath 'Invoke-PowerBIMaxAIReview.ps1') -Path $samplePath -OutputDirectory (Join-Path $pluginRoot 'tmp/pester-max-ai')
-        $review.ArtifactCount | Should Be 29
+        $review.ArtifactCount | Should Be 39
         (Test-Path -LiteralPath $review.Index) | Should Be $true
         (Test-Path -LiteralPath (Join-Path $pluginRoot 'tmp/pester-max-ai/trust-debt-ledger.json')) | Should Be $true
         (Test-Path -LiteralPath (Join-Path $pluginRoot 'tmp/pester-max-ai/usage-trust-matrix.json')) | Should Be $true
         (Test-Path -LiteralPath (Join-Path $pluginRoot 'tmp/pester-max-ai/agentic-remediation-plan.json')) | Should Be $true
         (Test-Path -LiteralPath (Join-Path $pluginRoot 'tmp/pester-max-ai/ai-governance-evidence-pack/summary.json')) | Should Be $true
         (Test-Path -LiteralPath (Join-Path $pluginRoot 'tmp/pester-max-ai/autonomous-qa-lab/summary.json')) | Should Be $true
+        (Test-Path -LiteralPath (Join-Path $pluginRoot 'tmp/pester-max-ai/pbip-change-impact-gate.json')) | Should Be $true
+        (Test-Path -LiteralPath (Join-Path $pluginRoot 'tmp/pester-max-ai/semantic-test-fixtures/measure-expectations.json')) | Should Be $true
+        (Test-Path -LiteralPath (Join-Path $pluginRoot 'tmp/pester-max-ai/kpi-owner-signoff.json')) | Should Be $true
+        (Test-Path -LiteralPath (Join-Path $pluginRoot 'tmp/pester-max-ai/refresh-blast-radius.json')) | Should Be $true
+        (Test-Path -LiteralPath (Join-Path $pluginRoot 'tmp/pester-max-ai/sensitive-data-exposure.json')) | Should Be $true
+        (Test-Path -LiteralPath (Join-Path $pluginRoot 'tmp/pester-max-ai/capacity-mitigation-plan.json')) | Should Be $true
+        (Test-Path -LiteralPath (Join-Path $pluginRoot 'tmp/pester-max-ai/report-retirement-advisor.json')) | Should Be $true
+        (Test-Path -LiteralPath (Join-Path $pluginRoot 'tmp/pester-max-ai/live-validation-evidence/summary.json')) | Should Be $true
+        (Test-Path -LiteralPath (Join-Path $pluginRoot 'tmp/pester-max-ai/semantic-contract-drift.json')) | Should Be $true
+        (Test-Path -LiteralPath (Join-Path $pluginRoot 'tmp/pester-max-ai/rls-persona-coverage.json')) | Should Be $true
     }
 
     It 'creates enterprise USP governance artifacts' {

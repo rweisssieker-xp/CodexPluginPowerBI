@@ -26,7 +26,7 @@ Power BI teams often lose time because model quality, DAX risk, report UX, relea
 
 ## Differentiating USPs
 
-## 28 AI/KI USP Map
+## 38 AI/KI USP Map
 
 | USP | Business Value | Output Artifact | Best User |
 | --- | --- | --- | --- |
@@ -58,6 +58,16 @@ Power BI teams often lose time because model quality, DAX risk, report UX, relea
 | Cross-report KPI conflict detection | Finds conflicting KPI definitions across reports. | `cross-report-kpi-conflicts.json` | Enterprise BI owner |
 | Executive narrative quality agent | Checks whether executive claims are supported by data and release evidence. | `executive-narrative-quality.json` | Executive report owner |
 | Autonomous QA Lab | Generates QA questions, semantic checks, visual readiness, and regression risk. | `autonomous-qa-lab/summary.json` | QA/release owner |
+| PBIP change impact gate | Turns changed PBIP/TMDL/report files into release impact evidence. | `pbip-change-impact-gate.json` | Release owner |
+| Semantic test fixture generator | Creates deterministic measure expectation fixtures for KPI validation. | `semantic-test-fixtures/measure-expectations.json` | QA engineer |
+| KPI owner sign-off workflow | Creates owner-linked sign-off items from trust, contract, and incident evidence. | `kpi-owner-signoff.json` | Data owner |
+| Refresh blast-radius analyzer | Shows which KPIs are exposed by refresh, capacity, or service degradation. | `refresh-blast-radius.json` | Fabric operator |
+| Sensitive data exposure map | Flags sensitive model/report references and review actions. | `sensitive-data-exposure.json` | Security reviewer |
+| Capacity mitigation planner | Converts capacity and performance risks into mitigation work. | `capacity-mitigation-plan.json` | Fabric architect |
+| Report retirement advisor | Identifies retirement, merge, and review candidates from usage and trust evidence. | `report-retirement-advisor.json` | BI portfolio owner |
+| Live validation evidence recorder | Packages live Desktop validation evidence for audit and release review. | `live-validation-evidence/summary.json` | Release owner |
+| Semantic contract drift monitor | Detects stale ownership, missing contracts, and expectation drift. | `semantic-contract-drift.json` | Semantic model owner |
+| RLS persona coverage matrix | Maps role/persona coverage to report and KPI impact. | `rls-persona-coverage.json` | Security reviewer |
 
 ### 1. Local-First Power BI AI Review
 

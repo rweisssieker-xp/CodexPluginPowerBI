@@ -10,7 +10,7 @@ The Max AI/KI layer is designed to make Codex useful beyond static linting. It t
   -OutputDirectory .\powerbi-max-ai-review
 ```
 
-## The 28 USP Workflows
+## The 38 USP Workflows
 
 1. Fix-until-green loop
 
@@ -123,6 +123,46 @@ The Max AI/KI layer is designed to make Codex useful beyond static linting. It t
 28. Autonomous Power BI QA Lab
 
    `New-PowerBIAutonomousQALab.ps1` packages generated QA questions, semantic expectations, visual readiness, and regression-risk evidence.
+
+29. PBIP change impact gate
+
+   `New-PowerBIPBIPChangeImpactGate.ps1` turns changed PBIP/TMDL/report files into Go/Warn/No-Go release impact evidence for affected KPIs.
+
+30. Semantic test fixture generator
+
+   `New-PowerBISemanticTestFixtureGenerator.ps1` creates deterministic CSV fixtures and measure expectations so teams can test KPI behavior before live validation.
+
+31. KPI owner sign-off workflow
+
+   `New-PowerBIKpiOwnerSignoffWorkflow.ps1` creates owner-linked sign-off items from trust debt, KPI contracts, and incident evidence.
+
+32. Refresh blast-radius analyzer
+
+   `New-PowerBIRefreshBlastRadiusAnalyzer.ps1` estimates which KPIs and stakeholders are exposed when refresh, capacity, or service signals degrade.
+
+33. Sensitive data exposure map
+
+   `New-PowerBISensitiveDataExposureMap.ps1` scans local model/report text and visual impact evidence for sensitive-field exposure risk.
+
+34. Capacity mitigation planner
+
+   `New-PowerBICapacityMitigationPlanner.ps1` converts capacity and performance risks into concrete mitigation work items.
+
+35. Report retirement advisor
+
+   `New-PowerBIReportRetirementAdvisor.ps1` combines usage, trust debt, and duplicate metrics to identify reports or KPIs that should be retired, merged, or reviewed.
+
+36. Live validation evidence recorder
+
+   `New-PowerBILiveValidationEvidenceRecorder.ps1` records local evidence from live Desktop checks and Max AI artifacts for audit-ready validation packs.
+
+37. Semantic contract drift monitor
+
+   `New-PowerBISemanticContractDriftMonitor.ps1` compares metric catalog, KPI contracts, and usage evidence to detect stale ownership, missing contracts, and expectation drift.
+
+38. RLS persona coverage matrix
+
+   `New-PowerBIRlsPersonaCoverageMatrix.ps1` maps role/persona coverage against report impact so security review gaps become visible before release.
 
 ## How To Use The Outputs
 

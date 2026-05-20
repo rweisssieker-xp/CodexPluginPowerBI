@@ -486,13 +486,23 @@ try {
         'New-PowerBIHumanOverrideLearning.ps1',
         'New-PowerBICrossReportKpiConflictDetector.ps1',
         'New-PowerBIExecutiveNarrativeQualityAgent.ps1',
-        'New-PowerBIAutonomousQALab.ps1'
+        'New-PowerBIAutonomousQALab.ps1',
+        'New-PowerBIPBIPChangeImpactGate.ps1',
+        'New-PowerBISemanticTestFixtureGenerator.ps1',
+        'New-PowerBIKpiOwnerSignoffWorkflow.ps1',
+        'New-PowerBIRefreshBlastRadiusAnalyzer.ps1',
+        'New-PowerBISensitiveDataExposureMap.ps1',
+        'New-PowerBICapacityMitigationPlanner.ps1',
+        'New-PowerBIReportRetirementAdvisor.ps1',
+        'New-PowerBILiveValidationEvidenceRecorder.ps1',
+        'New-PowerBISemanticContractDriftMonitor.ps1',
+        'New-PowerBIRlsPersonaCoverageMatrix.ps1'
     )
     $missingNewUspScripts = @($newUspScripts | Where-Object { -not (Test-Path -LiteralPath (Join-Path $scriptsPath $_)) })
-    Add-TestResult -Name '28-USP AI/KI expansion scripts are present' -Passed ($missingNewUspScripts.Count -eq 0) -Detail ("Missing={0}" -f ($missingNewUspScripts -join ', '))
+    Add-TestResult -Name '38-USP AI/KI expansion scripts are present' -Passed ($missingNewUspScripts.Count -eq 0) -Detail ("Missing={0}" -f ($missingNewUspScripts -join ', '))
 }
 catch {
-    Add-TestResult -Name '28-USP AI/KI expansion scripts are present' -Passed $false -Detail $_.Exception.Message
+    Add-TestResult -Name '38-USP AI/KI expansion scripts are present' -Passed $false -Detail $_.Exception.Message
 }
 
 try {
@@ -504,6 +514,16 @@ try {
     $conflicts = & (Join-Path $scriptsPath 'New-PowerBICrossReportKpiConflictDetector.ps1') -Path $samplePath -ComparisonPath $samplePath -Json | ConvertFrom-Json
     $narrative = & (Join-Path $scriptsPath 'New-PowerBIExecutiveNarrativeQualityAgent.ps1') -Path $samplePath -Json | ConvertFrom-Json
     $qa = & (Join-Path $scriptsPath 'New-PowerBIAutonomousQALab.ps1') -Path $samplePath -OutputDirectory (Join-Path $PluginRoot 'tmp/autonomous-qa-lab-test') -Json | ConvertFrom-Json
+    $changeGate = & (Join-Path $scriptsPath 'New-PowerBIPBIPChangeImpactGate.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    $fixtures = & (Join-Path $scriptsPath 'New-PowerBISemanticTestFixtureGenerator.ps1') -Path $samplePath -OutputDirectory (Join-Path $PluginRoot 'tmp/semantic-fixtures-test') -Json | ConvertFrom-Json
+    $signoff = & (Join-Path $scriptsPath 'New-PowerBIKpiOwnerSignoffWorkflow.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    $refreshBlast = & (Join-Path $scriptsPath 'New-PowerBIRefreshBlastRadiusAnalyzer.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    $sensitive = & (Join-Path $scriptsPath 'New-PowerBISensitiveDataExposureMap.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    $capacityPlan = & (Join-Path $scriptsPath 'New-PowerBICapacityMitigationPlanner.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    $retirement = & (Join-Path $scriptsPath 'New-PowerBIReportRetirementAdvisor.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    $liveEvidence = & (Join-Path $scriptsPath 'New-PowerBILiveValidationEvidenceRecorder.ps1') -Path $samplePath -OutputDirectory (Join-Path $PluginRoot 'tmp/live-validation-evidence-test') -Json | ConvertFrom-Json
+    $contractDrift = & (Join-Path $scriptsPath 'New-PowerBISemanticContractDriftMonitor.ps1') -Path $samplePath -Json | ConvertFrom-Json
+    $personaCoverage = & (Join-Path $scriptsPath 'New-PowerBIRlsPersonaCoverageMatrix.ps1') -Path $samplePath -Json | ConvertFrom-Json
 
     $passed = (
         $agentic.schema -eq 'codex.powerbi.agenticRemediationPlan.v1' -and
@@ -514,24 +534,37 @@ try {
         $conflicts.schema -eq 'codex.powerbi.crossReportKpiConflicts.v1' -and
         $narrative.schema -eq 'codex.powerbi.executiveNarrativeQuality.v1' -and
         $qa.schema -eq 'codex.powerbi.autonomousQALab.v1' -and
+        $changeGate.schema -eq 'codex.powerbi.pbipChangeImpactGate.v1' -and
+        $fixtures.schema -eq 'codex.powerbi.semanticTestFixtureGenerator.v1' -and
+        $signoff.schema -eq 'codex.powerbi.kpiOwnerSignoffWorkflow.v1' -and
+        $refreshBlast.schema -eq 'codex.powerbi.refreshBlastRadius.v1' -and
+        $sensitive.schema -eq 'codex.powerbi.sensitiveDataExposureMap.v1' -and
+        $capacityPlan.schema -eq 'codex.powerbi.capacityMitigationPlanner.v1' -and
+        $retirement.schema -eq 'codex.powerbi.reportRetirementAdvisor.v1' -and
+        $liveEvidence.schema -eq 'codex.powerbi.liveValidationEvidenceRecorder.v1' -and
+        $contractDrift.schema -eq 'codex.powerbi.semanticContractDriftMonitor.v1' -and
+        $personaCoverage.schema -eq 'codex.powerbi.rlsPersonaCoverageMatrix.v1' -and
         $agentic.itemCount -ge 1 -and
         $semantic.metricCount -eq 5 -and
         $override.status -eq 'NeedsOverrideInput' -and
-        $qa.qaQuestionCount -eq 5
+        $qa.qaQuestionCount -eq 5 -and
+        $fixtures.expectationCount -gt 0 -and
+        $signoff.signoffItemCount -gt 0 -and
+        $capacityPlan.mitigationCount -gt 0
     )
-    Add-TestResult -Name '28-USP AI/KI expansion scripts return expected schemas' -Passed $passed -Detail "Agentic=$($agentic.itemCount), QA=$($qa.qaQuestionCount)"
+    Add-TestResult -Name '38-USP AI/KI expansion scripts return expected schemas' -Passed $passed -Detail "Agentic=$($agentic.itemCount), QA=$($qa.qaQuestionCount), Signoff=$($signoff.signoffItemCount)"
 }
 catch {
-    Add-TestResult -Name '28-USP AI/KI expansion scripts return expected schemas' -Passed $false -Detail $_.Exception.Message
+    Add-TestResult -Name '38-USP AI/KI expansion scripts return expected schemas' -Passed $false -Detail $_.Exception.Message
 }
 
 try {
     $maxAi = & (Join-Path $scriptsPath 'Invoke-PowerBIMaxAIReview.ps1') -Path $samplePath -OutputDirectory (Join-Path $PluginRoot 'tmp/max-ai-review-test')
-    $passed = ($maxAi.ArtifactCount -eq 29) -and (Test-Path -LiteralPath $maxAi.Index) -and (Test-Path -LiteralPath (Join-Path $maxAi.OutputDirectory 'kpi-trust-twin.json')) -and (Test-Path -LiteralPath (Join-Path $maxAi.OutputDirectory 'report-decision-simulator.md')) -and (Test-Path -LiteralPath (Join-Path $maxAi.OutputDirectory 'agentic-remediation-plan.json')) -and (Test-Path -LiteralPath (Join-Path $maxAi.OutputDirectory 'ai-governance-evidence-pack/summary.json')) -and (Test-Path -LiteralPath (Join-Path $maxAi.OutputDirectory 'autonomous-qa-lab/summary.json'))
-    Add-TestResult -Name 'Max AI review creates 29-artifact USP package' -Passed $passed -Detail $maxAi.OutputDirectory
+    $passed = ($maxAi.ArtifactCount -eq 39) -and (Test-Path -LiteralPath $maxAi.Index) -and (Test-Path -LiteralPath (Join-Path $maxAi.OutputDirectory 'kpi-trust-twin.json')) -and (Test-Path -LiteralPath (Join-Path $maxAi.OutputDirectory 'report-decision-simulator.md')) -and (Test-Path -LiteralPath (Join-Path $maxAi.OutputDirectory 'agentic-remediation-plan.json')) -and (Test-Path -LiteralPath (Join-Path $maxAi.OutputDirectory 'ai-governance-evidence-pack/summary.json')) -and (Test-Path -LiteralPath (Join-Path $maxAi.OutputDirectory 'autonomous-qa-lab/summary.json')) -and (Test-Path -LiteralPath (Join-Path $maxAi.OutputDirectory 'pbip-change-impact-gate.json')) -and (Test-Path -LiteralPath (Join-Path $maxAi.OutputDirectory 'semantic-test-fixtures/measure-expectations.json')) -and (Test-Path -LiteralPath (Join-Path $maxAi.OutputDirectory 'rls-persona-coverage.json'))
+    Add-TestResult -Name 'Max AI review creates 39-artifact USP package' -Passed $passed -Detail $maxAi.OutputDirectory
 }
 catch {
-    Add-TestResult -Name 'Max AI review creates 29-artifact USP package' -Passed $false -Detail $_.Exception.Message
+    Add-TestResult -Name 'Max AI review creates 39-artifact USP package' -Passed $false -Detail $_.Exception.Message
 }
 
 try {

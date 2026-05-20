@@ -23,7 +23,7 @@ Scripts live in `plugins/powerbi-desktop/scripts`. Most commands accept either a
 
 - `Invoke-PowerBIAutoReview.ps1`: offline review package for a project path.
 - `Invoke-PowerBIUnifiedReview.ps1`: broad review index combining offline, live when available, native parity, external tools, and AI outputs.
-- `Invoke-PowerBIMaxAIReview.ps1`: advanced AI/KI package with 29 artifacts across 28 USP workflows.
+- `Invoke-PowerBIMaxAIReview.ps1`: advanced AI/KI package with 39 artifacts across 38 USP workflows.
 - `Invoke-PowerBIInnovationReview.ps1`: innovation-focused package with UX, governance, release, and trust outputs.
 - `Invoke-PowerBIRealFeatureReview.ps1`: real-feature validation for schema, render readiness, Fabric/service planning, refresh, aggregation, RLS, and visuals.
 - `Invoke-PowerBINativeToolParityReview.ps1`: native parity package for BPA, compare, docs, performance, layout, theme, and source control.
@@ -106,6 +106,16 @@ Creates read-only AI/KI sales forecast from open Desktop model or saved extract.
 - `New-PowerBICrossReportKpiConflictDetector.ps1`: detects cross-report KPI definition conflicts and recommends canonical KPI ownership decisions.
 - `New-PowerBIExecutiveNarrativeQualityAgent.ps1`: checks whether executive narrative claims are supported by visual intent, KPI trust, and release gates.
 - `New-PowerBIAutonomousQALab.ps1`: generates QA questions, semantic expectations, visual readiness evidence, and regression-risk summaries.
+- `New-PowerBIPBIPChangeImpactGate.ps1`: creates a diff-aware KPI release impact gate for changed PBIP/TMDL/report files.
+- `New-PowerBISemanticTestFixtureGenerator.ps1`: generates deterministic semantic test fixtures and measure expectations.
+- `New-PowerBIKpiOwnerSignoffWorkflow.ps1`: creates KPI owner sign-off items from trust debt, contracts, and incident evidence.
+- `New-PowerBIRefreshBlastRadiusAnalyzer.ps1`: maps refresh, capacity, and service degradation to affected KPIs and stakeholders.
+- `New-PowerBISensitiveDataExposureMap.ps1`: scans local metadata and report references for sensitive-data exposure risk.
+- `New-PowerBICapacityMitigationPlanner.ps1`: turns capacity and performance risks into prioritized mitigation work.
+- `New-PowerBIReportRetirementAdvisor.ps1`: identifies retirement, consolidation, and review candidates from usage, trust, and duplicate evidence.
+- `New-PowerBILiveValidationEvidenceRecorder.ps1`: records live Desktop and Max AI validation evidence into a local audit pack.
+- `New-PowerBISemanticContractDriftMonitor.ps1`: detects drift between metric catalogs, KPI contracts, and usage expectations.
+- `New-PowerBIRlsPersonaCoverageMatrix.ps1`: maps RLS personas to visual/KPI impact and coverage gaps.
 
 ## Enterprise AI Release Engineering
 

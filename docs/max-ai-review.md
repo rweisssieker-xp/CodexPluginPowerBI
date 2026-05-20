@@ -1,6 +1,6 @@
 # Max AI Review
 
-The Max AI review is the complete 29-artifact Codex workflow for Power BI Desktop and Fabric engineering.
+The Max AI review is the complete 39-artifact Codex workflow for Power BI Desktop and Fabric engineering.
 
 Run it with:
 
@@ -39,5 +39,15 @@ It creates these artifacts:
 - `cross-report-kpi-conflicts.json`: cross-report KPI definition conflicts and canonical metric recommendations.
 - `executive-narrative-quality.json`: executive story quality checks across narrative, visual intent, KPI trust, and release gates.
 - `autonomous-qa-lab/summary.json`: QA lab summary with generated questions, semantic expectations, visual readiness, and regression risk.
+- `pbip-change-impact-gate.json`: diff-aware KPI release impact gate for PBIP/TMDL/report changes.
+- `semantic-test-fixtures/measure-expectations.json`: generated semantic test fixtures and measure expectations.
+- `kpi-owner-signoff.json`: owner-linked KPI sign-off items with required evidence.
+- `refresh-blast-radius.json`: refresh, capacity, and service blast-radius analysis.
+- `sensitive-data-exposure.json`: local sensitive-data exposure map across model and report metadata.
+- `capacity-mitigation-plan.json`: prioritized mitigations for capacity and performance risks.
+- `report-retirement-advisor.json`: usage/trust/duplicate-based retirement and consolidation candidates.
+- `live-validation-evidence/summary.json`: live Desktop and review-artifact evidence recorder summary.
+- `semantic-contract-drift.json`: contract, catalog, and usage drift monitor.
+- `rls-persona-coverage.json`: RLS persona coverage matrix with visual/KPI impact guidance.
 
 The workflow is local-first. It does not sign in to Fabric, publish content, or write directly to binary PBIX files. PBIP/TMDL write actions remain gated through explicit apply scripts.

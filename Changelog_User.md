@@ -1,184 +1,44 @@
 # Changelog fuer Anwender
 
-## 2026-04-27
+## v2.0.0 - 2026-05-20
 
-### Neue Projekt-Kennzahlen
+Diese Version macht das Power BI Desktop Plugin release-tauglich als neutrale, lokale AI/KI Workbench fuer Power BI Projekte.
 
-Im Bereich `Projects` wurden neue Business-KPIs ergaenzt. Diese helfen dabei, Projekte schneller nach Aktualitaet, Terminrisiko, Fortschritt, Budget und Aufwand zu bewerten.
+### Neue AI/KI Nutzenbereiche
 
-Neue Kennzahlen:
+- Priorisierte Sanierungsplaene fuer Release-Blocker, KPI-Vertrauen, Lineage-Auswirkung und Governance-Risiken.
+- Business Outcome Simulation fuer Entscheidungen, Zielgruppen, moegliche Fehlentscheidungen und benoetigte Evidenz.
+- Semantic Layer Autopilot fuer bessere Kennzahlenbeschreibungen, Synonyme, Verantwortlichkeiten und Copilot-Readiness.
+- AI Governance Evidence Pack fuer Audit-Nachweise, Sign-off-Luecken, Rest-Risiken und Release-Evidenz.
+- Human Override Learning zur strukturierten Erfassung menschlicher Korrekturen und Lerneffekte.
+- Cross-Report KPI Conflict Detection fuer widerspruechliche KPI-Definitionen ueber mehrere Reports hinweg.
+- Executive Narrative Quality Agent fuer Management-Storys, die durch Visuals, KPI-Vertrauen und Release-Evidenz gedeckt sind.
+- Autonomous Power BI QA Lab fuer generierte QA-Fragen, semantische Erwartungen, Visual-Readiness und Regressionsrisiken.
+- PBIP Change Impact Gate fuer release-relevante Auswirkungen geaenderter PBIP/TMDL/report Dateien.
+- Semantic Test Fixture Generator fuer reproduzierbare KPI-Testdaten und Measure-Erwartungen.
+- KPI Owner Sign-off Workflow fuer verbindliche Freigabeentscheidungen pro Kennzahl.
+- Refresh Blast-Radius Analyzer fuer Auswirkungen von Refresh-, Kapazitaets- und Service-Risiken.
+- Sensitive Data Exposure Map fuer sensible Felder und Review-Aktionen.
+- Capacity Mitigation Planner fuer konkrete Gegenmassnahmen bei Kapazitaets- und Performance-Risiken.
+- Report Retirement Advisor fuer Konsolidierung, Review oder Stilllegung schwacher Reports/KPIs.
+- Live Validation Evidence Recorder fuer lokale Nachweise aus Power BI Desktop Validierungen.
+- Semantic Contract Drift Monitor fuer veraltete Verantwortlichkeiten, fehlende Vertrage und Erwartungsdrift.
+- RLS Persona Coverage Matrix fuer Sicherheitsrollen, Personas und Abdeckungsluecken.
 
-- `_Projects Without Recent Status`
-- `_Status Report Compliance %`
-- `_Overdue Projects`
-- `_Projects Ending Next 30 Days`
-- `_Average Project Duration Days`
-- `_Project Progress %`
-- `_Projects At Risk by Progress`
-- `_Project Cost Variance %`
-- `_Forecast Budget Overrun`
-- `_Forecast Budget Overrun %`
-- `_Effort Variance`
-- `_Effort Burn Rate %`
+### Verbesserte Review-Pakete
 
-Nutzen fuer Anwender:
+- Max AI Review erzeugt jetzt 39 lokale Artefakte ueber 38 AI/KI USP Workflows.
+- Release Candidate Packs kombinieren Gate-Entscheidung, Service-Scanner, semantische Tests, Risiko-Heatmap und PR-Kommentar.
+- Dokumentation, Script-Katalog und Value Proposition wurden auf die 38-USP Positionierung aktualisiert.
 
-- Projekte ohne aktuellen Statusbericht schneller erkennen
-- ueberfaellige Projekte identifizieren
-- Projekte mit Terminrisiko erkennen
-- Budgetueberschreitungen sichtbar machen
-- Aufwand und Forecast besser vergleichen
+### Sicherheit und Neutralitaet
 
-### Neuer Projekt-Control-Tower
+- Die Workflows bleiben local-first.
+- Es werden keine Reports veroeffentlicht.
+- Es werden keine Power BI Service Logins oder Credentials benoetigt.
+- PBIX-Dateien werden nicht automatisch veraendert.
+- Generierte lokale Review-, Live-, Forecast-, Incident- und QA-Ausgaben werden nicht mehr in Git aufgenommen.
 
-Im Bereich `Projects` wurde der Ordner `Business KPIs\Control Tower` ergaenzt.
+## v1.0.0
 
-Neue Kennzahlen:
-
-- `_Project Schedule Risk Score`
-- `_Project Cost Risk Score`
-- `_Project Status Quality Score`
-- `_Project Overall Risk Score`
-- `_Project Delivery Confidence %`
-- `_Project Risk Category`
-- `_Project Risk Color`
-- `_Project Attention Reason`
-- `_Projects Requiring Attention`
-- `_Projects Due Soon And Low Progress`
-- `_Projects Over Forecast Budget`
-- `_Portfolio Investment at Risk`
-- `_High Value Projects at Risk`
-- `_Projects With Stale Status`
-
-Nutzen fuer Anwender:
-
-- Projekte nach Risiko sortieren
-- kritische Projekte schneller erkennen
-- sehen, warum ein Projekt Aufmerksamkeit braucht
-- Portfolio-Investitionen mit Risiko auswerten
-- Management- und PMO-Sichten gezielter aufbauen
-
-### Neue Ressourcen-Kennzahlen
-
-Im Bereich `Resources` wurden neue Business-KPIs ergaenzt. Diese helfen bei Kapazitaetsplanung, Auslastung, Timesheet-Abgleich und Datenqualitaet.
-
-Neue Kennzahlen:
-
-- `_Resource Demand Hours`
-- `_Resource Demand Hours excl. ATOSS`
-- `_Resource Capacity Gap Hours`
-- `_Resource Capacity Gap %`
-- `_Resources Overallocated`
-- `_Resources Critically Overallocated`
-- `_Resources Underutilized`
-- `_Resources Without Demand`
-- `_Resources Without Capacity`
-- `_Resources With Demand No Capacity`
-- `_Timesheet Coverage %`
-- `_Timesheet vs Demand Gap Hours`
-- `_Planned vs Actual Utilization Gap %`
-- `_Avg Demand per Resource`
-- `_Avg Capacity per Resource`
-- `_Avg Timesheet Hours per Resource`
-- `_Available Capacity Hours`
-- `_Overallocated Hours`
-- `_Overallocated Hours %`
-- `_Resources Missing Department`
-- `_Resource Master Data Completeness %`
-
-Nutzen fuer Anwender:
-
-- Ueberlastete Ressourcen erkennen
-- freie Kapazitaeten sichtbar machen
-- Ressourcen ohne Demand oder ohne Kapazitaet finden
-- Forecast und gebuchte Zeiten vergleichen
-- Stammdatenqualitaet bewerten
-
-### Neuer Ressourcen-Control-Tower
-
-Im Bereich `Resources` wurde der Ordner `Business KPIs\Control Tower` ergaenzt.
-
-Neue Kennzahlen:
-
-- `_Resource Overload Score`
-- `_Resource Availability Score`
-- `_Resource Forecast Quality Score`
-- `_Resource Bottleneck Score`
-- `_Department Capacity Risk Score`
-- `_Resource Load Category`
-- `_Resource Load Color`
-- `_Resource Attention Reason`
-- `_Resources Overallocated Next 30 Days`
-- `_Resources Overallocated Next 90 Days`
-- `_Resources Underutilized Next 30 Days`
-- `_Demand Without Capacity Hours`
-- `_Missing Timesheet Hours`
-- `_Forecast Accuracy %`
-- `_Demand vs Actual Variance Hours`
-- `_Resources With Missing Master Data`
-
-Nutzen fuer Anwender:
-
-- Ressourcen-Engpaesse priorisieren
-- Bereichs- und Abteilungsrisiken erkennen
-- Forecast-Qualitaet bewerten
-- Auslastungskategorien wie `Healthy`, `Watch` und `Critical` verwenden
-- konkrete Gruende fuer Aufmerksamkeit anzeigen
-
-### Rollen und Berechtigungen
-
-Es wurden Rollen fuer das vorgesehene Berechtigungskonzept vorbereitet:
-
-- `RLS_01_Portfolio_Manager`
-- `RLS_02_BU_Bereichsleiter`
-- `RLS_03_Lead_Head`
-- `RLS_04_Project_Manager`
-- `RLS_05_Team_Member`
-
-Nutzen fuer Anwender:
-
-- Portfolio Manager koennen eine breite Portfolio-Sicht erhalten
-- Bereichsleiter koennen auf eigene Bereiche eingeschraenkt werden
-- Leads koennen auf Teams oder Kostenstellen eingeschraenkt werden
-- Project Manager koennen auf eigene Projektteam-Ressourcen eingeschraenkt werden
-- Team Member koennen auf eigene Daten eingeschraenkt werden
-
-Hinweis:
-
-Die Benutzerzuordnung muss noch in der Tabelle `RLS_UserAccess` gepflegt werden.
-
-### TimesheetLines: Ressourcennamen mit Umlauten
-
-Die Logik fuer `TimesheetLines` wurde so angepasst, dass Ressourcennamen mit Umlauten aus dem Ressourcenstamm verwendet werden koennen.
-
-Nutzen fuer Anwender:
-
-- Namen wie `Mueller`, `Poertner`, `Struessmann` koennen wieder korrekt als `Mueller/Mueller`-Quelle ersetzt werden, sofern der Ressourcenstamm den Namen mit Umlaut enthaelt.
-- Die Anzeige von Ressourcennamen wird fachlich sauberer und konsistenter.
-
-### Statusbericht-Texte
-
-Fuer Statusbericht-Texte wurde eine Logik erarbeitet, damit Textfelder nicht alphabetisch, sondern passend zum neuesten `Report Date` angezeigt werden.
-
-Betroffene Inhalte:
-
-- Status Summary
-- Accomplished Activities
-- Planned Activities
-
-Nutzen fuer Anwender:
-
-- Karten und Detailanzeigen zeigen den Text des neuesten Statusberichts
-- keine falsche Anzeige durch alphabetische First-/Last-Textaggregation
-
-### Hinweise zur Nutzung
-
-- Neue Kennzahlen beginnen mit `_`.
-- Projektkennzahlen befinden sich in `Projects`.
-- Ressourcenkennzahlen befinden sich in `Resources`.
-- Viele neue Kennzahlen liegen im Ordner `Business KPIs`.
-- Control-Tower-Kennzahlen liegen im Ordner `Business KPIs\Control Tower`.
-- Falls neue Kennzahlen nicht sofort sichtbar sind:
-  - Bericht speichern
-  - Power BI Desktop neu oeffnen
-  - im Feldbereich nach `_Project`, `_Resource`, `_Forecast`, `_Risk` oder `_Timesheet` suchen
+- Erste oeffentliche Plugin-Basisversion.
