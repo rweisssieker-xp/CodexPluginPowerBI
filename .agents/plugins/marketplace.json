@@ -1,7 +1,7 @@
 {
-  "name": "local-productivity-plugins",
+  "name": "codex-powerbi-plugins",
   "interface": {
-    "displayName": "Local Productivity Plugins"
+    "displayName": "Power BI Desktop Plugins"
   },
   "plugins": [
     {
