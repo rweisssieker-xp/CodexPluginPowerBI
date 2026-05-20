@@ -32,6 +32,8 @@ This documentation describes the local Codex plugin for Power BI Desktop and Fab
 
 - [Privacy](privacy.md): data boundaries and local execution model.
 - [Release checklist](release-checklist.md): what to verify before publishing plugin changes.
+- [v2.1.0 release notes](release-notes-v2.1.0.md): GitHub release text and verification summary.
+- [OpenAI marketplace submission draft](openai-marketplace-submission-v2.1.0.md): listing copy, conversation starters, and publishing checklist.
 - [Example output](example-output.md): expected generated artifacts.
 - [Troubleshooting](troubleshooting.md): common failures and fixes.
 

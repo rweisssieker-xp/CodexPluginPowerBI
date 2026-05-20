@@ -1,5 +1,25 @@
 # Changelog fuer Anwender
 
+## v2.1.0 - 2026-05-20
+
+Diese Version erweitert das Power BI Desktop Plugin um lokale Business Process Data Quality Packs fuer Standardprozesse.
+
+### Neue Prozess-DQ Funktionen
+
+- Order-to-Cash, Procure-to-Pay, Record-to-Report, Hire-to-Retire, Plan-to-Produce, Forecast-to-Deliver, Service-to-Cash, Issue-to-Resolution, Lead-to-Opportunity und Quote-to-Order.
+- Lokale Pruefung von Power BI Modell-Metadaten und CSV/JSON-Exportdaten.
+- Mapping-Vorschlaege fuer kanonische Prozessobjekte wie SalesOrder, Invoice, Payment, Delivery, PurchaseOrder, Vendor, GLAccount, Employee und ProductionOrder.
+- Prozess-Findings mit Severity, Evidence, KPI-Auswirkung, Owner-Hinweis, empfohlener Aktion und Release-Auswirkung.
+- Optionaler Einbau in Release Candidate Packs ueber `-IncludeBusinessProcessDQ`.
+
+### Sicherheit und Grenze
+
+- Keine ERP-Logins.
+- Keine Datenbankverbindungen.
+- Keine externen API Calls.
+- Keine PBIX-Mutation.
+- Kein Ersatz fuer vollstaendiges Process Mining ohne Event Logs.
+
 ## v2.0.0 - 2026-05-20
 
 Diese Version macht das Power BI Desktop Plugin release-tauglich als neutrale, lokale AI/KI Workbench fuer Power BI Projekte.
