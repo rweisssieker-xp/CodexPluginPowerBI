@@ -24,6 +24,7 @@ This documentation describes the local Codex plugin for Power BI Desktop and Fab
 - [Live Desktop](live-desktop.md): local XMLA/ADOMD discovery, live DMV/DAX checks, and limitations.
 - [Fabric planning](fabric.md): readiness plans, deployment risk simulation, service integration, and what the plugin does not do.
 - [Governance](governance.md): rule files, trust gates, golden baselines, data contracts, and memory/rule mining.
+- [Business process data quality](business-process-data-quality.md): local Power BI and ERP export rule packs for standard enterprise processes.
 - [External Tool installation](external-tool-installation.md): register the Codex Power BI Workbench as a Power BI External Tool.
 - [Golden baselines](golden-baselines.md): deterministic regression checks for semantic model changes.
 

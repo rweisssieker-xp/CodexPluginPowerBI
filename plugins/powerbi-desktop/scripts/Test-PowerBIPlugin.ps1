@@ -5,6 +5,7 @@ param(
 $ErrorActionPreference = 'Stop'
 
 $samplePath = Join-Path $PluginRoot 'examples/sample-model'
+$businessProcessDataPath = Join-Path $PluginRoot 'examples/business-process-data'
 $scriptsPath = Join-Path $PluginRoot 'scripts'
 $manifestPath = Join-Path $PluginRoot '.codex-plugin/plugin.json'
 
@@ -850,6 +851,49 @@ try {
 }
 catch {
     Add-TestResult -Name 'Release candidate pack creates enterprise index' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $processScripts = @(
+        'New-PowerBIProcessDataMapping.ps1',
+        'Invoke-PowerBIBusinessProcessDataQuality.ps1',
+        'New-PowerBIBusinessProcessDQPack.ps1'
+    )
+    $missingProcessScripts = @($processScripts | Where-Object { -not (Test-Path -LiteralPath (Join-Path $scriptsPath $_)) })
+    $packsPath = Join-Path $PluginRoot 'rules/process-packs'
+    $packs = @(Get-ChildItem -LiteralPath $packsPath -File -Filter '*.json' | ForEach-Object { Get-Content -Raw -LiteralPath $_.FullName | ConvertFrom-Json })
+    $packSchemasOk = (@($packs | Where-Object { $_.schema -ne 'codex.powerbi.processRulePack.v1' }).Count -eq 0)
+    Add-TestResult -Name 'Business process DQ scripts and rule packs are present' -Passed ($missingProcessScripts.Count -eq 0 -and $packs.Count -ge 10 -and $packSchemasOk) -Detail ("Missing={0}, Packs={1}" -f ($missingProcessScripts -join ', '), $packs.Count)
+}
+catch {
+    Add-TestResult -Name 'Business process DQ scripts and rule packs are present' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $mapping = & (Join-Path $scriptsPath 'New-PowerBIProcessDataMapping.ps1') -Path $samplePath -DataPath $businessProcessDataPath -Json | ConvertFrom-Json
+    $dq = & (Join-Path $scriptsPath 'Invoke-PowerBIBusinessProcessDataQuality.ps1') -Path $samplePath -DataPath $businessProcessDataPath -OutputDirectory (Join-Path $PluginRoot 'tmp/business-process-dq-test') -ProcessPack All -Json | ConvertFrom-Json
+    $passed = (
+        $mapping.schema -eq 'codex.powerbi.processDataMapping.v1' -and
+        $mapping.status -eq 'NeedsMapping' -and
+        $dq.schema -eq 'codex.powerbi.businessProcessDataQuality.v1' -and
+        $dq.status -eq 'NeedsMapping' -and
+        $dq.findingCount -gt 0 -and
+        $dq.highCount -gt 0 -and
+        $dq.mediumCount -gt 0
+    )
+    Add-TestResult -Name 'Business process DQ runs against sample exports' -Passed $passed -Detail "Status=$($dq.status), Findings=$($dq.findingCount), High=$($dq.highCount)"
+}
+catch {
+    Add-TestResult -Name 'Business process DQ runs against sample exports' -Passed $false -Detail $_.Exception.Message
+}
+
+try {
+    $candidateWithProcess = & (Join-Path $scriptsPath 'New-PowerBIReleaseCandidatePack.ps1') -Path $samplePath -OutputDirectory (Join-Path $PluginRoot 'tmp/release-candidate-process-dq-test') -IncludeBusinessProcessDQ -BusinessProcessDataPath $businessProcessDataPath
+    $summary = Get-Content -Raw -LiteralPath $candidateWithProcess.Summary | ConvertFrom-Json
+    Add-TestResult -Name 'Release candidate pack includes optional business process DQ' -Passed ($summary.enterpriseUsps.businessProcessDqStatus -and $summary.enterpriseUsps.businessProcessDqStatus -ne 'NotRun' -and $summary.enterpriseUsps.businessProcessDqHighCount -gt 0) -Detail "Status=$($summary.enterpriseUsps.businessProcessDqStatus), High=$($summary.enterpriseUsps.businessProcessDqHighCount)"
+}
+catch {
+    Add-TestResult -Name 'Release candidate pack includes optional business process DQ' -Passed $false -Detail $_.Exception.Message
 }
 
 $results | Format-Table Name, Passed, Detail -AutoSize

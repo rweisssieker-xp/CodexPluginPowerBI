@@ -24,6 +24,9 @@ Scripts live in `plugins/powerbi-desktop/scripts`. Most commands accept either a
 - `Invoke-PowerBIAutoReview.ps1`: offline review package for a project path.
 - `Invoke-PowerBIUnifiedReview.ps1`: broad review index combining offline, live when available, native parity, external tools, and AI outputs.
 - `Invoke-PowerBIMaxAIReview.ps1`: advanced AI/KI package with 39 artifacts across 38 USP workflows.
+- `Invoke-PowerBIBusinessProcessDataQuality.ps1`: local business process data-quality package for Power BI metadata and CSV/JSON ERP exports.
+- `New-PowerBIProcessDataMapping.ps1`: proposes canonical process object mappings from PBIP/TMDL metadata and local CSV/JSON exports.
+- `New-PowerBIBusinessProcessDQPack.ps1`: wrapper for the standalone business process data-quality pack.
 - `Invoke-PowerBIInnovationReview.ps1`: innovation-focused package with UX, governance, release, and trust outputs.
 - `Invoke-PowerBIRealFeatureReview.ps1`: real-feature validation for schema, render readiness, Fabric/service planning, refresh, aggregation, RLS, and visuals.
 - `Invoke-PowerBINativeToolParityReview.ps1`: native parity package for BPA, compare, docs, performance, layout, theme, and source control.

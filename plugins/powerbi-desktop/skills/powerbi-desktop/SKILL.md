@@ -41,8 +41,9 @@ Use this skill when the user asks Codex to inspect, document, generate, or refac
 23. For maximum AI/KI workflows, use `scripts/Invoke-PowerBIAutonomousFixAgent.ps1`, `scripts/Compare-PowerBILiveRepoModel.ps1`, `scripts/New-PowerBIKpiTrustContract.ps1`, `scripts/Invoke-PowerBIAskModel.ps1`, and `scripts/New-PowerBIFabricReadinessPlan.ps1`.
 24. For the complete 39-artifact AI/KI USP package, run `scripts/Invoke-PowerBIMaxAIReview.ps1`.
 25. For enterprise release engineering, run `scripts/New-PowerBIReleaseCandidatePack.ps1`, `scripts/New-PowerBIServiceScanner.ps1`, `scripts/New-PowerBIModelRiskHeatmap.ps1`, `scripts/Invoke-PowerBISemanticTestRunner.ps1`, and `scripts/New-PowerBITomWritePlan.ps1`.
-26. For disruptive autonomous planning workflows, use the dedicated skills `powerbi-autonomous-planning-loop`, `powerbi-goal-seeking-planning`, `powerbi-constraint-aware-planning`, `powerbi-autonomous-forecast-agents`, `powerbi-autonomous-exception-management`, `powerbi-revenue-rescue-mode`, `powerbi-forecast-trust-market`, `powerbi-causal-counterfactual-forecasting`, `powerbi-self-healing-forecast-governance`, `powerbi-planning-memory`, `powerbi-planning-readiness-score`, and `powerbi-forecast-war-room`.
-27. Look for these editable artifacts:
+26. For local business process data quality checks across Power BI metadata and CSV/JSON exports, run `scripts\New-PowerBIProcessDataMapping.ps1`, `scripts\Invoke-PowerBIBusinessProcessDataQuality.ps1`, or `scripts\New-PowerBIBusinessProcessDQPack.ps1`.
+27. For disruptive autonomous planning workflows, use the dedicated skills `powerbi-autonomous-planning-loop`, `powerbi-goal-seeking-planning`, `powerbi-constraint-aware-planning`, `powerbi-autonomous-forecast-agents`, `powerbi-autonomous-exception-management`, `powerbi-revenue-rescue-mode`, `powerbi-forecast-trust-market`, `powerbi-causal-counterfactual-forecasting`, `powerbi-self-healing-forecast-governance`, `powerbi-planning-memory`, `powerbi-planning-readiness-score`, and `powerbi-forecast-war-room`.
+28. Look for these editable artifacts:
    - `*.pbip`
    - `*.SemanticModel`, `*.Report`
    - `definition.pbism`, `model.bim`
@@ -146,6 +147,18 @@ Run:
 ```
 
 Use this when the user wants the strongest Power BI/Fabric engineering workflow. The release candidate pack combines unified review, Max AI review, service scanner, semantic tests, model risk heatmap, and PR release comment. Fabric REST and TOM/TMSL writes stay explicit and gated; do not sign in, publish, or mutate a model unless the user explicitly asks and provides the required endpoint/token/write confirmation.
+
+### Run business process data quality
+
+Run:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\New-PowerBIProcessDataMapping.ps1 -Path . -DataPath .\exports -OutputPath .\process-data-mapping.json -Json
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBIBusinessProcessDataQuality.ps1 -Path . -DataPath .\exports -OutputDirectory .\powerbi-business-process-dq -ProcessPack All
+.\plugins\powerbi-desktop\scripts\New-PowerBIBusinessProcessDQPack.ps1 -Path . -DataPath .\exports -OutputDirectory .\powerbi-business-process-dq
+```
+
+Use this for Order-to-Cash, Procure-to-Pay, Record-to-Report, Hire-to-Retire, Plan-to-Produce, Forecast-to-Deliver, Service-to-Cash, Issue-to-Resolution, Lead-to-Opportunity, and Quote-to-Order checks. It reads local Power BI metadata and local CSV/JSON exports only; missing mappings return `NeedsMapping` instead of crashing.
 
 ### Decide whether a report is release-ready
 

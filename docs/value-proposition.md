@@ -23,6 +23,7 @@ Power BI teams often lose time because model quality, DAX risk, report UX, relea
 | Live Desktop confidence | Open Desktop models can be inspected through read-only local XMLA/ADOMD checks when available. | Live model summary, live metric catalog, live-vs-repo drift |
 | Fabric readiness | Teams can plan deployment and capacity risk before treating a model as service-ready. | Fabric readiness plan, service scanner, capacity risk forecast |
 | AI-ready semantics | Copilot and AI workflows get better model metadata, contracts, prompt packs, and semantic test coverage. | Copilot readiness, data contracts, AI prompt pack |
+| Process data quality | Standard business processes can be checked from Power BI metadata and local ERP exports without service calls. | Business process DQ pack, mapping coverage, owner actions |
 
 ## Differentiating USPs
 

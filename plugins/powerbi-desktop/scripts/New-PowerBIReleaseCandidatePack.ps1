@@ -1,7 +1,10 @@
 param(
     [string]$Path = ".",
     [string]$OutputDirectory = "powerbi-release-candidate-pack",
-    [switch]$SkipLive
+    [switch]$SkipLive,
+    [switch]$IncludeBusinessProcessDQ,
+    [string]$BusinessProcessDataPath,
+    [string]$BusinessProcessMappingPath
 )
 
 $ErrorActionPreference = 'Stop'
@@ -36,6 +39,9 @@ else {
 & (Join-Path $scriptRoot 'Test-PowerBIRlsLeakage.ps1') -Path $Path -OutputPath (Join-Path $resolvedOut 'rls-leakage.json') -Json | Out-Null
 & (Join-Path $scriptRoot 'New-PowerBIUsageTrustMatrix.ps1') -Path $Path -OutputPath (Join-Path $resolvedOut 'usage-trust-matrix.json') -Json | Out-Null
 & (Join-Path $scriptRoot 'Test-PowerBIPBIPRollbackReadiness.ps1') -PbipPath $Path -OutputPath (Join-Path $resolvedOut 'pbip-rollback-readiness.json') -Json | Out-Null
+if ($IncludeBusinessProcessDQ) {
+    & (Join-Path $scriptRoot 'Invoke-PowerBIBusinessProcessDataQuality.ps1') -Path $Path -DataPath $BusinessProcessDataPath -MappingPath $BusinessProcessMappingPath -OutputDirectory (Join-Path $resolvedOut 'business-process-dq') -Json | Out-Null
+}
 & (Join-Path $scriptRoot 'New-PowerBIPRReleaseComment.ps1') -Path $Path -OutputPath (Join-Path $resolvedOut 'pr-release-comment.md') | Out-Null
 
 $semantic = Get-Content -Raw -LiteralPath (Join-Path $resolvedOut 'semantic-tests.json') | ConvertFrom-Json
@@ -46,6 +52,7 @@ $capacityRisk = Get-Content -Raw -LiteralPath (Join-Path $resolvedOut 'fabric-ca
 $rlsLeakage = Get-Content -Raw -LiteralPath (Join-Path $resolvedOut 'rls-leakage.json') | ConvertFrom-Json
 $usageTrust = Get-Content -Raw -LiteralPath (Join-Path $resolvedOut 'usage-trust-matrix.json') | ConvertFrom-Json
 $rollbackReadiness = Get-Content -Raw -LiteralPath (Join-Path $resolvedOut 'pbip-rollback-readiness.json') | ConvertFrom-Json
+$businessProcessDq = if ($IncludeBusinessProcessDQ) { Get-Content -Raw -LiteralPath (Join-Path $resolvedOut 'business-process-dq/summary.json') | ConvertFrom-Json } else { $null }
 $unifiedErrorCount = if (Test-Path -LiteralPath $unifiedErrorLog) { @((Get-Content -LiteralPath $unifiedErrorLog -ErrorAction SilentlyContinue) | Where-Object { $_ }).Count } else { 0 }
 $maxAiErrorCount = if (Test-Path -LiteralPath $maxAiErrorLog) { @((Get-Content -LiteralPath $maxAiErrorLog -ErrorAction SilentlyContinue) | Where-Object { $_ }).Count } else { 0 }
 
@@ -86,6 +93,8 @@ $summary = [pscustomobject]@{
         rlsHighRiskCount = $rlsLeakage.highRiskCount
         usageTrustPriority = $usageTrust.priority
         rollbackReadinessStatus = $rollbackReadiness.status
+        businessProcessDqStatus = if ($businessProcessDq) { $businessProcessDq.status } else { 'NotRun' }
+        businessProcessDqHighCount = if ($businessProcessDq) { $businessProcessDq.highCount } else { 0 }
     }
 }
 $summaryPath = Join-Path $resolvedOut 'summary.json'
@@ -113,6 +122,7 @@ $index = @(
     ('- RLS leakage checks: `{0}`' -f (Join-Path $resolvedOut 'rls-leakage.json')),
     ('- Usage trust matrix: `{0}`' -f (Join-Path $resolvedOut 'usage-trust-matrix.json')),
     ('- PBIP rollback readiness: `{0}`' -f (Join-Path $resolvedOut 'pbip-rollback-readiness.json')),
+    ('- Business process DQ: `{0}`' -f $(if ($IncludeBusinessProcessDQ) { Join-Path $resolvedOut 'business-process-dq/summary.json' } else { 'not requested' })),
     ('- PR release comment: `{0}`' -f (Join-Path $resolvedOut 'pr-release-comment.md')),
     ('- Summary: `{0}`' -f $summaryPath)
 )

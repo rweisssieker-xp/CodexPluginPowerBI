@@ -4,6 +4,9 @@
 
 ### Added
 
+- Added local Business Process Data Quality packs for Order-to-Cash, Procure-to-Pay, Record-to-Report, Hire-to-Retire, Plan-to-Produce, Forecast-to-Deliver, Service-to-Cash, Issue-to-Resolution, Lead-to-Opportunity, and Quote-to-Order.
+- Added `Invoke-PowerBIBusinessProcessDataQuality.ps1`, `New-PowerBIProcessDataMapping.ps1`, and `New-PowerBIBusinessProcessDQPack.ps1` for local Power BI metadata plus CSV/JSON export validation.
+- Added process rule packs, sample ERP-style CSV fixtures, process DQ smoke tests, and focused Pester coverage.
 - Expanded the Power BI Desktop plugin into a 38-USP AI/KI Power BI Workbench.
 - Added eighteen AI/KI workflows:
   - Agentic Remediation Prioritization
@@ -34,6 +37,7 @@
 - Updated plugin positioning to a 38-USP AI/KI Power BI Workbench.
 - Updated plugin metadata, default prompts, README positioning, and capability descriptions.
 - Kept the execution model local-first: no hidden service calls, no PBIX mutation, no implicit publish, and no hidden writes.
+- Kept Business Process Data Quality separate from the 39-artifact Max AI Review while allowing release candidate packs to include process DQ summary evidence with `-IncludeBusinessProcessDQ`.
 - Tightened `.gitignore` so generated local review, live, forecast, incident, QA, and release outputs stay out of Git.
 
 ### Removed

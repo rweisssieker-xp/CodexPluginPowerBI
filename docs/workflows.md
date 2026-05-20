@@ -223,3 +223,32 @@ Use this when a model is close to release and you need one package for engineeri
 ```
 
 The package includes unified review, Max AI review, service scanner, semantic tests, model risk heatmap, and PR release comment. See [Enterprise AI features](enterprise-ai-features.md).
+
+## 12. Business Process Data Quality
+
+Use this when you need local evidence for standard process data problems such as Order-to-Cash, Procure-to-Pay, Record-to-Report, Hire-to-Retire, Plan-to-Produce, Forecast-to-Deliver, Service-to-Cash, Issue-to-Resolution, Lead-to-Opportunity, or Quote-to-Order.
+
+```powershell
+.\plugins\powerbi-desktop\scripts\New-PowerBIProcessDataMapping.ps1 `
+  -Path .\plugins\powerbi-desktop\examples\sample-model `
+  -DataPath .\plugins\powerbi-desktop\examples\business-process-data `
+  -OutputPath .\process-data-mapping.json `
+  -Json
+
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBIBusinessProcessDataQuality.ps1 `
+  -Path .\plugins\powerbi-desktop\examples\sample-model `
+  -DataPath .\plugins\powerbi-desktop\examples\business-process-data `
+  -OutputDirectory .\powerbi-business-process-dq `
+  -ProcessPack All
+```
+
+Use the standalone wrapper when you want a distributable process-DQ package:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\New-PowerBIBusinessProcessDQPack.ps1 `
+  -Path .\plugins\powerbi-desktop\examples\sample-model `
+  -DataPath .\plugins\powerbi-desktop\examples\business-process-data `
+  -OutputDirectory .\powerbi-business-process-dq
+```
+
+The workflow is deterministic and local-first. It validates local CSV/JSON exports and local Power BI metadata, but it does not sign in to ERP systems, query databases, publish to Power BI Service, or mutate PBIX files.

@@ -19,6 +19,7 @@ Current focused Pester specs include:
 - `ReportVisualIntelligence.Tests.ps1`
 - `GuidedFixLoop.Tests.ps1`
 - `AIForecast.Tests.ps1`
+- `BusinessProcessDQ.Tests.ps1`
 
 To run only the CI-style smoke and golden baseline checks:
 
@@ -38,6 +39,7 @@ To run a single focused spec:
 Invoke-Pester .\plugins\powerbi-desktop\tests\pester\SemanticRunner.Tests.ps1
 Invoke-Pester .\plugins\powerbi-desktop\tests\pester\ReportVisualIntelligence.Tests.ps1
 Invoke-Pester .\plugins\powerbi-desktop\tests\pester\GuidedFixLoop.Tests.ps1
+Invoke-Pester .\plugins\powerbi-desktop\tests\pester\BusinessProcessDQ.Tests.ps1
 ```
 
 To run the documentation coverage gate used by CI:
@@ -49,3 +51,5 @@ To run the documentation coverage gate used by CI:
 This gate checks that script files are mentioned in README/docs/SKILL/plugin metadata, rejects stale numbered-USP and legacy semantic test runner claims, and verifies that `New-PowerBILiveExecutiveNarrative.ps1` is documented.
 
 Generated test outputs are written under `plugins\powerbi-desktop\tmp` and should not be committed.
+
+Business process DQ smoke coverage lives in `scripts\Test-PowerBIPlugin.ps1`. It asserts that `Invoke-PowerBIBusinessProcessDataQuality.ps1`, `New-PowerBIProcessDataMapping.ps1`, and `New-PowerBIBusinessProcessDQPack.ps1` exist, that all process rule packs parse as `codex.powerbi.processRulePack.v1`, and that sample CSV exports produce deterministic high, medium, and mapping findings.
