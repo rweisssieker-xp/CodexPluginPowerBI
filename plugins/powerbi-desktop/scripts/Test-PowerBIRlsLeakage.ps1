@@ -1,6 +1,7 @@
 param(
     [string]$Path = ".",
     [string]$RolesPath,
+    [string]$Server,
     [string]$OutputPath,
     [switch]$Json,
     [switch]$CheckLive
@@ -129,6 +130,32 @@ if ($roleTests.Count -eq 0) {
 
 $highRisk = @($roleTests | Where-Object { $_.leakageRisk -eq 'High' }).Count
 $needsLive = @($roleTests | Where-Object { $_.status -eq 'NeedsLiveValidation' }).Count
+$liveValidationResults = New-Object System.Collections.Generic.List[object]
+if ($CheckLive) {
+    foreach ($test in @($roleTests)) {
+        $query = @($test.daxTestQueryDrafts)[0]
+        try {
+            $live = & (Join-Path $PSScriptRoot 'Invoke-PowerBILiveDaxQuery.ps1') -Server $Server -Query $query -Json | ConvertFrom-Json
+            $liveValidationResults.Add([pscustomobject]@{
+                roleName = $test.roleName
+                tableName = $test.tableName
+                status = 'LiveQuerySucceeded'
+                rowCount = $live.rowCount
+                query = $query
+            }) | Out-Null
+            $test.status = 'LiveValidated'
+        }
+        catch {
+            $liveValidationResults.Add([pscustomobject]@{
+                roleName = $test.roleName
+                tableName = $test.tableName
+                status = 'LiveQueryUnavailable'
+                error = $_.Exception.Message
+                query = $query
+            }) | Out-Null
+        }
+    }
+}
 $result = [pscustomobject]@{
     schema = 'codex.powerbi.rlsLeakage.v1'
     root = $root
@@ -139,6 +166,7 @@ $result = [pscustomobject]@{
     highRiskCount = $highRisk
     signals = @($signals.ToArray())
     roleTests = @($roleTests.ToArray())
+    liveValidationResults = @($liveValidationResults.ToArray())
     releaseGateImpact = if ($highRisk -gt 0) { 'Blocked until RLS expectations are specified and validated.' } elseif ($needsLive -gt 0) { 'Warn until live RLS validation evidence is attached.' } else { 'Draft RLS leakage checks generated; validate live before publish.' }
 }
 

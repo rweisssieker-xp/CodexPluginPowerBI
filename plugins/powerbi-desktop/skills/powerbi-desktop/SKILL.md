@@ -46,8 +46,9 @@ Use this skill when the user asks Codex to inspect, document, generate, or refac
 28. For advanced release USPs, run `scripts\New-PowerBIEvidenceGraph.ps1`, `scripts\Test-PowerBISemanticContract.ps1`, `scripts\New-PowerBIExecutiveTrustBrief.ps1`, or `scripts\New-PowerBIReleaseCandidatePack.ps1 -IncludeAdvancedUspQa`.
 29. For separated portfolio, compliance, and operations QA, run `scripts\New-PowerBIReleaseCandidatePack.ps1 -IncludePortfolioGovernanceQa -IncludeComplianceQa -IncludeOperationsQa`.
 30. For Fabric live read-only QA, run `scripts\Get-PowerBIFabricAccessPlan.ps1`, `scripts\Import-PowerBIFabricWorkspaceSnapshot.ps1`, or `scripts\New-PowerBIReleaseCandidatePack.ps1 -IncludeFabricLiveQa -IncludeFabricPortfolioQa -IncludeFabricDeploymentQa -IncludeFabricOperationsQa -IncludeFabricGovernanceQa -IncludeFabricExecutiveQa`.
-31. For disruptive autonomous planning workflows, use the dedicated skills `powerbi-autonomous-planning-loop`, `powerbi-goal-seeking-planning`, `powerbi-constraint-aware-planning`, `powerbi-autonomous-forecast-agents`, `powerbi-autonomous-exception-management`, `powerbi-revenue-rescue-mode`, `powerbi-forecast-trust-market`, `powerbi-causal-counterfactual-forecasting`, `powerbi-self-healing-forecast-governance`, `powerbi-planning-memory`, `powerbi-planning-readiness-score`, and `powerbi-forecast-war-room`.
-32. Look for these editable artifacts:
+31. When the user asks whether features are mocked, simulated, draft-only, or live-backed, run `scripts\New-PowerBIFeatureMaturityMap.ps1`.
+32. For disruptive autonomous planning workflows, use the dedicated skills `powerbi-autonomous-planning-loop`, `powerbi-goal-seeking-planning`, `powerbi-constraint-aware-planning`, `powerbi-autonomous-forecast-agents`, `powerbi-autonomous-exception-management`, `powerbi-revenue-rescue-mode`, `powerbi-forecast-trust-market`, `powerbi-causal-counterfactual-forecasting`, `powerbi-self-healing-forecast-governance`, `powerbi-planning-memory`, `powerbi-planning-readiness-score`, and `powerbi-forecast-war-room`.
+33. Look for these editable artifacts:
    - `*.pbip`
    - `*.SemanticModel`, `*.Report`
    - `definition.pbism`, `model.bim`
@@ -444,6 +445,7 @@ When tools are available, prefer:
 ## Script References
 
 - `scripts/Test-PowerBIEnvironment.ps1` checks for Power BI Desktop, Tabular Editor, DAX Studio, and common Microsoft Store install locations.
+- `scripts/New-PowerBIFeatureMaturityMap.ps1` separates implemented, live-read, snapshot-backed, draft/apply, metadata-only, synthetic, and heuristic-simulation capabilities.
 - `scripts/Get-PowerBIInventory.ps1` inventories PBIX, PBIT, PBIP, TMDL, DAX, Power Query, and model metadata files.
 - `scripts/New-PowerBIModelSummary.ps1` creates a markdown summary from TMDL, DAX, Power Query, and `model.bim` files.
 - `scripts/Invoke-PowerBIInsightScan.ps1` creates a governance and risk report with DAX and Power Query heuristics.

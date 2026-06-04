@@ -39,7 +39,13 @@ Use `Get-PowerBIFabricAccessPlan.ps1` before live reads. Fabric v1 is read-only,
 .\plugins\powerbi-desktop\scripts\New-PowerBIServiceScanner.ps1 -Path .\MyModel -WorkspaceName "Finance BI"
 ```
 
-`Get-PowerBIFabricWorkspaceInventory.ps1` defaults to `OfflinePlan`. REST mode requires explicit `-UseRest` and a token file path. The scanner creates governance findings for ownership, refresh, sensitivity, endorsement, source control, and trust gate status.
+`Get-PowerBIFabricWorkspaceInventory.ps1` defaults to `OfflinePlan`. REST mode requires explicit `-UseRest` and a token file path; it now performs GET-only reads for workspace, report, dataset, dashboard, and recent refresh-history metadata. The scanner creates governance findings for ownership, refresh, sensitivity, endorsement, source control, and trust gate status.
+
+Use the maturity map when a release board needs to separate live evidence from plans, drafts, snapshots, and simulations:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\New-PowerBIFeatureMaturityMap.ps1 -OutputPath .\powerbi-feature-maturity.md
+```
 
 ## Safe Write Planning
 
@@ -62,7 +68,7 @@ The TOM/TMSL plan is dry-run by default. It documents required gates: explicit e
 .\plugins\powerbi-desktop\scripts\New-PowerBIVisualIntentAnalyzer.ps1 -Path .\MyModel
 ```
 
-The layout optimizer creates governed placement fixes for PBIP/report JSON workflows. Screenshot review gives structured UX, accessibility, and executive-fit checks.
+The layout optimizer creates governed placement fixes for PBIP/report JSON workflows. Screenshot review gives structured UX, accessibility, and executive-fit checks. `Test-PowerBIReportRenderReadiness.ps1 -ScreenshotPath .\report.png` marks the evidence as `EvidenceBacked` when report metadata and screenshot evidence are both available; automated publish remains intentionally disabled.
 
 Report and visual intelligence works at two levels:
 

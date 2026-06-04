@@ -43,6 +43,8 @@ Import a local workspace snapshot only when the token file and workspace target 
   -OutputDirectory .\fabric-snapshot
 ```
 
+With `-AccessTokenPath`, workspace snapshots read only GET endpoints for workspaces, reports, datasets, dashboards, and recent dataset refresh history. No publish, refresh trigger, promotion, rebind, delete, or endorsement endpoint is called.
+
 For offline, CI, and marketplace demos, use fixtures under `plugins\powerbi-desktop\examples\fabric-snapshot` instead of a token:
 
 ```powershell
@@ -58,6 +60,16 @@ For offline, CI, and marketplace demos, use fixtures under `plugins\powerbi-desk
 ```
 
 If live QA is requested without enough access information, the release pack records `NeedsAccessPlan` and writes an access plan instead of failing hidden or attempting login.
+
+For inventory-only checks:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Get-PowerBIFabricWorkspaceInventory.ps1 `
+  -WorkspaceId "00000000-0000-0000-0000-000000000000" `
+  -AccessTokenPath .\token.txt `
+  -UseRest `
+  -Json
+```
 
 ## Core Commands
 

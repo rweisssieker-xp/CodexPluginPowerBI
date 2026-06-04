@@ -25,6 +25,7 @@ Power BI teams often lose time because model quality, DAX risk, report UX, relea
 | Fabric readiness | Teams can plan deployment and capacity risk before treating a model as service-ready. | Fabric readiness plan, service scanner, capacity risk forecast |
 | AI-ready semantics | Copilot and AI workflows get better model metadata, contracts, prompt packs, and semantic test coverage. | Copilot readiness, data contracts, AI prompt pack |
 | Process data quality | Standard business processes can be checked from Power BI metadata and local ERP exports without service calls. | Business process DQ pack, mapping coverage, owner actions |
+| Feature maturity transparency | Teams can see whether a capability is live-read, snapshot-backed, draft/apply, metadata-only, synthetic, or heuristic simulation. | Feature maturity map |
 
 ## Differentiating USPs
 
@@ -170,6 +171,7 @@ Fabric Live Read-Only Intelligence connects the local workbench to real Fabric/P
 - Token-file access plans and GET-only REST guardrails prevent accidental service mutation.
 - Workspace and tenant snapshots let teams evaluate Fabric evidence offline, repeatably, and in CI.
 - Fabric portfolio, deployment, operations, governance, security, and executive packs turn service metadata into release and risk decisions.
+- The feature maturity map makes it explicit which outputs are live-read, snapshot-backed, draft/apply, metadata-only, synthetic, or heuristic simulation.
 
 ### 11. Forecast And Planning Intelligence
 

@@ -7,6 +7,7 @@ Scripts live in `plugins/powerbi-desktop/scripts`. Most commands accept either a
 - Live/repo reconciliation uses `LiveUnavailable`, `NoDrift`, and `DriftDetected` to distinguish skipped live checks from clean or changed live Desktop comparisons.
 - Semantic test output uses schema `codex.powerbi.semanticTestRunner.v2`.
 - Semantic tests can return `PendingLiveDax` when live DAX execution is required; `-FailOnPending` treats those pending checks as failures for release gates.
+- Feature maturity can be reported with `New-PowerBIFeatureMaturityMap.ps1`, which classifies capabilities as implemented, live-when-available, snapshot-backed, draft/apply, metadata-only, or heuristic simulation.
 
 ## Environment And Discovery
 
@@ -36,6 +37,7 @@ Scripts live in `plugins/powerbi-desktop/scripts`. Most commands accept either a
 - `New-PowerBIAnalyticalReleaseReport.ps1`: creates a stakeholder-ready analytical release report from trust, semantic-test, release-gate, and methodology evidence.
 - `New-PowerBIEvidenceGraph.ps1`: links model metrics, semantic tests, dependencies, visuals, and review artifacts into a local evidence graph.
 - `New-PowerBIExecutiveTrustBrief.ps1`: creates a one-page executive trust brief with release decision, KPI trust, methodology, lineage, and security status.
+- `New-PowerBIFeatureMaturityMap.ps1`: creates a machine-readable map that distinguishes implemented, live-read, snapshot-backed, draft/apply, metadata-only, synthetic, and heuristic-simulation features.
 
 ## Semantic Model Analysis
 
@@ -99,7 +101,7 @@ Creates read-only AI sales forecast from open Desktop model or saved extract. Su
 - `New-PowerBIPerformanceAdvisor.ps1`: finds DAX performance-risk patterns and proposes benchmark guidance.
 - `New-PowerBITrustDebtLedger.ps1`: creates owner/SLA-style KPI trust debt from trust scores, release gates, and guided fixes.
 - `New-PowerBIKpiIncidentReport.ps1`: creates KPI incident evidence, root-cause, rollback, and validation dossiers.
-- `Test-PowerBIRlsLeakage.ps1`: drafts RLS leakage tests and release-gate impact from role metadata or role matrices.
+- `Test-PowerBIRlsLeakage.ps1`: drafts RLS leakage tests and release-gate impact from role metadata or role matrices; `-CheckLive` attempts live DAX validation when a Desktop/XMLA endpoint is available.
 - `New-PowerBIFabricCapacityRiskForecast.ps1`: forecasts Fabric capacity, refresh, and query risk from local evidence.
 - `Find-PowerBIMetricDuplicates.ps1`: finds semantic duplicate measures and canonical KPI candidates.
 - `New-PowerBIForecastExceptionBoard.ps1`: creates forecast exception cases with owners, actions, due windows, and closure evidence.
@@ -127,7 +129,7 @@ Creates read-only AI sales forecast from open Desktop model or saved extract. Su
 
 ## Enterprise AI Release Engineering
 
-- `Get-PowerBIFabricWorkspaceInventory.ps1`: creates an offline Fabric workspace inventory plan, with explicit token-file gated REST preparation.
+- `Get-PowerBIFabricWorkspaceInventory.ps1`: creates an offline Fabric workspace inventory plan or, with `-UseRest -AccessTokenPath`, reads workspace, report, dataset, dashboard, and refresh-history metadata through GET-only Power BI REST calls.
 - `New-PowerBIServiceScanner.ps1`: creates service governance findings for ownership, refresh, labels, endorsements, source control, and release gate state.
 - `New-PowerBITomWritePlan.ps1`: drafts gated TOM/TMSL write plans with dry-run, backup, diff, and rollback checks.
 - `Optimize-PowerBIReportLayout.ps1`: creates auto-fix layout plans for report visuals.
@@ -155,7 +157,7 @@ Creates read-only AI sales forecast from open Desktop model or saved extract. Su
 
 - `Get-PowerBIFabricAccessPlan.ps1`: read-only Fabric access plan with token-file and workspace-scope checks.
 - `Invoke-PowerBIFabricReadOnlyRequest.ps1`: GET-only REST helper; mutating methods return `BlockedUnsafeMethod`.
-- `Import-PowerBIFabricWorkspaceSnapshot.ps1`: imports or stages a local Fabric workspace snapshot.
+- `Import-PowerBIFabricWorkspaceSnapshot.ps1`: imports a local Fabric workspace snapshot or creates one from GET-only workspace/report/dataset/dashboard/refresh metadata when token-file access is supplied.
 - `Import-PowerBIFabricTenantSnapshot.ps1`: imports or stages a local Fabric tenant snapshot.
 - `PowerBIFabricSnapshot.Shared.ps1`: shared snapshot reader used by Fabric USP scripts.
 - `New-PowerBIFabricPortfolioCommandCenter.ps1`: Fabric portfolio trust, ownership, refresh, and risk command center.
@@ -284,4 +286,4 @@ Creates read-only AI sales forecast from open Desktop model or saved extract. Su
 - `New-PowerBIAIPromptPack.ps1`: context and prompt pack for Codex reviews.
 - `New-PowerBIVisualMeasureImpactMap.ps1`: maps measures to report visual metadata references and impact guidance.
 - `Test-PowerBIVisualSchema.ps1`: validates PBIP report visual JSON structure.
-- `Test-PowerBIReportRenderReadiness.ps1`: combines visual schema checks with manual render and screenshot readiness status.
+- `Test-PowerBIReportRenderReadiness.ps1`: combines visual schema checks with manual render status and optional `-ScreenshotPath` evidence; emits an explicit `evidenceMaturity` value.

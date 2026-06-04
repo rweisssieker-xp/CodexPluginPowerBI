@@ -28,6 +28,7 @@ Current focused Pester specs include:
 - `GuidedFixLoop.Tests.ps1`
 - `AIForecast.Tests.ps1`
 - `BusinessProcessDQ.Tests.ps1`
+- `FeatureMaturity.Tests.ps1`
 
 Fabric v3 coverage is included in `PowerBIPlugin.Tests.ps1`. It verifies the read-only access plan, GET-only REST guardrail, token redaction, snapshot import from local fixtures, stable schemas for Fabric USP scripts, and Release Candidate Pack behavior for snapshot-only and `NeedsAccessPlan` paths.
 
@@ -65,3 +66,5 @@ Generated test outputs are written under `plugins\powerbi-desktop\tmp` and shoul
 Business process DQ smoke coverage lives in `scripts\Test-PowerBIPlugin.ps1`. It asserts that `Invoke-PowerBIBusinessProcessDataQuality.ps1`, `New-PowerBIProcessDataMapping.ps1`, and `New-PowerBIBusinessProcessDQPack.ps1` exist, that all process rule packs parse as `codex.powerbi.processRulePack.v1`, and that sample CSV exports produce deterministic high, medium, and mapping findings.
 
 Fabric snapshot fixtures live under `plugins\powerbi-desktop\examples\fabric-snapshot` and cover minimal, portfolio-risk, deployment-drift, refresh-failures, security-exposure, and executive-war-room scenarios.
+
+Feature maturity is documented with `New-PowerBIFeatureMaturityMap.ps1` so tests, docs, and release reviews can distinguish live-backed features from draft, snapshot, synthetic, and heuristic outputs.

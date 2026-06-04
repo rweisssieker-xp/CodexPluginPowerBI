@@ -19,6 +19,7 @@ This documentation describes the local Codex plugin for Power BI Desktop and Fab
 - [Enterprise AI features](enterprise-ai-features.md): service scanner, release candidate pack, risk heatmap, semantic tests, performance/VertiPaq imports, and change journal.
 - [Architecture](architecture.md): local-first design, read-only live access, PBIP write gates, and generated artifacts.
 - [Skills and MCP surface](skills-and-mcp.md): documented Codex skills, current non-MCP boundary, and future MCP documentation requirements.
+- [Feature maturity](feature-maturity.md): separates implemented, live-read, snapshot-backed, draft/apply, metadata-only, synthetic, and heuristic-simulation capabilities.
 - [PBIP Apply Engine](pbip-apply-engine.md): how draft generation, apply scripts, manifests, and rollback guidance work.
 
 ## Power BI Desktop, Fabric, And Governance

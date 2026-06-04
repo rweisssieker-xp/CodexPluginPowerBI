@@ -305,6 +305,19 @@ Describe 'Power BI Desktop plugin' {
         $lineage.evidenceStrength | Should Be 'Medium'
     }
 
+    It 'classifies feature maturity and render evidence explicitly' {
+        $maturity = & (Join-Path $scriptsPath 'New-PowerBIFeatureMaturityMap.ps1') -Json | ConvertFrom-Json
+        $render = & (Join-Path $scriptsPath 'Test-PowerBIReportRenderReadiness.ps1') -Path $samplePath -Json | ConvertFrom-Json
+
+        $maturity.schema | Should Be 'codex.powerbi.featureMaturityMap.v1'
+        $maturity.featureCount | Should BeGreaterThan 5
+        @($maturity.features | Where-Object maturity -eq 'LiveReadOrSnapshot').Count | Should BeGreaterThan 0
+        @($maturity.features | Where-Object maturity -eq 'DraftAndApply').Count | Should BeGreaterThan 0
+        $render.schema | Should Be 'codex.powerbi.reportRenderReadiness.v1'
+        (@('EvidenceBacked','MetadataOnly','Blocked') -contains $render.evidenceMaturity) | Should Be $true
+        $render.readyForAutomatedPublish | Should Be $false
+    }
+
     It 'reports PBIP roundtrip structure checks as machine-readable JSON' {
         $pbipRoot = Join-Path $pluginRoot 'tmp/pester-pbip-roundtrip'
         $semanticRoot = Join-Path $pbipRoot 'Demo.SemanticModel'

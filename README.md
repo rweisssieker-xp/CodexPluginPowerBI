@@ -51,6 +51,7 @@ Start with the full [documentation index](docs/index.md). Key guides: [value pro
 - Advanced Power BI release USPs with evidence graphs, visual-to-measure impact, semantic contract testing, executive trust briefs, DAX change risk, freshness/lineage gates, KPI drift watchlists, RLS trust review, UX regression scanning, and migration readiness.
 - Separated portfolio governance, compliance QA, and operations QA packs for portfolio command centers, deployment gates, certification readiness, cost-to-trust optimization, tenant hygiene, KPI conflict resolution, accessibility, Power Query contracts, refresh root cause, semantic coverage, release signatures, and KPI SLAs.
 - Fabric Live Read-Only + Snapshot Intelligence with token-file access plans, workspace/tenant snapshots, Fabric portfolio, deployment, operations, governance, security, and executive evidence packs.
+- Feature maturity map that separates implemented, live-read, snapshot-backed, draft/apply, metadata-only, synthetic, and heuristic-simulation capabilities.
 - Business Process Data Quality packs for local Power BI and ERP export checks across Order-to-Cash, Procure-to-Pay, Record-to-Report, Hire-to-Retire, Plan-to-Produce, Forecast-to-Deliver, and extensible process rule packs.
 - Optional external-tool awareness for Tabular Editor, DAX Studio, ALM Toolkit, Power BI Helper, Model Documenter, PBI.tips tools, and pbi-tools validation workflows.
 - A theme generator for governed report styling.
@@ -71,6 +72,7 @@ Core release and live-model checks:
 .\plugins\powerbi-desktop\scripts\New-PowerBIReleaseCandidatePack.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-release-candidate -IncludeAdvancedUspQa
 .\plugins\powerbi-desktop\scripts\New-PowerBIReleaseCandidatePack.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-release-candidate -IncludePortfolioGovernanceQa -IncludeComplianceQa -IncludeOperationsQa
 .\plugins\powerbi-desktop\scripts\New-PowerBIReleaseCandidatePack.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-release-candidate -IncludeFabricLiveQa -IncludeFabricPortfolioQa -IncludeFabricDeploymentQa -IncludeFabricOperationsQa -IncludeFabricGovernanceQa -IncludeFabricExecutiveQa -SnapshotDirectory .\plugins\powerbi-desktop\examples\fabric-snapshot\minimal
+.\plugins\powerbi-desktop\scripts\New-PowerBIFeatureMaturityMap.ps1 -OutputPath .\powerbi-feature-maturity.md
 .\plugins\powerbi-desktop\scripts\Invoke-PowerBIBusinessProcessDataQuality.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -DataPath .\plugins\powerbi-desktop\examples\business-process-data -OutputDirectory .\powerbi-business-process-dq
 .\plugins\powerbi-desktop\scripts\New-PowerBIVisualIntentAnalyzer.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputPath .\powerbi-visual-intent.md
 .\plugins\powerbi-desktop\scripts\Test-PowerBIEnvironment.ps1
