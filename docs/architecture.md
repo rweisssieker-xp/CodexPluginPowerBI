@@ -9,13 +9,14 @@ The plugin is a local-first Power BI engineering workbench for Codex. It gives C
 - Read-only live access: live Desktop helpers query metadata and DAX through the local endpoint but do not mutate the open model.
 - Explicit apply gates: PBIP changes are generated as drafts and only written when an apply script is called with `-Apply`.
 - Generated artifacts: reviews produce Markdown and JSON outputs that can be attached to PRs, release gates, or engineering discussions.
-- Fabric-aware without hidden deployment: Fabric scripts plan, score, and simulate readiness. They do not sign in, publish, refresh credentials, or modify workspaces.
+- Fabric-aware without hidden deployment: Fabric scripts plan, score, simulate readiness, or import explicit read-only snapshots. They do not perform implicit sign-in, publish, promote, refresh, rebind, delete, endorse, or modify workspaces.
+- No bundled MCP server in v3.0.0: the plugin surface is Codex skills, Marketplace metadata, local PowerShell scripts, and generated Markdown/JSON artifacts.
 
 ## Layers
 
 1. Codex skill layer
 
-   `plugins/powerbi-desktop/skills/powerbi-desktop/SKILL.md` tells Codex how to reason about Power BI Desktop, PBIP, TMDL, DAX, Power Query, Fabric planning, and local safety boundaries.
+   `plugins/powerbi-desktop/skills` tells Codex how to reason about Power BI Desktop, PBIP, TMDL, DAX, Power Query, Fabric read-only workflows, autonomous planning workflows, and local safety boundaries. See `docs/skills-and-mcp.md` for the full skill and MCP surface.
 
 2. Script layer
 
@@ -59,7 +60,7 @@ PBIP authoring mode generates or applies text artifacts in PBIP/TMDL-compatible 
   -Expression "DIVIDE([Total Sales], COUNTROWS('Sales'))"
 ```
 
-Fabric planning mode produces readiness and deployment-risk outputs without connecting to Fabric tenants.
+Fabric planning mode produces readiness and deployment-risk outputs from local evidence. Fabric live read-only mode can import explicit workspace or tenant snapshots with token-file auth and GET-only requests.
 
 ```powershell
 .\plugins\powerbi-desktop\scripts\New-PowerBIFabricReadinessPlan.ps1 `
@@ -74,3 +75,4 @@ Fabric planning mode produces readiness and deployment-risk outputs without conn
 - PBIP apply scripts require explicit `-Apply`.
 - Generated review outputs are disposable and reproducible.
 - Secrets, credentials, tenant tokens, and Fabric publishing are outside this plugin's default behavior.
+- Tenant tokens are only read from explicit token files for Fabric read-only snapshot import and must not be written into generated findings.

@@ -47,5 +47,7 @@ Use this skill when the planning engine needs memory across forecast cycles.
 
 ## Guardrails
 
+- Keep planning memory local-first unless the user explicitly provides an approved storage path or governance workflow.
 - Keep memory append-only unless the user explicitly asks to clean it.
 - Store personal or owner-level data only when it is necessary and governance allows it.
+- Do not write secrets, tokens, credentials, or private contact details into planning memory.
