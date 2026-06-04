@@ -1,6 +1,6 @@
 ---
 name: powerbi-autonomous-forecast-agents
-description: Use when coordinating multiple AI/KI forecasting perspectives for Power BI sales forecasts, including backlog, seasonality, budget, sales skepticism, risk, consensus, dissent, and explainable forecast arbitration.
+description: Use when coordinating multiple AI forecasting perspectives for Power BI sales forecasts, including backlog, seasonality, budget, sales skepticism, risk, consensus, dissent, and explainable forecast arbitration.
 ---
 
 # Power BI Autonomous Forecast Agents

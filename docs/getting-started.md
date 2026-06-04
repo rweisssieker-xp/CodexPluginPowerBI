@@ -2,6 +2,27 @@
 
 Use [docs/index.md](index.md) as the full documentation map. This page is the shortest path from a fresh checkout to a useful Power BI review.
 
+## Prerequisites
+
+Keep external binaries installed on the workstation, not committed to this repository.
+
+| Level | Tool or provider | Needed for |
+| --- | --- | --- |
+| Required | PowerShell 5.1+ | Running the plugin scripts. |
+| Required for Desktop workflows | Power BI Desktop | Opening PBIX/PBIP files and manual PBIP-to-PBIX validation. |
+| Recommended for live checks | ADOMD provider (`Microsoft.AnalysisServices.AdomdClient.dll`) from DAX Studio, SSMS, or ADOMD.NET | Live XMLA/DMV/DAX queries against an open Desktop model. |
+| Optional | Tabular Editor 2, DAX Studio, ALM Toolkit, Power BI Helper, Model Documenter, PBI.tips tools | External-tool inventory and workflow guidance. |
+| Optional | `pbi-tools` | Automated PBIP/PBIX extract and compile workflows. |
+| Optional | .NET SDK/runtime | Tooling that shells out to .NET-based utilities. |
+
+Check the local machine before running live or external-tool workflows:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Test-PowerBIEnvironment.ps1
+```
+
+The check reports missing optional tools as `not found`. Install `pbi-tools` only when automated PBIP-to-PBIX compile is required; otherwise open the PBIP in Power BI Desktop, validate it, and use Save As PBIX.
+
 Run the local smoke test first:
 
 ```powershell

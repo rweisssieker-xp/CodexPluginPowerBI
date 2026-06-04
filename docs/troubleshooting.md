@@ -20,6 +20,14 @@ Status guidance:
 
 Some environments load ADOMD more reliably in Windows PowerShell 5.1 than in PowerShell 7.
 
+First confirm whether the provider is installed:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Test-PowerBIEnvironment.ps1
+```
+
+The `AdomdClient` line should point to `Microsoft.AnalysisServices.AdomdClient.dll`. If it is `not found`, install DAX Studio, SSMS, or the Microsoft ADOMD.NET provider. Do not copy the DLL into this repository.
+
 Try:
 
 ```powershell
@@ -95,6 +103,16 @@ For release gates, rerun with live Desktop available and use `-FailOnPending` so
 ## Offline Review Finds Too Little
 
 The plugin can only inspect available files. For binary PBIX-only reports, export to PBIP/TMDL or use live Desktop mode.
+
+## Fabric Live Read-Only Needs Access
+
+`NeedsAccessPlan` means the workflow needs either `-SnapshotDirectory` or explicit Fabric live read parameters:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Get-PowerBIFabricAccessPlan.ps1 -WorkspaceName "Target Workspace" -AccessTokenPath .\token.txt -Json
+```
+
+`BlockedUnsafeMethod` is intentional. Fabric live v1 permits GET-only read paths and blocks publish, promote, refresh trigger, rebind, delete, endorsement writes, and other mutations. Missing Fabric fields should be treated as snapshot/API permission gaps, not as plugin crashes.
 
 ## PBIP Roundtrip Is Incomplete
 

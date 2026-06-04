@@ -54,6 +54,11 @@ Describe 'Power BI Desktop plugin' {
         (@('TargetResolved','AmbiguousLiveTarget','NoLiveTarget') -contains $live.status) | Should Be $true
     }
 
+    It 'reports local ADOMD provider availability in the environment check' {
+        $environment = & (Join-Path $scriptsPath 'Test-PowerBIEnvironment.ps1') -Json | ConvertFrom-Json
+        ($environment.PSObject.Properties.Name -contains 'AdomdClient') | Should Be $true
+    }
+
     It 'honors explicit live Desktop port selection' {
         $live = & (Join-Path $scriptsPath 'Get-PowerBIDesktopLiveConnection.ps1') -Port 12345 -Json | ConvertFrom-Json
         $live.status | Should Be 'TargetResolved'
@@ -111,7 +116,7 @@ Describe 'Power BI Desktop plugin' {
         $fabric.stepCount | Should Be 5
     }
 
-    It 'creates the 38-USP AI/KI expansion artifacts' {
+    It 'creates the 38-USP AI expansion artifacts' {
         $agentic = & (Join-Path $scriptsPath 'New-PowerBIAgenticRemediationPlan.ps1') -Path $samplePath -Json | ConvertFrom-Json
         $outcome = & (Join-Path $scriptsPath 'New-PowerBIBusinessOutcomeSimulator.ps1') -Path $samplePath -Json | ConvertFrom-Json
         $semantic = & (Join-Path $scriptsPath 'New-PowerBISemanticLayerAutopilot.ps1') -Path $samplePath -Json | ConvertFrom-Json
@@ -193,6 +198,113 @@ Describe 'Power BI Desktop plugin' {
         $usageTrust.metricCount | Should Be 5
     }
 
+    It 'creates analytical release QA artifacts' {
+        $methodology = & (Join-Path $scriptsPath 'Test-PowerBIAnalysisMethodology.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $diagnosis = & (Join-Path $scriptsPath 'New-PowerBIMetricChangeDiagnosis.ps1') -Path $samplePath -MetricName 'Total Sales' -Json | ConvertFrom-Json
+        $missingDiagnosis = & (Join-Path $scriptsPath 'New-PowerBIMetricChangeDiagnosis.ps1') -Path $samplePath -MetricName 'Missing Metric' -Json | ConvertFrom-Json
+        $reportPath = Join-Path $pluginRoot 'tmp/pester-analytical-release-report.md'
+        $report = & (Join-Path $scriptsPath 'New-PowerBIAnalyticalReleaseReport.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        & (Join-Path $scriptsPath 'New-PowerBIAnalyticalReleaseReport.ps1') -Path $samplePath -OutputPath $reportPath | Out-Null
+
+        $methodology.schema | Should Be 'codex.powerbi.analysisMethodologyValidation.v1'
+        $methodology.assessment | Should Be 'ShareWithCaveats'
+        $methodology.checks.missingOwnerCount | Should BeGreaterThan 0
+        $methodology.checks.pendingSemanticTestCount | Should BeGreaterThan 0
+        $diagnosis.schema | Should Be 'codex.powerbi.metricChangeDiagnosis.v1'
+        $diagnosis.status | Should Be 'NeedsComparisonEvidence'
+        $missingDiagnosis.status | Should Be 'MetricNotFound'
+        $report.schema | Should Be 'codex.powerbi.analyticalReleaseReport.v1'
+        $report.methodologyAssessment | Should Be 'ShareWithCaveats'
+        $report.markdown | Should Match 'Release Readiness'
+        $report.markdown | Should Match 'KPI Trust Findings'
+        (Get-Content -Raw -LiteralPath $reportPath) | Should Match 'Methodology And Data Quality Caveats'
+    }
+
+    It 'creates advanced release USP artifacts' {
+        $evidence = & (Join-Path $scriptsPath 'New-PowerBIEvidenceGraph.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $daxRisk = & (Join-Path $scriptsPath 'New-PowerBIDaxChangeRiskClassifier.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $contract = & (Join-Path $scriptsPath 'Test-PowerBISemanticContract.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $freshness = & (Join-Path $scriptsPath 'Test-PowerBIDataFreshnessLineageGate.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $brief = & (Join-Path $scriptsPath 'New-PowerBIExecutiveTrustBrief.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $watchlist = & (Join-Path $scriptsPath 'New-PowerBIKpiDriftWatchlist.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $rlsTrust = & (Join-Path $scriptsPath 'New-PowerBIRlsTrustReview.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $uxRegression = & (Join-Path $scriptsPath 'New-PowerBIReportUxRegressionScanner.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $migration = & (Join-Path $scriptsPath 'Test-PowerBIMigrationReadiness.ps1') -Path $samplePath -Json | ConvertFrom-Json
+
+        $evidence.schema | Should Be 'codex.powerbi.evidenceGraph.v1'
+        $daxRisk.schema | Should Be 'codex.powerbi.daxChangeRiskClassifier.v1'
+        $contract.schema | Should Be 'codex.powerbi.semanticContractTest.v1'
+        $freshness.schema | Should Be 'codex.powerbi.dataFreshnessLineageGate.v1'
+        $brief.schema | Should Be 'codex.powerbi.executiveTrustBrief.v1'
+        $watchlist.schema | Should Be 'codex.powerbi.kpiDriftWatchlist.v1'
+        $rlsTrust.schema | Should Be 'codex.powerbi.rlsTrustReview.v1'
+        $uxRegression.schema | Should Be 'codex.powerbi.reportUxRegressionScanner.v1'
+        $migration.schema | Should Be 'codex.powerbi.migrationReadiness.v1'
+        $evidence.nodeCount | Should BeGreaterThan 0
+        $contract.status | Should Be 'ContractFailed'
+        $brief.markdown | Should Match 'Decision'
+        $watchlist.itemCount | Should Be 5
+        $migration.status | Should Be 'NotReady'
+    }
+
+    It 'creates portfolio, compliance, and operations governance artifacts' {
+        $portfolio = & (Join-Path $scriptsPath 'New-PowerBIPortfolioCommandCenter.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $pipeline = & (Join-Path $scriptsPath 'Test-PowerBIDeploymentPipelineGate.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $certified = & (Join-Path $scriptsPath 'Test-PowerBICertifiedDatasetReadiness.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $costTrust = & (Join-Path $scriptsPath 'New-PowerBICostToTrustOptimizer.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $tenant = & (Join-Path $scriptsPath 'New-PowerBITenantHygieneScanner.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $conflictResolution = & (Join-Path $scriptsPath 'Resolve-PowerBIKpiDefinitionConflict.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $accessibility = & (Join-Path $scriptsPath 'Test-PowerBIReportAccessibilityCompliance.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $pqContract = & (Join-Path $scriptsPath 'Test-PowerBIPowerQueryDataContract.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $refreshAdvisor = & (Join-Path $scriptsPath 'New-PowerBIRefreshFailureRootCauseAdvisor.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $coverage = & (Join-Path $scriptsPath 'New-PowerBISemanticTestCoverageScore.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $signature = & (Join-Path $scriptsPath 'New-PowerBIReleaseEvidenceSignature.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $sla = & (Join-Path $scriptsPath 'New-PowerBIBusinessKpiSlaMonitor.ps1') -Path $samplePath -Json | ConvertFrom-Json
+
+        $portfolio.schema | Should Be 'codex.powerbi.portfolioCommandCenter.v1'
+        $pipeline.schema | Should Be 'codex.powerbi.deploymentPipelineGate.v1'
+        $certified.schema | Should Be 'codex.powerbi.certifiedDatasetReadiness.v1'
+        $costTrust.schema | Should Be 'codex.powerbi.costToTrustOptimizer.v1'
+        $tenant.schema | Should Be 'codex.powerbi.tenantHygieneScanner.v1'
+        $conflictResolution.schema | Should Be 'codex.powerbi.kpiDefinitionConflictResolution.v1'
+        $accessibility.schema | Should Be 'codex.powerbi.reportAccessibilityCompliance.v1'
+        $pqContract.schema | Should Be 'codex.powerbi.powerQueryDataContract.v1'
+        $refreshAdvisor.schema | Should Be 'codex.powerbi.refreshFailureRootCauseAdvisor.v1'
+        $coverage.schema | Should Be 'codex.powerbi.semanticTestCoverageScore.v1'
+        $signature.schema | Should Be 'codex.powerbi.releaseEvidenceSignature.v1'
+        $sla.schema | Should Be 'codex.powerbi.businessKpiSlaMonitor.v1'
+        $portfolio.status | Should Be 'NeedsGovernanceReview'
+        $pipeline.decision | Should Be 'BlockPromotion'
+        $tenant.status | Should Be 'NeedsTenantExport'
+        $coverage.status | Should Be 'Weak'
+        $sla.breachedCount | Should Be 5
+    }
+
+    It 'creates Fabric live read-only access plans, snapshots, and Max-USP artifacts' {
+        $snapshotPath = Join-Path $pluginRoot 'examples/fabric-snapshot/minimal'
+        $accessPlan = & (Join-Path $scriptsPath 'Get-PowerBIFabricAccessPlan.ps1') -WorkspaceName 'Demo Workspace' -Json | ConvertFrom-Json
+        $blocked = & (Join-Path $scriptsPath 'Invoke-PowerBIFabricReadOnlyRequest.ps1') -Uri 'https://api.powerbi.com/v1.0/myorg/groups' -Method POST -Json | ConvertFrom-Json
+        $snapshot = & (Join-Path $scriptsPath 'Import-PowerBIFabricWorkspaceSnapshot.ps1') -SnapshotDirectory $snapshotPath -OutputDirectory (Join-Path $pluginRoot 'tmp/pester-fabric-snapshot') -Json | ConvertFrom-Json
+        $tenantSnapshot = & (Join-Path $scriptsPath 'Import-PowerBIFabricTenantSnapshot.ps1') -SnapshotDirectory $snapshotPath -OutputDirectory (Join-Path $pluginRoot 'tmp/pester-fabric-tenant-snapshot') -Json | ConvertFrom-Json
+        $portfolio = & (Join-Path $scriptsPath 'New-PowerBIFabricPortfolioCommandCenter.ps1') -SnapshotDirectory $snapshotPath -Json | ConvertFrom-Json
+        $deploy = & (Join-Path $scriptsPath 'Test-PowerBIFabricDeploymentPipelineGate.ps1') -SnapshotDirectory $snapshotPath -Json | ConvertFrom-Json
+        $refresh = & (Join-Path $scriptsPath 'New-PowerBIFabricRefreshFailureRootCauseAdvisor.ps1') -SnapshotDirectory $snapshotPath -Json | ConvertFrom-Json
+        $lineage = & (Join-Path $scriptsPath 'New-PowerBIFabricLineageEvidenceGraph.ps1') -SnapshotDirectory $snapshotPath -Json | ConvertFrom-Json
+        $executive = & (Join-Path $scriptsPath 'New-PowerBIFabricExecutiveWarRoom.ps1') -SnapshotDirectory $snapshotPath -Json | ConvertFrom-Json
+
+        $accessPlan.schema | Should Be 'codex.powerbi.fabricAccessPlan.v1'
+        $accessPlan.status | Should Be 'NeedsAccessPlan'
+        $blocked.status | Should Be 'BlockedUnsafeMethod'
+        $snapshot.Status | Should Be 'SnapshotReady'
+        $tenantSnapshot.Status | Should Be 'SnapshotReady'
+        $portfolio.schema | Should Be 'codex.powerbi.fabricPortfolioCommandCenter.v1'
+        $deploy.schema | Should Be 'codex.powerbi.fabricDeploymentPipelineGate.v1'
+        $refresh.schema | Should Be 'codex.powerbi.fabricRefreshFailureRootCauseAdvisor.v1'
+        $lineage.schema | Should Be 'codex.powerbi.fabricLineageEvidenceGraph.v1'
+        $executive.schema | Should Be 'codex.powerbi.fabricExecutiveWarRoom.v1'
+        $lineage.evidenceStrength | Should Be 'Medium'
+    }
+
     It 'reports PBIP roundtrip structure checks as machine-readable JSON' {
         $pbipRoot = Join-Path $pluginRoot 'tmp/pester-pbip-roundtrip'
         $semanticRoot = Join-Path $pbipRoot 'Demo.SemanticModel'
@@ -234,5 +346,69 @@ Describe 'Power BI Desktop plugin' {
         $gate.pendingSemanticTestCount | Should BeGreaterThan 0
         @($gate.checks | Where-Object id -eq 'fixes.openP1').Count | Should Be 1
         @($gate.checks | Where-Object id -eq 'live.availability').Count | Should Be 1
+    }
+
+    It 'includes analytical QA in release candidate packs when requested' {
+        $packRoot = Join-Path $pluginRoot 'tmp/pester-release-analytical-qa'
+        $pack = & (Join-Path $scriptsPath 'New-PowerBIReleaseCandidatePack.ps1') -Path $samplePath -OutputDirectory $packRoot -SkipLive -IncludeAnalyticalQa
+        $summary = Get-Content -Raw -LiteralPath $pack.Summary | ConvertFrom-Json
+
+        $summary.schema | Should Be 'codex.powerbi.releaseCandidatePack.v1'
+        $summary.enterpriseUsps.analyticalQaStatus | Should Be 'NeedsRevision'
+        $summary.enterpriseUsps.metricDiagnosisStatus | Should Be 'NeedsComparisonEvidence'
+        Test-Path -LiteralPath (Join-Path $packRoot 'analysis-methodology-validation.json') | Should Be $true
+        Test-Path -LiteralPath (Join-Path $packRoot 'metric-change-diagnosis.json') | Should Be $true
+        Test-Path -LiteralPath (Join-Path $packRoot 'analytical-release-report.md') | Should Be $true
+    }
+
+    It 'includes advanced USP QA in release candidate packs when requested' {
+        $packRoot = Join-Path $pluginRoot 'tmp/pester-release-advanced-usp-qa'
+        $pack = & (Join-Path $scriptsPath 'New-PowerBIReleaseCandidatePack.ps1') -Path $samplePath -OutputDirectory $packRoot -SkipLive -IncludeAdvancedUspQa
+        $summary = Get-Content -Raw -LiteralPath $pack.Summary | ConvertFrom-Json
+
+        $summary.schema | Should Be 'codex.powerbi.releaseCandidatePack.v1'
+        $summary.enterpriseUsps.evidenceGraphStrength | Should Be 'Medium'
+        $summary.enterpriseUsps.semanticContractStatus | Should Be 'ContractFailed'
+        $summary.enterpriseUsps.rlsTrustReviewStatus | Should Be 'Blocked'
+        Test-Path -LiteralPath (Join-Path $packRoot 'evidence-graph.json') | Should Be $true
+        Test-Path -LiteralPath (Join-Path $packRoot 'executive-trust-brief.md') | Should Be $true
+        Test-Path -LiteralPath (Join-Path $packRoot 'migration-readiness.json') | Should Be $true
+    }
+
+    It 'includes separated portfolio, compliance, and operations QA in release candidate packs when requested' {
+        $packRoot = Join-Path $pluginRoot 'tmp/pester-release-separated-governance-qa'
+        $pack = & (Join-Path $scriptsPath 'New-PowerBIReleaseCandidatePack.ps1') -Path $samplePath -OutputDirectory $packRoot -SkipLive -IncludePortfolioGovernanceQa -IncludeComplianceQa -IncludeOperationsQa
+        $summary = Get-Content -Raw -LiteralPath $pack.Summary | ConvertFrom-Json
+
+        $summary.enterpriseUsps.portfolioCommandCenterStatus | Should Be 'NeedsGovernanceReview'
+        $summary.enterpriseUsps.deploymentPipelineDecision | Should Be 'BlockPromotion'
+        $summary.enterpriseUsps.semanticTestCoverageStatus | Should Be 'Weak'
+        Test-Path -LiteralPath (Join-Path $packRoot 'portfolio-command-center.json') | Should Be $true
+        Test-Path -LiteralPath (Join-Path $packRoot 'deployment-pipeline-gate.json') | Should Be $true
+        Test-Path -LiteralPath (Join-Path $packRoot 'business-kpi-sla-monitor.json') | Should Be $true
+    }
+
+    It 'includes Fabric live snapshot QA in release candidate packs when requested' {
+        $packRoot = Join-Path $pluginRoot 'tmp/pester-release-fabric-qa'
+        $snapshotPath = Join-Path $pluginRoot 'examples/fabric-snapshot/minimal'
+        $pack = & (Join-Path $scriptsPath 'New-PowerBIReleaseCandidatePack.ps1') -Path $samplePath -OutputDirectory $packRoot -SkipLive -IncludeFabricLiveQa -IncludeFabricPortfolioQa -IncludeFabricDeploymentQa -IncludeFabricOperationsQa -IncludeFabricGovernanceQa -IncludeFabricExecutiveQa -SnapshotDirectory $snapshotPath
+        $summary = Get-Content -Raw -LiteralPath $pack.Summary | ConvertFrom-Json
+
+        $summary.enterpriseUsps.fabricLiveStatus | Should Be 'SnapshotReady'
+        $summary.enterpriseUsps.fabricPortfolioStatus | Should Be 'PortfolioStable'
+        $summary.enterpriseUsps.fabricDeploymentDecision | Should Be 'Promote'
+        $summary.enterpriseUsps.fabricLineageEvidenceStrength | Should Be 'Medium'
+        Test-Path -LiteralPath (Join-Path $packRoot 'fabric-workspace-snapshot/summary.json') | Should Be $true
+        Test-Path -LiteralPath (Join-Path $packRoot 'fabric-portfolio-command-center.json') | Should Be $true
+        Test-Path -LiteralPath (Join-Path $packRoot 'fabric-executive-war-room.json') | Should Be $true
+    }
+
+    It 'creates a Fabric access plan when live QA lacks token and workspace scope' {
+        $packRoot = Join-Path $pluginRoot 'tmp/pester-release-fabric-access-plan'
+        $pack = & (Join-Path $scriptsPath 'New-PowerBIReleaseCandidatePack.ps1') -Path $samplePath -OutputDirectory $packRoot -SkipLive -IncludeFabricLiveQa
+        $summary = Get-Content -Raw -LiteralPath $pack.Summary | ConvertFrom-Json
+
+        $summary.enterpriseUsps.fabricLiveStatus | Should Be 'NeedsAccessPlan'
+        Test-Path -LiteralPath (Join-Path $packRoot 'fabric-access-plan.json') | Should Be $true
     }
 }

@@ -1,0 +1,9 @@
+{
+  "schema": "codex.powerbi.fabricReleaseEvidencePack.v1",
+  "generated": "2026-06-04T14:59:14",
+  "outputDirectory": "D:\\temp\\CodexPluginPowerBI\\fabric-release-evidence-pack",
+  "status": "ReadyWithCaveats",
+  "deploymentDecision": "Promote",
+  "certifiedDatasetStatus": "ReadyWithCaveats",
+  "artifactCount": 2
+}

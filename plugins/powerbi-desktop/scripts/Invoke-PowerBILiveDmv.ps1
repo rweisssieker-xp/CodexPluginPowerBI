@@ -27,7 +27,6 @@ function Find-AdomdClient {
     $candidates = @(
         'C:\Program Files\Microsoft.NET\ADOMD.NET\170\Microsoft.AnalysisServices.AdomdClient.dll',
         'C:\Program Files\DAX Studio\bin\Microsoft.AnalysisServices.AdomdClient.dll',
-        'C:\Program Files\Tabular Editor 3\Microsoft.AnalysisServices.AdomdClient.dll',
         'C:\Program Files\Microsoft SQL Server Management Studio 22\Release\Common7\IDE\Microsoft.AnalysisServices.AdomdClient.dll',
         'C:\Program Files\Microsoft SQL Server Management Studio 21\Release\Common7\IDE\Microsoft.AnalysisServices.AdomdClient.dll',
         'C:\Program Files (x86)\Microsoft.NET\ADOMD.NET\170\Microsoft.AnalysisServices.AdomdClient.dll'

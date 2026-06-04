@@ -1,6 +1,6 @@
-# Codex Marketplace Submission Draft
+# Codex Marketplace Submission
 
-This draft is for publishing the Power BI Desktop plugin on [codex-marketplace.com](https://www.codex-marketplace.com/).
+This document provides the listing copy and submission checklist for publishing the Power BI Desktop plugin on [codex-marketplace.com](https://www.codex-marketplace.com/).
 
 ## Repository URL
 
@@ -35,11 +35,11 @@ Power BI Desktop
 
 ### Short Description
 
-Local-first AI/KI workbench for Power BI Desktop, PBIP, DAX, governance, release evidence, and business process data quality.
+Local-first AI workbench for Power BI Desktop, PBIP, DAX, governance, release evidence, and business process data quality.
 
 ### Long Description
 
-Power BI Desktop helps teams inspect, document, govern, and release Power BI projects from local files and local Desktop evidence. It provides Max AI Review packages, semantic tests, KPI trust scoring, release candidate packs, PBIP-safe authoring guidance, visual and narrative intelligence, and Business Process Data Quality packs for standard processes such as Order-to-Cash, Procure-to-Pay, Record-to-Report, Hire-to-Retire, Plan-to-Produce, Forecast-to-Deliver, Service-to-Cash, Issue-to-Resolution, Lead-to-Opportunity, and Quote-to-Order.
+Power BI Desktop helps teams inspect, document, govern, and release Power BI projects from local files and local Desktop evidence. It provides Max AI Review packages, semantic tests, KPI trust scoring, analytical release QA, release candidate packs, PBIP-safe authoring guidance, visual and narrative intelligence, and Business Process Data Quality packs for standard processes such as Order-to-Cash, Procure-to-Pay, Record-to-Report, Hire-to-Retire, Plan-to-Produce, Forecast-to-Deliver, Service-to-Cash, Issue-to-Resolution, Lead-to-Opportunity, and Quote-to-Order.
 
 The workflow is local-first: it does not sign in to ERP systems, does not publish reports, does not call external APIs, and does not mutate PBIX files without explicit supported workflows. It is designed for deterministic review artifacts, governance evidence, and practical engineering handoff.
 
@@ -48,6 +48,7 @@ The workflow is local-first: it does not sign in to ERP systems, does not publis
 - Local Power BI and PBIP review
 - DAX and semantic model documentation
 - KPI trust scoring and release gates
+- Analysis methodology validation and metric change diagnosis
 - Max AI Review with 39 local artifacts
 - Business Process Data Quality Packs
 - Order-to-Cash, Procure-to-Pay, and Record-to-Report checks
@@ -60,7 +61,7 @@ The workflow is local-first: it does not sign in to ERP systems, does not publis
 - Run a local Power BI Max AI Review for this project.
 - Check this model and local ERP exports for Order-to-Cash data quality issues.
 - Create a process data mapping proposal for my CSV exports.
-- Build a release candidate pack with KPI trust, semantic tests, and process DQ evidence.
+- Build a release candidate pack with KPI trust, semantic tests, analytical QA, and process DQ evidence.
 - Explain which KPIs are risky and what owners need to sign off.
 
 ## Safety Notes

@@ -12,6 +12,7 @@ The current USP stack is organized around eight repeatable workflows:
 6. Governance release gate.
 7. Report and visual intelligence.
 8. Release candidate pack for enterprise handoff.
+9. Fabric live read-only QA from service snapshots.
 
 ## 1. First Local Health Check
 
@@ -76,7 +77,7 @@ For source-control drift checks:
 
 The live-vs-repo status is `LiveUnavailable`, `NoDrift`, or `DriftDetected`. `LiveUnavailable` means the offline review is still valid, but no live evidence was attached.
 
-## 5. Max AI/KI Review
+## 5. Max AI Review
 
 Use this when you want the full USP package.
 
@@ -87,6 +88,18 @@ Use this when you want the full USP package.
 ```
 
 This package focuses on fix loops, Copilot readiness, data contracts, Fabric risk, visual intent, root-cause graphs, KPI trust, review memory, natural-language PBIP authoring, governance rule mining, explainable refactoring, and decision simulation.
+
+## 5a. Fabric Live Read-Only QA
+
+Use this when Fabric service metadata must be part of the evidence without mutating Fabric:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Get-PowerBIFabricAccessPlan.ps1 -WorkspaceName "Target Workspace" -AccessTokenPath .\token.txt -Json
+.\plugins\powerbi-desktop\scripts\Import-PowerBIFabricWorkspaceSnapshot.ps1 -WorkspaceName "Target Workspace" -AccessTokenPath .\token.txt -OutputDirectory .\fabric-snapshot
+.\plugins\powerbi-desktop\scripts\New-PowerBIReleaseCandidatePack.ps1 -Path . -SnapshotDirectory .\fabric-snapshot -IncludeFabricLiveQa -IncludeFabricPortfolioQa -IncludeFabricDeploymentQa -IncludeFabricOperationsQa -IncludeFabricGovernanceQa -IncludeFabricExecutiveQa
+```
+
+For CI or offline review, skip the token and use a local snapshot fixture under `plugins/powerbi-desktop/examples/fabric-snapshot`.
 
 ## 6. Semantic Tests And Measure Behavior Diff
 

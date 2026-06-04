@@ -20,7 +20,7 @@ Use this skill when the user asks Codex to inspect, document, generate, or refac
 2. Check local Desktop/tooling availability with `scripts/Test-PowerBIEnvironment.ps1`.
 3. If Power BI Desktop is open, detect the live model with `scripts/Get-PowerBIDesktopLiveConnection.ps1`.
 4. Analyze PBIP structure with `scripts/Get-PowerBIPBIPStructure.ps1`.
-5. For full AI/KI review, run `scripts/Invoke-PowerBIAutoReview.ps1`.
+5. For full AI review, run `scripts/Invoke-PowerBIAutoReview.ps1`.
 6. Run an insight scan with `scripts/Invoke-PowerBIInsightScan.ps1`.
 7. Generate a metric catalog with `scripts/New-PowerBIMetricCatalog.ps1` when DAX files are available.
 8. Generate a dependency graph with `scripts/New-PowerBIDependencyGraph.ps1` when measures exist.
@@ -38,12 +38,16 @@ Use this skill when the user asks Codex to inspect, document, generate, or refac
 20. For a single productized pass, run `scripts/Invoke-PowerBIUnifiedReview.ps1`.
 21. For Power BI External Tools menu integration, generate a `.pbitool.json` with `scripts/New-PowerBIExternalToolRegistration.ps1`, or install/uninstall with `scripts/Install-PowerBIExternalTool.ps1` and `scripts/Uninstall-PowerBIExternalTool.ps1`.
 22. Before publishing plugin changes, run `scripts\Test-PowerBIGoldenBaselines.ps1`.
-23. For maximum AI/KI workflows, use `scripts/Invoke-PowerBIAutonomousFixAgent.ps1`, `scripts/Compare-PowerBILiveRepoModel.ps1`, `scripts/New-PowerBIKpiTrustContract.ps1`, `scripts/Invoke-PowerBIAskModel.ps1`, and `scripts/New-PowerBIFabricReadinessPlan.ps1`.
-24. For the complete 39-artifact AI/KI USP package, run `scripts/Invoke-PowerBIMaxAIReview.ps1`.
+23. For maximum AI workflows, use `scripts/Invoke-PowerBIAutonomousFixAgent.ps1`, `scripts/Compare-PowerBILiveRepoModel.ps1`, `scripts/New-PowerBIKpiTrustContract.ps1`, `scripts/Invoke-PowerBIAskModel.ps1`, and `scripts/New-PowerBIFabricReadinessPlan.ps1`.
+24. For the complete 39-artifact AI USP package, run `scripts/Invoke-PowerBIMaxAIReview.ps1`.
 25. For enterprise release engineering, run `scripts/New-PowerBIReleaseCandidatePack.ps1`, `scripts/New-PowerBIServiceScanner.ps1`, `scripts/New-PowerBIModelRiskHeatmap.ps1`, `scripts/Invoke-PowerBISemanticTestRunner.ps1`, and `scripts/New-PowerBITomWritePlan.ps1`.
 26. For local business process data quality checks across Power BI metadata and CSV/JSON exports, run `scripts\New-PowerBIProcessDataMapping.ps1`, `scripts\Invoke-PowerBIBusinessProcessDataQuality.ps1`, or `scripts\New-PowerBIBusinessProcessDQPack.ps1`.
-27. For disruptive autonomous planning workflows, use the dedicated skills `powerbi-autonomous-planning-loop`, `powerbi-goal-seeking-planning`, `powerbi-constraint-aware-planning`, `powerbi-autonomous-forecast-agents`, `powerbi-autonomous-exception-management`, `powerbi-revenue-rescue-mode`, `powerbi-forecast-trust-market`, `powerbi-causal-counterfactual-forecasting`, `powerbi-self-healing-forecast-governance`, `powerbi-planning-memory`, `powerbi-planning-readiness-score`, and `powerbi-forecast-war-room`.
-28. Look for these editable artifacts:
+27. For analytical release QA, run `scripts\Test-PowerBIAnalysisMethodology.ps1`, `scripts\New-PowerBIMetricChangeDiagnosis.ps1`, or `scripts\New-PowerBIAnalyticalReleaseReport.ps1`.
+28. For advanced release USPs, run `scripts\New-PowerBIEvidenceGraph.ps1`, `scripts\Test-PowerBISemanticContract.ps1`, `scripts\New-PowerBIExecutiveTrustBrief.ps1`, or `scripts\New-PowerBIReleaseCandidatePack.ps1 -IncludeAdvancedUspQa`.
+29. For separated portfolio, compliance, and operations QA, run `scripts\New-PowerBIReleaseCandidatePack.ps1 -IncludePortfolioGovernanceQa -IncludeComplianceQa -IncludeOperationsQa`.
+30. For Fabric live read-only QA, run `scripts\Get-PowerBIFabricAccessPlan.ps1`, `scripts\Import-PowerBIFabricWorkspaceSnapshot.ps1`, or `scripts\New-PowerBIReleaseCandidatePack.ps1 -IncludeFabricLiveQa -IncludeFabricPortfolioQa -IncludeFabricDeploymentQa -IncludeFabricOperationsQa -IncludeFabricGovernanceQa -IncludeFabricExecutiveQa`.
+31. For disruptive autonomous planning workflows, use the dedicated skills `powerbi-autonomous-planning-loop`, `powerbi-goal-seeking-planning`, `powerbi-constraint-aware-planning`, `powerbi-autonomous-forecast-agents`, `powerbi-autonomous-exception-management`, `powerbi-revenue-rescue-mode`, `powerbi-forecast-trust-market`, `powerbi-causal-counterfactual-forecasting`, `powerbi-self-healing-forecast-governance`, `powerbi-planning-memory`, `powerbi-planning-readiness-score`, and `powerbi-forecast-war-room`.
+32. Look for these editable artifacts:
    - `*.pbip`
    - `*.SemanticModel`, `*.Report`
    - `definition.pbism`, `model.bim`
@@ -117,7 +121,7 @@ Run:
 
 Use this when the user wants actionable next-generation review artifacts. It produces a guided fix plan, semantic remediation guidance, measure lineage impact, generated DAX test plan, performance advisor, report UX critique, executive explainability pack, governance scorecard, Copilot readiness check, release checklist, business semantic layer, KPI trust score, decision-risk assistant, DAX fix simulation, visual-to-measure impact map, and trust release gate.
 
-### Run maximum AI/KI engineering workflows
+### Run maximum AI engineering workflows
 
 Run:
 
@@ -146,7 +150,57 @@ Run:
 .\plugins\powerbi-desktop\scripts\New-PowerBITomWritePlan.ps1 -Operation AddMeasure -TableName Sales -ObjectName "Average Sales" -Expression "DIVIDE([Total Sales], COUNTROWS('Sales'))"
 ```
 
-Use this when the user wants the strongest Power BI/Fabric engineering workflow. The release candidate pack combines unified review, Max AI review, service scanner, semantic tests, model risk heatmap, and PR release comment. Fabric REST and TOM/TMSL writes stay explicit and gated; do not sign in, publish, or mutate a model unless the user explicitly asks and provides the required endpoint/token/write confirmation.
+Use this when the user wants the strongest Power BI/Fabric engineering workflow. The release candidate pack combines unified review, Max AI review, service scanner, semantic tests, model risk heatmap, and PR release comment. Add `-IncludeAnalyticalQa` when the handoff also needs methodology validation, metric change diagnosis, and an analytical release report. Add `-IncludeAdvancedUspQa` when the release needs evidence graph, visual-to-measure impact, semantic contract testing, executive trust brief, DAX change risk, freshness/lineage gate, KPI drift watchlist, RLS trust review, UX regression scanning, and migration readiness. Fabric REST and TOM/TMSL writes stay explicit and gated; do not sign in, publish, or mutate a model unless the user explicitly asks and provides the required endpoint/token/write confirmation.
+
+### Run analytical release QA
+
+Run:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Test-PowerBIAnalysisMethodology.ps1 -Path . -OutputPath .\powerbi-analysis-methodology.md
+.\plugins\powerbi-desktop\scripts\New-PowerBIMetricChangeDiagnosis.ps1 -Path . -MetricName "Total Sales" -OutputPath .\powerbi-metric-diagnosis.md
+.\plugins\powerbi-desktop\scripts\New-PowerBIAnalyticalReleaseReport.ps1 -Path . -OutputPath .\powerbi-analytical-release-report.md
+.\plugins\powerbi-desktop\scripts\New-PowerBIReleaseCandidatePack.ps1 -Path . -IncludeAnalyticalQa
+```
+
+Use this when generated review evidence must become stakeholder-ready. Methodology validation checks definitions, grain, denominators, semantic-test coverage, PBIP readiness, and caveats. Metric change diagnosis separates verified movement from likely drivers and missing comparison evidence. The analytical release report turns trust, release-gate, and methodology evidence into a concise Markdown handoff.
+
+### Run advanced release USPs
+
+Run:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\New-PowerBIEvidenceGraph.ps1 -Path . -OutputPath .\powerbi-evidence-graph.json -Json
+.\plugins\powerbi-desktop\scripts\Test-PowerBISemanticContract.ps1 -Path . -OutputPath .\powerbi-semantic-contract.json -Json
+.\plugins\powerbi-desktop\scripts\New-PowerBIExecutiveTrustBrief.ps1 -Path . -OutputPath .\powerbi-executive-trust-brief.md
+.\plugins\powerbi-desktop\scripts\New-PowerBIReleaseCandidatePack.ps1 -Path . -IncludeAdvancedUspQa
+```
+
+Use this when release confidence depends on traceable evidence, visual impact, semantic contracts, DAX change risk, freshness/lineage, KPI drift monitoring, RLS trust, UX regression risk, and migration readiness.
+
+### Run separated portfolio, compliance, and operations QA
+
+Run:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\New-PowerBIReleaseCandidatePack.ps1 -Path . -IncludePortfolioGovernanceQa
+.\plugins\powerbi-desktop\scripts\New-PowerBIReleaseCandidatePack.ps1 -Path . -IncludeComplianceQa
+.\plugins\powerbi-desktop\scripts\New-PowerBIReleaseCandidatePack.ps1 -Path . -IncludeOperationsQa
+```
+
+Use portfolio governance for command-center scoring, cost-to-trust optimization, tenant hygiene, and KPI conflict resolution. Use compliance QA for deployment promotion, certification, accessibility, Power Query contracts, and release evidence signatures. Use operations QA for refresh failure diagnosis, semantic test coverage, and Business KPI SLA monitoring.
+
+### Run Fabric live read-only QA
+
+Run:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Get-PowerBIFabricAccessPlan.ps1 -WorkspaceName "Target Workspace" -AccessTokenPath .\token.txt -Json
+.\plugins\powerbi-desktop\scripts\Import-PowerBIFabricWorkspaceSnapshot.ps1 -WorkspaceName "Target Workspace" -AccessTokenPath .\token.txt -OutputDirectory .\fabric-snapshot
+.\plugins\powerbi-desktop\scripts\New-PowerBIReleaseCandidatePack.ps1 -Path . -SnapshotDirectory .\fabric-snapshot -IncludeFabricLiveQa -IncludeFabricPortfolioQa -IncludeFabricDeploymentQa -IncludeFabricOperationsQa -IncludeFabricGovernanceQa -IncludeFabricExecutiveQa
+```
+
+Fabric live v1 is read-only. Use token-file auth only, prefer existing snapshots for repeatability, and never publish, promote, refresh, rebind, delete, endorse, or mutate Fabric content from these workflows.
 
 ### Run business process data quality
 
@@ -270,7 +324,7 @@ Run:
 
 This reads the local Analysis Services endpoint created by Power BI Desktop. It can inspect metadata and DMV output from the currently open model when Desktop is running. The live auto-review also creates measure validation, metadata governance, refactor suggestions, prioritized fix backlogs, and DAX fix drafts. Do not use it to modify or publish the report unless the user explicitly asks and a supported write path is available.
 
-### Generate an AI/KI sales forecast
+### Generate an AI sales forecast
 
 Run:
 
@@ -348,7 +402,7 @@ Run:
 .\plugins\powerbi-desktop\scripts\New-PowerBIAIPromptPack.ps1 -Path . -OutputDirectory .\powerbi-ai-pack
 ```
 
-Use this when the user wants AI/KI-assisted report improvement. It packages scan results, metrics, dependencies, refactor plan, and report blueprint into `context-pack.json` plus focused prompts.
+Use this when the user wants AI-assisted report improvement. It packages scan results, metrics, dependencies, refactor plan, and report blueprint into `context-pack.json` plus focused prompts.
 
 ### Analyze measure impact
 

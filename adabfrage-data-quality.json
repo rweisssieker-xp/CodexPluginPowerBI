@@ -1,0 +1,454 @@
+{
+  "Generated": "2026-05-21T13:55:50",
+  "Stats": {
+    "TotalUsersAll": 4172,
+    "EnabledUsers": 2755,
+    "DisabledUsers": 1417,
+    "WithManagerDn": 1124,
+    "WithoutManagerDn": 1631,
+    "ManagerFoundAmongEnabledUsers": 1070,
+    "ManagerMissingOrDisabled": 54,
+    "MissingMail": 765,
+    "MissingDepartment": 1540,
+    "MissingCompany": 1391,
+    "DuplicateSamAccountNameGroups": 0,
+    "DuplicateUserPrincipalNameGroups": 0
+  },
+  "DepthDistribution": [
+    {
+      "Depth": 1,
+      "Count": 1686
+    },
+    {
+      "Depth": 2,
+      "Count": 28
+    },
+    {
+      "Depth": 3,
+      "Count": 96
+    },
+    {
+      "Depth": 4,
+      "Count": 194
+    },
+    {
+      "Depth": 5,
+      "Count": 389
+    },
+    {
+      "Depth": 6,
+      "Count": 166
+    },
+    {
+      "Depth": 7,
+      "Count": 196
+    }
+  ],
+  "TopDepartments": [
+    {
+      "Department": "<leer>",
+      "Count": 1540
+    },
+    {
+      "Department": "Distribution & Lagermanagement",
+      "Count": 67
+    },
+    {
+      "Department": "Gew./Techn. Auszubildende",
+      "Count": 60
+    },
+    {
+      "Department": "Verkauf Deutschland",
+      "Count": 58
+    },
+    {
+      "Department": "Verpackung steril",
+      "Count": 57
+    },
+    {
+      "Department": "Verpackung unsteril",
+      "Count": 52
+    },
+    {
+      "Department": "Supply Chain Planning",
+      "Count": 37
+    },
+    {
+      "Department": "KST:33802",
+      "Count": 29
+    },
+    {
+      "Department": "KST:41101",
+      "Count": 25
+    },
+    {
+      "Department": "Schulung",
+      "Count": 21
+    },
+    {
+      "Department": "DACHHo",
+      "Count": 20
+    },
+    {
+      "Department": "Fertigungstechnologie",
+      "Count": 19
+    }
+  ],
+  "TopCompanies": [
+    {
+      "Company": "<leer>",
+      "Count": 1391
+    },
+    {
+      "Company": "Gebr. Brasseler GmbH & Co. KG",
+      "Count": 785
+    },
+    {
+      "Company": "Gebr. Brasseler GmbH & CO.KG",
+      "Count": 523
+    },
+    {
+      "Company": "newbetech solutions GmbH",
+      "Count": 12
+    },
+    {
+      "Company": "Gebr. Brasseler GmbH&Co. KG",
+      "Count": 9
+    },
+    {
+      "Company": "TRADING.POINT GmbH",
+      "Count": 7
+    },
+    {
+      "Company": "Komet Medical USA",
+      "Count": 4
+    },
+    {
+      "Company": "Softwarevalidierung",
+      "Count": 3
+    },
+    {
+      "Company": "Elektro Watermann & Bischoff GmbH",
+      "Count": 3
+    },
+    {
+      "Company": "Gebr. Brasseler GmbH&Co.KG",
+      "Count": 3
+    },
+    {
+      "Company": "tecmasters GmbH",
+      "Count": 2
+    },
+    {
+      "Company": "AMM",
+      "Count": 2
+    }
+  ],
+  "TopOffices": [
+    {
+      "Office": "<leer>",
+      "Count": 1825
+    },
+    {
+      "Office": "B-98-UG2",
+      "Count": 53
+    },
+    {
+      "Office": "B-22-EG-01",
+      "Count": 35
+    },
+    {
+      "Office": "Geb. 22, UG1-20/21",
+      "Count": 34
+    },
+    {
+      "Office": "B-22-OG1",
+      "Count": 34
+    },
+    {
+      "Office": "B-11-UG2-Reinraum",
+      "Count": 29
+    },
+    {
+      "Office": "B-72-UG",
+      "Count": 28
+    },
+    {
+      "Office": "B-98-UG1",
+      "Count": 27
+    },
+    {
+      "Office": "B-04-EG-15",
+      "Count": 18
+    },
+    {
+      "Office": "B-15-UG1-14",
+      "Count": 17
+    },
+    {
+      "Office": "B-15-UG1-18",
+      "Count": 17
+    },
+    {
+      "Office": "B-90-UG",
+      "Count": 16
+    }
+  ],
+  "Cycles": [
+    {
+      "Sam": "dblopm02",
+      "DisplayName": "Plonus, Daniel",
+      "Department": null,
+      "Company": null,
+      "Office": "Geb. 83, OG2",
+      "Manager": "CN=dblopm02,OU=OPM,OU=users,OU=AD_Lemgo_new,DC=brasseler,DC=biz",
+      "Depth": 1,
+      "Cycle": true,
+      "BreakDn": "CN=dblopm02,OU=OPM,OU=users,OU=AD_Lemgo_new,DC=brasseler,DC=biz"
+    }
+  ],
+  "MissingManagerSamples": [
+    {
+      "Sam": "dbl00217",
+      "DisplayName": "Niebrandt, Guido (Komet Dental)",
+      "Department": "Global Marketing Communications",
+      "BreakDn": "CN=dbl00848,OU=Marketing Dental,OU=users,OU=AD_Lemgo_new,DC=brasseler,DC=biz"
+    },
+    {
+      "Sam": "dbl00073",
+      "DisplayName": "Cuccarano, Nicole (Komet Dental)",
+      "Department": "Global Marketing Communications",
+      "BreakDn": "CN=dbl00848,OU=Marketing Dental,OU=users,OU=AD_Lemgo_new,DC=brasseler,DC=biz"
+    },
+    {
+      "Sam": "dbl10441",
+      "DisplayName": "Vucur, Monika (Komet Dental)",
+      "Department": "Marketing D-A-CH",
+      "BreakDn": "CN=dbl00837,OU=Marketing Dental,OU=users,OU=AD_Lemgo_new,DC=brasseler,DC=biz"
+    },
+    {
+      "Sam": "dbl10812",
+      "DisplayName": "Westfal, Wilhelm",
+      "Department": "KST:34301",
+      "BreakDn": "CN=dbl00184,OU=t,OU=users,OU=AD_Lemgo_new,DC=brasseler,DC=biz"
+    },
+    {
+      "Sam": "dbl10280",
+      "DisplayName": "Nowak, Stephan",
+      "Department": "KST:33501",
+      "BreakDn": "CN=dbl00182,OU=Users,OU=DisabledObjects,DC=brasseler,DC=biz"
+    },
+    {
+      "Sam": "dbl10156",
+      "DisplayName": "Nolte, Thomas",
+      "Department": "KST:34301",
+      "BreakDn": "CN=dbl00184,OU=t,OU=users,OU=AD_Lemgo_new,DC=brasseler,DC=biz"
+    },
+    {
+      "Sam": "dbl10955",
+      "DisplayName": "Eikermann, Dietmar",
+      "Department": "KST:34301",
+      "BreakDn": "CN=dbl00184,OU=t,OU=users,OU=AD_Lemgo_new,DC=brasseler,DC=biz"
+    },
+    {
+      "Sam": "dbl90913",
+      "DisplayName": "Koenig, Christian",
+      "Department": "KST:33803",
+      "BreakDn": "CN=dbl00182,OU=Users,OU=DisabledObjects,DC=brasseler,DC=biz"
+    },
+    {
+      "Sam": "dbl10771",
+      "DisplayName": "Petkau, Andreas",
+      "Department": "KST:34301",
+      "BreakDn": "CN=dbl00184,OU=t,OU=users,OU=AD_Lemgo_new,DC=brasseler,DC=biz"
+    },
+    {
+      "Sam": "dbl10946",
+      "DisplayName": "Klassen, Andreas CM",
+      "Department": "KST:34301",
+      "BreakDn": "CN=dbl00184,OU=t,OU=users,OU=AD_Lemgo_new,DC=brasseler,DC=biz"
+    },
+    {
+      "Sam": "dbl10287",
+      "DisplayName": "Wilmsmeier, Dirk",
+      "Department": "KST:34301",
+      "BreakDn": "CN=dbl00184,OU=t,OU=users,OU=AD_Lemgo_new,DC=brasseler,DC=biz"
+    },
+    {
+      "Sam": "dbl10786",
+      "DisplayName": "Berger, Eugen",
+      "Department": "KST:33801",
+      "BreakDn": "CN=dbl00137,OU=Users,OU=DisabledObjects,DC=brasseler,DC=biz"
+    },
+    {
+      "Sam": "dbl10104",
+      "DisplayName": "Seppelt, Uwe",
+      "Department": "KST:33801",
+      "BreakDn": "CN=dbl00137,OU=Users,OU=DisabledObjects,DC=brasseler,DC=biz"
+    },
+    {
+      "Sam": "dbllog48",
+      "DisplayName": "Einrichter Lager Versand",
+      "Department": null,
+      "BreakDn": "CN=dbl00840,OU=Users,OU=DisabledObjects,DC=brasseler,DC=biz"
+    },
+    {
+      "Sam": "dbl10928",
+      "DisplayName": "Ackermann, Johann",
+      "Department": "KST:34301",
+      "BreakDn": "CN=dbl00184,OU=t,OU=users,OU=AD_Lemgo_new,DC=brasseler,DC=biz"
+    },
+    {
+      "Sam": "dblt0036",
+      "DisplayName": "Sonderfertigung Lasern",
+      "Department": null,
+      "BreakDn": "CN=dbl00184,OU=t,OU=users,OU=AD_Lemgo_new,DC=brasseler,DC=biz"
+    },
+    {
+      "Sam": "dblt0072",
+      "DisplayName": "Sonderfertigung Schleifen",
+      "Department": null,
+      "BreakDn": "CN=dbl00184,OU=t,OU=users,OU=AD_Lemgo_new,DC=brasseler,DC=biz"
+    },
+    {
+      "Sam": "dblt0086",
+      "DisplayName": "Sonderfertigung Drehen",
+      "Department": null,
+      "BreakDn": "CN=dbl00184,OU=t,OU=users,OU=AD_Lemgo_new,DC=brasseler,DC=biz"
+    },
+    {
+      "Sam": "dbl11078",
+      "DisplayName": "Balzer, Viktor",
+      "Department": "Sonderfertigung",
+      "BreakDn": "CN=dbl00184,OU=t,OU=users,OU=AD_Lemgo_new,DC=brasseler,DC=biz"
+    },
+    {
+      "Sam": "dbl11077",
+      "DisplayName": "Hertel, Isak",
+      "Department": "Sonderfertigung",
+      "BreakDn": "CN=dbl00184,OU=t,OU=users,OU=AD_Lemgo_new,DC=brasseler,DC=biz"
+    }
+  ],
+  "DeepestSamples": [
+    {
+      "Sam": "dbl10464",
+      "DisplayName": "Lange, Bettina",
+      "Department": "Verpackung unsteril",
+      "Depth": 7
+    },
+    {
+      "Sam": "dbl11243",
+      "DisplayName": "Maros-Cuvic, Sanda",
+      "Department": "Verpackung steril",
+      "Depth": 7
+    },
+    {
+      "Sam": "dbl10998",
+      "DisplayName": "Bomkamp, Andrea",
+      "Department": "Verpackung unsteril",
+      "Depth": 7
+    },
+    {
+      "Sam": "dbl90803",
+      "DisplayName": "Noll, Irina",
+      "Department": "Verpackung unsteril",
+      "Depth": 7
+    },
+    {
+      "Sam": "dbl10595",
+      "DisplayName": "Schiffner, Lene",
+      "Department": "Verpackung steril",
+      "Depth": 7
+    },
+    {
+      "Sam": "dbl90874",
+      "DisplayName": "Steiger, Elvira",
+      "Department": "Distribution & Lagermanagement",
+      "Depth": 7
+    },
+    {
+      "Sam": "dbl10520",
+      "DisplayName": "Zug, Sylvia",
+      "Department": "Distribution & Lagermanagement",
+      "Depth": 7
+    },
+    {
+      "Sam": "dbl10558",
+      "DisplayName": "Kaden, Heike",
+      "Department": "KST:75103",
+      "Depth": 7
+    },
+    {
+      "Sam": "dbl80440",
+      "DisplayName": "Lofing, Maretta",
+      "Department": "Verpackung steril",
+      "Depth": 7
+    },
+    {
+      "Sam": "dbl80500",
+      "DisplayName": "Schnella, Peter",
+      "Department": "Distribution & Lagermanagement",
+      "Depth": 7
+    },
+    {
+      "Sam": "dbl80579",
+      "DisplayName": "Schulz, Irina",
+      "Department": "KST:75103",
+      "Depth": 7
+    },
+    {
+      "Sam": "dbl80581",
+      "DisplayName": "Hartmann, Maren Christina",
+      "Department": "Distribution & Lagermanagement",
+      "Depth": 7
+    },
+    {
+      "Sam": "dbl80643",
+      "DisplayName": "Wildner, Kerstin",
+      "Department": "KST:75103",
+      "Depth": 7
+    },
+    {
+      "Sam": "dbl80793",
+      "DisplayName": "Maier, Erika",
+      "Department": "Verpackung unsteril",
+      "Depth": 7
+    },
+    {
+      "Sam": "dbl11257",
+      "DisplayName": "Breitkreuz, Jonas",
+      "Department": "KST:36501",
+      "Depth": 7
+    },
+    {
+      "Sam": "Packraumtest",
+      "DisplayName": "Packraumtest",
+      "Department": "KST:75103",
+      "Depth": 7
+    },
+    {
+      "Sam": "dbl80607",
+      "DisplayName": "Strzelczyk, Jennifer",
+      "Department": "KST:75102",
+      "Depth": 7
+    },
+    {
+      "Sam": "dbl80468",
+      "DisplayName": "Grasmik, Tatjana",
+      "Department": "Verpackung steril",
+      "Depth": 7
+    },
+    {
+      "Sam": "dbl80796",
+      "DisplayName": "Aydin, Aycan",
+      "Department": "Verpackung steril",
+      "Depth": 7
+    },
+    {
+      "Sam": "dbl11292",
+      "DisplayName": "Quittschau, Nathanael",
+      "Department": "Verpackung unsteril",
+      "Depth": 7
+    }
+  ]
+}

@@ -14,7 +14,7 @@ The design uses the opened Power BI Desktop model as the source. Current live-mo
 
 ## Recommended Approach
 
-Use a hybrid AI/KI forecast:
+Use a hybrid AI forecast:
 
 ```text
 Final AI Forecast =

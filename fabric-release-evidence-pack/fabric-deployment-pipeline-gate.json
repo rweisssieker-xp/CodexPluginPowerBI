@@ -1,0 +1,10 @@
+{
+  "schema": "codex.powerbi.fabricDeploymentPipelineGate.v1",
+  "title": "Power BI Fabric Deployment Pipeline Gate",
+  "generated": "2026-06-04T14:59:14",
+  "snapshotDirectory": "D:\\temp\\CodexPluginPowerBI\\plugins\\powerbi-desktop\\examples\\fabric-snapshot\\minimal",
+  "decision": "Promote",
+  "status": "Passed",
+  "findingCount": 0,
+  "findings": []
+}

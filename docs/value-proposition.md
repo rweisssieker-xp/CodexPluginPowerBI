@@ -20,6 +20,7 @@ Power BI teams often lose time because model quality, DAX risk, report UX, relea
 | Safer changes | Write actions are planned as drafts, manifests, rollback checks, and apply plans instead of direct PBIX mutation. | PBIP Apply Engine outputs, TOM write plans, rollback readiness |
 | Better release decisions | Go/Warn/No-Go evidence is generated from trust rules, semantic tests, live availability, and governance signals. | Trust release gate, release checklist, PR release comment |
 | Higher KPI trust | Metrics are evaluated for ownership, definitions, DAX risk, lineage impact, duplicate semantics, tests, and usage. | KPI trust score, trust debt ledger, usage trust matrix |
+| Stronger analytical QA | Release claims are checked for methodology, metric definitions, denominators, caveats, and diagnostic evidence before stakeholder sharing. | Methodology validation, metric change diagnosis, analytical release report |
 | Live Desktop confidence | Open Desktop models can be inspected through read-only local XMLA/ADOMD checks when available. | Live model summary, live metric catalog, live-vs-repo drift |
 | Fabric readiness | Teams can plan deployment and capacity risk before treating a model as service-ready. | Fabric readiness plan, service scanner, capacity risk forecast |
 | AI-ready semantics | Copilot and AI workflows get better model metadata, contracts, prompt packs, and semantic test coverage. | Copilot readiness, data contracts, AI prompt pack |
@@ -27,7 +28,7 @@ Power BI teams often lose time because model quality, DAX risk, report UX, relea
 
 ## Differentiating USPs
 
-## 38 AI/KI USP Map
+## 38 AI USP Map
 
 | USP | Business Value | Output Artifact | Best User |
 | --- | --- | --- | --- |
@@ -110,7 +111,7 @@ This makes Codex useful for implementation work while keeping human review and s
 
 ### 5. Max AI Review Package
 
-The Max AI workflow produces a broad AI/KI review package that goes beyond basic linting:
+The Max AI workflow produces a broad AI review package that goes beyond basic linting:
 
 - Fix-until-green plans.
 - Data contracts.
@@ -138,7 +139,39 @@ The plugin includes enterprise-oriented release artifacts that help teams move f
 - AI change journal.
 - Documentation coverage gate.
 
-### 7. Forecast And Planning Intelligence
+### 7. Analytical Release QA
+
+The analytical QA layer turns generated review evidence into stakeholder-ready decision support:
+
+- Methodology validation for metric definitions, grain, denominators, semantic-test coverage, PBIP readiness, and caveats.
+- Metric change diagnosis for explaining KPI movement, mismatches, or missing comparison evidence.
+- Analytical release reports that summarize release decision, KPI trust, methodology status, and next actions.
+
+### 8. Advanced Release USPs
+
+The advanced release USP layer turns Power BI release QA into a traceable local control system:
+
+- Evidence graph connects metrics, tests, dependencies, visuals, and review artifacts.
+- Visual-to-measure impact, DAX change risk, semantic contract testing, freshness/lineage gates, KPI drift watchlists, RLS trust review, UX regression scanning, and migration readiness cover the highest-risk release paths.
+- Executive trust briefs convert technical evidence into a concise Go/Conditional Go/No-Go handoff.
+
+### 9. Separated Portfolio, Compliance, And Operations QA
+
+The next governance layer separates broad portfolio control from compliance and operational readiness:
+
+- Portfolio governance covers command-center scoring, cost-to-trust optimization, tenant hygiene, and KPI conflict resolution.
+- Compliance QA covers deployment pipeline gates, certified dataset readiness, accessibility, Power Query contracts, and signed release evidence.
+- Operations QA covers refresh failure root cause, semantic test coverage, and Business KPI SLA monitoring.
+
+### 10. Fabric Live Read-Only Intelligence
+
+Fabric Live Read-Only Intelligence connects the local workbench to real Fabric/Power BI Service metadata while preserving safe local evaluation:
+
+- Token-file access plans and GET-only REST guardrails prevent accidental service mutation.
+- Workspace and tenant snapshots let teams evaluate Fabric evidence offline, repeatably, and in CI.
+- Fabric portfolio, deployment, operations, governance, security, and executive packs turn service metadata into release and risk decisions.
+
+### 11. Forecast And Planning Intelligence
 
 The AI forecast workflow supports read-only forecast generation from live Desktop or saved extracts, including:
 

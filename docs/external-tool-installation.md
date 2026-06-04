@@ -6,6 +6,8 @@ Generate the registration file:
 .\plugins\powerbi-desktop\scripts\New-PowerBIExternalToolRegistration.ps1 -OutputPath .\CodexPowerBIWorkbench.pbitool.json
 ```
 
+Generate this file on each workstation or checkout location. The registration stores the absolute path to `Invoke-PowerBIUnifiedReview.ps1` so Power BI Desktop can launch it reliably; external binaries and provider DLLs stay installed locally and are not vendored into this repository.
+
 Install it into the machine-wide Power BI Desktop External Tools folder:
 
 ```powershell

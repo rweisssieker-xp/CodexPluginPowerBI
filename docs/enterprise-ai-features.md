@@ -8,12 +8,29 @@ These features extend the plugin from local model review into enterprise release
 .\plugins\powerbi-desktop\scripts\New-PowerBIReleaseCandidatePack.ps1 `
   -Path .\plugins\powerbi-desktop\examples\sample-model `
   -OutputDirectory .\powerbi-release-candidate-pack `
-  -SkipLive
+  -SkipLive `
+  -IncludeAnalyticalQa
 ```
 
-Creates one release index with unified review, Max AI review, service scanner, semantic tests, model risk heatmap, and PR release comment.
+Creates one release index with unified review, Max AI review, service scanner, semantic tests, model risk heatmap, and PR release comment. Add `-IncludeAnalyticalQa` when the handoff needs methodology validation, metric change diagnosis, and an analytical release report. Add `-IncludeFabricLiveQa` with the separated Fabric switches when Fabric service snapshot evidence is required.
 
-The pack is the enterprise handoff artifact. Its `summary.json` combines the release gate decision, open P0/P1 counts, pending semantic test count, live status, PBIP roundtrip status, rollback readiness, service scanner evidence, risk heatmap, trust debt, RLS leakage, capacity risk, and usage trust signals. Use `-SkipLive` for deterministic offline packaging; omit it when Desktop live evidence is required.
+The pack is the enterprise handoff artifact. Its `summary.json` combines the release gate decision, open P0/P1 counts, pending semantic test count, live status, PBIP roundtrip status, rollback readiness, service scanner evidence, risk heatmap, trust debt, RLS leakage, capacity risk, usage trust signals, and optional analytical QA status. Use `-SkipLive` for deterministic offline packaging; omit it when Desktop live evidence is required.
+
+Fabric live read-only QA is snapshot-first:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\New-PowerBIReleaseCandidatePack.ps1 `
+  -Path . `
+  -SnapshotDirectory .\fabric-snapshot `
+  -IncludeFabricLiveQa `
+  -IncludeFabricPortfolioQa `
+  -IncludeFabricDeploymentQa `
+  -IncludeFabricOperationsQa `
+  -IncludeFabricGovernanceQa `
+  -IncludeFabricExecutiveQa
+```
+
+Use `Get-PowerBIFabricAccessPlan.ps1` before live reads. Fabric v1 is read-only, token-file based, and never publishes, promotes, refreshes, rebinds, deletes, or writes endorsements.
 
 ## Fabric And Service
 

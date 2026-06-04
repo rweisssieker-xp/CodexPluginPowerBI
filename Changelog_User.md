@@ -1,64 +1,84 @@
-# Changelog fuer Anwender
+# User Changelog
+
+## Unreleased
+
+This update adds advanced release USPs for teams that need traceable Power BI release decisions across metrics, visuals, contracts, security, UX, and migration readiness.
+
+### New Advanced Release USP Workflows
+
+- Release Candidate Packs can include advanced USP evidence through `-IncludeAdvancedUspQa`.
+- New local checks cover evidence graphs, visual-to-measure impact, semantic contracts, executive trust briefs, DAX change risk, freshness/lineage, KPI drift watchlists, RLS trust review, UX regression, and migration readiness.
+- Release Candidate Packs can now keep portfolio governance, compliance QA, and operations QA separate through `-IncludePortfolioGovernanceQa`, `-IncludeComplianceQa`, and `-IncludeOperationsQa`.
+- Fabric Live Read-Only QA can now use token-file access planning or local Fabric snapshots, then generate separate Fabric portfolio, deployment, operations, governance, and executive evidence packs.
+
+This update adds analytical release QA for teams that need stakeholder-ready evidence, not only generated review artifacts.
+
+### New Analytical QA Workflows
+
+- Methodology validation checks metric definitions, grain, denominators, semantic-test coverage, PBIP readiness, and release caveats.
+- Metric change diagnosis explains whether a KPI movement is verified, likely, or blocked by missing comparison evidence.
+- Analytical release reports turn trust, release-gate, and methodology evidence into a concise Markdown handoff.
+- Release Candidate Packs can include analytical QA through `-IncludeAnalyticalQa`.
 
 ## v2.1.0 - 2026-05-20
 
-Diese Version erweitert das Power BI Desktop Plugin um lokale Business Process Data Quality Packs fuer Standardprozesse.
+This release adds local Business Process Data Quality packs for standard processes to the Power BI Desktop plugin.
 
-### Neue Prozess-DQ Funktionen
+### New Process Data Quality Features
 
-- Order-to-Cash, Procure-to-Pay, Record-to-Report, Hire-to-Retire, Plan-to-Produce, Forecast-to-Deliver, Service-to-Cash, Issue-to-Resolution, Lead-to-Opportunity und Quote-to-Order.
-- Lokale Pruefung von Power BI Modell-Metadaten und CSV/JSON-Exportdaten.
-- Mapping-Vorschlaege fuer kanonische Prozessobjekte wie SalesOrder, Invoice, Payment, Delivery, PurchaseOrder, Vendor, GLAccount, Employee und ProductionOrder.
-- Prozess-Findings mit Severity, Evidence, KPI-Auswirkung, Owner-Hinweis, empfohlener Aktion und Release-Auswirkung.
-- Optionaler Einbau in Release Candidate Packs ueber `-IncludeBusinessProcessDQ`.
+- Order-to-Cash, Procure-to-Pay, Record-to-Report, Hire-to-Retire, Plan-to-Produce, Forecast-to-Deliver, Service-to-Cash, Issue-to-Resolution, Lead-to-Opportunity, and Quote-to-Order.
+- Local checks for Power BI model metadata and CSV/JSON export data.
+- Mapping proposals for canonical process objects such as SalesOrder, Invoice, Payment, Delivery, PurchaseOrder, Vendor, GLAccount, Employee, and ProductionOrder.
+- Process findings with severity, evidence, KPI impact, owner hint, recommended action, and release impact.
+- Optional inclusion in Release Candidate Packs through `-IncludeBusinessProcessDQ`.
 
-### Sicherheit und Grenze
+### Safety And Boundaries
 
 - Keine ERP-Logins.
-- Keine Datenbankverbindungen.
-- Keine externen API Calls.
-- Keine PBIX-Mutation.
-- Kein Ersatz fuer vollstaendiges Process Mining ohne Event Logs.
+- No database connections.
+- No external API calls.
+- No PBIX mutation.
+- Not a replacement for full process mining without event logs.
 
 ## v2.0.0 - 2026-05-20
 
-Diese Version macht das Power BI Desktop Plugin release-tauglich als neutrale, lokale AI/KI Workbench fuer Power BI Projekte.
+This release makes the Power BI Desktop plugin release-ready as a neutral, local AI workbench for Power BI projects.
 
-### Neue AI/KI Nutzenbereiche
+### New AI Value Areas
 
-- Priorisierte Sanierungsplaene fuer Release-Blocker, KPI-Vertrauen, Lineage-Auswirkung und Governance-Risiken.
-- Business Outcome Simulation fuer Entscheidungen, Zielgruppen, moegliche Fehlentscheidungen und benoetigte Evidenz.
-- Semantic Layer Autopilot fuer bessere Kennzahlenbeschreibungen, Synonyme, Verantwortlichkeiten und Copilot-Readiness.
-- AI Governance Evidence Pack fuer Audit-Nachweise, Sign-off-Luecken, Rest-Risiken und Release-Evidenz.
-- Human Override Learning zur strukturierten Erfassung menschlicher Korrekturen und Lerneffekte.
-- Cross-Report KPI Conflict Detection fuer widerspruechliche KPI-Definitionen ueber mehrere Reports hinweg.
-- Executive Narrative Quality Agent fuer Management-Storys, die durch Visuals, KPI-Vertrauen und Release-Evidenz gedeckt sind.
-- Autonomous Power BI QA Lab fuer generierte QA-Fragen, semantische Erwartungen, Visual-Readiness und Regressionsrisiken.
-- PBIP Change Impact Gate fuer release-relevante Auswirkungen geaenderter PBIP/TMDL/report Dateien.
-- Semantic Test Fixture Generator fuer reproduzierbare KPI-Testdaten und Measure-Erwartungen.
-- KPI Owner Sign-off Workflow fuer verbindliche Freigabeentscheidungen pro Kennzahl.
-- Refresh Blast-Radius Analyzer fuer Auswirkungen von Refresh-, Kapazitaets- und Service-Risiken.
-- Sensitive Data Exposure Map fuer sensible Felder und Review-Aktionen.
-- Capacity Mitigation Planner fuer konkrete Gegenmassnahmen bei Kapazitaets- und Performance-Risiken.
-- Report Retirement Advisor fuer Konsolidierung, Review oder Stilllegung schwacher Reports/KPIs.
-- Live Validation Evidence Recorder fuer lokale Nachweise aus Power BI Desktop Validierungen.
-- Semantic Contract Drift Monitor fuer veraltete Verantwortlichkeiten, fehlende Vertrage und Erwartungsdrift.
-- RLS Persona Coverage Matrix fuer Sicherheitsrollen, Personas und Abdeckungsluecken.
+- Prioritized remediation plans for release blockers, KPI trust, lineage impact, and governance risks.
+- Business Outcome Simulation for decisions, audiences, possible wrong decisions, and required evidence.
+- Semantic Layer Autopilot for better metric descriptions, synonyms, ownership, and Copilot readiness.
+- AI Governance Evidence Pack for audit evidence, sign-off gaps, residual risks, and release evidence.
+- Human Override Learning for structured capture of human corrections and learning signals.
+- Cross-Report KPI Conflict Detection for conflicting KPI definitions across reports.
+- Executive Narrative Quality Agent for leadership narratives backed by visuals, KPI trust, and release evidence.
+- Autonomous Power BI QA Lab for generated QA questions, semantic expectations, visual readiness, and regression risks.
+- PBIP Change Impact Gate for release-relevant impact from changed PBIP/TMDL/report files.
+- Semantic Test Fixture Generator for reproducible KPI test data and measure expectations.
+- KPI Owner Sign-off Workflow for binding approval decisions per metric.
+- Refresh Blast-Radius Analyzer for refresh, capacity, and service risk impact.
+- Sensitive Data Exposure Map for sensitive fields and review actions.
+- Capacity Mitigation Planner for concrete mitigations for capacity and performance risks.
+- Report Retirement Advisor for consolidation, review, or retirement of weak reports and KPIs.
+- Live Validation Evidence Recorder for local evidence from Power BI Desktop validations.
+- Semantic Contract Drift Monitor for stale ownership, missing contracts, and expectation drift.
+- RLS Persona Coverage Matrix for security roles, personas, and coverage gaps.
 
-### Verbesserte Review-Pakete
+### Improved Review Packages
 
-- Max AI Review erzeugt jetzt 39 lokale Artefakte ueber 38 AI/KI USP Workflows.
-- Release Candidate Packs kombinieren Gate-Entscheidung, Service-Scanner, semantische Tests, Risiko-Heatmap und PR-Kommentar.
-- Dokumentation, Script-Katalog und Value Proposition wurden auf die 38-USP Positionierung aktualisiert.
+- Max AI Review now creates 39 local artifacts across 38 AI USP workflows.
+- Release Candidate Packs combine gate decision, service scanner, semantic tests, risk heatmap, and PR comment.
+- Documentation, script catalog, and value proposition were updated for the 38-USP positioning.
 
-### Sicherheit und Neutralitaet
+### Safety And Neutrality
 
-- Die Workflows bleiben local-first.
-- Es werden keine Reports veroeffentlicht.
-- Es werden keine Power BI Service Logins oder Credentials benoetigt.
-- PBIX-Dateien werden nicht automatisch veraendert.
-- Generierte lokale Review-, Live-, Forecast-, Incident- und QA-Ausgaben werden nicht mehr in Git aufgenommen.
+- Workflows remain local-first.
+- Reports are not published.
+- Power BI Service logins and credentials are not required.
+- PBIX files are not changed automatically.
+- Generated local review, live, forecast, incident, and QA outputs are no longer tracked in Git.
 
 ## v1.0.0
 
-- Erste oeffentliche Plugin-Basisversion.
+- Initial public plugin baseline.

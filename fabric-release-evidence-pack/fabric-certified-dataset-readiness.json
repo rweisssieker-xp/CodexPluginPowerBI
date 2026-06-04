@@ -1,0 +1,16 @@
+{
+  "schema": "codex.powerbi.fabricCertifiedDatasetReadiness.v1",
+  "title": "Power BI Fabric Certified Dataset Readiness",
+  "generated": "2026-06-04T14:59:14",
+  "snapshotDirectory": "D:\\temp\\CodexPluginPowerBI\\plugins\\powerbi-desktop\\examples\\fabric-snapshot\\minimal",
+  "status": "ReadyWithCaveats",
+  "modelCount": 1,
+  "findingCount": 1,
+  "findings": [
+    {
+      "severity": "Medium",
+      "area": "Certification",
+      "message": "Sales Semantic Model is not certified."
+    }
+  ]
+}

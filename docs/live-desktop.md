@@ -7,11 +7,12 @@ Live Desktop mode connects to the currently open local Power BI Desktop model th
 - Power BI Desktop is running.
 - A report/model is open.
 - The local endpoint can be discovered.
-- The required ADOMD provider is available. If it is not available in PowerShell 7, use Windows PowerShell 5.1.
+- The required ADOMD provider is available. `Test-PowerBIEnvironment.ps1` reports the resolved `Microsoft.AnalysisServices.AdomdClient.dll` path when DAX Studio, SSMS, or ADOMD.NET provides it. If it is not available in PowerShell 7, use Windows PowerShell 5.1.
 
 Start with:
 
 ```powershell
+.\plugins\powerbi-desktop\scripts\Test-PowerBIEnvironment.ps1
 .\plugins\powerbi-desktop\scripts\Get-PowerBIDesktopLiveConnection.ps1
 ```
 

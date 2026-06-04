@@ -10,7 +10,7 @@ Scripts live in `plugins/powerbi-desktop/scripts`. Most commands accept either a
 
 ## Environment And Discovery
 
-- `Test-PowerBIEnvironment.ps1`: checks local Power BI tooling such as Power BI Desktop, Tabular Editor, DAX Studio, pbi-tools, and .NET.
+- `Test-PowerBIEnvironment.ps1`: checks local Power BI tooling such as Power BI Desktop, Tabular Editor, DAX Studio, pbi-tools, .NET, and the ADOMD client provider used by live DMV/DAX workflows.
 - `Test-PowerBIPlugin.ps1`: runs the local plugin smoke and regression checks.
 - `Test-PowerBIDocumentationCoverage.ps1`: checks that scripts are mentioned in documentation and stale claims are absent.
 - `Get-PowerBIInventory.ps1`: discovers Power BI files in a workspace.
@@ -23,7 +23,7 @@ Scripts live in `plugins/powerbi-desktop/scripts`. Most commands accept either a
 
 - `Invoke-PowerBIAutoReview.ps1`: offline review package for a project path.
 - `Invoke-PowerBIUnifiedReview.ps1`: broad review index combining offline, live when available, native parity, external tools, and AI outputs.
-- `Invoke-PowerBIMaxAIReview.ps1`: advanced AI/KI package with 39 artifacts across 38 USP workflows.
+- `Invoke-PowerBIMaxAIReview.ps1`: advanced AI package with 39 artifacts across 38 USP workflows.
 - `Invoke-PowerBIBusinessProcessDataQuality.ps1`: local business process data-quality package for Power BI metadata and CSV/JSON ERP exports.
 - `New-PowerBIProcessDataMapping.ps1`: proposes canonical process object mappings from PBIP/TMDL metadata and local CSV/JSON exports.
 - `New-PowerBIBusinessProcessDQPack.ps1`: wrapper for the standalone business process data-quality pack.
@@ -31,6 +31,11 @@ Scripts live in `plugins/powerbi-desktop/scripts`. Most commands accept either a
 - `Invoke-PowerBIRealFeatureReview.ps1`: real-feature validation for schema, render readiness, Fabric/service planning, refresh, aggregation, RLS, and visuals.
 - `Invoke-PowerBINativeToolParityReview.ps1`: native parity package for BPA, compare, docs, performance, layout, theme, and source control.
 - `Invoke-PowerBIExternalToolsReview.ps1`: external-tool-aware workflow bundle.
+- `Test-PowerBIAnalysisMethodology.ps1`: validates whether local analysis evidence is methodologically ready for stakeholder release.
+- `New-PowerBIMetricChangeDiagnosis.ps1`: explains metric movement, mismatch, or diagnostic gaps from local Power BI evidence.
+- `New-PowerBIAnalyticalReleaseReport.ps1`: creates a stakeholder-ready analytical release report from trust, semantic-test, release-gate, and methodology evidence.
+- `New-PowerBIEvidenceGraph.ps1`: links model metrics, semantic tests, dependencies, visuals, and review artifacts into a local evidence graph.
+- `New-PowerBIExecutiveTrustBrief.ps1`: creates a one-page executive trust brief with release decision, KPI trust, methodology, lineage, and security status.
 
 ## Semantic Model Analysis
 
@@ -61,11 +66,11 @@ Scripts live in `plugins/powerbi-desktop/scripts`. Most commands accept either a
 - `New-PowerBILiveDependencyGraph.ps1`: builds live measure dependency nodes and edges, with optional Mermaid output.
 - `New-PowerBILiveExecutiveNarrative.ps1`: summarizes live model risk, top findings, and high-impact measures for executives.
 
-## AI/KI And USP Workflows
+## AI And USP Workflows
 
 ### `Invoke-PowerBIAIForecast.ps1`
 
-Creates read-only AI/KI sales forecast from open Desktop model or saved extract. Supports `-AsOfDate`, `-HorizonMonths`, `-Grain CustomerProduct|HierarchyProductLine`, `-Backtest`, and `-Json`. Outputs detail, monthly summary, top-delta, backtest, and model-quality CSV files. Combines actual-to-date, learned backlog conversion, residual demand, budget/roll anchors, sparse-series fallback, and monthly reconciliation. Live `CustomerProduct` extraction can fall back to hierarchy/product-line grain when Desktop cannot materialize the fine grain.
+Creates read-only AI sales forecast from open Desktop model or saved extract. Supports `-AsOfDate`, `-HorizonMonths`, `-Grain CustomerProduct|HierarchyProductLine`, `-Backtest`, and `-Json`. Outputs detail, monthly summary, top-delta, backtest, and model-quality CSV files. Combines actual-to-date, learned backlog conversion, residual demand, budget/roll anchors, sparse-series fallback, and monthly reconciliation. Live `CustomerProduct` extraction can fall back to hierarchy/product-line grain when Desktop cannot materialize the fine grain.
 
 - `Invoke-PowerBIFixUntilGreenLoop.ps1`: generates iterative fix-loop guidance.
 - `Invoke-PowerBIAskModel.ps1`: answers model questions from local Power BI metadata.
@@ -134,6 +139,84 @@ Creates read-only AI/KI sales forecast from open Desktop model or saved extract.
 - `Update-PowerBIChangeJournal.ps1`: records AI change decisions and statuses.
 - `New-PowerBIModelRiskHeatmap.ps1`: aggregates model, DAX, service, storage, and release risk.
 - `New-PowerBIReleaseCandidatePack.ps1`: creates a one-command enterprise release package.
+- `New-PowerBIReleaseCandidatePack.ps1 -IncludeAnalyticalQa`: adds analysis methodology validation, metric change diagnosis, and an analytical release report to the release package.
+- `New-PowerBIReleaseCandidatePack.ps1 -IncludeAdvancedUspQa`: adds evidence graph, visual-to-measure impact, semantic contract test, executive trust brief, DAX change risk, freshness/lineage gate, KPI drift watchlist, RLS trust review, UX regression scan, and migration readiness.
+- `New-PowerBIReleaseCandidatePack.ps1 -IncludePortfolioGovernanceQa`: adds portfolio command center, cost-to-trust optimizer, tenant hygiene scanner, and KPI conflict resolution.
+- `New-PowerBIReleaseCandidatePack.ps1 -IncludeComplianceQa`: adds deployment pipeline gate, certified dataset readiness, accessibility compliance, Power Query data contract, and release evidence signature.
+- `New-PowerBIReleaseCandidatePack.ps1 -IncludeOperationsQa`: adds refresh failure root-cause advisor, semantic test coverage score, and Business KPI SLA monitor.
+- `New-PowerBIReleaseCandidatePack.ps1 -IncludeFabricLiveQa`: adds Fabric read-only access planning or imports a workspace snapshot.
+- `New-PowerBIReleaseCandidatePack.ps1 -IncludeFabricPortfolioQa`: adds Fabric portfolio command center, tenant hygiene, cost-to-trust, workspace risk, and retirement evidence.
+- `New-PowerBIReleaseCandidatePack.ps1 -IncludeFabricDeploymentQa`: adds Fabric deployment gate, certified dataset readiness, release evidence, promotion risk, and Dev/Test/Prod drift evidence.
+- `New-PowerBIReleaseCandidatePack.ps1 -IncludeFabricOperationsQa`: adds Fabric refresh root cause, capacity hotspot, gateway risk, refresh SLA, and incident timeline.
+- `New-PowerBIReleaseCandidatePack.ps1 -IncludeFabricGovernanceQa`: adds Fabric lineage graph, sensitivity label, sharing exposure, RLS service evidence, and audit evidence map.
+- `New-PowerBIReleaseCandidatePack.ps1 -IncludeFabricExecutiveQa`: adds Fabric executive war room, board brief, CFO risk brief, data product scorecard, and trust narrative.
+
+## Fabric Live Read-Only And Snapshot Intelligence
+
+- `Get-PowerBIFabricAccessPlan.ps1`: read-only Fabric access plan with token-file and workspace-scope checks.
+- `Invoke-PowerBIFabricReadOnlyRequest.ps1`: GET-only REST helper; mutating methods return `BlockedUnsafeMethod`.
+- `Import-PowerBIFabricWorkspaceSnapshot.ps1`: imports or stages a local Fabric workspace snapshot.
+- `Import-PowerBIFabricTenantSnapshot.ps1`: imports or stages a local Fabric tenant snapshot.
+- `PowerBIFabricSnapshot.Shared.ps1`: shared snapshot reader used by Fabric USP scripts.
+- `New-PowerBIFabricPortfolioCommandCenter.ps1`: Fabric portfolio trust, ownership, refresh, and risk command center.
+- `New-PowerBIFabricTenantHygieneScanner.ps1`: Fabric tenant/workspace hygiene checks.
+- `New-PowerBIFabricCostToTrustOptimizer.ps1`: Fabric capacity/usage/trust optimization backlog.
+- `New-PowerBIFabricWorkspaceRiskRadar.ps1`: Fabric workspace refresh, gateway, and capacity risk radar.
+- `New-PowerBIFabricArtifactRetirementBoard.ps1`: Fabric retirement/consolidation candidates.
+- `Test-PowerBIFabricDeploymentPipelineGate.ps1`: Fabric deployment promotion gate.
+- `Test-PowerBIFabricCertifiedDatasetReadiness.ps1`: Fabric certified dataset readiness check.
+- `New-PowerBIFabricReleaseEvidencePack.ps1`: Fabric release evidence wrapper.
+- `New-PowerBIFabricPromotionRiskSimulator.ps1`: promotion risk simulator from snapshot evidence.
+- `Compare-PowerBIFabricDevTestProdDrift.ps1`: Dev/Test/Prod drift check.
+- `New-PowerBIFabricRefreshFailureRootCauseAdvisor.ps1`: refresh failure root-cause advisor.
+- `New-PowerBIFabricCapacityHotspotAnalyzer.ps1`: Fabric capacity hotspot analyzer.
+- `New-PowerBIFabricGatewayRiskReview.ps1`: gateway risk review.
+- `New-PowerBIFabricRefreshSlaMonitor.ps1`: refresh SLA monitor.
+- `New-PowerBIFabricIncidentTimeline.ps1`: Fabric incident timeline.
+- `New-PowerBIFabricLineageEvidenceGraph.ps1`: Fabric lineage evidence graph.
+- `Test-PowerBIFabricSensitivityLabelCoverage.ps1`: sensitivity label coverage.
+- `Test-PowerBIFabricSharingExposure.ps1`: external sharing exposure check.
+- `Test-PowerBIFabricRlsServiceEvidence.ps1`: RLS service evidence check.
+- `New-PowerBIFabricAuditEvidenceMap.ps1`: audit evidence map.
+- `New-PowerBIFabricExecutiveWarRoom.ps1`: executive Fabric war room.
+- `New-PowerBIFabricBoardBrief.ps1`: board-ready Fabric brief.
+- `New-PowerBIFabricCfoRiskBrief.ps1`: CFO risk brief.
+- `New-PowerBIFabricDataProductScorecard.ps1`: data product scorecard.
+- `New-PowerBIFabricTrustNarrative.ps1`: Fabric trust narrative.
+
+## Advanced Release USPs
+
+- `New-PowerBIEvidenceGraph.ps1`: machine-readable evidence graph for release decisions.
+- `New-PowerBIVisualMeasureImpactMap.ps1`: visual-to-measure impact analysis from PBIP report metadata.
+- `Test-PowerBISemanticContract.ps1`: semantic contract testing for owners, definitions, and executable expectations.
+- `New-PowerBIExecutiveTrustBrief.ps1`: executive trust brief in Markdown or JSON.
+- `New-PowerBIDaxChangeRiskClassifier.ps1`: DAX change risk classifier for filter context, time intelligence, relationships, performance, and blank handling.
+- `Test-PowerBIDataFreshnessLineageGate.ps1`: freshness, service scanner, data contract, and PBIP lineage release gate.
+- `New-PowerBIKpiDriftWatchlist.ps1`: post-release KPI drift watchlist ranked by trust, risk, and visual exposure.
+- `New-PowerBIRlsTrustReview.ps1`: RLS/OLS trust review wrapper with release status.
+- `New-PowerBIReportUxRegressionScanner.ps1`: report UX regression scanner with optional baseline comparison.
+- `Test-PowerBIMigrationReadiness.ps1`: PBIP/Fabric migration readiness gate.
+
+## Portfolio Governance QA
+
+- `New-PowerBIPortfolioCommandCenter.ps1`: portfolio-level trust, risk, usage, and retirement command center.
+- `New-PowerBICostToTrustOptimizer.ps1`: ranks high-cost/low-trust KPI remediation opportunities.
+- `New-PowerBITenantHygieneScanner.ps1`: checks service governance and flags missing tenant/workspace export evidence.
+- `Resolve-PowerBIKpiDefinitionConflict.ps1`: turns duplicate/conflicting KPI evidence into owner decision recommendations.
+
+## Compliance QA
+
+- `Test-PowerBIDeploymentPipelineGate.ps1`: Dev/Test/Prod promotion gate from release, semantic test, and rollback evidence.
+- `Test-PowerBICertifiedDatasetReadiness.ps1`: certification readiness from trust, service governance, RLS, and semantic contract evidence.
+- `Test-PowerBIReportAccessibilityCompliance.ps1`: accessibility/compliance gate from UX, theme, and render-readiness evidence.
+- `Test-PowerBIPowerQueryDataContract.ps1`: Power Query source, schema, gateway, and folding contract checks.
+- `New-PowerBIReleaseEvidenceSignature.ps1`: SHA256 release evidence signature across local review artifacts.
+
+## Operations QA
+
+- `New-PowerBIRefreshFailureRootCauseAdvisor.ps1`: likely refresh failure root-cause advisor from Power Query and refresh blast-radius evidence.
+- `New-PowerBISemanticTestCoverageScore.ps1`: coverage score for KPI, executable semantic test, and RLS validation evidence.
+- `New-PowerBIBusinessKpiSlaMonitor.ps1`: KPI SLA monitor from trust, freshness, and drift watchlist evidence.
 
 ## PBIP Authoring And Apply
 

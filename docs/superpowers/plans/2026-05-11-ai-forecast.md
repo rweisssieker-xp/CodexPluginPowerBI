@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build a read-only AI/KI sales forecast workflow for Power BI Desktop that combines short-term backlog conversion with granular customer/product monthly demand forecasting.
+**Goal:** Build a read-only AI sales forecast workflow for Power BI Desktop that combines short-term backlog conversion with granular customer/product monthly demand forecasting.
 
 **Architecture:** Add one PowerShell entrypoint that extracts live model data and delegates deterministic forecast computation to a small Python worker. The worker outputs forecast detail, monthly summary, and top-delta CSV files without modifying the PBIX. Tests use local fixtures so CI does not need Power BI Desktop.
 
@@ -710,7 +710,7 @@ It 'includes the AI forecast entrypoint' {
 Add this section to `plugins/powerbi-desktop/skills/powerbi-desktop/SKILL.md` near live model workflows:
 
 ```markdown
-### Generate an AI/KI sales forecast
+### Generate an AI sales forecast
 
 Run:
 
@@ -728,7 +728,7 @@ Add this entry to `docs/script-catalog.md`:
 ```markdown
 ### `Invoke-PowerBIAIForecast.ps1`
 
-Creates a read-only AI/KI sales forecast from the open Power BI Desktop model or a saved extract. Outputs detail, monthly summary, and top-delta CSV files for Power BI import. The forecast combines actuals, backlog conversion, segment demand, budget/roll anchors, and monthly reconciliation.
+Creates a read-only AI sales forecast from the open Power BI Desktop model or a saved extract. Outputs detail, monthly summary, and top-delta CSV files for Power BI import. The forecast combines actuals, backlog conversion, segment demand, budget/roll anchors, and monthly reconciliation.
 ```
 
 - [ ] **Step 4: Run targeted tests**

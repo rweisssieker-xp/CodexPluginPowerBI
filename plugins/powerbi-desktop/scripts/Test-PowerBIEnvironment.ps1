@@ -23,6 +23,24 @@ function Find-CommandPath {
     return $null
 }
 
+function Find-AdomdClientPath {
+    $candidates = @(
+        'C:\Program Files\Microsoft.NET\ADOMD.NET\170\Microsoft.AnalysisServices.AdomdClient.dll',
+        'C:\Program Files\DAX Studio\bin\Microsoft.AnalysisServices.AdomdClient.dll',
+        'C:\Program Files\Microsoft SQL Server Management Studio 22\Release\Common7\IDE\Microsoft.AnalysisServices.AdomdClient.dll',
+        'C:\Program Files\Microsoft SQL Server Management Studio 21\Release\Common7\IDE\Microsoft.AnalysisServices.AdomdClient.dll',
+        'C:\Program Files (x86)\Microsoft.NET\ADOMD.NET\170\Microsoft.AnalysisServices.AdomdClient.dll'
+    )
+
+    foreach ($candidate in $candidates) {
+        if (Test-Path -LiteralPath $candidate) {
+            return $candidate
+        }
+    }
+
+    return $null
+}
+
 $desktopCandidates = @(@(
     "$env:ProgramFiles\Microsoft Power BI Desktop\bin\PBIDesktop.exe",
     "${env:ProgramFiles(x86)}\Microsoft Power BI Desktop\bin\PBIDesktop.exe",
@@ -31,8 +49,7 @@ $desktopCandidates = @(@(
 
 $result = [ordered]@{
     PowerBIDesktop = if ($desktopCandidates.Count -gt 0) { $desktopCandidates[0] } else { $null }
-    TabularEditor = Find-CommandPath @('TabularEditor.exe', 'TabularEditor3.exe', 'te.exe') @(
-        "$env:ProgramFiles\Tabular Editor 3\TabularEditor3.exe",
+    TabularEditor = Find-CommandPath @('TabularEditor.exe', 'te.exe') @(
         "$env:ProgramFiles\Tabular Editor 2\TabularEditor.exe",
         "${env:ProgramFiles(x86)}\Tabular Editor\TabularEditor.exe"
     )
@@ -61,6 +78,7 @@ $result = [ordered]@{
         "$env:ProgramFiles\PBI.tips\LayoutTool.exe"
     )
     DotNet = Find-CommandPath @('dotnet.exe', 'dotnet')
+    AdomdClient = Find-AdomdClientPath
 }
 
 if ($Json) {

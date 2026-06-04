@@ -1,6 +1,6 @@
 # AI USP Workflows
 
-The Max AI/KI layer is designed to make Codex useful beyond static linting. It turns model signals into fix loops, contracts, simulations, and explainable change plans.
+The Max AI layer is designed to make Codex useful beyond static linting. It turns model signals into fix loops, contracts, simulations, and explainable change plans.
 
 ## Run The Full Package
 
