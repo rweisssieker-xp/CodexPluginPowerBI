@@ -9,6 +9,7 @@ This documentation describes the local Codex plugin for Power BI Desktop and Fab
 - [Workflows](workflows.md): practical end-to-end flows for model review, live Desktop review, PBIP authoring, release gates, and Fabric read-only snapshot QA.
 - [Script catalog](script-catalog.md): command families and when to use each script.
 - [Testing](testing.md): local smoke tests, Pester tests, and CI layout.
+- [Git hooks](git-hooks.md): local pre-commit and pre-push checks for manifests, generated outputs, documentation coverage, and golden baselines.
 
 ## Core Capabilities
 

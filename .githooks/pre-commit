@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+set -eu
+
+ROOT="$(git rev-parse --show-toplevel)"
+cd "$ROOT"
+
+if command -v pwsh >/dev/null 2>&1; then
+  PS="pwsh"
+elif command -v powershell.exe >/dev/null 2>&1; then
+  PS="powershell.exe"
+elif command -v powershell >/dev/null 2>&1; then
+  PS="powershell"
+else
+  echo "PowerShell is required for Power BI plugin git hooks." >&2
+  exit 1
+fi
+
+"$PS" -NoProfile -ExecutionPolicy Bypass -File "./scripts/Invoke-GitHookChecks.ps1" -Mode PreCommit

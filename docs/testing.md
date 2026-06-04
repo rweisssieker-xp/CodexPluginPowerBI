@@ -6,6 +6,14 @@ All plugin tests are launched from the dedicated test directory:
 .\plugins\powerbi-desktop\tests\Run-PowerBITests.ps1
 ```
 
+Local Git hooks are versioned under `.githooks` and can be enabled with:
+
+```powershell
+.\scripts\Install-GitHooks.ps1
+```
+
+See [Git hooks](git-hooks.md) for pre-commit and pre-push behavior.
+
 The runner executes:
 
 - smoke tests through `scripts\Test-PowerBIPlugin.ps1`

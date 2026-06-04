@@ -2,6 +2,7 @@
 
 Before tagging a stable release:
 
+- Enable local hooks with `.\scripts\Install-GitHooks.ps1` and confirm `git config --get core.hooksPath` returns `.githooks`.
 - Run `.\plugins\powerbi-desktop\tests\Run-PowerBITests.ps1`.
 - Run `.\plugins\powerbi-desktop\scripts\Test-PowerBIDocumentationCoverage.ps1` and resolve missing script documentation or stale claims.
 - Run `.\plugins\powerbi-desktop\scripts\Invoke-PowerBIMaxAIReview.ps1 -Path .\plugins\powerbi-desktop\examples\sample-model -OutputDirectory .\powerbi-max-ai-review` for a full AI artifact check before release.
