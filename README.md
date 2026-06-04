@@ -13,7 +13,7 @@ For a concise benefit and USP overview, start with [Value Proposition And USPs](
 Use the plugin from this repository by pointing Codex at `plugins/powerbi-desktop`.
 Generated review outputs are intentionally ignored by Git; rerun the scripts below to recreate them locally.
 
-Start with the full [documentation index](docs/index.md). Key guides: [value proposition and USPs](docs/value-proposition.md), [getting started](docs/getting-started.md), [workflows](docs/workflows.md), [script catalog](docs/script-catalog.md), [architecture](docs/architecture.md), [unified review](docs/unified-review.md), [Max AI review](docs/max-ai-review.md), [AI USP workflows](docs/ai-usp-workflows.md), [Enterprise AI features](docs/enterprise-ai-features.md), [live Desktop](docs/live-desktop.md), [PBIP Apply Engine](docs/pbip-apply-engine.md), [Fabric planning](docs/fabric.md), [governance](docs/governance.md), [External Tool installation](docs/external-tool-installation.md), [golden baselines](docs/golden-baselines.md), [testing](docs/testing.md), [privacy](docs/privacy.md), and [troubleshooting](docs/troubleshooting.md).
+Start with the full [documentation index](docs/index.md). Key guides: [value proposition and USPs](docs/value-proposition.md), [getting started](docs/getting-started.md), [workflows](docs/workflows.md), [script catalog](docs/script-catalog.md), [architecture](docs/architecture.md), [unified review](docs/unified-review.md), [Max AI review](docs/max-ai-review.md), [AI USP workflows](docs/ai-usp-workflows.md), [Enterprise AI features](docs/enterprise-ai-features.md), [live Desktop](docs/live-desktop.md), [PBIP Apply Engine](docs/pbip-apply-engine.md), [Fabric live read-only and planning](docs/fabric.md), [governance](docs/governance.md), [External Tool installation](docs/external-tool-installation.md), [golden baselines](docs/golden-baselines.md), [testing](docs/testing.md), [privacy](docs/privacy.md), [Codex Marketplace submission](docs/codex-marketplace-submission-v3.0.0.md), and [troubleshooting](docs/troubleshooting.md).
 
 ## What It Adds
 
@@ -94,4 +94,4 @@ The GitHub Actions workflow runs the same test entrypoint plus Pester tests from
 
 ## Privacy
 
-The plugin works against local files and the local Power BI Desktop XMLA/ADOMD endpoint. It does not publish reports, sign in to Power BI Service, refresh credentials, or upload model data by itself.
+The plugin works against local files, the local Power BI Desktop XMLA/ADOMD endpoint, and optional user-supplied Fabric snapshots. Fabric live v1 is token-file and GET-only. It does not publish reports, perform implicit sign-in, promote content, trigger refreshes, rebind, delete, endorse, refresh credentials, or upload model data by itself.

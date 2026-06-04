@@ -11,6 +11,7 @@ Keep external binaries installed on the workstation, not committed to this repos
 | Required | PowerShell 5.1+ | Running the plugin scripts. |
 | Required for Desktop workflows | Power BI Desktop | Opening PBIX/PBIP files and manual PBIP-to-PBIX validation. |
 | Recommended for live checks | ADOMD provider (`Microsoft.AnalysisServices.AdomdClient.dll`) from DAX Studio, SSMS, or ADOMD.NET | Live XMLA/DMV/DAX queries against an open Desktop model. |
+| Optional for Fabric live read-only | Fabric/Power BI bearer token stored in a local token file | Importing read-only workspace or tenant snapshots. |
 | Optional | Tabular Editor 2, DAX Studio, ALM Toolkit, Power BI Helper, Model Documenter, PBI.tips tools | External-tool inventory and workflow guidance. |
 | Optional | `pbi-tools` | Automated PBIP/PBIX extract and compile workflows. |
 | Optional | .NET SDK/runtime | Tooling that shells out to .NET-based utilities. |
@@ -22,6 +23,16 @@ Check the local machine before running live or external-tool workflows:
 ```
 
 The check reports missing optional tools as `not found`. Install `pbi-tools` only when automated PBIP-to-PBIX compile is required; otherwise open the PBIP in Power BI Desktop, validate it, and use Save As PBIX.
+
+Fabric live workflows are snapshot-first. Use local fixtures for CI or dry runs, and use `-AccessTokenPath` only when you intentionally want to read Fabric metadata:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Get-PowerBIFabricAccessPlan.ps1 -WorkspaceName "Target Workspace" -AccessTokenPath .\token.txt -Json
+.\plugins\powerbi-desktop\scripts\Import-PowerBIFabricWorkspaceSnapshot.ps1 -WorkspaceName "Target Workspace" -AccessTokenPath .\token.txt -OutputDirectory .\fabric-snapshot
+.\plugins\powerbi-desktop\scripts\New-PowerBIReleaseCandidatePack.ps1 -Path .\your-model -SnapshotDirectory .\fabric-snapshot -IncludeFabricLiveQa -IncludeFabricPortfolioQa -IncludeFabricDeploymentQa -IncludeFabricOperationsQa -IncludeFabricGovernanceQa -IncludeFabricExecutiveQa
+```
+
+The Fabric helper accepts read-only GET requests only. Unsafe methods are blocked and reported as `BlockedUnsafeMethod`.
 
 Run the local smoke test first:
 
@@ -84,6 +95,7 @@ More focused guides:
 
 - [Unified review](unified-review.md)
 - [Max AI review](max-ai-review.md)
+- [Fabric live read-only and planning](fabric.md)
 - [External Tool installation](external-tool-installation.md)
 - [Golden baselines](golden-baselines.md)
 - [Testing](testing.md)

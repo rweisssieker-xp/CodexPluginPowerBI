@@ -6,7 +6,7 @@ This documentation describes the local Codex plugin for Power BI Desktop and Fab
 
 - [Getting started](getting-started.md): install path, first checks, first review run.
 - [Value proposition and USPs](value-proposition.md): business value, differentiators, best-fit use cases, and positioning.
-- [Workflows](workflows.md): practical end-to-end flows for model review, live Desktop review, PBIP authoring, release gates, and Fabric planning.
+- [Workflows](workflows.md): practical end-to-end flows for model review, live Desktop review, PBIP authoring, release gates, and Fabric read-only snapshot QA.
 - [Script catalog](script-catalog.md): command families and when to use each script.
 - [Testing](testing.md): local smoke tests, Pester tests, and CI layout.
 
@@ -22,7 +22,7 @@ This documentation describes the local Codex plugin for Power BI Desktop and Fab
 ## Power BI Desktop, Fabric, And Governance
 
 - [Live Desktop](live-desktop.md): local XMLA/ADOMD discovery, live DMV/DAX checks, and limitations.
-- [Fabric planning](fabric.md): readiness plans, deployment risk simulation, service integration, and what the plugin does not do.
+- [Fabric live read-only and planning](fabric.md): token-file access plans, GET-only snapshot import, Fabric QA packs, readiness plans, and what the plugin does not do.
 - [Governance](governance.md): rule files, trust gates, golden baselines, data contracts, and memory/rule mining.
 - [Business process data quality](business-process-data-quality.md): local Power BI and ERP export rule packs for standard enterprise processes.
 - [External Tool installation](external-tool-installation.md): register the Codex Power BI Workbench as a Power BI External Tool.
@@ -32,8 +32,8 @@ This documentation describes the local Codex plugin for Power BI Desktop and Fab
 
 - [Privacy](privacy.md): data boundaries and local execution model.
 - [Release checklist](release-checklist.md): what to verify before publishing plugin changes.
-- [v2.1.0 release notes](release-notes-v2.1.0.md): GitHub release text and verification summary.
-- [Codex Marketplace submission draft](codex-marketplace-submission-v2.1.0.md): listing copy, install command, conversation starters, and publishing checklist.
+- [v3.0.0 release notes](release-notes-v3.0.0.md): GitHub release text and verification summary.
+- [Codex Marketplace submission draft](codex-marketplace-submission-v3.0.0.md): listing copy, install command, conversation starters, and publishing checklist.
 - [Example output](example-output.md): expected generated artifacts.
 - [Troubleshooting](troubleshooting.md): common failures and fixes.
 

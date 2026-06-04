@@ -50,4 +50,4 @@ It creates these artifacts:
 - `semantic-contract-drift.json`: contract, catalog, and usage drift monitor.
 - `rls-persona-coverage.json`: RLS persona coverage matrix with visual/KPI impact guidance.
 
-The workflow is local-first. It does not sign in to Fabric, publish content, or write directly to binary PBIX files. PBIP/TMDL write actions remain gated through explicit apply scripts.
+The workflow is local-first. Fabric evidence is either snapshot-based or uses explicit token-file read-only access. It does not perform implicit Fabric sign-in, publish content, mutate service artifacts, or write directly to binary PBIX files. PBIP/TMDL write actions remain gated through explicit apply scripts.
