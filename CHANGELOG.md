@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v3.0.0 - 2026-06-04
 
 ### Added
 
@@ -10,6 +10,13 @@
 - Added Fabric Live Read-Only + Snapshot Intelligence workflows with access plans, GET-only REST guardrails, workspace/tenant snapshots, 25 Fabric USP scripts, and release candidate pack switches for Fabric portfolio, deployment, operations, governance, and executive QA.
 - Added analytical release QA workflows: `Test-PowerBIAnalysisMethodology.ps1`, `New-PowerBIMetricChangeDiagnosis.ps1`, and `New-PowerBIAnalyticalReleaseReport.ps1`.
 - Added `-IncludeAnalyticalQa` to release candidate packs so methodology validation, metric diagnosis, and stakeholder-ready analytical reports can be included in release evidence.
+
+### Verification
+
+- `Invoke-Pester .\plugins\powerbi-desktop\tests\pester\PowerBIPlugin.Tests.ps1` passed.
+- `Test-PowerBIDocumentationCoverage.ps1` passed.
+- `Test-PowerBIPlugin.ps1` passed.
+- `plugin.json` parse check passed.
 
 ## v2.1.0 - 2026-05-20
 

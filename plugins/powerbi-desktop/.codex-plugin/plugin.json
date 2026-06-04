@@ -1,6 +1,6 @@
 {
   "name": "powerbi-desktop",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "AI-assisted local Power BI Desktop and Fabric engineering workbench with Fabric Live Read-Only snapshot intelligence, Enterprise AI release engineering, analytical and advanced release QA, separated portfolio/compliance/operations QA, 38-USP Max AI review, business process data quality packs, live safety planning, semantic tests, measure behavior diff, governance packs, PBIP validation, visual intelligence, PBIP Apply Engine, native BPA, model compare, and live DMV analysis.",
   "author": {
     "name": "Reiner Weisssieker"

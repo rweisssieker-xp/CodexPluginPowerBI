@@ -1,6 +1,6 @@
 # User Changelog
 
-## Unreleased
+## v3.0.0 - 2026-06-04
 
 This update adds advanced release USPs for teams that need traceable Power BI release decisions across metrics, visuals, contracts, security, UX, and migration readiness.
 
