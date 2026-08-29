@@ -1,7 +1,7 @@
 {
   "name": "powerbi-desktop",
-  "version": "3.0.0+codex.20260829123809",
-  "description": "Local-first Power BI review, safe PBIP authoring, release, and Fabric operations evidence.",
+  "version": "3.0.0+codex.20260829124131",
+  "description": "Local-first Power BI review, safe PBIP authoring, release evidence, and decision intelligence.",
   "author": {
     "name": "Reiner Weisssieker"
   },
@@ -20,7 +20,7 @@
   "interface": {
     "displayName": "Power BI Desktop",
     "shortDescription": "Local Power BI review, safe changes, and release confidence.",
-    "longDescription": "A local-first Power BI workbench for analysts, executives, developers, and Fabric owners. Understand KPI trust, review PBIP/TMDL safely, and create release and operations evidence without modifying binary PBIX files. Live Desktop and Fabric snapshot workflows are explicitly read-only.",
+    "longDescription": "A local-first Power BI workbench for analysts, executives, developers, and Fabric owners. Explain KPI change, govern decisions, review PBIP/TMDL safely, and create release evidence without modifying binary PBIX files. Live Desktop and Fabric snapshot workflows are explicitly read-only.",
     "developerName": "Reiner Weisssieker",
     "category": "Productivity",
     "capabilities": [
@@ -31,7 +31,7 @@
       "Semantic tests and impact analysis",
       "Release gates and rollback guidance",
       "Live Desktop read-only review",
-      "Fabric operations evidence"
+      "Decision intelligence and Fabric operations"
     ],
     "websiteURL": "https://github.com/rweisssieker-xp/CodexPluginPowerBI",
     "privacyPolicyURL": "https://github.com/rweisssieker-xp/CodexPluginPowerBI/blob/main/docs/privacy.md",

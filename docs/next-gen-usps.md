@@ -46,3 +46,13 @@ Run the eight integrated operating features locally:
 It creates eight separately labelled evidence artifacts: Copilot answer quality monitoring, Capacity FinOps comparison, Direct Lake/OneLake evidence, KPI SLO history and escalation, governance-drift checks, a hash-based release evidence bundle, role-based onboarding status, and a transparent plugin quality gate. It does not sign in, call Fabric, publish content, or modify a model.
 
 For release evidence, add `-IncludeEnterpriseOperationsQa` to `New-PowerBIReleaseCandidatePack.ps1`. Add `-CapacityBeforePath`, `-CapacityAfterPath`, `-GovernanceBaselinePath`, `-CopilotAnswersPath`, or `-SloHistoryPath` when invoking the operations pack directly to strengthen its local evidence.
+
+## Decision intelligence: eight differentiation USPs
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBIDecisionIntelligencePack.ps1 -Path .\your-model
+```
+
+This local-only pack creates eight decision artifacts: Copilot Reliability Score, KPI change explanation, business-impact scenario, semantic-model team contract, decision memory, owner-approved exception workflow, multi-workspace benchmark, and screenshot regression evidence. Optional JSON inputs provide approved answer captures, KPI baselines, scenarios, decisions, and portfolio exports. Screenshot comparison uses supplied local files only.
+
+Add `-IncludeDecisionIntelligenceQa` to `New-PowerBIReleaseCandidatePack.ps1` to attach the eight artifacts to a release candidate. The workflow neither publishes changes nor signs in to Fabric.

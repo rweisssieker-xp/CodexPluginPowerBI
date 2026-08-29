@@ -39,6 +39,19 @@ Describe 'Power BI Desktop plugin' {
         Test-Path -LiteralPath (Join-Path $outputDirectory 'plugin-quality-gate.json') | Should Be $true
     }
 
+    It 'creates eight local decision intelligence artifacts without service access' {
+        $outputDirectory = Join-Path $pluginRoot 'tmp/pester-decision-intelligence'
+        $pack = & (Join-Path $scriptsPath 'Invoke-PowerBIDecisionIntelligencePack.ps1') -Path $samplePath -OutputDirectory $outputDirectory -Json | ConvertFrom-Json
+        $copilot = Get-Content -Raw -LiteralPath (Join-Path $outputDirectory 'copilot-reliability-score.json') | ConvertFrom-Json
+        $exceptions = Get-Content -Raw -LiteralPath (Join-Path $outputDirectory 'exception-approval-workflow.json') | ConvertFrom-Json
+
+        $pack.schema | Should Be 'codex.powerbi.decisionIntelligencePack.v1'
+        $pack.artifactCount | Should Be 8
+        $copilot.schema | Should Be 'codex.powerbi.copilotReliabilityScore.v1'
+        $exceptions.schema | Should Be 'codex.powerbi.exceptionApprovalWorkflow.v1'
+        Test-Path -LiteralPath (Join-Path $outputDirectory 'visual-regression-evidence.json') | Should Be $true
+    }
+
     It 'includes autonomous planning engine skills' {
         $skillsPath = Join-Path $pluginRoot 'skills'
         @(

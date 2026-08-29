@@ -17,6 +17,7 @@ param(
     [switch]$IncludeNextGenUspQa,
     [switch]$IncludeKpiSloActions,
     [switch]$IncludeEnterpriseOperationsQa,
+    [switch]$IncludeDecisionIntelligenceQa,
     [string]$TenantId,
     [string]$WorkspaceId,
     [string]$WorkspaceName,
@@ -149,6 +150,11 @@ $enterpriseOperations = $null
 $enterpriseOperationsSummaryPath = Join-Path $resolvedOut 'enterprise-operations/summary.json'
 if ($IncludeEnterpriseOperationsQa) {
     $enterpriseOperations = & (Join-Path $scriptRoot 'Invoke-PowerBIEnterpriseOperationsPack.ps1') -Path $Path -OutputDirectory (Join-Path $resolvedOut 'enterprise-operations') -Json | ConvertFrom-Json
+}
+$decisionIntelligence = $null
+$decisionIntelligenceSummaryPath = Join-Path $resolvedOut 'decision-intelligence/summary.json'
+if ($IncludeDecisionIntelligenceQa) {
+    $decisionIntelligence = & (Join-Path $scriptRoot 'Invoke-PowerBIDecisionIntelligencePack.ps1') -Path $Path -OutputDirectory (Join-Path $resolvedOut 'decision-intelligence') -Json | ConvertFrom-Json
 }
 $fabricSnapshotDirectory = $null
 $fabricAccessPlanPath = Join-Path $resolvedOut 'fabric-access-plan.json'
@@ -362,6 +368,7 @@ $summary = [pscustomobject]@{
         kpiSloActionRequiredCount = if ($kpiSloActionList) { $kpiSloActionList.actionRequiredCount } else { 0 }
         kpiSloNeedsOwnerSetupCount = if ($kpiSloActionList) { $kpiSloActionList.needsOwnerSetupCount } else { 0 }
         enterpriseOperationsArtifactCount = if ($enterpriseOperations) { $enterpriseOperations.artifactCount } else { 0 }
+        decisionIntelligenceArtifactCount = if ($decisionIntelligence) { $decisionIntelligence.artifactCount } else { 0 }
         fabricLiveStatus = if ($fabricWorkspaceSnapshot) { $fabricWorkspaceSnapshot.status } elseif ($fabricAccessPlan) { $fabricAccessPlan.status } else { 'NotRun' }
         fabricWorkspaceSnapshotStatus = if ($fabricWorkspaceSnapshot) { $fabricWorkspaceSnapshot.status } else { 'NotRun' }
         fabricPortfolioStatus = if ($fabricPortfolio) { $fabricPortfolio.status } else { 'NotRun' }
@@ -445,6 +452,7 @@ $index = @(
     ('- Next-generation USP pack: `{0}`' -f $(if (Test-Path -LiteralPath $nextGenUspSummaryPath) { $nextGenUspSummaryPath } else { 'not requested' })),
     ('- KPI SLO action list: `{0}`' -f $(if (Test-Path -LiteralPath $kpiSloActionListPath) { $kpiSloActionListPath } else { 'not requested' })),
     ('- Enterprise operations pack: `{0}`' -f $(if (Test-Path -LiteralPath $enterpriseOperationsSummaryPath) { $enterpriseOperationsSummaryPath } else { 'not requested' })),
+    ('- Decision intelligence pack: `{0}`' -f $(if (Test-Path -LiteralPath $decisionIntelligenceSummaryPath) { $decisionIntelligenceSummaryPath } else { 'not requested' })),
     ('- Fabric access plan: `{0}`' -f $(if (Test-Path -LiteralPath $fabricAccessPlanPath) { $fabricAccessPlanPath } else { 'not requested' })),
     ('- Fabric workspace snapshot: `{0}`' -f $(if (Test-Path -LiteralPath $fabricWorkspaceSnapshotSummaryPath) { $fabricWorkspaceSnapshotSummaryPath } else { 'not requested' })),
     ('- Fabric portfolio command center: `{0}`' -f $(if (Test-Path -LiteralPath $fabricArtifacts.portfolioCommandCenter) { $fabricArtifacts.portfolioCommandCenter } else { 'not requested' })),

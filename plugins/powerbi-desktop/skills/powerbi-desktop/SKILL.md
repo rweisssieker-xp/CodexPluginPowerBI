@@ -23,6 +23,7 @@ Start from the user's outcome. Use the smallest workflow that answers it, then o
 | Change a model safely | `Invoke-PowerBIUnifiedReview.ps1` | risk, dependency impact, validation and PBIP-safe drafts |
 | Prepare a release | `New-PowerBIReleaseCandidatePack.ps1` | Go/Warn/No-Go evidence, owners, and rollback guidance |
 | Operate Fabric evidence locally | `Invoke-PowerBIEnterpriseOperationsPack.ps1` | eight labelled operations artifacts without service changes |
+| Explain and govern decisions | `Invoke-PowerBIDecisionIntelligencePack.ps1` | Copilot, KPI, scenario, contract, owner and visual evidence |
 
 ## Choose The Asset
 
@@ -60,6 +61,8 @@ Use `New-PowerBIReleaseCandidatePack.ps1` for a release decision. Read [release 
 ### Enterprise operations evidence
 
 Run `Invoke-PowerBIEnterpriseOperationsPack.ps1` when the user needs Copilot-quality, capacity, Direct Lake, SLO, governance, evidence-bundle, onboarding, or plugin-quality status in one local pack. Supply only exported local snapshots; the pack never connects to Fabric.
+
+Run `Invoke-PowerBIDecisionIntelligencePack.ps1` for the eight decision USPs: answer reliability, KPI comparison, scenario impact, semantic contracts, decision history, exception approval, workspace benchmarking, and visual regression. Treat all outputs as local evidence and require human approval for decisions or remediation.
 
 ## References
 
