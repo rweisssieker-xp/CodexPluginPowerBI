@@ -124,9 +124,8 @@ def build_conversion_rates(series, forecast_year, start_month):
     return segment_rates, clamp(global_rate, 0.10, 0.90)
 
 
-def calculate_forecast(rows, forecast_year, start_month, end_month, as_of_date, horizon_months, grain):
-    series, monthly_totals = build_series(rows, grain)
-    segment_conversion_rates, global_conversion_rate = build_conversion_rates(series, forecast_year, start_month)
+def build_global_context(series, monthly_totals, forecast_year, start_month):
+    """Calculate global growth and fallback signals shared by every segment."""
     ytd_months = range(1, max(1, start_month))
     global_ytd_current = sum(monthly_totals[(forecast_year, m)]["sales"] for m in ytd_months)
     global_ytd_prior = sum(monthly_totals[(forecast_year - 1, m)]["sales"] for m in ytd_months)
@@ -135,125 +134,106 @@ def calculate_forecast(rows, forecast_year, start_month, end_month, as_of_date, 
     annual_prior = sum(monthly_totals[(forecast_year - 2, m)]["sales"] for m in range(1, 13))
     global_annual_growth = annual_current / annual_prior - 1 if annual_prior else 0.0
     global_monthly_fallback = annual_current / 12.0 if annual_current else 0.0
+    return ytd_months, global_growth, global_annual_growth, global_monthly_fallback
 
-    detail_rows = []
-    raw_month_totals = defaultdict(float)
-    top_down_targets = {}
 
+def build_top_down_targets(monthly_totals, forecast_year, start_month, end_month, global_growth, global_annual_growth, global_conversion_rate, global_monthly_fallback):
+    """Build month-level targets before segment forecasts are reconciled."""
+    targets = {}
     for month in range(start_month, end_month + 1):
-        actual = monthly_totals[(forecast_year, month)]["sales"]
-        budget = monthly_totals[(forecast_year, month)]["budget"]
-        roll = monthly_totals[(forecast_year, month)]["roll"]
-        backlog = monthly_totals[(forecast_year, month)]["backlog"]
-        last_year = monthly_totals[(forecast_year - 1, month)]["sales"]
-        seasonal_ytd = last_year * (1 + global_growth) if last_year > 0 else 0.0
-        trend = seasonal_ytd * (1 + global_annual_growth) if seasonal_ytd > 0 else 0.0
-        backlog_probability = conversion_probability(backlog, actual, global_conversion_rate)
-        backlog_expected = backlog * backlog_probability
+        current = monthly_totals[(forecast_year, month)]
+        actual = current["sales"]
+        seasonal = monthly_totals[(forecast_year - 1, month)]["sales"] * (1 + global_growth)
+        trend = seasonal * (1 + global_annual_growth)
+        expected_backlog = current["backlog"] * conversion_probability(current["backlog"], actual, global_conversion_rate)
         if month == start_month and actual > 0:
-            run_rate = actual * 18.0 / 5.0
-            top_down_targets[month] = 0.35 * run_rate + 0.25 * seasonal_ytd + 0.20 * budget + 0.10 * roll + 0.10 * backlog_expected
+            target = 0.35 * actual * 18.0 / 5.0 + 0.25 * seasonal + 0.20 * current["budget"] + 0.10 * current["roll"] + 0.10 * expected_backlog
         else:
-            top_down_targets[month] = 0.30 * seasonal_ytd + 0.20 * budget + 0.20 * roll + 0.20 * backlog_expected + 0.10 * trend
-        if top_down_targets[month] <= 0 and global_monthly_fallback > 0:
-            top_down_targets[month] = global_monthly_fallback
+            target = 0.30 * seasonal + 0.20 * current["budget"] + 0.20 * current["roll"] + 0.20 * expected_backlog + 0.10 * trend
+        targets[month] = target if target > 0 else global_monthly_fallback
+    return targets
 
-    for customer_hierarchy, product_line in sorted(series.keys()):
-        key = (customer_hierarchy, product_line)
-        points = series[key]
-        sample = next(iter(points.values()))
-        output_customer_hierarchy = sample.get("customer_hierarchy", customer_hierarchy)
-        output_product_line = sample.get("product_line", product_line)
-        output_customer = sample.get("customer", customer_hierarchy)
-        output_product = sample.get("product", product_line)
-        ytd_current = sum(value_for(points, forecast_year, m, "sales") for m in ytd_months)
-        ytd_prior = sum(value_for(points, forecast_year - 1, m, "sales") for m in ytd_months)
-        raw_growth = ytd_current / ytd_prior - 1 if ytd_prior else global_growth
-        shrink_weight = clamp(ytd_prior / 100000.0, 0.0, 1.0)
-        ytd_growth = clamp((shrink_weight * raw_growth) + ((1 - shrink_weight) * global_growth), -0.40, 0.60)
 
+def build_segment_context(points, forecast_year, ytd_months, global_growth):
+    """Return shrinkage-based growth and sparsity signals for one segment."""
+    ytd_current = sum(value_for(points, forecast_year, month, "sales") for month in ytd_months)
+    ytd_prior = sum(value_for(points, forecast_year - 1, month, "sales") for month in ytd_months)
+    raw_growth = ytd_current / ytd_prior - 1 if ytd_prior else global_growth
+    shrink_weight = clamp(ytd_prior / 100000.0, 0.0, 1.0)
+    growth = clamp(shrink_weight * raw_growth + (1 - shrink_weight) * global_growth, -0.40, 0.60)
+    history = [values for (year, _), values in points.items() if year < forecast_year and values["sales"] > 0]
+    history_months = len(history)
+    history_sales = sum(values["sales"] for values in history)
+    intermittent = (history_sales / history_months) * clamp(history_months / 12.0, 0.05, 1.0) if history_months else 0.0
+    return growth, intermittent, history_months < 6 and history_sales < 50000
+
+
+def forecast_segment_month(points, key, forecast_year, month, start_month, as_of_date, grain, growth, intermittent, sparse, conversion_rates, global_rate):
+    """Forecast one segment/month and retain the unscaled component evidence."""
+    actual = value_for(points, forecast_year, month, "sales")
+    budget = value_for(points, forecast_year, month, "budget")
+    roll = value_for(points, forecast_year, month, "roll")
+    backlog = value_for(points, forecast_year, month, "backlog")
+    last_year = value_for(points, forecast_year - 1, month, "sales")
+    seasonal = last_year * (1 + growth) if last_year > 0 else 0.0
+    history = [value_for(points, year, month, "sales") for year in (forecast_year - 3, forecast_year - 2, forecast_year - 1)]
+    history = [value for value in history if value > 0]
+    trend = (sum(history) / len(history)) * (1 + growth) if history else seasonal
+    probability = conversion_probability(backlog, actual, conversion_rates.get(key, global_rate))
+    expected_backlog = backlog * probability
+    components = [(0.25, seasonal), (0.15, trend), (0.10, intermittent), (0.15, budget), (0.15, roll)]
+    if expected_backlog > 0:
+        components.append((0.35 if month <= start_month + 2 else 0.20, expected_backlog))
+    if actual > 0 and month == start_month:
+        components.append((0.25, actual * 18.0 / 5.0))
+    components = [(weight, value) for weight, value in components if value > 0]
+    total_weight = sum(weight for weight, _ in components)
+    raw = sum(weight * value for weight, value in components) / total_weight if total_weight else 0.0
+    risk = "sparse" if sparse else "volatile" if abs(growth) > 0.30 else "normal"
+    sample = next(iter(points.values()))
+    return {
+        "as_of_date": as_of_date, "forecast_month": month_label(forecast_year, month),
+        "grain": grain if not sparse else "HierarchyProductLineFallback",
+        "customer": sample.get("customer", key[0]), "product": sample.get("product", key[1]),
+        "customer_hierarchy": sample.get("customer_hierarchy", key[0]), "product_line": sample.get("product_line", key[1]),
+        "month": month_label(forecast_year, month), "month_no": month,
+        "actual_sales": round(actual, 2), "open_backlog": round(backlog, 2),
+        "backlog_conversion_probability": round(probability, 4), "expected_backlog_revenue": round(expected_backlog, 2),
+        "budget": round(budget, 2), "roll_forecast": round(roll, 2),
+        "statistical_demand_forecast": round(max(seasonal, trend, intermittent), 2),
+        "residual_demand_forecast": round(max(0.0, raw - expected_backlog - actual), 2),
+        "raw_ai_forecast": round(raw, 2), "final_ai_forecast": 0.0, "forecast_low": 0.0, "forecast_high": 0.0,
+        "confidence": "low" if risk == "sparse" else "medium" if risk == "volatile" else "high", "risk_flag": risk,
+        "explanation": f"{risk} segment; learned backlog probability {probability:.0%}; blended backlog, residual demand, budget, and roll forecast.",
+    }
+
+
+def scale_monthly_forecasts(rows, targets):
+    """Reconcile segment detail to the monthly target and add uncertainty ranges."""
+    totals = defaultdict(float)
+    for row in rows:
+        totals[row["month_no"]] += row["raw_ai_forecast"]
+    for row in rows:
+        factor = targets[row["month_no"]] / totals[row["month_no"]] if totals[row["month_no"]] else 0.0
+        final = row["raw_ai_forecast"] * factor
+        row["final_ai_forecast"] = round(final, 2)
+        row["forecast_low"] = round(final * 0.90, 2)
+        row["forecast_high"] = round(final * 1.10, 2)
+    return rows
+
+
+def calculate_forecast(rows, forecast_year, start_month, end_month, as_of_date, horizon_months, grain):
+    """Build a reconciled segment forecast from historical, backlog, budget, and roll data."""
+    series, monthly_totals = build_series(rows, grain)
+    rates, global_rate = build_conversion_rates(series, forecast_year, start_month)
+    ytd_months, growth, annual_growth, fallback = build_global_context(series, monthly_totals, forecast_year, start_month)
+    targets = build_top_down_targets(monthly_totals, forecast_year, start_month, end_month, growth, annual_growth, global_rate, fallback)
+    detail_rows = []
+    for key, points in sorted(series.items()):
+        segment_growth, intermittent, sparse = build_segment_context(points, forecast_year, ytd_months, growth)
         for month in range(start_month, end_month + 1):
-            actual = value_for(points, forecast_year, month, "sales")
-            budget = value_for(points, forecast_year, month, "budget")
-            roll = value_for(points, forecast_year, month, "roll")
-            backlog = value_for(points, forecast_year, month, "backlog")
-            last_year = value_for(points, forecast_year - 1, month, "sales")
-            seasonal = last_year * (1 + ytd_growth) if last_year > 0 else 0.0
-            trend_values = [value_for(points, y, month, "sales") for y in (forecast_year - 3, forecast_year - 2, forecast_year - 1)]
-            trend_values = [v for v in trend_values if v > 0]
-            trend = (sum(trend_values) / len(trend_values)) * (1 + ytd_growth) if trend_values else seasonal
-            base_probability = segment_conversion_rates.get(key, global_conversion_rate)
-            backlog_probability = conversion_probability(backlog, actual, base_probability)
-            backlog_expected = backlog * backlog_probability
-            active_history_months = sum(1 for (year, _), vals in points.items() if year < forecast_year and vals["sales"] > 0)
-            active_history_sales = sum(vals["sales"] for (year, _), vals in points.items() if year < forecast_year)
-            intermittent_demand = (
-                (active_history_sales / active_history_months) * clamp(active_history_months / 12.0, 0.05, 1.0)
-                if active_history_months > 0
-                else 0.0
-            )
-            sparse_fallback = active_history_months < 6 and active_history_sales < 50000
-
-            components = []
-            if seasonal > 0:
-                components.append((0.25, seasonal))
-            if trend > 0:
-                components.append((0.15, trend))
-            if intermittent_demand > 0:
-                components.append((0.10, intermittent_demand))
-            if budget > 0:
-                components.append((0.15, budget))
-            if roll > 0:
-                components.append((0.15, roll))
-            if backlog_expected > 0:
-                components.append((0.35 if month <= start_month + 2 else 0.20, backlog_expected))
-            if actual > 0 and month == start_month:
-                components.append((0.25, actual * 18.0 / 5.0))
-            weight_sum = sum(weight for weight, _ in components)
-            raw_forecast = sum(weight * value for weight, value in components) / weight_sum if weight_sum else 0.0
-            risk = "sparse" if sparse_fallback else "volatile" if abs(ytd_growth) > 0.30 else "normal"
-            confidence = "low" if risk == "sparse" else "medium" if risk == "volatile" else "high"
-            residual_demand = max(0.0, raw_forecast - backlog_expected - actual)
-
-            row = {
-                "as_of_date": as_of_date,
-                "forecast_month": month_label(forecast_year, month),
-                "grain": grain if not sparse_fallback else "HierarchyProductLineFallback",
-                "customer": output_customer,
-                "product": output_product,
-                "customer_hierarchy": output_customer_hierarchy,
-                "product_line": output_product_line,
-                "month": month_label(forecast_year, month),
-                "month_no": month,
-                "actual_sales": round(actual, 2),
-                "open_backlog": round(backlog, 2),
-                "backlog_conversion_probability": round(backlog_probability, 4),
-                "expected_backlog_revenue": round(backlog_expected, 2),
-                "budget": round(budget, 2),
-                "roll_forecast": round(roll, 2),
-                "statistical_demand_forecast": round(max(seasonal, trend, intermittent_demand), 2),
-                "residual_demand_forecast": round(residual_demand, 2),
-                "raw_ai_forecast": round(raw_forecast, 2),
-                "final_ai_forecast": 0.0,
-                "forecast_low": 0.0,
-                "forecast_high": 0.0,
-                "confidence": confidence,
-                "risk_flag": risk,
-                "explanation": f"{risk} segment; learned backlog probability {backlog_probability:.0%}; blended backlog, residual demand, budget, and roll forecast.",
-            }
-            detail_rows.append(row)
-            raw_month_totals[month] += raw_forecast
-
-    for row in detail_rows:
-        month = int(row["month_no"])
-        raw_total = raw_month_totals[month]
-        target = top_down_targets[month]
-        factor = target / raw_total if raw_total else 0.0
-        final_value = row["raw_ai_forecast"] * factor
-        row["final_ai_forecast"] = round(final_value, 2)
-        row["forecast_low"] = round(final_value * 0.90, 2)
-        row["forecast_high"] = round(final_value * 1.10, 2)
-    return detail_rows
+            detail_rows.append(forecast_segment_month(points, key, forecast_year, month, start_month, as_of_date, grain, segment_growth, intermittent, sparse, rates, global_rate))
+    return scale_monthly_forecasts(detail_rows, targets)
 
 
 DETAIL_FIELDNAMES = [
