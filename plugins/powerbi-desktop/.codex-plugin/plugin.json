@@ -1,6 +1,6 @@
 {
   "name": "powerbi-desktop",
-  "version": "3.0.0+codex.20260829132248",
+  "version": "3.0.0+codex.20260829132525",
   "description": "Guided Power BI workflows from data sources to trusted decisions, safe PBIP changes, release, and Fabric operations.",
   "author": {
     "name": "Reiner Weisssieker"
