@@ -49,6 +49,7 @@
 
 # Plugin test outputs
 /plugins/powerbi-desktop/tmp/
+/plugins/powerbi-desktop/.plugin-eval/runs/
 
 # Power BI binary/project-local artifacts
 *.pbix
