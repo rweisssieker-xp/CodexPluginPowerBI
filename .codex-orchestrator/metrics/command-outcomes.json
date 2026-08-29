@@ -1,0 +1,17 @@
+{
+  "events": [
+    {
+      "command": "guide",
+      "durationMs": 42,
+      "recordedAt": "2026-08-28T11:42:11.373Z",
+      "status": "passed"
+    },
+    {
+      "command": "one",
+      "durationMs": 127,
+      "recordedAt": "2026-08-28T11:42:19.771Z",
+      "status": "ready"
+    }
+  ],
+  "schemaVersion": 1
+}

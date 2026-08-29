@@ -8,12 +8,41 @@ The plugin turns Codex into a local Power BI engineering workbench. It helps tea
 
 For a concise benefit and USP overview, start with [Value Proposition And USPs](docs/value-proposition.md).
 
+## Start By Role
+
+Choose the outcome you need rather than a technical feature. The same project can be reviewed from several perspectives.
+
+| Role | Start here | Result |
+| --- | --- | --- |
+| Analyst | "Explain the KPI definitions, highlight data-quality risks, and suggest the next analysis." | Metric catalog, quality findings, and an analysis-ready narrative. |
+| C-level / decision maker | "Can this report be trusted for a decision? Give me an executive brief and the open risks." | Concise decision brief with Go/Warn/No-Go context, assumptions, and owners. |
+| Power BI developer | "Review this PBIP/TMDL project, identify technical risks, and create safe change drafts." | DAX/PQ findings, dependency impact, tests, and PBIP-safe drafts. |
+| BI or release lead | "Prepare a release decision with evidence, test status, governance risks, and rollback guidance." | Release candidate pack and explicit sign-off actions. |
+
+The full role-based guide, including example prompts and the evidence maturity of each workflow, is in [Role-based entry points](docs/role-based-entry-points.md).
+
+For Fabric FinOps, Copilot answer regression, Direct Lake readiness, data-product SLOs, capacity-change proof, and executive decision traces, use the [next-generation USP pack](docs/next-gen-usps.md).
+
 ## Install
 
 Use the plugin from this repository by pointing Codex at `plugins/powerbi-desktop`.
 Generated review outputs are intentionally ignored by Git; rerun the scripts below to recreate them locally.
 
-Start with the full [documentation index](docs/index.md). Key guides: [value proposition and USPs](docs/value-proposition.md), [getting started](docs/getting-started.md), [workflows](docs/workflows.md), [script catalog](docs/script-catalog.md), [architecture](docs/architecture.md), [unified review](docs/unified-review.md), [Max AI review](docs/max-ai-review.md), [AI USP workflows](docs/ai-usp-workflows.md), [Enterprise AI features](docs/enterprise-ai-features.md), [live Desktop](docs/live-desktop.md), [PBIP Apply Engine](docs/pbip-apply-engine.md), [Fabric live read-only and planning](docs/fabric.md), [governance](docs/governance.md), [External Tool installation](docs/external-tool-installation.md), [golden baselines](docs/golden-baselines.md), [testing](docs/testing.md), [privacy](docs/privacy.md), [Codex Marketplace submission](docs/codex-marketplace-submission-v3.0.0.md), and [troubleshooting](docs/troubleshooting.md).
+New here? Start with [First 10 minutes](docs/start-here.md). Use the [documentation index](docs/index.md) only when you need a deeper workflow or reference.
+
+## First 10 Minutes
+
+1. Ask Codex one of the role-based questions above, or run the local review below.
+2. Read the generated index and act on the three highest-priority findings.
+3. If a change is needed, work in PBIP/TMDL and generate a draft before applying it.
+
+For a local, no-login first pass:
+
+```powershell
+.\plugins\powerbi-desktop\scripts\Invoke-PowerBIAutoReview.ps1 -Path .\your-model -OutputDirectory .\powerbi-auto-review
+```
+
+This produces local evidence only. It neither changes the model nor accesses Fabric.
 
 ## What It Adds
 
@@ -60,7 +89,7 @@ Start with the full [documentation index](docs/index.md). Key guides: [value pro
 
 ## Quick Checks
 
-Core release and live-model checks:
+Do not run every command below. Pick the workflow that matches your goal in [First 10 minutes](docs/start-here.md). The commands below are maintainer and release checks.
 
 ```powershell
 .\plugins\powerbi-desktop\scripts\Resolve-PowerBILiveTarget.ps1

@@ -1,0 +1,169 @@
+{
+  "alternativeJourney": "leap",
+  "artifactPath": ".codex-orchestrator/primary/start-latest.json",
+  "autonomyBoundary": "This recommendation did not run a journey, adapter, or product change. Any selected autonomous journey keeps its existing hard stops for credentials, production access, irreversible changes, spending, and high-stakes decisions.",
+  "claimBoundary": "This is local routing guidance based on declared inputs and project context; it is not evidence of customer demand, market fit, or release readiness.",
+  "confidence": 0.85,
+  "errors": [],
+  "generatedAt": "2026-08-28T11:42:11.368Z",
+  "handoff": "$forgemind-compass",
+  "inputs": {
+    "context": "project",
+    "mode": "guided",
+    "outcome": "improve"
+  },
+  "missingEvidence": [],
+  "nextAction": "Continue with $forgemind-compass; ForgeMind will apply the Evolve route internally.",
+  "projectProfile": {
+    "artifactPath": ".codex-orchestrator/project-profile.json",
+    "claimBoundary": "Project-derived fields describe repository context. They are inferred or assumed until customer, market, pricing, or operating evidence is imported.",
+    "commercialAssumptions": {
+      "addressableAccounts": {
+        "evidence": "inferred",
+        "sources": [
+          "order"
+        ],
+        "value": 2500
+      },
+      "buildCost": {
+        "evidence": "inferred",
+        "sources": [
+          "order"
+        ],
+        "value": 30000
+      },
+      "customerAcquisitionCost": {
+        "evidence": "inferred",
+        "sources": [
+          "order"
+        ],
+        "value": 120
+      },
+      "grossMarginPercent": {
+        "evidence": "inferred",
+        "sources": [
+          "order"
+        ],
+        "value": 72
+      },
+      "monthlyChurnPercent": {
+        "evidence": "inferred",
+        "sources": [
+          "order"
+        ],
+        "value": 4
+      },
+      "monthlyNewCustomers": {
+        "evidence": "inferred",
+        "sources": [
+          "order"
+        ],
+        "value": 16
+      },
+      "monthlyPrice": {
+        "evidence": "inferred",
+        "sources": [
+          "order"
+        ],
+        "value": 89
+      },
+      "monthlyRunCost": {
+        "evidence": "inferred",
+        "sources": [
+          "order"
+        ],
+        "value": 2800
+      },
+      "salesCycleMonths": {
+        "evidence": "inferred",
+        "sources": [
+          "order"
+        ],
+        "value": 1
+      },
+      "startingCustomers": {
+        "evidence": "inferred",
+        "sources": [
+          "order"
+        ],
+        "value": 0
+      }
+    },
+    "deploymentModel": {
+      "evidence": "missing",
+      "sources": [
+        "no deployment signal"
+      ],
+      "value": "unknown"
+    },
+    "differentiationApproach": {
+      "evidence": "inferred",
+      "sources": [
+        "order"
+      ],
+      "value": "commerce-platform workflow with existing integration context"
+    },
+    "errors": [],
+    "evidenceGaps": [
+      "customer segment is inferred from repository context; validate with qualified users",
+      "no imported customer or behavioral signals",
+      "no structured commercial evidence was imported from research or telemetry",
+      "pricing, market size, CAC, churn, and cost values are project-derived assumptions",
+      "deployment model is unknown; validate operating cost assumptions"
+    ],
+    "evidenceSummary": {
+      "importedSignals": 0,
+      "outcomes": 0,
+      "packagePresent": false,
+      "projectDocuments": 0,
+      "readmePresent": true,
+      "researchRecords": 0,
+      "sourceSignals": 0,
+      "telemetryEvents": 0
+    },
+    "generatedAt": "2026-08-28T11:42:11.354Z",
+    "primaryJob": {
+      "evidence": "inferred",
+      "sources": [
+        "order"
+      ],
+      "value": "operate merchant checkout and storefront workflows with less effort"
+    },
+    "productCategory": {
+      "evidence": "inferred",
+      "sources": [
+        "order"
+      ],
+      "value": "commerce-platform"
+    },
+    "schemaVersion": 1,
+    "status": "passed",
+    "targetAudience": {
+      "evidence": "inferred",
+      "sources": [
+        "order"
+      ],
+      "value": "independent online merchants"
+    },
+    "technicalCostSignals": [
+      {
+        "evidence": "observed",
+        "sources": [
+          "enterprise integration dependency or documentation"
+        ],
+        "value": "enterprise-integration"
+      }
+    ],
+    "workspace": "D:\\CodexPluginPowerBI"
+  },
+  "rationale": "Evolve is the safest next ForgeMind journey for the declared context and desired outcome.",
+  "recommendedJourney": "evolve",
+  "routingSignals": [
+    "context:project",
+    "outcome:improve",
+    "mode:guided",
+    "project-category:commerce-platform"
+  ],
+  "schemaVersion": 1,
+  "status": "passed"
+}

@@ -13,6 +13,32 @@ Describe 'Power BI Desktop plugin' {
         { & $scriptPath -DryRun -Json | ConvertFrom-Json } | Should Not Throw
     }
 
+    It 'creates the next-generation Power BI and Fabric USP pack' {
+        $outputDirectory = Join-Path $pluginRoot 'tmp/pester-nextgen-usps'
+        $pack = & (Join-Path $scriptsPath 'Invoke-PowerBINextGenUspPack.ps1') -Path $samplePath -OutputDirectory $outputDirectory -Json | ConvertFrom-Json
+        $pack.schema | Should Be 'codex.powerbi.nextGenUspPack.v1'
+        $pack.artifactCount | Should Be 6
+        Test-Path -LiteralPath $pack.artifacts.finOps | Should Be $true
+        Test-Path -LiteralPath $pack.artifacts.copilotRegression | Should Be $true
+        Test-Path -LiteralPath $pack.artifacts.directLake | Should Be $true
+        Test-Path -LiteralPath $pack.artifacts.dataProductSlo | Should Be $true
+        Test-Path -LiteralPath $pack.artifacts.capacityVerifier | Should Be $true
+        Test-Path -LiteralPath $pack.artifacts.decisionTrace | Should Be $true
+    }
+
+    It 'creates eight local enterprise operations artifacts without service access' {
+        $outputDirectory = Join-Path $pluginRoot 'tmp/pester-enterprise-operations'
+        $pack = & (Join-Path $scriptsPath 'Invoke-PowerBIEnterpriseOperationsPack.ps1') -Path $samplePath -OutputDirectory $outputDirectory -Json | ConvertFrom-Json
+        $bundle = Get-Content -Raw -LiteralPath (Join-Path $outputDirectory 'release-evidence-bundle.json') | ConvertFrom-Json
+
+        $pack.schema | Should Be 'codex.powerbi.enterpriseOperationsPack.v1'
+        $pack.artifactCount | Should Be 8
+        $bundle.schema | Should Be 'codex.powerbi.releaseEvidenceBundle.v1'
+        $bundle.status | Should Be 'ReadyForOwnerSignOff'
+        Test-Path -LiteralPath (Join-Path $outputDirectory 'copilot-quality-monitor.json') | Should Be $true
+        Test-Path -LiteralPath (Join-Path $outputDirectory 'plugin-quality-gate.json') | Should Be $true
+    }
+
     It 'includes autonomous planning engine skills' {
         $skillsPath = Join-Path $pluginRoot 'skills'
         @(
@@ -40,6 +66,14 @@ Describe 'Power BI Desktop plugin' {
         $trust = & (Join-Path $scriptsPath 'New-PowerBIKpiTrustScore.ps1') -Path $samplePath -Json | ConvertFrom-Json
         $trust.metricCount | Should Be 5
         ($trust.overallTrustScore -ge 0) | Should Be $true
+    }
+
+    It 'creates local KPI SLO actions without release blocking' {
+        $slo = & (Join-Path $scriptsPath 'New-PowerBIKpiSloActionList.ps1') -Path $samplePath -Json | ConvertFrom-Json
+        $slo.schema | Should Be 'codex.powerbi.kpiSloActionList.v1'
+        $slo.itemCount | Should Be 5
+        ($slo.items | Where-Object metricName -eq 'Total Sales').owner | Should Be 'Sales Analytics'
+        ($slo.items | Where-Object metricName -ne 'Total Sales' | Where-Object status -eq 'NeedsOwnerSetup').Count | Should BeGreaterThan 0
     }
 
     It 'creates safe measure drafts' {

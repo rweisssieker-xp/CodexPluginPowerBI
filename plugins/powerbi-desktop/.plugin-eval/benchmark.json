@@ -1,0 +1,73 @@
+{
+  "kind": "plugin-eval-benchmark",
+  "schemaVersion": 2,
+  "version": 2,
+  "targetKind": "plugin",
+  "targetName": "powerbi-desktop",
+  "runner": {
+    "type": "codex-cli",
+    "model": "gpt-5.4",
+    "sandbox": "workspace-write",
+    "approvalPolicy": "never",
+    "extraArgs": []
+  },
+  "workspace": {
+    "sourcePath": "D:\\CodexPluginPowerBI",
+    "setupMode": "copy",
+    "preserve": "on-failure"
+  },
+  "targetProvisioning": {
+    "mode": "workspace-plugin-marketplace"
+  },
+  "verifiers": {
+    "commands": [
+      ".\\plugins\\powerbi-desktop\\scripts\\Test-PowerBIDocumentationCoverage.ps1"
+    ]
+  },
+  "notes": [
+    "Scenarios use the included sample model and must preserve binary-PBIX and no-publish boundaries.",
+    "Benchmark means real Codex runs; review generated artifacts before treating results as release evidence."
+  ],
+  "setupQuestions": [
+    "What are the 3 highest-value real tasks this plugin should help complete inside a workspace?",
+    "Which scenario is the must-pass end-to-end task for this plugin?",
+    "What output should exist on disk if the scenario succeeds?",
+    "Which verification command would tell you the result is actually usable?",
+    "What boundary case should this plugin narrow, refuse, or hand off instead of overreaching on?"
+  ],
+  "scenarios": [
+    {
+      "id": "analyst-kpi-review",
+      "title": "Analyst KPI review",
+      "purpose": "Measure whether an analyst receives a clear local KPI and data-quality review.",
+      "userInput": "Use the Power BI plugin to review plugins/powerbi-desktop/examples/sample-model. Create a local KPI review with the highest data-quality risks and next analysis questions. Do not modify source files.",
+      "successChecklist": [
+        "A review artifact exists on disk.",
+        "The result distinguishes local evidence from assumptions.",
+        "Source files remain unchanged."
+      ]
+    },
+    {
+      "id": "developer-safe-change",
+      "title": "Developer safe change",
+      "purpose": "Measure whether the plugin proposes a source-controlled PBIP-safe change without touching binaries.",
+      "userInput": "Use the Power BI plugin to inspect plugins/powerbi-desktop/examples/sample-model, identify a DAX risk, and create a safe draft plus validation guidance. Do not apply changes.",
+      "successChecklist": [
+        "A draft or validation artifact exists on disk.",
+        "No binary PBIX/PBIT is modified.",
+        "The response includes rollback or validation guidance."
+      ]
+    },
+    {
+      "id": "release-nextgen-evidence",
+      "title": "Release and next-generation evidence",
+      "purpose": "Measure whether a release owner receives appropriately qualified next-generation evidence.",
+      "userInput": "Use the Power BI plugin on plugins/powerbi-desktop/examples/sample-model. Create the next-generation USP pack and summarize what remains unverified without live Fabric evidence.",
+      "successChecklist": [
+        "All six next-generation artifacts exist.",
+        "The result does not claim unverified live Fabric evidence.",
+        "The response identifies the next required evidence."
+      ]
+    }
+  ]
+}

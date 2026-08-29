@@ -1,0 +1,166 @@
+{
+  "artifactPath": ".codex-orchestrator/foundation/latest.json",
+  "assumptions": [
+    {
+      "evidence": "missing",
+      "id": "customer-evidence",
+      "severity": "medium",
+      "statement": "Target users, demand, and success baseline require validation."
+    }
+  ],
+  "decisionsNeeded": [],
+  "errors": [],
+  "foundation": {
+    "architecture": {
+      "assumptions": [],
+      "decisions": [
+        "Follow existing repository stack and conventions.",
+        "Use a reversible boundary for the first delivery."
+      ],
+      "decisionState": "draft",
+      "dependsOn": [
+        "foundation_mtcvtkkm_prd"
+      ],
+      "id": "foundation_mtcvtkkm_architecture",
+      "revision": 1,
+      "state": "ready"
+    },
+    "assumptions": [
+      {
+        "evidence": "missing",
+        "id": "customer-evidence",
+        "severity": "medium",
+        "statement": "Target users, demand, and success baseline require validation."
+      }
+    ],
+    "context": {
+      "assumptions": [],
+      "decisionState": "draft",
+      "dependsOn": [],
+      "evidence": "repository-derived",
+      "id": "foundation_mtcvtkkm_context",
+      "revision": 1,
+      "state": "ready"
+    },
+    "decisionsNeeded": [],
+    "epics": [
+      {
+        "decisionState": "draft",
+        "dependsOn": [
+          "foundation_mtcvtkkm_prd",
+          "foundation_mtcvtkkm_architecture",
+          "foundation_mtcvtkkm_nfrs"
+        ],
+        "id": "foundation_mtcvtkkm_epic_1",
+        "revision": 1,
+        "state": "ready",
+        "title": "Improve the Power BI Desktop plugin with local KPI SLO action lists, Fabric evidence workflows, and role-based onboarding."
+      }
+    ],
+    "goal": "Improve the Power BI Desktop plugin with local KPI SLO action lists, Fabric evidence workflows, and role-based onboarding.",
+    "goalSource": "user",
+    "id": "foundation_mtcvtkkm",
+    "mode": "one",
+    "nfrs": {
+      "assumptions": [],
+      "decisionState": "draft",
+      "dependsOn": [
+        "foundation_mtcvtkkm_architecture"
+      ],
+      "id": "foundation_mtcvtkkm_nfrs",
+      "requirements": [
+        "Preserve applicable accessibility.",
+        "Avoid secrets in artifacts.",
+        "Record verification and rollback evidence."
+      ],
+      "revision": 1,
+      "state": "ready"
+    },
+    "prd": {
+      "acceptanceCriteria": [
+        "Implement the smallest useful slice.",
+        "Record relevant verification evidence.",
+        "Preserve a rollback or recovery path."
+      ],
+      "assumptions": [
+        {
+          "evidence": "missing",
+          "id": "customer-evidence",
+          "severity": "medium",
+          "statement": "Target users, demand, and success baseline require validation."
+        }
+      ],
+      "decisionState": "draft",
+      "dependsOn": [
+        "foundation_mtcvtkkm_context"
+      ],
+      "id": "foundation_mtcvtkkm_prd",
+      "outcome": "Improve the Power BI Desktop plugin with local KPI SLO action lists, Fabric evidence workflows, and role-based onboarding.",
+      "revision": 1,
+      "scope": "One reversible, measurable thin slice.",
+      "state": "ready"
+    },
+    "revision": 1,
+    "sprint": {
+      "decisionState": "draft",
+      "dependsOn": [
+        "foundation_mtcvtkkm_story_1"
+      ],
+      "id": "foundation_mtcvtkkm_sprint",
+      "revision": 1,
+      "state": "ready",
+      "stories": [
+        {
+          "id": "foundation_mtcvtkkm_story_1",
+          "state": "ready"
+        }
+      ],
+      "wipLimit": 1
+    },
+    "stories": [
+      {
+        "acceptanceCriteria": [
+          "Implement the smallest useful slice.",
+          "Record relevant verification evidence.",
+          "Preserve a rollback or recovery path."
+        ],
+        "decisionState": "draft",
+        "definitionOfDone": "Relevant tests pass or gaps are recorded.",
+        "dependsOn": [
+          "foundation_mtcvtkkm_epic_1"
+        ],
+        "id": "foundation_mtcvtkkm_story_1",
+        "revision": 1,
+        "state": "ready",
+        "title": "Implement the smallest reversible outcome slice"
+      }
+    ]
+  },
+  "foundationId": "foundation_mtcvtkkm",
+  "goal": "Improve the Power BI Desktop plugin with local KPI SLO action lists, Fabric evidence workflows, and role-based onboarding.",
+  "goalSource": "user",
+  "nextStory": {
+    "acceptanceCriteria": [
+      "Implement the smallest useful slice.",
+      "Record relevant verification evidence.",
+      "Preserve a rollback or recovery path."
+    ],
+    "decisionState": "draft",
+    "definitionOfDone": "Relevant tests pass or gaps are recorded.",
+    "dependsOn": [
+      "foundation_mtcvtkkm_epic_1"
+    ],
+    "id": "foundation_mtcvtkkm_story_1",
+    "revision": 1,
+    "state": "ready",
+    "title": "Implement the smallest reversible outcome slice"
+  },
+  "readiness": {
+    "blockers": [],
+    "status": "concerns"
+  },
+  "revision": 1,
+  "schemaVersion": 1,
+  "scope": "lightweight",
+  "status": "concerns"
+}

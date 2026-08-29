@@ -1,0 +1,141 @@
+{
+  "artifactPath": ".codex-orchestrator/one/latest.json",
+  "autopilot": {
+    "errors": [],
+    "mission": {
+      "autonomy": {
+        "hardStops": [
+          "credentials-or-secrets",
+          "irreversible-deletion-or-migration",
+          "external-spend",
+          "production-impact",
+          "legal-or-contractual-decision",
+          "platform-required-approval"
+        ],
+        "maxActions": 25,
+        "maxRepairAttempts": 2
+      },
+      "checkpoints": [],
+      "createdAt": "2026-08-28T11:42:19.765Z",
+      "definitionOfDone": "The goal is implemented, verified, reviewed, evidence-backed, and handed off or held at a real hard stop.",
+      "errors": [],
+      "goal": "Improve the Power BI Desktop plugin with local KPI SLO action lists, Fabric evidence workflows, and role-based onboarding.",
+      "goalSource": "explicit",
+      "id": "autopilot-mtcvtkl0",
+      "packets": [
+        {
+          "attempts": 0,
+          "evidence": [],
+          "failures": [],
+          "id": "inspect-and-contract",
+          "instruction": "Inspect the workspace and derive the smallest safe plan.",
+          "requiredEvidence": [
+            "workspace-inspection"
+          ],
+          "state": "ready"
+        },
+        {
+          "attempts": 0,
+          "evidence": [],
+          "failures": [],
+          "id": "implement",
+          "instruction": "Implement the next reversible change using a permitted adapter.",
+          "requiredEvidence": [
+            "adapter-receipt"
+          ],
+          "state": "pending"
+        },
+        {
+          "attempts": 0,
+          "evidence": [],
+          "failures": [],
+          "id": "functional-proof",
+          "instruction": "Run relevant functional checks and repair failures.",
+          "requiredEvidence": [
+            "passed-command"
+          ],
+          "state": "pending"
+        },
+        {
+          "attempts": 0,
+          "evidence": [],
+          "failures": [],
+          "id": "experience-review",
+          "instruction": "Collect applicable review, visual, and accessibility evidence.",
+          "requiredEvidence": [
+            "review-evidence"
+          ],
+          "state": "pending"
+        },
+        {
+          "attempts": 0,
+          "evidence": [],
+          "failures": [],
+          "id": "risk-release",
+          "instruction": "Record risk, readiness, rollback, and release evidence.",
+          "requiredEvidence": [
+            "risk-readiness"
+          ],
+          "state": "pending"
+        },
+        {
+          "attempts": 0,
+          "evidence": [],
+          "failures": [],
+          "id": "handoff",
+          "instruction": "Prepare a concise evidence-backed handoff.",
+          "requiredEvidence": [
+            "handoff-record"
+          ],
+          "state": "pending"
+        }
+      ],
+      "priorOutcomes": [],
+      "receipts": [],
+      "schemaVersion": 1,
+      "state": "ready",
+      "updatedAt": "2026-08-28T11:42:19.765Z"
+    },
+    "schemaVersion": 1,
+    "status": "ready"
+  },
+  "errors": [],
+  "foundation": {
+    "foundationId": "foundation_mtcvtkkm",
+    "nextStory": {
+      "acceptanceCriteria": [
+        "Implement the smallest useful slice.",
+        "Record relevant verification evidence.",
+        "Preserve a rollback or recovery path."
+      ],
+      "decisionState": "draft",
+      "definitionOfDone": "Relevant tests pass or gaps are recorded.",
+      "dependsOn": [
+        "foundation_mtcvtkkm_epic_1"
+      ],
+      "id": "foundation_mtcvtkkm_story_1",
+      "revision": 1,
+      "state": "ready",
+      "title": "Implement the smallest reversible outcome slice"
+    },
+    "readiness": {
+      "blockers": [],
+      "status": "concerns"
+    },
+    "scope": "lightweight"
+  },
+  "goal": "Improve the Power BI Desktop plugin with local KPI SLO action lists, Fabric evidence workflows, and role-based onboarding.",
+  "goalSource": "user",
+  "hardStops": [
+    "credentials-or-secrets",
+    "irreversible-deletion-or-migration",
+    "external-spend",
+    "production-impact",
+    "legal-or-contractual-decision",
+    "platform-required-approval"
+  ],
+  "nextAction": "Implement Foundation story: Implement the smallest reversible outcome slice.",
+  "route": "evolve",
+  "schemaVersion": 1,
+  "status": "ready"
+}

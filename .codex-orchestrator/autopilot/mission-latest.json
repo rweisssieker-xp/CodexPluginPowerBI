@@ -1,0 +1,94 @@
+{
+  "autonomy": {
+    "hardStops": [
+      "credentials-or-secrets",
+      "irreversible-deletion-or-migration",
+      "external-spend",
+      "production-impact",
+      "legal-or-contractual-decision",
+      "platform-required-approval"
+    ],
+    "maxActions": 25,
+    "maxRepairAttempts": 2
+  },
+  "checkpoints": [],
+  "createdAt": "2026-08-28T11:42:19.765Z",
+  "definitionOfDone": "The goal is implemented, verified, reviewed, evidence-backed, and handed off or held at a real hard stop.",
+  "errors": [],
+  "goal": "Improve the Power BI Desktop plugin with local KPI SLO action lists, Fabric evidence workflows, and role-based onboarding.",
+  "goalSource": "explicit",
+  "id": "autopilot-mtcvtkl0",
+  "packets": [
+    {
+      "attempts": 0,
+      "evidence": [],
+      "failures": [],
+      "id": "inspect-and-contract",
+      "instruction": "Inspect the workspace and derive the smallest safe plan.",
+      "requiredEvidence": [
+        "workspace-inspection"
+      ],
+      "state": "ready"
+    },
+    {
+      "attempts": 0,
+      "evidence": [],
+      "failures": [],
+      "id": "implement",
+      "instruction": "Implement the next reversible change using a permitted adapter.",
+      "requiredEvidence": [
+        "adapter-receipt"
+      ],
+      "state": "pending"
+    },
+    {
+      "attempts": 0,
+      "evidence": [],
+      "failures": [],
+      "id": "functional-proof",
+      "instruction": "Run relevant functional checks and repair failures.",
+      "requiredEvidence": [
+        "passed-command"
+      ],
+      "state": "pending"
+    },
+    {
+      "attempts": 0,
+      "evidence": [],
+      "failures": [],
+      "id": "experience-review",
+      "instruction": "Collect applicable review, visual, and accessibility evidence.",
+      "requiredEvidence": [
+        "review-evidence"
+      ],
+      "state": "pending"
+    },
+    {
+      "attempts": 0,
+      "evidence": [],
+      "failures": [],
+      "id": "risk-release",
+      "instruction": "Record risk, readiness, rollback, and release evidence.",
+      "requiredEvidence": [
+        "risk-readiness"
+      ],
+      "state": "pending"
+    },
+    {
+      "attempts": 0,
+      "evidence": [],
+      "failures": [],
+      "id": "handoff",
+      "instruction": "Prepare a concise evidence-backed handoff.",
+      "requiredEvidence": [
+        "handoff-record"
+      ],
+      "state": "pending"
+    }
+  ],
+  "priorOutcomes": [],
+  "receipts": [],
+  "schemaVersion": 1,
+  "state": "ready",
+  "updatedAt": "2026-08-28T11:42:19.765Z"
+}

@@ -1,0 +1,180 @@
+{
+  "artifactPath": ".codex-orchestrator/primary/compass-latest.json",
+  "claimBoundary": "Compass is a local routing recommendation. Any customer, market, pricing, or outcome claim remains evidence-labelled in the selected journey.",
+  "errors": [],
+  "foundation": {
+    "foundationId": "foundation_mtcvtkjy",
+    "nextStory": {
+      "acceptanceCriteria": [
+        "Implement the smallest useful slice.",
+        "Record relevant verification evidence.",
+        "Preserve a rollback or recovery path."
+      ],
+      "decisionState": "draft",
+      "definitionOfDone": "Relevant tests pass or gaps are recorded.",
+      "dependsOn": [
+        "foundation_mtcvtkjy_epic_1"
+      ],
+      "id": "foundation_mtcvtkjy_story_1",
+      "revision": 1,
+      "state": "ready",
+      "title": "Implement the smallest reversible outcome slice"
+    },
+    "readiness": {
+      "blockers": [],
+      "status": "concerns"
+    },
+    "scope": "lightweight"
+  },
+  "generatedAt": "2026-08-28T11:42:19.743Z",
+  "goal": "Improve the Power BI Desktop plugin with local KPI SLO action lists, Fabric evidence workflows, and role-based onboarding.",
+  "goalSource": "user",
+  "handoff": "$forgemind-compass",
+  "nextAction": "Continue with $forgemind-compass; ForgeMind will apply the evolve route internally.",
+  "projectProfile": {
+    "artifactPath": ".codex-orchestrator/project-profile.json",
+    "claimBoundary": "Project-derived fields describe repository context. They are inferred or assumed until customer, market, pricing, or operating evidence is imported.",
+    "commercialAssumptions": {
+      "addressableAccounts": {
+        "evidence": "inferred",
+        "sources": [
+          "order"
+        ],
+        "value": 2500
+      },
+      "buildCost": {
+        "evidence": "inferred",
+        "sources": [
+          "order"
+        ],
+        "value": 30000
+      },
+      "customerAcquisitionCost": {
+        "evidence": "inferred",
+        "sources": [
+          "order"
+        ],
+        "value": 120
+      },
+      "grossMarginPercent": {
+        "evidence": "inferred",
+        "sources": [
+          "order"
+        ],
+        "value": 72
+      },
+      "monthlyChurnPercent": {
+        "evidence": "inferred",
+        "sources": [
+          "order"
+        ],
+        "value": 4
+      },
+      "monthlyNewCustomers": {
+        "evidence": "inferred",
+        "sources": [
+          "order"
+        ],
+        "value": 16
+      },
+      "monthlyPrice": {
+        "evidence": "inferred",
+        "sources": [
+          "order"
+        ],
+        "value": 89
+      },
+      "monthlyRunCost": {
+        "evidence": "inferred",
+        "sources": [
+          "order"
+        ],
+        "value": 2800
+      },
+      "salesCycleMonths": {
+        "evidence": "inferred",
+        "sources": [
+          "order"
+        ],
+        "value": 1
+      },
+      "startingCustomers": {
+        "evidence": "inferred",
+        "sources": [
+          "order"
+        ],
+        "value": 0
+      }
+    },
+    "deploymentModel": {
+      "evidence": "missing",
+      "sources": [
+        "no deployment signal"
+      ],
+      "value": "unknown"
+    },
+    "differentiationApproach": {
+      "evidence": "inferred",
+      "sources": [
+        "order"
+      ],
+      "value": "commerce-platform workflow with existing integration context"
+    },
+    "errors": [],
+    "evidenceGaps": [
+      "customer segment is inferred from repository context; validate with qualified users",
+      "no imported customer or behavioral signals",
+      "no structured commercial evidence was imported from research or telemetry",
+      "pricing, market size, CAC, churn, and cost values are project-derived assumptions",
+      "deployment model is unknown; validate operating cost assumptions"
+    ],
+    "evidenceSummary": {
+      "importedSignals": 0,
+      "outcomes": 0,
+      "packagePresent": false,
+      "projectDocuments": 0,
+      "readmePresent": true,
+      "researchRecords": 0,
+      "sourceSignals": 0,
+      "telemetryEvents": 0
+    },
+    "generatedAt": "2026-08-28T11:42:19.709Z",
+    "primaryJob": {
+      "evidence": "inferred",
+      "sources": [
+        "order"
+      ],
+      "value": "operate merchant checkout and storefront workflows with less effort"
+    },
+    "productCategory": {
+      "evidence": "inferred",
+      "sources": [
+        "order"
+      ],
+      "value": "commerce-platform"
+    },
+    "schemaVersion": 1,
+    "status": "passed",
+    "targetAudience": {
+      "evidence": "inferred",
+      "sources": [
+        "order"
+      ],
+      "value": "independent online merchants"
+    },
+    "technicalCostSignals": [
+      {
+        "evidence": "observed",
+        "sources": [
+          "enterprise integration dependency or documentation"
+        ],
+        "value": "enterprise-integration"
+      }
+    ],
+    "workspace": "D:\\CodexPluginPowerBI"
+  },
+  "rationale": "Compass selected evolve from the stated outcome and the project profile; this is routing guidance, not a claim about customer demand.",
+  "recommendedJourney": "evolve",
+  "schemaVersion": 1,
+  "status": "passed"
+}

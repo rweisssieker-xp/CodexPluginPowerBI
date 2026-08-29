@@ -14,6 +14,9 @@ param(
     [switch]$IncludeFabricOperationsQa,
     [switch]$IncludeFabricGovernanceQa,
     [switch]$IncludeFabricExecutiveQa,
+    [switch]$IncludeNextGenUspQa,
+    [switch]$IncludeKpiSloActions,
+    [switch]$IncludeEnterpriseOperationsQa,
     [string]$TenantId,
     [string]$WorkspaceId,
     [string]$WorkspaceName,
@@ -131,6 +134,21 @@ if ($IncludeOperationsQa) {
     & (Join-Path $scriptRoot 'New-PowerBIRefreshFailureRootCauseAdvisor.ps1') -Path $Path -OutputPath $operationsArtifacts.refreshFailureRootCause -Json | Out-Null
     & (Join-Path $scriptRoot 'New-PowerBISemanticTestCoverageScore.ps1') -Path $Path -OutputPath $operationsArtifacts.semanticTestCoverageScore -Json | Out-Null
     & (Join-Path $scriptRoot 'New-PowerBIBusinessKpiSlaMonitor.ps1') -Path $Path -OutputPath $operationsArtifacts.businessKpiSlaMonitor -Json | Out-Null
+}
+$nextGenUspPack = $null
+$nextGenUspSummaryPath = Join-Path $resolvedOut 'nextgen-usps/summary.json'
+if ($IncludeNextGenUspQa) {
+    $nextGenUspPack = & (Join-Path $scriptRoot 'Invoke-PowerBINextGenUspPack.ps1') -Path $Path -SnapshotDirectory $SnapshotDirectory -OutputDirectory (Join-Path $resolvedOut 'nextgen-usps') -Json | ConvertFrom-Json
+}
+$kpiSloActionList = $null
+$kpiSloActionListPath = Join-Path $resolvedOut 'kpi-slo-action-list.json'
+if ($IncludeKpiSloActions) {
+    $kpiSloActionList = & (Join-Path $scriptRoot 'New-PowerBIKpiSloActionList.ps1') -Path $Path -OutputPath $kpiSloActionListPath -Json | ConvertFrom-Json
+}
+$enterpriseOperations = $null
+$enterpriseOperationsSummaryPath = Join-Path $resolvedOut 'enterprise-operations/summary.json'
+if ($IncludeEnterpriseOperationsQa) {
+    $enterpriseOperations = & (Join-Path $scriptRoot 'Invoke-PowerBIEnterpriseOperationsPack.ps1') -Path $Path -OutputDirectory (Join-Path $resolvedOut 'enterprise-operations') -Json | ConvertFrom-Json
 }
 $fabricSnapshotDirectory = $null
 $fabricAccessPlanPath = Join-Path $resolvedOut 'fabric-access-plan.json'
@@ -340,6 +358,10 @@ $summary = [pscustomobject]@{
         refreshFailureRootCauseStatus = if ($refreshFailureRootCause) { $refreshFailureRootCause.status } else { 'NotRun' }
         semanticTestCoverageStatus = if ($semanticTestCoverageScore) { $semanticTestCoverageScore.status } else { 'NotRun' }
         businessKpiSlaBreachedCount = if ($businessKpiSlaMonitor) { $businessKpiSlaMonitor.breachedCount } else { 0 }
+        nextGenUspArtifactCount = if ($nextGenUspPack) { $nextGenUspPack.artifactCount } else { 0 }
+        kpiSloActionRequiredCount = if ($kpiSloActionList) { $kpiSloActionList.actionRequiredCount } else { 0 }
+        kpiSloNeedsOwnerSetupCount = if ($kpiSloActionList) { $kpiSloActionList.needsOwnerSetupCount } else { 0 }
+        enterpriseOperationsArtifactCount = if ($enterpriseOperations) { $enterpriseOperations.artifactCount } else { 0 }
         fabricLiveStatus = if ($fabricWorkspaceSnapshot) { $fabricWorkspaceSnapshot.status } elseif ($fabricAccessPlan) { $fabricAccessPlan.status } else { 'NotRun' }
         fabricWorkspaceSnapshotStatus = if ($fabricWorkspaceSnapshot) { $fabricWorkspaceSnapshot.status } else { 'NotRun' }
         fabricPortfolioStatus = if ($fabricPortfolio) { $fabricPortfolio.status } else { 'NotRun' }
@@ -420,6 +442,9 @@ $index = @(
     ('- Refresh failure root cause: `{0}`' -f $(if (Test-Path -LiteralPath $operationsArtifacts.refreshFailureRootCause) { $operationsArtifacts.refreshFailureRootCause } else { 'not requested' })),
     ('- Semantic test coverage score: `{0}`' -f $(if (Test-Path -LiteralPath $operationsArtifacts.semanticTestCoverageScore) { $operationsArtifacts.semanticTestCoverageScore } else { 'not requested' })),
     ('- Business KPI SLA monitor: `{0}`' -f $(if (Test-Path -LiteralPath $operationsArtifacts.businessKpiSlaMonitor) { $operationsArtifacts.businessKpiSlaMonitor } else { 'not requested' })),
+    ('- Next-generation USP pack: `{0}`' -f $(if (Test-Path -LiteralPath $nextGenUspSummaryPath) { $nextGenUspSummaryPath } else { 'not requested' })),
+    ('- KPI SLO action list: `{0}`' -f $(if (Test-Path -LiteralPath $kpiSloActionListPath) { $kpiSloActionListPath } else { 'not requested' })),
+    ('- Enterprise operations pack: `{0}`' -f $(if (Test-Path -LiteralPath $enterpriseOperationsSummaryPath) { $enterpriseOperationsSummaryPath } else { 'not requested' })),
     ('- Fabric access plan: `{0}`' -f $(if (Test-Path -LiteralPath $fabricAccessPlanPath) { $fabricAccessPlanPath } else { 'not requested' })),
     ('- Fabric workspace snapshot: `{0}`' -f $(if (Test-Path -LiteralPath $fabricWorkspaceSnapshotSummaryPath) { $fabricWorkspaceSnapshotSummaryPath } else { 'not requested' })),
     ('- Fabric portfolio command center: `{0}`' -f $(if (Test-Path -LiteralPath $fabricArtifacts.portfolioCommandCenter) { $fabricArtifacts.portfolioCommandCenter } else { 'not requested' })),
