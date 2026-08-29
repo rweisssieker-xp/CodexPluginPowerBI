@@ -1,6 +1,6 @@
 {
   "name": "powerbi-desktop",
-  "version": "3.0.0+codex.20260829132525",
+  "version": "3.0.0+codex.20260829143201",
   "description": "Guided Power BI workflows from data sources to trusted decisions, safe PBIP changes, release, and Fabric operations.",
   "author": {
     "name": "Reiner Weisssieker"
@@ -41,7 +41,7 @@
       "Build a Power BI model from these data sources.",
       "Can I trust this report for a decision?"
     ],
-    "brandColor": "#F2C811",
+    "brandColor": "#8A6A00",
     "composerIcon": "./assets/icon.svg",
     "logo": "./assets/logo.svg",
     "screenshots": []
