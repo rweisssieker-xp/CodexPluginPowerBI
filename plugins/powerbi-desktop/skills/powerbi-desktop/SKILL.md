@@ -1,6 +1,6 @@
 ---
 name: powerbi-desktop
-description: "Route Power BI work: build, trust, change, release, operate, and govern."
+description: "Use when building Power BI models, trusting KPIs, changing PBIP safely, releasing, operating Fabric, or governing decisions."
 ---
 
 # Power BI Index
