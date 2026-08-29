@@ -22,6 +22,7 @@ Start from the user's outcome. Use the smallest workflow that answers it, then o
 | Decide whether to trust a report | `New-PowerBIExecutiveTrustBrief.ps1` | concise decision brief and open risks |
 | Change a model safely | `Invoke-PowerBIUnifiedReview.ps1` | risk, dependency impact, validation and PBIP-safe drafts |
 | Prepare a release | `New-PowerBIReleaseCandidatePack.ps1` | Go/Warn/No-Go evidence, owners, and rollback guidance |
+| Start a governed model | `New-PowerBIModelWizard.ps1` | PBIP-first star schema, KPI, RLS, and report-page design drafts |
 | Operate Fabric evidence locally | `Invoke-PowerBIEnterpriseOperationsPack.ps1` | eight labelled operations artifacts without service changes |
 | Explain and govern decisions | `Invoke-PowerBIDecisionIntelligencePack.ps1` | Copilot, KPI, scenario, contract, owner and visual evidence |
 
@@ -33,6 +34,10 @@ Start from the user's outcome. Use the smallest workflow that answers it, then o
 4. If only PBIX/PBIT is present, explain the binary boundary and recommend export to PBIP/TMDL for editing.
 
 ## Default Workflows
+
+### New model from scratch
+
+Use `New-PowerBIModelWizard.ps1 -ProjectName <name> -BusinessPurpose <goal> -Initialize` to create a reviewable local design pack. The user then creates the actual PBIP in Power BI Desktop, reviews the generated drafts, and explicitly applies approved PBIP/TMDL changes.
 
 ### Local review
 

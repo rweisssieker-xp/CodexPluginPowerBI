@@ -14,7 +14,7 @@ Recommended workflow: `Invoke-PowerBIAutoReview.ps1`, then `New-PowerBIMetricCat
 
 **Outcome:** a business-readable metric catalog, visible assumptions and caveats, and prioritized questions. This entry point does not change the model.
 
-## C-level: Decide with confidence
+## Executive: Decide with confidence
 
 **Goal:** understand whether a dashboard supports a decision, what can invalidate it, and who owns the remaining risk.
 
@@ -25,6 +25,18 @@ Ask Codex:
 Recommended workflow: `New-PowerBIExecutiveTrustBrief.ps1` plus `New-PowerBITrustReleaseGate.ps1`. Use `New-PowerBIAnalyticalReleaseReport.ps1` when methodology and KPI changes need explaining.
 
 **Outcome:** a decision brief, not a technical audit. It distinguishes verified evidence from assumptions and highlights only the risks that could change the decision.
+
+## New Model Owner: Start from a business goal
+
+**Goal:** create a governed semantic-model and report plan before connecting sources or building visuals.
+
+Ask Codex:
+
+> Create a new Power BI model plan for [business decision]. Use [sources], build a star schema, define [KPIs], list RLS roles, and propose executive and analyst report pages.
+
+Recommended workflow: `New-PowerBIModelWizard.ps1 -Initialize`, followed by reviewed TMDL/PBIP drafts.
+
+**Outcome:** a local design pack with data contract, fact/dimension plan, KPI drafts, security checkpoints, and a report-page plan. The user creates the actual PBIP in Power BI Desktop, then applies only reviewed drafts.
 
 ## Power BI Developer: Change safely
 

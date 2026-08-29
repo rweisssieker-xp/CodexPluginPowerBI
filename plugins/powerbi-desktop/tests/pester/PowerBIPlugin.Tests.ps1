@@ -13,6 +13,18 @@ Describe 'Power BI Desktop plugin' {
         { & $scriptPath -DryRun -Json | ConvertFrom-Json } | Should Not Throw
     }
 
+    It 'creates a source-driven model design pack without creating a PBIX binary' {
+        $outputDirectory = Join-Path $pluginRoot 'tmp/pester-model-wizard'
+        $source = Join-Path $pluginRoot 'examples/business-process-data/SalesOrder.csv'
+        $wizard = & (Join-Path $scriptsPath 'New-PowerBIModelWizard.ps1') -ProjectName 'Source Driven Model' -DataSourcePaths $source -OutputDirectory $outputDirectory -Initialize -Json | ConvertFrom-Json
+
+        $wizard.schema | Should Be 'codex.powerbi.modelWizard.v1'
+        $wizard.architecture.pattern | Should Be 'StarSchema'
+        $wizard.architecture.sourceProfiles[0].name | Should Be 'SalesOrder'
+        Test-Path -LiteralPath (Join-Path $wizard.initializedDraftDirectory 'data-contract-draft.json') | Should Be $true
+        Test-Path -LiteralPath (Join-Path $wizard.initializedDraftDirectory 'connection-drafts.json') | Should Be $true
+    }
+
     It 'creates the next-generation Power BI and Fabric USP pack' {
         $outputDirectory = Join-Path $pluginRoot 'tmp/pester-nextgen-usps'
         $pack = & (Join-Path $scriptsPath 'Invoke-PowerBINextGenUspPack.ps1') -Path $samplePath -OutputDirectory $outputDirectory -Json | ConvertFrom-Json

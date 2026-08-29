@@ -1,0 +1,26 @@
+{
+  "schema": "codex.powerbi.dataSourceConfig.v1",
+  "sources": [
+    {
+      "name": "SalesWarehouse",
+      "connectorKind": "SQL Server database",
+      "connection": "server-name;database-name",
+      "mode": "Import",
+      "columns": ["OrderDate", "CustomerKey", "ProductKey", "Amount"]
+    },
+    {
+      "name": "FabricLakehouse",
+      "connectorKind": "Microsoft Fabric Lakehouse",
+      "connection": "workspace/lakehouse",
+      "mode": "Direct Lake",
+      "columns": ["Date", "Product", "Revenue"]
+    },
+    {
+      "name": "AnyConnector",
+      "connectorKind": "Use the exact connector name shown in Power BI Desktop Get Data",
+      "connection": "non-secret endpoint or environment alias only",
+      "mode": "Import",
+      "columns": []
+    }
+  ]
+}

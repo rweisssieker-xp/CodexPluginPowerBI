@@ -57,7 +57,7 @@ This local-only pack creates eight decision artifacts: Copilot Reliability Score
 
 Add `-IncludeDecisionIntelligenceQa` to `New-PowerBIReleaseCandidatePack.ps1` to attach the eight artifacts to a release candidate. The workflow neither publishes changes nor signs in to Fabric.
 
-## Product-reife: sechs betriebliche Bausteine
+## Product readiness: six operational building blocks
 
 - `Invoke-PowerBIFabricReadOnlyConnector.ps1` imports Fabric evidence through the existing GET-only/snapshot workflow.
 - `Update-PowerBIDecisionStore.ps1` persists approved decision or action records in a deliberately selected local JSON store.

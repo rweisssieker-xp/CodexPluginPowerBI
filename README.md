@@ -2,6 +2,28 @@
 
 This workspace contains a Codex plugin for Microsoft Power BI Desktop workflows.
 
+## From Data Sources To Decision-Ready Power BI
+
+Give the plugin your local files or declare the Power BI Desktop connectors you use. The **Power BI Model Wizard** turns that starting point into a governed build plan: source and data-contract drafts, a proposed star schema, KPI and RLS checkpoints, report-page plan, and a validation path.
+
+```powershell
+# Local CSV or JSON sources are profiled automatically.
+.\plugins\powerbi-desktop\scripts\New-PowerBIModelWizard.ps1 `
+  -ProjectName ContosoSales `
+  -DataSourcePaths .\sales.csv, .\customers.json `
+  -BusinessPurpose "Manage sales performance" `
+  -Initialize
+
+# Any connector in the user's Power BI Desktop Get Data experience can be declared.
+.\plugins\powerbi-desktop\scripts\New-PowerBIModelWizard.ps1 `
+  -ProjectName ContosoEnterprise `
+  -DataSourceConfigPath .\templates\powerbi-data-sources.example.json `
+  -BusinessPurpose "Run the executive operating review" `
+  -Initialize
+```
+
+**The USP:** analysts start with data, executives get decision-ready KPIs, and developers receive a source-controlled PBIP-first implementation plan instead of a blank canvas. Credentials remain in Power BI Desktop or an approved gateway; the plugin never stores them, creates PBIX binaries, or publishes content.
+
 ## Why It Matters
 
 The plugin turns Codex into a local Power BI engineering workbench. It helps teams review models faster, create safer PBIP/TMDL changes, produce release evidence, improve KPI trust, and plan Fabric/service readiness without uploading report data by default.
@@ -15,9 +37,10 @@ Choose the outcome you need rather than a technical feature. The same project ca
 | Role | Start here | Result |
 | --- | --- | --- |
 | Analyst | "Explain the KPI definitions, highlight data-quality risks, and suggest the next analysis." | Metric catalog, quality findings, and an analysis-ready narrative. |
-| C-level / decision maker | "Can this report be trusted for a decision? Give me an executive brief and the open risks." | Concise decision brief with Go/Warn/No-Go context, assumptions, and owners. |
+| Executive / decision maker | "Can this report be trusted for a decision? Give me an executive brief and the open risks." | Concise decision brief with Go/Warn/No-Go context, assumptions, and owners. |
 | Power BI developer | "Review this PBIP/TMDL project, identify technical risks, and create safe change drafts." | DAX/PQ findings, dependency impact, tests, and PBIP-safe drafts. |
 | BI or release lead | "Prepare a release decision with evidence, test status, governance risks, and rollback guidance." | Release candidate pack and explicit sign-off actions. |
+| New model owner | "Build a new Power BI model from these data sources and this business goal." | Data-source-to-PBIP design pack with schema, KPIs, RLS, report pages, and validation steps. |
 
 The full role-based guide, including example prompts and the evidence maturity of each workflow, is in [Role-based entry points](docs/role-based-entry-points.md).
 

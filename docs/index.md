@@ -7,6 +7,7 @@ This documentation describes the local Codex plugin for Power BI Desktop and Fab
 - [First 10 minutes](start-here.md): role-based first action, one suitable workflow, and how to interpret evidence labels.
 - [Getting started](getting-started.md): install path, first checks, first review run.
 - [Role-based entry points](role-based-entry-points.md): focused starts for analysts, executives, Power BI developers, and release owners.
+- [New model wizard](start-here.md): PBIP-first design packs for building a governed model from a business goal.
 - [Next-generation USPs](next-gen-usps.md): FinOps, Copilot regression, Direct Lake readiness, data-product SLOs, capacity proof, and decision traces.
 - [Value proposition and USPs](value-proposition.md): business value, differentiators, best-fit use cases, and positioning.
 - [Workflows](workflows.md): practical end-to-end flows for model review, live Desktop review, PBIP authoring, release gates, and Fabric read-only snapshot QA.
