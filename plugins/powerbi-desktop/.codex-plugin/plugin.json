@@ -1,6 +1,6 @@
 {
   "name": "powerbi-desktop",
-  "version": "3.0.0+codex.20260829124131",
+  "version": "3.0.0+codex.20260829124424",
   "description": "Local-first Power BI review, safe PBIP authoring, release evidence, and decision intelligence.",
   "author": {
     "name": "Reiner Weisssieker"

@@ -56,3 +56,14 @@ For release evidence, add `-IncludeEnterpriseOperationsQa` to `New-PowerBIReleas
 This local-only pack creates eight decision artifacts: Copilot Reliability Score, KPI change explanation, business-impact scenario, semantic-model team contract, decision memory, owner-approved exception workflow, multi-workspace benchmark, and screenshot regression evidence. Optional JSON inputs provide approved answer captures, KPI baselines, scenarios, decisions, and portfolio exports. Screenshot comparison uses supplied local files only.
 
 Add `-IncludeDecisionIntelligenceQa` to `New-PowerBIReleaseCandidatePack.ps1` to attach the eight artifacts to a release candidate. The workflow neither publishes changes nor signs in to Fabric.
+
+## Product-reife: sechs betriebliche Bausteine
+
+- `Invoke-PowerBIFabricReadOnlyConnector.ps1` imports Fabric evidence through the existing GET-only/snapshot workflow.
+- `Update-PowerBIDecisionStore.ps1` persists approved decision or action records in a deliberately selected local JSON store.
+- `New-PowerBIOwnerActionDispatch.ps1` creates Teams, Email, Jira, or Azure DevOps action drafts; it never sends them.
+- `New-PowerBICommandCenter.ps1` creates a compact local HTML command center from pack summaries.
+- `Compare-PowerBIReportScreenshots.ps1` computes exact pixel differences for matching PNG baseline/candidate screenshots.
+- `Invoke-PowerBIPluginQualitySuite.ps1` records a local smoke duration and makes Python-test and large-model benchmark gaps explicit.
+
+These are product workflows rather than cloud automations: users explicitly choose a token, an evidence store, a notification destination, and any external follow-up.
