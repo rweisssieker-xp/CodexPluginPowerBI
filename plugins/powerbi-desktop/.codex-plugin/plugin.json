@@ -1,7 +1,7 @@
 {
   "name": "powerbi-desktop",
-  "version": "3.0.0+codex.20260829125501",
-  "description": "Local-first Power BI review, safe PBIP authoring, release evidence, and decision intelligence.",
+  "version": "3.0.0+codex.20260829130252",
+  "description": "Guided Power BI workflows from data sources to trusted decisions, safe PBIP changes, release, and Fabric operations.",
   "author": {
     "name": "Reiner Weisssieker"
   },
@@ -19,8 +19,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Power BI Desktop",
-    "shortDescription": "Local Power BI review, safe changes, and release confidence.",
-    "longDescription": "A local-first Power BI workbench for analysts, executives, developers, and Fabric owners. Explain KPI change, govern decisions, review PBIP/TMDL safely, and create release evidence without modifying binary PBIX files. Live Desktop and Fabric snapshot workflows are explicitly read-only.",
+    "shortDescription": "Guided Power BI workflows from data to trusted decisions.",
+    "longDescription": "Start with one outcome: build a model from data sources, trust KPIs, change PBIP safely, release with confidence, operate Fabric, or govern decisions. The plugin routes to a focused workflow and keeps PBIX binaries untouched. Live and Fabric access are read-only by default.",
     "developerName": "Reiner Weisssieker",
     "category": "Productivity",
     "capabilities": [
@@ -37,9 +37,9 @@
     "privacyPolicyURL": "https://github.com/rweisssieker-xp/CodexPluginPowerBI/blob/main/docs/privacy.md",
     "termsOfServiceURL": "https://github.com/rweisssieker-xp/CodexPluginPowerBI#license",
     "defaultPrompt": [
-      "Explain KPI meaning, data risks, and the next analysis.",
-      "Can I trust this report for a decision?",
-      "Review this PBIP project and propose safe fixes."
+      "What can you do with this Power BI plugin?",
+      "Build a Power BI model from these data sources.",
+      "Can I trust this report for a decision?"
     ],
     "brandColor": "#F2C811",
     "composerIcon": "./assets/icon.svg",

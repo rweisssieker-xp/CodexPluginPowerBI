@@ -1,6 +1,6 @@
 # First 10 Minutes
 
-Use this page when you want a useful Power BI answer quickly. Choose your role, run one workflow, and read the result before expanding the scope.
+Use this page when you want a useful Power BI answer quickly. Start with one outcome, run one focused workflow, and read the result before expanding the scope.
 
 ## 1. Pick Your Starting Question
 
