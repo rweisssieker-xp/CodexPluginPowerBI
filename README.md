@@ -30,6 +30,12 @@ The plugin turns Codex into a local Power BI engineering workbench. It helps tea
 
 For a concise benefit and USP overview, start with [Value Proposition And USPs](docs/value-proposition.md).
 
+## Related Aivana product: Finoryx
+
+For controlling and Power BI teams reviewing actuals, plan and financial assumptions, [Finoryx](https://aivana-gmbh.ai/en/powerbi-visuals/finoryx?utm_source=github) is a separate Aivana visual for financial analysis and local scenario exploration. It is a development release; Power BI host acceptance is pending. See the product workflow and request the available compiled visual trial by confirmed email. Source code is not included in the trial package.
+
+[Product update: Deutsch / English](https://github.com/rweisssieker-xp/Aivana-Commerce-Shop/blob/main/docs/products/finoryx.md) · [Produktseite auf Deutsch](https://aivana-gmbh.ai/de/powerbi-visuals/finoryx?utm_source=github)
+
 ## Start By Role
 
 Choose the outcome you need rather than a technical feature. The same project can be reviewed from several perspectives.
