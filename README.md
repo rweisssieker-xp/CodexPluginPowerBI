@@ -30,11 +30,19 @@ The plugin turns Codex into a local Power BI engineering workbench. It helps tea
 
 For a concise benefit and USP overview, start with [Value Proposition And USPs](docs/value-proposition.md).
 
-## Related Aivana product: Finoryx
+## Evaluate Aivana Power BI visuals
 
-For controlling and Power BI teams reviewing actuals, plan and financial assumptions, [Finoryx](https://aivana-gmbh.ai/en/powerbi-visuals/finoryx?utm_source=github) is a separate Aivana visual for financial analysis and local scenario exploration. It is a development release; Power BI host acceptance is pending. See the product workflow and request the available compiled visual trial by confirmed email. Source code is not included in the trial package.
+**Provider disclosure:** Aivana develops the optional commercial visuals below. They are separate from this Codex plugin; installing the plugin does not install or license a visual.
 
-[Product update: Deutsch / English](https://github.com/rweisssieker-xp/Aivana-Commerce-Shop/blob/main/docs/products/finoryx.md) · [Produktseite auf Deutsch](https://aivana-gmbh.ai/de/powerbi-visuals/finoryx?utm_source=github)
+| Reporting need | Product and requirements | Trial |
+| --- | --- | --- |
+| Review project dates, dependencies and supplied resource capacity together | [Project Intelligence](https://aivana-gmbh.ai/en/powerbi-visuals/project-intelligence?utm_source=github&utm_medium=readme&utm_campaign=visual_trials_20261029) — Gantt/PMO views, supplied baselines and capacity-conflict review. Changes remain in your planning system; no direct backend writeback. | [Request a Project Intelligence trial](https://aivana-gmbh.ai/en/powerbi-visuals?product=project-intelligence&utm_source=github&utm_medium=readme&utm_campaign=visual_trials_20261029#trial) |
+| Review actual/budget/forecast/prior-year variances with contextual comments | [Financial Reporting](https://aivana-gmbh.ai/en/powerbi-visuals/financial-reporting?utm_source=github&utm_medium=readme&utm_campaign=visual_trials_20261029) — financial matrix and comments. Persistent comments require a separately configured Fabric SQL integration. | [Request a Financial Reporting trial](https://aivana-gmbh.ai/en/powerbi-visuals?product=financial-reporting&utm_source=github&utm_medium=readme&utm_campaign=visual_trials_20261029#trial) |
+| Explore financial analysis and local scenarios in a development pilot | [Finoryx](https://aivana-gmbh.ai/en/powerbi-visuals/finoryx?utm_source=github) — development release; Power BI host acceptance is pending. | [Check the Finoryx trial](https://aivana-gmbh.ai/en/powerbi-visuals?product=finoryx&utm_source=github#trial) |
+
+Start with [the visual-evaluation checklist](docs/visual-evaluation-checklist.md): one known conflict or variance, explicit data requirements and an acceptance test before deployment. Trial requests require name, company and confirmed email. Confirm package availability, trial duration and licence terms with Aivana; a trial does not include source code. Embedded DemoReports require Microsoft sign-in and existing report access.
+
+[Finoryx product update: Deutsch / English](https://github.com/rweisssieker-xp/Aivana-Commerce-Shop/blob/main/docs/products/finoryx.md)
 
 ## Start By Role
 
